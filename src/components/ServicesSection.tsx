@@ -1,10 +1,6 @@
 "use client";
 
-// px from viewport top where the first card sticks (≥ navbar height ~70px)
-const STICKY_BASE = 82;
-// How much of each card header remains visible when the next card overlaps it
-// = card paddingTop (44) + icon row (50) + row paddingBottom (32) + border (1) + buffer (15)
-const CARD_STEP = 142;
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
@@ -21,7 +17,7 @@ const services = [
       "Community management & growth",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
         <circle cx="7" cy="14" r="3" fill="#9bff6e" />
         <circle cx="21" cy="7" r="3" fill="#9bff6e" />
         <circle cx="21" cy="21" r="3" fill="#9bff6e" />
@@ -30,6 +26,7 @@ const services = [
       </svg>
     ),
     color: "#9bff6e",
+    rgb: "155,255,110",
     platforms: ["Instagram", "TikTok", "LinkedIn", "Facebook", "X"],
   },
   {
@@ -46,7 +43,7 @@ const services = [
       "Local SEO & maps optimization",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
         <circle cx="12" cy="12" r="7" stroke="#6ee7ff" strokeWidth="1.8" fill="none" />
         <line x1="17.5" y1="17.5" x2="24" y2="24" stroke="#6ee7ff" strokeWidth="2" strokeLinecap="round" />
         <line x1="9" y1="12" x2="15" y2="12" stroke="#6ee7ff" strokeWidth="1.5" strokeLinecap="round" />
@@ -54,6 +51,7 @@ const services = [
       </svg>
     ),
     color: "#6ee7ff",
+    rgb: "110,231,255",
     platforms: ["Google", "Bing", "YouTube", "Maps", "Shopping"],
   },
   {
@@ -70,7 +68,7 @@ const services = [
       "Speed, SEO & accessibility audits",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
         <rect x="3" y="5" width="22" height="16" rx="2" stroke="#b09eff" strokeWidth="1.8" fill="none" />
         <line x1="3" y1="10" x2="25" y2="10" stroke="#b09eff" strokeWidth="1.5" />
         <line x1="14" y1="21" x2="14" y2="25" stroke="#b09eff" strokeWidth="1.5" strokeLinecap="round" />
@@ -80,325 +78,234 @@ const services = [
       </svg>
     ),
     color: "#b09eff",
+    rgb: "176,158,255",
     platforms: ["Next.js", "React", "Webflow", "Shopify", "WordPress"],
   },
 ];
 
 export default function ServicesSection() {
-  return (
-    <section
-      id="services"
-      style={{
-        // Generous bottom padding so the stacked cards have room to travel
-        padding: "100px 24px 220px",
-        position: "relative",
-        // ⚠️ NO overflow:hidden — that would break position:sticky on children
-      }}
-    >
-      {/* Radial glow */}
-      <div
-        style={{
-          position: "absolute",
-          top: "40%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "900px",
-          height: "700px",
-          background: "radial-gradient(ellipse at center, rgba(155,255,110,0.04) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
+  const outerRef = useRef<HTMLDivElement>(null);
+  // sentinel -1 so first-run always triggers a state update
+  const phaseRef = useRef<number>(-1);
+  const [scrollActiveIdx, setScrollActiveIdx] = useState<number | null>(null);
+  const [clickOverrideIdx, setClickOverrideIdx] = useState<number | null>(null);
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
+  const activeIndex = clickOverrideIdx !== null ? clickOverrideIdx : scrollActiveIdx;
 
-        {/* Section header — scrolls normally */}
-        <div style={{ marginBottom: "64px" }}>
-          <div style={{ display: "inline-flex", marginBottom: "20px" }}>
-            <span className="tag-pill">What we do</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "24px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(2.2rem, 4vw, 3.5rem)",
-                fontWeight: 900,
-                letterSpacing: "-0.04em",
-                lineHeight: 1.1,
-                maxWidth: "560px",
-              }}
-            >
-              Three channels.{" "}
-              <span className="gradient-text">One strategy.</span>
-            </h2>
-            <p
-              style={{
-                fontSize: "0.95rem",
-                color: "rgba(240,240,248,0.5)",
-                maxWidth: "340px",
-                lineHeight: 1.8,
-              }}
-            >
-              We don&apos;t do everything — we do three things exceptionally well,
-              and we make them work together.
-            </p>
-          </div>
-        </div>
+  useEffect(() => {
+    const onScroll = () => {
+      const outer = outerRef.current;
+      if (!outer) return;
 
-        {/* ── Stacking cards ── */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {services.map((service, idx) => (
-            <ServiceCard key={service.id} service={service} index={idx} total={services.length} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+      const rect = outer.getBoundingClientRect();
+      const scrolledPast = Math.max(0, -rect.top);
+      const scrollable = outer.offsetHeight - window.innerHeight;
 
-function ServiceCard({
-  service,
-  index,
-  total,
-}: {
-  service: (typeof services)[number];
-  index: number;
-  total: number;
-}) {
-  const rgb =
-    service.color === "#9bff6e"
-      ? "155,255,110"
-      : service.color === "#6ee7ff"
-      ? "110,231,255"
-      : "176,158,255";
+      if (scrollable <= 0) return;
 
-  // Each card sticks progressively lower so the header of the card beneath stays visible
-  const stickyTop = STICKY_BASE + index * CARD_STEP;
+      let newActive: number | null = null;
 
-  // Progressively slightly lighter background so stacking depth is readable
-  const bgLightness = 12 + index * 4; // 12 → 16 → 20
-  const bg = `rgb(${bgLightness}, ${bgLightness}, ${bgLightness + 2})`;
+      if (scrolledPast > 0 && scrolledPast < scrollable) {
+        const n = services.length;
+        // +1 extra phase at start (all collapsed intro) + n service phases
+        const phaseSize = scrollable / (n + 1);
+        const phase = Math.floor(scrolledPast / phaseSize);
+        if (phase >= 1 && phase <= n) newActive = phase - 1;
+      }
 
-  const isLast = index === total - 1;
+      // Only update state when phase actually changes
+      const numericNew = newActive === null ? -99 : newActive;
+      if (numericNew !== phaseRef.current) {
+        phaseRef.current = numericNew;
+        setScrollActiveIdx(newActive);
+        setClickOverrideIdx(null); // scroll phase change clears click override
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleClick = (idx: number) => {
+    setClickOverrideIdx((prev) => (prev === idx ? null : idx));
+  };
 
   return (
-    <div
-      style={{
-        position: "sticky",
-        top: `${stickyTop}px`,
-        zIndex: index + 1,
-        // Slight margin only between cards in normal flow (not last)
-        marginBottom: isLast ? 0 : 8,
-        background: bg,
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: "20px",
-        padding: "44px 52px",
-        // Depth shadow — more pronounced on higher stacked cards
-        boxShadow:
-          index > 0
-            ? `0 -12px 48px -4px rgba(0,0,0,${0.45 + index * 0.12}), 0 0 0 1px rgba(255,255,255,0.04)`
-            : "none",
-      }}
-    >
-      {/* ── Header row: number | divider | icon | title + tagline ── */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "20px",
-          marginBottom: "36px",
-          paddingBottom: "32px",
-          borderBottom: "1px solid rgba(255,255,255,0.07)",
-          flexWrap: "wrap",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "0.72rem",
-            fontWeight: 700,
-            color: "rgba(240,240,248,0.22)",
-            letterSpacing: "0.12em",
-            flexShrink: 0,
-          }}
-        >
-          {service.number}
-        </span>
-
-        <div style={{ width: "1px", height: "22px", background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
-
-        <div
-          style={{
-            width: "50px",
-            height: "50px",
-            borderRadius: "13px",
-            background: `rgba(${rgb},0.1)`,
-            border: `1px solid rgba(${rgb},0.22)`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-          }}
-        >
-          {service.icon}
+    <section id="services" style={{ position: "relative" }}>
+      {/* Section header — normal scroll */}
+      <div style={{ padding: "100px 24px 72px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ display: "inline-flex", marginBottom: "20px" }}>
+          <span className="tag-pill">What we do</span>
         </div>
-
-        <div>
-          <h3
-            style={{
-              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-              fontWeight: 800,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
-              marginBottom: "5px",
-            }}
-          >
-            {service.title}
-          </h3>
-          <p
-            style={{
-              fontSize: "0.875rem",
-              color: service.color,
-              fontWeight: 600,
-              letterSpacing: "-0.01em",
-              margin: 0,
-            }}
-          >
-            {service.tagline}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
+          <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "560px" }}>
+            Three channels.{" "}<span className="gradient-text">One strategy.</span>
+          </h2>
+          <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
+            We don&apos;t do everything — we do three things exceptionally well, and we make them work together.
           </p>
         </div>
       </div>
 
-      {/* ── Body: 2-column grid ── */}
-      <div
-        className="service-body"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "52px",
-          alignItems: "start",
-        }}
-      >
-        {/* Left: description + CTA */}
-        <div>
-          <p
-            style={{
-              fontSize: "0.9rem",
-              color: "rgba(240,240,248,0.55)",
-              lineHeight: 1.85,
-              marginBottom: "28px",
-            }}
-          >
-            {service.description}
-          </p>
-          <a
-            href="#contact"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              fontSize: "0.875rem",
-              fontWeight: 700,
-              color: service.color,
-              textDecoration: "none",
-              transition: "gap 0.2s",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = "14px"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = "8px"; }}
-          >
-            Start a project
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        </div>
-
-        {/* Right: bullets + platforms */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-            {service.bullets.map((bullet) => (
-              <div
-                key={bullet}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                  fontSize: "0.875rem",
-                  color: "rgba(240,240,248,0.75)",
-                  lineHeight: 1.55,
-                }}
-              >
-                <span
-                  style={{
-                    width: "18px",
-                    height: "18px",
-                    borderRadius: "50%",
-                    background: `rgba(${rgb},0.12)`,
-                    border: `1px solid rgba(${rgb},0.4)`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    marginTop: "1px",
-                  }}
-                >
-                  <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                    <path d="M1.5 4.5l2 2 4-4" stroke={service.color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                {bullet}
-              </div>
+      {/* Tall outer div drives scroll — sticky inner holds the accordion */}
+      <div ref={outerRef} style={{ height: "300vh", position: "relative" }}>
+        <div style={{ position: "sticky", top: "82px", padding: "0 24px" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "6px" }}>
+            {services.map((svc, idx) => (
+              <AccordionItem
+                key={svc.id}
+                service={svc}
+                isOpen={activeIndex === idx}
+                onClick={() => handleClick(idx)}
+              />
             ))}
-          </div>
 
-          <div>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "rgba(240,240,248,0.28)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "10px",
-              }}
-            >
-              Platforms &amp; tools
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {service.platforms.map((p) => (
-                <span
-                  key={p}
+            {/* Scroll hint — fades out once first card opens */}
+            <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "20px" }}>
+              {services.map((svc, idx) => (
+                <div
+                  key={idx}
                   style={{
-                    padding: "5px 13px",
-                    borderRadius: "9999px",
-                    fontSize: "0.78rem",
-                    fontWeight: 600,
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.09)",
-                    color: "rgba(240,240,248,0.6)",
+                    height: "3px",
+                    borderRadius: "2px",
+                    width: activeIndex === idx ? "28px" : "8px",
+                    background: activeIndex === idx ? svc.color : "rgba(255,255,255,0.15)",
+                    transition: "width 0.4s, background 0.4s",
                   }}
-                >
-                  {p}
-                </span>
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 860px) {
-          .service-body {
-            grid-template-columns: 1fr !important;
-            gap: 28px !important;
-          }
-        }
-      `}</style>
+      <div style={{ height: "80px" }} />
+    </section>
+  );
+}
+
+function AccordionItem({
+  service,
+  isOpen,
+  onClick,
+}: {
+  service: (typeof services)[number];
+  isOpen: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <div
+      style={{
+        background: isOpen ? "rgb(16,16,20)" : "rgb(11,11,14)",
+        border: `1px solid ${isOpen ? `rgba(${service.rgb},0.2)` : "rgba(255,255,255,0.07)"}`,
+        borderRadius: "16px",
+        transition: "background 0.4s ease, border-color 0.4s ease",
+        overflow: "hidden",
+      }}
+    >
+      {/* Header row — always visible, click to toggle */}
+      <div
+        role="button"
+        aria-expanded={isOpen}
+        onClick={onClick}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "18px",
+          padding: "22px 36px",
+          cursor: "pointer",
+          userSelect: "none",
+        }}
+      >
+        {/* Number */}
+        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "rgba(240,240,248,0.22)", letterSpacing: "0.12em", flexShrink: 0 }}>
+          {service.number}
+        </span>
+
+        {/* Divider */}
+        <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
+
+        {/* Icon badge */}
+        <div style={{ width: 44, height: 44, borderRadius: "12px", background: `rgba(${service.rgb},0.1)`, border: `1px solid rgba(${service.rgb},0.2)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.3s" }}>
+          {service.icon}
+        </div>
+
+        {/* Title + tagline */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h3 style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 0 }}>
+            {service.title}
+          </h3>
+          {/* Tagline slides in when open */}
+          <div style={{ maxHeight: isOpen ? "28px" : "0", opacity: isOpen ? 1 : 0, overflow: "hidden", transition: "max-height 0.4s ease, opacity 0.3s ease" }}>
+            <p style={{ fontSize: "0.85rem", color: service.color, fontWeight: 600, margin: "4px 0 0" }}>{service.tagline}</p>
+          </div>
+        </div>
+
+        {/* +/× expand indicator */}
+        <div style={{ width: 32, height: 32, borderRadius: "50%", border: `1px solid ${isOpen ? `rgba(${service.rgb},0.4)` : "rgba(255,255,255,0.12)"}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "border-color 0.3s" }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" style={{ transform: isOpen ? "rotate(45deg)" : "none", transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1)" }}>
+            <path d="M7 1v12M1 7h12" stroke={isOpen ? service.color : "rgba(240,240,248,0.4)"} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Body — collapses / expands */}
+      <div style={{ maxHeight: isOpen ? "700px" : "0", opacity: isOpen ? 1 : 0, overflow: "hidden", transition: "max-height 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease" }}>
+        <div style={{ padding: "0 36px 36px" }}>
+          {/* Separator */}
+          <div style={{ height: 1, background: "rgba(255,255,255,0.07)", marginBottom: "32px" }} />
+
+          {/* 2-column body */}
+          <div className="service-body" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
+            {/* Left: description + CTA */}
+            <div>
+              <p style={{ fontSize: "0.9rem", color: "rgba(240,240,248,0.55)", lineHeight: 1.85, marginBottom: "28px" }}>
+                {service.description}
+              </p>
+              <a
+                href="#contact"
+                style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "0.875rem", fontWeight: 700, color: service.color, textDecoration: "none", transition: "gap 0.2s" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = "14px"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = "8px"; }}
+              >
+                Start a project
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Right: bullets + platforms */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {service.bullets.map((bullet) => (
+                  <div key={bullet} style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "0.875rem", color: "rgba(240,240,248,0.75)", lineHeight: 1.55 }}>
+                    <span style={{ width: 18, height: 18, borderRadius: "50%", background: `rgba(${service.rgb},0.12)`, border: `1px solid rgba(${service.rgb},0.4)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                      <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                        <path d="M1.5 4.5l2 2 4-4" stroke={service.color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    {bullet}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p style={{ fontSize: "0.7rem", fontWeight: 600, color: "rgba(240,240,248,0.28)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "10px" }}>
+                  Platforms &amp; tools
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                  {service.platforms.map((p) => (
+                    <span key={p} style={{ padding: "5px 13px", borderRadius: "9999px", fontSize: "0.78rem", fontWeight: 600, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", color: "rgba(240,240,248,0.6)" }}>
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
