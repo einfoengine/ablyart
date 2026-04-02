@@ -1,15 +1,14 @@
-import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import Footer from "@/components/Footer";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   return (
-    <div id="nt-main">
-      {/* <Navbar /> */}
+    <>
       <main>
         <HeroSection />
+        <ServicesSection />
       </main>
-      {/* <Footer /> */}
-    </div>
+      
+    </>
   );
 }
