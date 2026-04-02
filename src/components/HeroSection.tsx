@@ -2,67 +2,126 @@
 
 import { useEffect, useRef } from "react";
 
-/* Animated wave SVG path for the hero bottom */
-function WaveChart() {
+/* Canvas-based upward trending scrolling wave */
+function TrendingWave() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+  const tRef = useRef(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.parentElement?.offsetWidth ?? window.innerWidth;
+      canvas.height = 160;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const getY = (x: number, W: number, H: number, t: number) => {
+      const p = x / W; // 0 = left (old/low), 1 = right (new/high)
+      // Trend: right side near top (high value), left near bottom (low value)
+      const baseline = H * 0.78 - p * H * 0.58;
+      // Layered waves that scroll left as t increases
+      const w1 = Math.sin(p * 16 + t * 2.2) * H * 0.07;
+      const w2 = Math.sin(p * 7  - t * 1.1) * H * 0.045;
+      const w3 = Math.sin(p * 28 + t * 3.8) * H * 0.018;
+      return Math.max(6, Math.min(H - 4, baseline + w1 + w2 + w3));
+    };
+
+    const draw = () => {
+      tRef.current += 0.016;
+      const t = tRef.current;
+      const W = canvas.width;
+      const H = canvas.height;
+      const steps = 280;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // ── Gradient fill under the wave ──
+      const fillGrad = ctx.createLinearGradient(0, 0, 0, H);
+      fillGrad.addColorStop(0, "rgba(155,255,110,0.18)");
+      fillGrad.addColorStop(0.55, "rgba(155,255,110,0.06)");
+      fillGrad.addColorStop(1, "rgba(155,255,110,0)");
+
+      ctx.beginPath();
+      ctx.moveTo(0, H);
+      for (let i = 0; i <= steps; i++) {
+        const x = (i / steps) * W;
+        ctx.lineTo(x, getY(x, W, H, t));
+      }
+      ctx.lineTo(W, H);
+      ctx.closePath();
+      ctx.fillStyle = fillGrad;
+      ctx.fill();
+
+      // ── Outer glow pass (thick, soft) ──
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const x = (i / steps) * W;
+        const y = getY(x, W, H, t);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.shadowColor = "#9bff6e";
+      ctx.shadowBlur = 20;
+      ctx.strokeStyle = "rgba(155,255,110,0.35)";
+      ctx.lineWidth = 6;
+      ctx.lineJoin = "round";
+      ctx.stroke();
+
+      // ── Sharp neon line on top ──
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const x = (i / steps) * W;
+        const y = getY(x, W, H, t);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.shadowColor = "#9bff6e";
+      ctx.shadowBlur = 10;
+      ctx.strokeStyle = "#9bff6e";
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // ── Bright tip dot at the right edge ──
+      const tipY = getY(W, W, H, t);
+      ctx.beginPath();
+      ctx.arc(W - 2, tipY, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "#9bff6e";
+      ctx.shadowColor = "#9bff6e";
+      ctx.shadowBlur = 14;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    animRef.current = requestAnimationFrame(draw);
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
   return (
-    <div
+    <canvas
+      ref={canvasRef}
       style={{
         position: "absolute",
         bottom: 0,
         left: 0,
-        right: 0,
-        overflow: "hidden",
-        height: "120px",
+        width: "100%",
+        height: "160px",
         pointerEvents: "none",
+        display: "block",
       }}
-    >
-      {/* Double-wide SVG so we can animate a continuous loop */}
-      <div className="wave-left" style={{ display: "flex", width: "200%" }}>
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ flex: "0 0 50%", height: "120px" }}
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 80 C80 30, 160 110, 240 70 S400 20, 480 60 S640 100, 720 50 S880 10, 960 55 S1120 95, 1200 45 S1360 15, 1440 60 L1440 120 L0 120 Z"
-            fill="rgba(155,255,110,0.06)"
-          />
-          <path
-            d="M0 80 C80 30, 160 110, 240 70 S400 20, 480 60 S640 100, 720 50 S880 10, 960 55 S1120 95, 1200 45 S1360 15, 1440 60"
-            stroke="#9bff6e"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            style={{ filter: "drop-shadow(0 0 6px rgba(155,255,110,0.8))" }}
-          />
-        </svg>
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ flex: "0 0 50%", height: "120px" }}
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 80 C80 30, 160 110, 240 70 S400 20, 480 60 S640 100, 720 50 S880 10, 960 55 S1120 95, 1200 45 S1360 15, 1440 60 L1440 120 L0 120 Z"
-            fill="rgba(155,255,110,0.06)"
-          />
-          <path
-            d="M0 80 C80 30, 160 110, 240 70 S400 20, 480 60 S640 100, 720 50 S880 10, 960 55 S1120 95, 1200 45 S1360 15, 1440 60"
-            stroke="#9bff6e"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            style={{ filter: "drop-shadow(0 0 6px rgba(155,255,110,0.8))" }}
-          />
-        </svg>
-      </div>
-    </div>
+    />
   );
 }
-
 /* Floating metric card */
 function MetricCard({
   label,
@@ -126,7 +185,7 @@ export default function HeroSection() {
         justifyContent: "center",
         overflow: "hidden",
         paddingTop: "100px",
-        paddingBottom: "120px",
+        paddingBottom: "160px",
       }}
     >
       {/* Background blobs */}
@@ -308,8 +367,8 @@ export default function HeroSection() {
         <MetricCard label="Ad ROAS" value="6.2×" change="+1.4×" positive />
       </div>
 
-      {/* Wave at bottom */}
-      <WaveChart />
+      {/* Upward trending wave at bottom */}
+      <TrendingWave />
 
       <style>{`
         @media (max-width: 900px) {

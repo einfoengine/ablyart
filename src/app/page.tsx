@@ -4,12 +4,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <div id="nt-main">
+      {/* <Navbar /> */}
       <main>
         <HeroSection />
       </main>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </div>
   );
 }

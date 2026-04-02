@@ -90,24 +90,6 @@ body {
   100% { transform: scale(1.2) translate(30px, 20px); opacity: 1; }
 }
 
-/* ───────── Wave Animation ───────── */
-@keyframes waveScrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes waveScrollRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-.wave-left {
-  animation: waveScrollLeft 20s linear infinite;
-}
-.wave-right {
-  animation: waveScrollRight 20s linear infinite;
-}
-
 /* ───────── Floating Cards ───────── */
 @keyframes floatY {
   0%, 100% { transform: translateY(0px); }
