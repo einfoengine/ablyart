@@ -1,5 +1,11 @@
 "use client";
 
+// px from viewport top where the first card sticks (≥ navbar height ~70px)
+const STICKY_BASE = 82;
+// How much of each card header remains visible when the next card overlaps it
+// = card paddingTop (44) + icon row (50) + row paddingBottom (32) + border (1) + buffer (15)
+const CARD_STEP = 142;
+
 const services = [
   {
     id: "social-media",
@@ -83,20 +89,21 @@ export default function ServicesSection() {
     <section
       id="services"
       style={{
-        padding: "120px 24px",
+        // Generous bottom padding so the stacked cards have room to travel
+        padding: "100px 24px 220px",
         position: "relative",
-        overflow: "hidden",
+        // ⚠️ NO overflow:hidden — that would break position:sticky on children
       }}
     >
-      {/* Subtle radial glow */}
+      {/* Radial glow */}
       <div
         style={{
           position: "absolute",
-          top: "50%",
+          top: "40%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "800px",
-          height: "600px",
+          width: "900px",
+          height: "700px",
           background: "radial-gradient(ellipse at center, rgba(155,255,110,0.04) 0%, transparent 65%)",
           pointerEvents: "none",
         }}
@@ -104,8 +111,8 @@ export default function ServicesSection() {
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
 
-        {/* Section header */}
-        <div style={{ marginBottom: "72px" }}>
+        {/* Section header — scrolls normally */}
+        <div style={{ marginBottom: "64px" }}>
           <div style={{ display: "inline-flex", marginBottom: "20px" }}>
             <span className="tag-pill">What we do</span>
           </div>
@@ -144,10 +151,10 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Service cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {/* ── Stacking cards ── */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           {services.map((service, idx) => (
-            <ServiceCard key={service.id} service={service} index={idx} />
+            <ServiceCard key={service.id} service={service} index={idx} total={services.length} />
           ))}
         </div>
       </div>
@@ -157,9 +164,12 @@ export default function ServicesSection() {
 
 function ServiceCard({
   service,
+  index,
+  total,
 }: {
   service: (typeof services)[number];
   index: number;
+  total: number;
 }) {
   const rgb =
     service.color === "#9bff6e"
@@ -168,16 +178,35 @@ function ServiceCard({
       ? "110,231,255"
       : "176,158,255";
 
+  // Each card sticks progressively lower so the header of the card beneath stays visible
+  const stickyTop = STICKY_BASE + index * CARD_STEP;
+
+  // Progressively slightly lighter background so stacking depth is readable
+  const bgLightness = 12 + index * 4; // 12 → 16 → 20
+  const bg = `rgb(${bgLightness}, ${bgLightness}, ${bgLightness + 2})`;
+
+  const isLast = index === total - 1;
+
   return (
     <div
       style={{
-        background: "rgba(255,255,255,0.025)",
-        border: "1px solid rgba(255,255,255,0.07)",
+        position: "sticky",
+        top: `${stickyTop}px`,
+        zIndex: index + 1,
+        // Slight margin only between cards in normal flow (not last)
+        marginBottom: isLast ? 0 : 8,
+        background: bg,
+        border: "1px solid rgba(255,255,255,0.08)",
         borderRadius: "20px",
         padding: "44px 52px",
+        // Depth shadow — more pronounced on higher stacked cards
+        boxShadow:
+          index > 0
+            ? `0 -12px 48px -4px rgba(0,0,0,${0.45 + index * 0.12}), 0 0 0 1px rgba(255,255,255,0.04)`
+            : "none",
       }}
     >
-      {/* ── Header row: number | icon | title + tagline ── */}
+      {/* ── Header row: number | divider | icon | title + tagline ── */}
       <div
         style={{
           display: "flex",
@@ -185,11 +214,10 @@ function ServiceCard({
           gap: "20px",
           marginBottom: "36px",
           paddingBottom: "32px",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
           flexWrap: "wrap",
         }}
       >
-        {/* Number */}
         <span
           style={{
             fontSize: "0.72rem",
@@ -202,17 +230,8 @@ function ServiceCard({
           {service.number}
         </span>
 
-        {/* Vertical divider */}
-        <div
-          style={{
-            width: "1px",
-            height: "22px",
-            background: "rgba(255,255,255,0.1)",
-            flexShrink: 0,
-          }}
-        />
+        <div style={{ width: "1px", height: "22px", background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
 
-        {/* Icon badge */}
         <div
           style={{
             width: "50px",
@@ -229,7 +248,6 @@ function ServiceCard({
           {service.icon}
         </div>
 
-        {/* Title + tagline stacked */}
         <div>
           <h3
             style={{
@@ -266,7 +284,7 @@ function ServiceCard({
           alignItems: "start",
         }}
       >
-        {/* Left col: description + CTA */}
+        {/* Left: description + CTA */}
         <div>
           <p
             style={{
@@ -290,29 +308,18 @@ function ServiceCard({
               textDecoration: "none",
               transition: "gap 0.2s",
             }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.gap = "14px";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.gap = "8px";
-            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = "14px"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = "8px"; }}
           >
             Start a project
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M3 8h10M9 4l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </div>
 
-        {/* Right col: bullet list + platform tags */}
+        {/* Right: bullets + platforms */}
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-          {/* Bullets */}
           <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
             {service.bullets.map((bullet) => (
               <div
@@ -341,13 +348,7 @@ function ServiceCard({
                   }}
                 >
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                    <path
-                      d="M1.5 4.5l2 2 4-4"
-                      stroke={service.color}
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <path d="M1.5 4.5l2 2 4-4" stroke={service.color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
                 {bullet}
@@ -355,7 +356,6 @@ function ServiceCard({
             ))}
           </div>
 
-          {/* Platform tags */}
           <div>
             <p
               style={{
@@ -378,8 +378,8 @@ function ServiceCard({
                     borderRadius: "9999px",
                     fontSize: "0.78rem",
                     fontWeight: 600,
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.09)",
                     color: "rgba(240,240,248,0.6)",
                   }}
                 >
