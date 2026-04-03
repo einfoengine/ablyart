@@ -106,6 +106,23 @@ export default function TechAndSocial() {
             );
           })}
         </div>
+
+        {/* CTA Button */}
+        <div className="mt-20 text-center relative z-10 flex flex-col items-center w-full">
+          <a
+            href="#position"
+            className="btn-glow inline-flex items-center justify-center font-bold"
+            style={{
+              padding: "18px 40px",
+              fontSize: "1.125rem",
+              textDecoration: "none",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Check Your Position
+          </a>
+        </div>
       </div>
     </section>
   );

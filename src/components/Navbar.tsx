@@ -6,9 +6,31 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("");
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+      
+      const sections = ["services", "work", "about", "blog", "contact"];
+      let current = "";
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Check if section is currently active in viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
+            current = section;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Trigger once on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -16,17 +38,21 @@ export default function Navbar() {
     <header
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
+        top: scrolled ? "16px" : 0,
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: scrolled ? "calc(100% - 32px)" : "100%",
+        maxWidth: scrolled ? "1100px" : "100%",
         zIndex: 100,
-        transition: "all 0.3s ease",
+        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         background: scrolled
-          ? "rgba(6, 6, 8, 0.85)"
+          ? "rgba(11, 11, 14, 0.85)"
           : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
+        border: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        borderRadius: scrolled ? "24px" : "0px",
+        boxShadow: scrolled ? "0 20px 40px rgba(0,0,0,0.4)" : "none",
       }}
     >
       <nav
@@ -34,11 +60,12 @@ export default function Navbar() {
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 24px",
-          height: "72px",
+          height: scrolled ? "64px" : "80px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "24px",
+          transition: "height 0.4s ease"
         }}
       >
         {/* Logo */}
@@ -80,11 +107,40 @@ export default function Navbar() {
           }}
           className="desktop-nav"
         >
-          {["Services", "Work", "About", "Blog", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
-              {item}
-            </a>
-          ))}
+          {["Services", "Work", "About", "Blog", "Contact"].map((item) => {
+            const isActive = activeSection === item.toLowerCase();
+            return (
+              <a 
+                key={item} 
+                href={`#${item.toLowerCase()}`} 
+                className="nav-link"
+                style={{ 
+                  position: 'relative', 
+                  color: isActive ? '#ffffff' : 'rgba(240,240,248,0.6)',
+                  fontWeight: isActive ? 600 : 500,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {item}
+                {/* Active Indicator Dot */}
+                <span 
+                  style={{
+                    position: 'absolute',
+                    bottom: '-8px',
+                    left: '50%',
+                    transform: isActive ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0)',
+                    width: '4px',
+                    height: '4px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--accent)',
+                    boxShadow: '0 0 8px var(--accent)',
+                    opacity: isActive ? 1 : 0,
+                    transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)'
+                  }}
+                />
+              </a>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -159,6 +215,7 @@ export default function Navbar() {
             display: "flex",
             flexDirection: "column",
             gap: "16px",
+            borderRadius: scrolled ? "0 0 24px 24px" : "0",
           }}
         >
           {["Services", "Work", "About", "Blog", "Contact"].map((item) => (
