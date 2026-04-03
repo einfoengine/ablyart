@@ -280,9 +280,23 @@ function AccordionItem({
         </div>
       </div>
 
-      {/* Body — collapses / expands */}
-      <div style={{ maxHeight: isOpen ? "700px" : "0", opacity: isOpen ? 1 : 0, overflow: "hidden", transition: "max-height 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease" }}>
-        <div style={{ padding: "0 36px 36px" }}>
+      {/* Body — collapses / expands (smooth grid transition) */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: isOpen ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.65s cubic-bezier(0.2, 0.8, 0.2, 1)",
+        }}
+      >
+        <div style={{ overflow: "hidden" }}>
+          <div
+            style={{
+              padding: "0 36px 36px",
+              opacity: isOpen ? 1 : 0,
+              transform: isOpen ? "translateY(0)" : "translateY(-12px)",
+              transition: "opacity 0.65s ease, transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1)",
+            }}
+          >
           {/* Separator */}
           <div style={{ height: 1, background: "rgba(255,255,255,0.07)", marginBottom: "32px" }} />
 
@@ -332,6 +346,7 @@ function AccordionItem({
                   ))}
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
