@@ -69,23 +69,78 @@ export default function ValueFocusSection() {
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* Moving Marquee Ribbon */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden flex translate-y-1/2 z-20 pointer-events-auto">
-        <div className="w-[110%] -ml-[5%] py-4 md:py-5 flex transform rotate-2 bg-[var(--accent)] text-[#060608] shadow-[0_0_40px_rgba(155,255,110,0.3)] border-y border-black/10">
-          <div className="flex whitespace-nowrap marquee-track font-black text-sm md:text-lg tracking-widest uppercase items-center opacity-90">
-            {[...Array(10)].map((_, i) => (
-              <React.Fragment key={i}>
-                <span className="mx-6 md:mx-10 whitespace-nowrap">Focus on your core business</span>
-                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
-                <span className="mx-6 md:mx-10 whitespace-nowrap">Let us manage your online presence</span>
-                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
-                <span className="mx-6 md:mx-10 whitespace-nowrap">Money back guarantee</span>
-                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
-              </React.Fragment>
+        {/* Call to Action */}
+        <div className="mt-16 text-center relative z-10 flex flex-col items-center">
+          <a
+            href="#discovery"
+            className="btn-glow inline-flex items-center justify-center font-bold"
+            style={{
+              padding: "18px 40px",
+              fontSize: "1.125rem",
+              textDecoration: "none",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Book a Discovery Call
+          </a>
+        </div>
+
+        {/* Client Logos under Button */}
+        <div className="mt-24 w-full relative flex flex-col items-center pb-12 z-10">
+          <div className="text-center text-xs font-semibold text-[var(--muted)] uppercase tracking-[0.25em] mb-12 w-full">
+            Trusted by 12+ Innovative Brands Worldwide
+          </div>
+          
+          <div className="w-full max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-x-10 md:gap-x-16 gap-y-8 md:gap-y-10">
+            {[
+              "Acme Corp", "Quantum", "Sysco", "Vertex", 
+              "Apex Edge", "Velocity", "Nimbus", "Starlight", 
+              "Horizon", "Zenith", "Matrix Labs", "Innova", 
+              "BlueShift", "Nova", "Orbital", "Pioneer"
+            ].map((logo, idx) => (
+              <span 
+                key={idx} 
+                className="text-xl md:text-3xl font-black text-white/10 uppercase tracking-tighter hover:text-white/40 hover:-translate-y-1 transition-all duration-300 cursor-default"
+                style={{
+                   // Optional pseudo-masonry organic variations
+                   opacity: idx % 3 === 0 ? 0.7 : 1,
+                   fontSize: idx % 5 === 0 ? "1.5em" : "1em"
+                }}
+              >
+                {logo}
+              </span>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Wavy Static Marquee Ribbon with Moving Text */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden h-[140px] flex translate-y-[60%] z-20 pointer-events-none drop-shadow-[0_0_20px_rgba(155,255,110,0.3)]">
+        <div className="absolute left-1/2 -translate-x-1/2 w-[4000px] h-[140px] transform rotate-1 pointer-events-auto">
+          <svg width="4000" height="140" viewBox="0 0 4000 140">
+            <path
+              id="wavy-path-static"
+              d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70"
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="52"
+            />
+            <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
+              {/* textLength forces exactly perfectly spaced phrases so startOffset looping works identically */}
+              <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
+                 {"FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ ".repeat(6)}
+                 <animate 
+                   attributeName="startOffset" 
+                   from="0" 
+                   to="-1000" 
+                   dur="12s" 
+                   repeatCount="indefinite" 
+                 />
+              </textPath>
+            </text>
+          </svg>
         </div>
       </div>
     </section>
