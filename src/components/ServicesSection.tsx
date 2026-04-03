@@ -112,7 +112,7 @@ export default function ServicesSection() {
   const outerRef = useRef<HTMLDivElement>(null);
   // sentinel -1 so first-run always triggers a state update
   const phaseRef = useRef<number>(-1);
-  const [scrollActiveIdx, setScrollActiveIdx] = useState<number | null>(null);
+  const [scrollActiveIdx, setScrollActiveIdx] = useState<number | null>(0);
   const [clickOverrideIdx, setClickOverrideIdx] = useState<number | null>(null);
 
   const activeIndex = clickOverrideIdx !== null ? clickOverrideIdx : scrollActiveIdx;
@@ -128,7 +128,7 @@ export default function ServicesSection() {
 
       if (scrollable <= 0) return;
 
-      let newActive: number | null = null;
+      let newActive: number = 0;
 
       if (scrolledPast > 0) {
         const n = services.length;
@@ -136,19 +136,15 @@ export default function ServicesSection() {
           // Keep the last accordion open as it scrolls out of view into the footer
           newActive = n - 1;
         } else {
-          // +1 extra phase at start (all collapsed intro) + n service phases
-          const phaseSize = scrollable / (n + 1);
+          // n service phases (first one is open by default)
+          const phaseSize = scrollable / n;
           const phase = Math.floor(scrolledPast / phaseSize);
-          if (phase >= 1 && phase <= n) {
-            newActive = phase - 1;
-          } else if (phase > n) {
-            newActive = n - 1;
-          }
+          newActive = Math.max(0, Math.min(phase, n - 1));
         }
       }
 
       // Only update state when phase actually changes
-      const numericNew = newActive === null ? -99 : newActive;
+      const numericNew = newActive;
       if (numericNew !== phaseRef.current) {
         phaseRef.current = numericNew;
         setScrollActiveIdx(newActive);
@@ -270,9 +266,9 @@ function AccordionItem({
           <h3 style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 0 }}>
             {service.title}
           </h3>
-          {/* Tagline slides in when open */}
-          <div style={{ maxHeight: isOpen ? "28px" : "0", opacity: isOpen ? 1 : 0, overflow: "hidden", transition: "max-height 0.4s ease, opacity 0.3s ease" }}>
-            <p style={{ fontSize: "0.85rem", color: service.color, fontWeight: 600, margin: "4px 0 0" }}>{service.tagline}</p>
+          {/* Tagline is always visible, varying color based on active state */}
+          <div>
+            <p style={{ fontSize: "0.85rem", color: isOpen ? service.color : "rgba(240,240,248,0.45)", fontWeight: 600, margin: "4px 0 0", transition: "color 0.3s ease" }}>{service.tagline}</p>
           </div>
         </div>
 
