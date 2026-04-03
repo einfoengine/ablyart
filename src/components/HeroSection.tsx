@@ -221,7 +221,7 @@ export default function HeroSection() {
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
           <span className="tag-pill">
             <span className="glow-dot" />
-            Digital Marketing Agency
+            360 Digital Marketing Agency
           </span>
         </div>
 
@@ -236,7 +236,7 @@ export default function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          We fix your{" "}
+          We manage your{" "}
           <span className="gradient-text">digital presence.</span>
         </h1>
 
