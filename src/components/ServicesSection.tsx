@@ -81,6 +81,31 @@ const services = [
     rgb: "176,158,255",
     platforms: ["Next.js", "React", "Webflow", "Shopify", "WordPress"],
   },
+  {
+    id: "video-marketing",
+    number: "04",
+    title: "Video Marketing",
+    tagline: "Stories that stop the scroll and drive action.",
+    description:
+      "From concept to publish, we handle the full video lifecycle. Whether it's brand films, social reels, motion graphics, or YouTube growth — we create video content that captures attention and converts viewers into customers.",
+    bullets: [
+      "Videography & studio/on-location shoots",
+      "2D/3D animation & motion graphics",
+      "Professional video editing & colour grade",
+      "YouTube & social channel management",
+    ],
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <rect x="2" y="6" width="18" height="16" rx="2" stroke="#ffb347" strokeWidth="1.8" fill="none" />
+        <path d="M20 10.5l6-3v13l-6-3V10.5z" stroke="#ffb347" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+        <circle cx="11" cy="14" r="3" stroke="#ffb347" strokeWidth="1.5" fill="none" />
+        <path d="M10 13.2l3 1.8-3 1.8V13.2z" fill="#ffb347" />
+      </svg>
+    ),
+    color: "#ffb347",
+    rgb: "255,179,71",
+    platforms: ["YouTube", "Instagram", "TikTok", "Vimeo", "After Effects"],
+  },
 ];
 
 export default function ServicesSection() {
@@ -105,12 +130,21 @@ export default function ServicesSection() {
 
       let newActive: number | null = null;
 
-      if (scrolledPast > 0 && scrolledPast < scrollable) {
+      if (scrolledPast > 0) {
         const n = services.length;
-        // +1 extra phase at start (all collapsed intro) + n service phases
-        const phaseSize = scrollable / (n + 1);
-        const phase = Math.floor(scrolledPast / phaseSize);
-        if (phase >= 1 && phase <= n) newActive = phase - 1;
+        if (scrolledPast >= scrollable) {
+          // Keep the last accordion open as it scrolls out of view into the footer
+          newActive = n - 1;
+        } else {
+          // +1 extra phase at start (all collapsed intro) + n service phases
+          const phaseSize = scrollable / (n + 1);
+          const phase = Math.floor(scrolledPast / phaseSize);
+          if (phase >= 1 && phase <= n) {
+            newActive = phase - 1;
+          } else if (phase > n) {
+            newActive = n - 1;
+          }
+        }
       }
 
       // Only update state when phase actually changes
@@ -140,16 +174,16 @@ export default function ServicesSection() {
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
           <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "560px" }}>
-            Three channels.{" "}<span className="gradient-text">One strategy.</span>
+            Four channels.{" "}<span className="gradient-text">One strategy.</span>
           </h2>
           <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
-            We don&apos;t do everything — we do three things exceptionally well, and we make them work together.
+            We don&apos;t do everything — we do four things exceptionally well, and we make them work together.
           </p>
         </div>
       </div>
 
       {/* Tall outer div drives scroll — sticky inner holds the accordion */}
-      <div ref={outerRef} style={{ height: "300vh", position: "relative" }}>
+      <div ref={outerRef} style={{ height: "400vh", position: "relative" }}>
         <div style={{ position: "sticky", top: "82px", padding: "0 24px" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "6px" }}>
             {services.map((svc, idx) => (
