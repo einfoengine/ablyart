@@ -70,6 +70,24 @@ export default function ValueFocusSection() {
           ))}
         </div>
       </div>
+
+      {/* Moving Marquee Ribbon */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden flex translate-y-1/2 z-20 pointer-events-auto">
+        <div className="w-[110%] -ml-[5%] py-4 md:py-5 flex transform rotate-2 bg-[var(--accent)] text-[#060608] shadow-[0_0_40px_rgba(155,255,110,0.3)] border-y border-black/10">
+          <div className="flex whitespace-nowrap marquee-track font-black text-sm md:text-lg tracking-widest uppercase items-center opacity-90">
+            {[...Array(10)].map((_, i) => (
+              <React.Fragment key={i}>
+                <span className="mx-6 md:mx-10 whitespace-nowrap">Focus on your core business</span>
+                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
+                <span className="mx-6 md:mx-10 whitespace-nowrap">Let us manage your online presence</span>
+                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
+                <span className="mx-6 md:mx-10 whitespace-nowrap">Money back guarantee</span>
+                <span className="mx-2 md:mx-4 opacity-40 text-xs text-black">✦</span>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
