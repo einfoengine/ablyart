@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
-    id: "social-media",
+    id: "web-social-media",
     number: "01",
-    title: "Social Media",
-    tagline: "Content that converts scrollers into buyers.",
+    title: "Web & Social Media Management",
+    tagline: "Content and presence that converts scrollers into buyers.",
     description:
-      "We build and manage high-performing social presences across Instagram, TikTok, LinkedIn, Facebook, and X. From strategy and creative production to community management and paid social — we turn followers into revenue.",
+      "We build and manage high-performing digital platforms—from your website to your social presence across Instagram, TikTok, LinkedIn, and Facebook. From strategy and creative production to community management, we turn followers into revenue.",
     bullets: [
       "Platform strategy & audience research",
       "Content creation & short-form video",
-      "Paid social campaigns (Meta, TikTok)",
-      "Community management & growth",
+      "Paid social campaigns & management",
+      "Web flow, UX/UI, and daily updates",
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
@@ -27,12 +27,12 @@ const services = [
     ),
     color: "#9bff6e",
     rgb: "155,255,110",
-    platforms: ["Instagram", "TikTok", "LinkedIn", "Facebook", "X"],
+    platforms: ["Instagram", "TikTok", "LinkedIn", "Next.js", "Webflow"],
   },
   {
-    id: "search-engines",
+    id: "seo",
     number: "02",
-    title: "Search Engines",
+    title: "Search Engine Optimization",
     tagline: "Rank higher. Get found. Drive intent traffic.",
     description:
       "We combine technical SEO, content strategy, and Google Ads to make sure your brand appears exactly when people are searching for what you offer. More visibility, more qualified clicks, more growth.",
@@ -55,35 +55,8 @@ const services = [
     platforms: ["Google", "Bing", "YouTube", "Maps", "Shopping"],
   },
   {
-    id: "web-development",
-    number: "03",
-    title: "Web Development",
-    tagline: "Sites that look great and perform even better.",
-    description:
-      "We design and develop fast, conversion-optimised websites and landing pages built on modern tech stacks. From brand-new builds to full redesigns — every pixel is purpose-built to turn visitors into customers.",
-    bullets: [
-      "Custom website & landing page design",
-      "Next.js, React & Webflow builds",
-      "CRO-optimised UX & UI",
-      "Speed, SEO & accessibility audits",
-    ],
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <rect x="3" y="5" width="22" height="16" rx="2" stroke="#b09eff" strokeWidth="1.8" fill="none" />
-        <line x1="3" y1="10" x2="25" y2="10" stroke="#b09eff" strokeWidth="1.5" />
-        <line x1="14" y1="21" x2="14" y2="25" stroke="#b09eff" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="9" y1="25" x2="19" y2="25" stroke="#b09eff" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M9 15 L12 18 L9 21" stroke="#b09eff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <line x1="14" y1="21" x2="19" y2="21" stroke="#b09eff" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    color: "#b09eff",
-    rgb: "176,158,255",
-    platforms: ["Next.js", "React", "Webflow", "Shopify", "WordPress"],
-  },
-  {
     id: "video-marketing",
-    number: "04",
+    number: "03",
     title: "Video Marketing",
     tagline: "Stories that stop the scroll and drive action.",
     description:
@@ -96,15 +69,37 @@ const services = [
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <rect x="2" y="6" width="18" height="16" rx="2" stroke="#ffb347" strokeWidth="1.8" fill="none" />
-        <path d="M20 10.5l6-3v13l-6-3V10.5z" stroke="#ffb347" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
-        <circle cx="11" cy="14" r="3" stroke="#ffb347" strokeWidth="1.5" fill="none" />
-        <path d="M10 13.2l3 1.8-3 1.8V13.2z" fill="#ffb347" />
+        <rect x="2" y="6" width="18" height="16" rx="2" stroke="#b09eff" strokeWidth="1.8" fill="none" />
+        <path d="M20 10.5l6-3v13l-6-3V10.5z" stroke="#b09eff" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+        <circle cx="11" cy="14" r="3" stroke="#b09eff" strokeWidth="1.5" fill="none" />
+        <path d="M10 13.2l3 1.8-3 1.8V13.2z" fill="#b09eff" />
+      </svg>
+    ),
+    color: "#b09eff",
+    rgb: "176,158,255",
+    platforms: ["YouTube", "Instagram", "TikTok", "Vimeo", "After Effects"],
+  },
+  {
+    id: "lead-generation",
+    number: "04",
+    title: "Lead Generation",
+    tagline: "High-intent prospects delivered straight to your pipeline.",
+    description:
+      "We design strategic funnels focused purely on capturing intent and acquiring highly qualified leads. No more empty traffic—just engaged prospects actively looking to buy what you sell.",
+    bullets: [
+      "Targeted lead capture & landing pages",
+      "Conversion rate optimization (CRO)",
+      "Automated email & SMS nurturing",
+      "Performance & attribution tracking",
+    ],
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <path d="M4 6h20l-7.5 9.5v7.5l-5 3v-10.5z" stroke="#ffb347" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
       </svg>
     ),
     color: "#ffb347",
     rgb: "255,179,71",
-    platforms: ["YouTube", "Instagram", "TikTok", "Vimeo", "After Effects"],
+    platforms: ["HubSpot", "Salesforce", "ActiveCampaign", "Zapier"],
   },
 ];
 
@@ -170,7 +165,7 @@ export default function ServicesSection() {
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
           <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "560px" }}>
-            Four channels.{" "}<span className="gradient-text">One strategy.</span>
+            Four Core Services.{" "}<span className="gradient-text">One Strategy.</span>
           </h2>
           <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
             We don&apos;t do everything — we do four things exceptionally well, and we make them work together.
