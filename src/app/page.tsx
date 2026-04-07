@@ -3,6 +3,7 @@ import VslSection from "@/components/VslSection";
 import ServicesSection from "@/components/ServicesSection";
 import TechAndSocial from "@/components/TechAndSocial";
 import ValueFocusSection from "@/components/ValueFocusSection";
+import BlogSection from "@/components/BlogSection";
 
 export default function Home() {
   return (
@@ -11,8 +12,9 @@ export default function Home() {
         <HeroSection />
         <VslSection />
         <ValueFocusSection />
-        <TechAndSocial />
         <ServicesSection />
+        <TechAndSocial />
+        <BlogSection />
       </main>
       
     </>
