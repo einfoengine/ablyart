@@ -6,6 +6,9 @@ import ValueFocusSection from "@/components/ValueFocusSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import PricingSection from "@/components/PricingSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+
+
 
 export default function Home() {
   return (
@@ -17,6 +20,7 @@ export default function Home() {
         <ServicesSection />
         <AgitationSection />
         <PricingSection />
+        <TestimonialsSection />
         <TechAndSocial />
         <BlogSection />
       </main>

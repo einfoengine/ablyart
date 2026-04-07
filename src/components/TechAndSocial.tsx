@@ -54,7 +54,7 @@ const ecosystemItems = [
 
 export default function TechAndSocial() {
   return (
-    <section className="py-24 md:py-32 relative flex flex-col items-center justify-center">
+    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center">
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[var(--accent)] opacity-[0.03] blur-[120px] rounded-[100%] pointer-events-none"></div>
       

@@ -103,7 +103,7 @@ export default function ValueFocusSection() {
       </div>
 
       {/* DARK BACKGROUND AREA (Continues under white box seamlessly) */}
-      <div className="w-full relative flex flex-col items-center pt-24 pb-[180px] z-10">
+      <div className="w-full relative flex flex-col items-center pt-24 pb-[120px] md:pb-[140px] z-10">
         {/* Client Logos */}
         <div className="w-full relative flex flex-col items-center">
           <div className="text-center text-xs font-semibold text-[var(--muted)] uppercase tracking-[0.25em] mb-12 w-full">

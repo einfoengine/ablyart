@@ -29,7 +29,7 @@ const blogPosts = [
 
 export default function BlogSection() {
   return (
-    <section id="blog" className="py-24 relative flex flex-col items-center justify-center z-10 w-full">
+    <section id="blog" className="py-16 md:py-24 relative flex flex-col items-center justify-center z-10 w-full">
       <div className="max-w-7xl mx-auto px-6 w-full">
         
         {/* Section Header */}

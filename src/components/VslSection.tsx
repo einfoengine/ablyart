@@ -3,7 +3,7 @@ import React from "react";
 
 export default function VslSection() {
   return (
-    <section className="pt-10 pb-20 relative flex flex-col items-center justify-center z-10">
+    <section className="py-16 md:py-20 relative flex flex-col items-center justify-center z-10">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none"></div>
 

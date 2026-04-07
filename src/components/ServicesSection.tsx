@@ -157,9 +157,9 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" style={{ position: "relative" }}>
+    <section id="services" className="mt-48" style={{ position: "relative" }}>
       {/* Section header — normal scroll */}
-      <div style={{ padding: "100px 24px 72px", maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ padding: "60px 24px 40px", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "inline-flex", marginBottom: "20px" }}>
           <span className="tag-pill">What we do</span>
         </div>

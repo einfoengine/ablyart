@@ -206,7 +206,7 @@ export default function PricingSection() {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("web-social");
 
   return (
-    <section className="py-24 md:py-32 relative flex flex-col items-center justify-center bg-[var(--background)] z-20">
+    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] z-20">
       
       {/* Background glow behind pricing */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent)] opacity-[0.04] blur-[150px] rounded-full pointer-events-none"></div>

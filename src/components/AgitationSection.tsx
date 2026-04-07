@@ -36,7 +36,7 @@ const agitations = [
 
 export default function AgitationSection() {
   return (
-    <section className="py-24 md:py-32 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden">
+    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden">
       {/* Background warning ambients */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-900/10 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-900/10 blur-[150px] rounded-full pointer-events-none"></div>
