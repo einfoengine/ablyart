@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBullseye, FaFeatherAlt, FaChartLine } from "react-icons/fa";
+import { FaBullseye, FaFeatherAlt, FaChartLine, FaMagnet } from "react-icons/fa";
 
 const features = [
   {
@@ -14,6 +14,11 @@ const features = [
     title: "Quality Content & Creative",
     description: "Engage and convert your audience with premium, strategically crafted content. We design bold creatives that tell your story and build lasting trust.",
     icon: <FaFeatherAlt size={32} />
+  },
+  {
+    title: "Quality Lead Generation",
+    description: "We capture high-intent prospects by engineering scalable, conversion-focused funnels designed to continuously fill your sales pipeline.",
+    icon: <FaMagnet size={32} />
   },
   {
     title: "Persistent Optimization",
@@ -47,8 +52,8 @@ export default function ValueFocusSection() {
                </p>
             </div>
 
-            {/* 3 Boxes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* 4 Boxes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}

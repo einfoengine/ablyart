@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { FlipWords } from "./FlipWords";
 
 /* Canvas-based upward trending scrolling wave */
 function TrendingWave() {
@@ -259,18 +260,29 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheadline */}
-        <p
+        <div
           style={{
             fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
             color: "rgba(240,240,248,0.6)",
             lineHeight: 1.7,
-            maxWidth: "600px",
+            maxWidth: "700px",
             margin: "0 auto 40px",
             fontWeight: 400,
+            minHeight: "80px",
           }}
         >
-          Optimizing the strategy, building high quality contents (copy, visuals, videos, etc), running ads, and analyzing the data to ensure the best results.
-        </p>
+          Helping you in every possible way: <br />
+          <FlipWords 
+            words={[
+              "Optimizing the strategy",
+              "Building high quality contents (copy, visuals, videos, etc)",
+              "Running ads",
+              "Generating leads",
+              "Increasing search visibility"
+            ]} 
+            className="font-semibold text-[var(--accent)]" 
+          />
+        </div>
 
         {/* CTAs */}
         <div
