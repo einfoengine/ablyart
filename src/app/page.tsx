@@ -5,6 +5,7 @@ import TechAndSocial from "@/components/TechAndSocial";
 import ValueFocusSection from "@/components/ValueFocusSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
+import PricingSection from "@/components/PricingSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <ValueFocusSection />
         <ServicesSection />
         <AgitationSection />
+        <PricingSection />
         <TechAndSocial />
         <BlogSection />
       </main>
