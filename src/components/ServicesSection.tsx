@@ -227,7 +227,7 @@ function AccordionItem({
   return (
     <div
       style={{
-        background: isOpen ? "rgb(16,16,20)" : "rgb(11,11,14)",
+        background: isOpen ? "rgba(255,255,255,0.02)" : "transparent",
         border: `1px solid ${isOpen ? `rgba(${service.rgb},0.2)` : "rgba(255,255,255,0.07)"}`,
         borderRadius: "16px",
         transition: "background 0.4s ease, border-color 0.4s ease",

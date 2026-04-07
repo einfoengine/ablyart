@@ -14,10 +14,10 @@ export default function VslSection() {
             <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Watch The Breakdown</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            See Exactly How We <span className="gradient-text italic">Scale Brands</span>
+            Good Online Presens & Growth Optimization <span className="gradient-text italic">Attracts Leads & Conversions by 600%</span>
           </h2>
           <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto">
-            Before booking a call, watch this brief overview of our aggressive, data-driven methodology.
+            This involves the digital foundation, topical authority, growth & management.
           </p>
         </div>
 
@@ -55,6 +55,7 @@ export default function VslSection() {
 
         {/* Action Button */}
         <div className="mt-16 text-center w-full z-20 relative fade-in-up flex flex-col items-center" style={{ animationDelay: "0.6s" }}>
+          <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto mb-6">Its a holistic approach, ensure your unified visibility, build brand authority, generate leads, help conversion thus scale your business.</p>
           <a
             href="#discovery"
             className="btn-glow inline-flex items-center justify-center font-bold"
@@ -66,7 +67,7 @@ export default function VslSection() {
               letterSpacing: "0.05em",
             }}
           >
-            Claim Your Spot Now
+            Audit your potential for free
           </a>
         </div>
       </div>

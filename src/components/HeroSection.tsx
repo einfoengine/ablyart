@@ -236,8 +236,26 @@ export default function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          We manage your{" "}
-          <span className="gradient-text">digital presence.</span>
+          <div style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}>
+            <span style={{
+              fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)",
+              fontStyle: "italic",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontWeight: 400,
+              color: "var(--accent)",
+              border: "1px solid rgba(155,255,110,0.25)",
+              padding: "6px 24px",
+              borderRadius: "50px",
+              background: "rgba(155,255,110,0.05)",
+              letterSpacing: "0.02em",
+              transform: "rotate(-2deg)",
+              boxShadow: "0 10px 20px rgba(155,255,110,0.05)"
+            }}>
+              Predictable
+            </span>
+          </div>
+          10X Growth{" "}
+          <span className="gradient-text break-words">for Scalable Startups</span>
         </h1>
 
         {/* Subheadline */}
@@ -251,8 +269,7 @@ export default function HeroSection() {
             fontWeight: 400,
           }}
         >
-          We craft high-converting digital experiences through strategic marketing,
-          bold creative, and data-driven execution that actually moves the needle.
+          Optimizing the strategy, building high quality contents (copy, visuals, videos, etc), running ads, and analyzing the data to ensure the best results.
         </p>
 
         {/* CTAs */}

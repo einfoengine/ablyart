@@ -37,10 +37,10 @@ export default function ValueFocusSection() {
             <div className="text-center mb-20">
                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 mb-6 shadow-sm">
                  <div className="w-2 h-2 rounded-full bg-[var(--accent-dim)] animate-pulse"></div>
-                 <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">Growth Engine</span>
+                 <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">Proven Growth Method</span>
                </div>
                <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-black">
-                 How We Drive <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic">Results</span></span>
+                 This Is How We Drive <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic">Results</span></span>
                </h2>
                <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
                  We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.
