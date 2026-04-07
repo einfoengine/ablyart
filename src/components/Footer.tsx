@@ -1,5 +1,9 @@
 "use client";
 
+import React from "react";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -10,275 +14,110 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      style={{
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        padding: "80px 24px 40px",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Background gradient */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "600px",
-          height: "300px",
-          background: "radial-gradient(ellipse at bottom, rgba(155,255,110,0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
+    <footer className="w-full px-4 md:px-6 pb-4 md:pb-6 relative z-30 mt-12 md:mt-24">
+      <div className="bg-white rounded-[40px] p-10 md:p-16 lg:p-24 relative overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.5)] flex flex-col">
+        
+        {/* Decorative ambient elements */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#9bff6e] to-[#6ee7ff] opacity-[0.15] blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        {/* Top row */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr repeat(3, auto)",
-            gap: "48px",
-            marginBottom: "64px",
-            alignItems: "start",
-          }}
-          className="footer-grid"
-        >
-          {/* Brand col */}
-          <div>
-            <a
-              href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                textDecoration: "none",
-                marginBottom: "20px",
-              }}
-            >
-              <div
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "9px",
-                  background: "linear-gradient(135deg, #9bff6e, #6ee7ff)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <span style={{ fontSize: "18px", fontWeight: 900, color: "#060608" }}>A</span>
+        {/* Massive Call to Action */}
+        <div className="mb-20 relative z-10">
+          <h2 className="text-5xl md:text-7xl lg:text-[8vw] leading-[0.9] font-black tracking-tighter text-black mb-6">
+            Ready to <span className="text-[#9bff6e] drop-shadow-md">grow?</span>
+          </h2>
+          <p className="text-lg md:text-2xl text-gray-500 max-w-2xl font-medium tracking-tight">
+            Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20 relative z-10 w-full">
+          {/* Brand Info & Newsletter */}
+          <div className="lg:col-span-5 flex flex-col items-start pr-0 md:pr-8">
+            <a href="#" className="flex items-center gap-3 mb-6 no-underline bg-gray-50 pr-4 rounded-xl border border-gray-100 hover:border-gray-300 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center shadow-md">
+                <span className="text-xl font-black text-[#9bff6e]">A</span>
               </div>
-              <span
-                style={{
-                  fontSize: "1.35rem",
-                  fontWeight: 800,
-                  color: "#f0f0f8",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                ablyart
-              </span>
+              <span className="text-2xl font-black text-black tracking-tight">ablyart.</span>
             </a>
-
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "rgba(240,240,248,0.5)",
-                lineHeight: 1.8,
-                maxWidth: "280px",
-                marginBottom: "28px",
-              }}
-            >
-              We fix your digital presence — from brand identity to paid performance,
-              we make sure you're impossible to ignore online.
+            
+            <p className="text-gray-500 font-medium leading-relaxed max-w-sm mb-10 text-[0.95rem]">
+              We execute data-driven digital strategies — from brand identity to paid tracking, we guarantee you dominate the digital ecosystem.
             </p>
-
-            {/* Social icons */}
-            <div style={{ display: "flex", gap: "12px" }}>
-              {[
-                { label: "X", href: "#" },
-                { label: "in", href: "#" },
-                { label: "ig", href: "#" },
-                { label: "yt", href: "#" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  style={{
-                    width: "38px",
-                    height: "38px",
-                    borderRadius: "10px",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "rgba(240,240,248,0.5)",
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    textDecoration: "none",
-                    transition: "all 0.2s",
-                    background: "rgba(255,255,255,0.03)",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(155,255,110,0.4)";
-                    el.style.color = "#9bff6e";
-                    el.style.background = "rgba(155,255,110,0.06)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(255,255,255,0.08)";
-                    el.style.color = "rgba(240,240,248,0.5)";
-                    el.style.background = "rgba(255,255,255,0.03)";
-                  }}
-                >
-                  {s.label}
-                </a>
-              ))}
+            
+            {/* Newsletter */}
+            <div className="w-full max-w-md bg-gray-50 rounded-3xl p-8 border border-gray-200">
+              <h4 className="text-black font-extrabold mb-1 tracking-tight">Weekly Growth Insights</h4>
+              <p className="text-sm text-gray-500 mb-5 font-medium">No fluff. Just proven scaling tactics.</p>
+              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  placeholder="name@company.com" 
+                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#000] transition-colors font-semibold text-black placeholder:text-gray-400"
+                />
+                <button type="submit" className="bg-black hover:bg-[#9bff6e] hover:text-black text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg transition-colors whitespace-nowrap">
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
 
-          {/* Link cols */}
-          {Object.entries(links).map(([title, items]) => (
-            <div key={title}>
-              <h4
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: 700,
-                  color: "rgba(240,240,248,0.35)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  marginBottom: "20px",
-                }}
+          {/* Core Footer Links */}
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 mt-4 lg:mt-0 lg:ml-auto w-full">
+            {Object.entries(links).map(([title, items]) => (
+              <div key={title} className="flex flex-col">
+                <h4 className="text-black font-black uppercase tracking-[0.15em] text-xs mb-8 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#9bff6e]"></span>
+                  {title}
+                </h4>
+                <ul className="flex flex-col gap-5">
+                  {items.map((item) => (
+                    <li key={item}>
+                      <a href="#" className="text-gray-500 hover:text-black font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
+                        {item}
+                        <svg className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#9bff6e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Thick Divider */}
+        <div className="h-[2px] w-full bg-gray-100 mb-8" />
+
+        {/* Bottom Metadata Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 w-full">
+          <p className="text-gray-500 font-bold text-sm tracking-tight">
+            © {currentYear} ablyart agency. All rights reserved.
+          </p>
+          
+          {/* Socials */}
+          <div className="flex items-center gap-3">
+            {[ 
+              { icon: <FaXTwitter size={18} />, bg: "hover:bg-black hover:text-white" },
+              { icon: <FaLinkedin size={18} />, bg: "hover:bg-[#0A66C2] hover:text-[#fff]" },
+              { icon: <FaInstagram size={18} />, bg: "hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white border-transparent" },
+            ].map((social, i) => (
+              <a 
+                key={i} 
+                href="#" 
+                className={`w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-black border border-gray-200 transition-all duration-300 ${social.bg} hover:border-transparent hover:-translate-y-1 shadow-sm`}
               >
-                {title}
-              </h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
-                {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      style={{
-                        fontSize: "0.875rem",
-                        color: "rgba(240,240,248,0.55)",
-                        textDecoration: "none",
-                        transition: "color 0.2s",
-                        fontWeight: 400,
-                      }}
-                      onMouseEnter={(e) =>
-                        ((e.target as HTMLElement).style.color = "#f0f0f8")
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.target as HTMLElement).style.color = "rgba(240,240,248,0.55)")
-                      }
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Newsletter */}
-        <div
-          className="glass-card"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "24px",
-            padding: "32px 40px",
-            marginBottom: "48px",
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <h3
-              style={{
-                fontSize: "1.1rem",
-                fontWeight: 700,
-                marginBottom: "6px",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Get weekly growth insights
-            </h3>
-            <p style={{ fontSize: "0.85rem", color: "rgba(240,240,248,0.5)" }}>
-              No fluff. Just proven tactics from our team.
-            </p>
+                {social.icon}
+              </a>
+            ))}
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}
-          >
-            <input
-              type="email"
-              placeholder="your@email.com"
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: "9999px",
-                padding: "11px 20px",
-                color: "#f0f0f8",
-                fontSize: "0.875rem",
-                outline: "none",
-                width: "220px",
-                transition: "border-color 0.2s",
-              }}
-              onFocus={(e) =>
-                ((e.target as HTMLInputElement).style.borderColor = "rgba(155,255,110,0.5)")
-              }
-              onBlur={(e) =>
-                ((e.target as HTMLInputElement).style.borderColor = "rgba(255,255,255,0.1)")
-              }
-            />
-            <button type="submit" className="btn-glow" style={{ padding: "11px 24px", fontSize: "0.875rem", cursor: "pointer", border: "none" }}>
-              Subscribe
-            </button>
-          </form>
+
+          <p className="text-gray-400 font-bold text-sm tracking-tight flex items-center gap-1.5">
+            Engineered with <span className="text-[#9bff6e] text-lg">♥</span> for scale.
+          </p>
         </div>
 
-        {/* Divider */}
-        <div className="divider" style={{ marginBottom: "28px" }} />
-
-        {/* Bottom bar */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "12px",
-          }}
-        >
-          <span style={{ fontSize: "0.8rem", color: "rgba(240,240,248,0.35)" }}>
-            © {currentYear} ablyart. All rights reserved.
-          </span>
-          <span style={{ fontSize: "0.8rem", color: "rgba(240,240,248,0.35)" }}>
-            Made with{" "}
-            <span style={{ color: "#9bff6e" }}>♥</span>
-            {" "}for brands that want to grow.
-          </span>
-        </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .footer-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </footer>
   );
 }
