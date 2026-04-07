@@ -14,10 +14,10 @@ export default function VslSection() {
             <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Watch The Breakdown</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            Good Online Presens & Growth Optimization <span className="gradient-text italic">Attracts Leads & Conversions by 600%</span>
+            Good Online Presens & Growth Optimization <span className="gradient-text italic">Attracts Leads & Conversions by 600%, rest 400% highly depends on outbound performance</span>
           </h2>
           <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto">
-            This involves the digital foundation, topical authority, growth & management.
+            This involves the digital foundation, topical authority, promotion, lead generation & management.
           </p>
         </div>
 
