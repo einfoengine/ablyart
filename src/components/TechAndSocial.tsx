@@ -12,7 +12,10 @@ import {
   FaTiktok, 
   FaPinterest, 
   FaSnapchat, 
-  FaYoutube 
+  FaYoutube,
+  FaMailchimp,
+  FaHubspot,
+  FaSalesforce
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { 
@@ -21,7 +24,8 @@ import {
   SiVercel, 
   SiTypescript, 
   SiFramer,
-  SiGoogleads 
+  SiGoogleads,
+  SiZapier
 } from "react-icons/si";
 
 const ecosystemItems = [
@@ -42,6 +46,10 @@ const ecosystemItems = [
   { name: "Vercel", icon: <SiVercel size={28} />, color: "group-hover:text-white" },
   { name: "YouTube", icon: <FaYoutube size={28} />, color: "group-hover:text-[#FF0000]" },
   { name: "Google Ads", icon: <SiGoogleads size={28} />, color: "group-hover:text-[#4285F4]" },
+  { name: "Mailchimp", icon: <FaMailchimp size={28} />, color: "group-hover:text-[#FFE01B]" },
+  { name: "HubSpot", icon: <FaHubspot size={28} />, color: "group-hover:text-[#FF7A59]" },
+  { name: "Salesforce", icon: <FaSalesforce size={28} />, color: "group-hover:text-[#00A1E0]" },
+  { name: "Zapier", icon: <SiZapier size={28} />, color: "group-hover:text-[#FF4A00]" },
 ];
 
 export default function TechAndSocial() {
