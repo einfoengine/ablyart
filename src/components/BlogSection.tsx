@@ -53,7 +53,7 @@ export default function BlogSection() {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="bg-[#0b0b0e] rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-[1.02] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.15)] shadow-lg flex flex-col cursor-pointer"
             >

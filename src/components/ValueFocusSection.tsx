@@ -39,7 +39,13 @@ export default function ValueFocusSection() {
 
           <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             {/* Section Header */}
-            <div className="text-center mb-20">
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: false, margin: "-100px" }}
+               transition={{ duration: 0.6 }}
+               className="text-center mb-20"
+            >
                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 mb-6 shadow-sm">
                  <div className="w-2 h-2 rounded-full bg-[var(--accent-dim)] animate-pulse"></div>
                  <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">Proven Growth Method</span>
@@ -50,7 +56,7 @@ export default function ValueFocusSection() {
                <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
                  We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.
                </p>
-            </div>
+            </motion.div>
 
             {/* 4 Boxes Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -59,7 +65,7 @@ export default function ValueFocusSection() {
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: false, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   
                   className="bg-[#0b0b0e] rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border border-[rgba(255,255,255,0.05)] hover:border-[var(--accent)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] p-8"
@@ -83,7 +89,13 @@ export default function ValueFocusSection() {
             </div>
 
             {/* Call to Action */}
-            <div className="mt-16 text-center relative z-10 flex flex-col items-center">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: false, margin: "-100px" }}
+               transition={{ duration: 0.6, delay: 0.2 }}
+               className="mt-16 text-center relative z-10 flex flex-col items-center"
+            >
               <a
                 href="#discovery"
                 className="btn-glow inline-flex items-center justify-center font-bold"
@@ -97,7 +109,7 @@ export default function ValueFocusSection() {
               >
                 Book a Discovery Call
               </a>
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>

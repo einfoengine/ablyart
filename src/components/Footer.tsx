@@ -3,6 +3,7 @@
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,18 +22,30 @@ export default function Footer() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#9bff6e] to-[#6ee7ff] opacity-[0.15] blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
 
         {/* Massive Call to Action */}
-        <div className="mb-20 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 relative z-10"
+        >
           <h2 className="text-5xl md:text-7xl lg:text-[8vw] leading-[0.9] font-black tracking-tighter text-black mb-6">
             Ready to <span className="text-[#9bff6e] drop-shadow-md">grow?</span>
           </h2>
           <p className="text-lg md:text-2xl text-gray-500 max-w-2xl font-medium tracking-tight">
             Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20 relative z-10 w-full">
           {/* Brand Info & Newsletter */}
-          <div className="lg:col-span-5 flex flex-col items-start pr-0 md:pr-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5 flex flex-col items-start pr-0 md:pr-8"
+          >
             <a href="#" className="flex items-center gap-3 mb-6 no-underline bg-gray-50 pr-4 rounded-xl border border-gray-100 hover:border-gray-300 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center shadow-md">
                 <span className="text-xl font-black text-[#9bff6e]">A</span>
@@ -59,10 +72,16 @@ export default function Footer() {
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
 
           {/* Core Footer Links */}
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 mt-4 lg:mt-0 lg:ml-auto w-full">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 mt-4 lg:mt-0 lg:ml-auto w-full"
+          >
             {Object.entries(links).map(([title, items]) => (
               <div key={title} className="flex flex-col">
                 <h4 className="text-black font-black uppercase tracking-[0.15em] text-xs mb-8 flex items-center gap-2">
@@ -83,14 +102,20 @@ export default function Footer() {
                 </ul>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Thick Divider */}
         <div className="h-[2px] w-full bg-gray-100 mb-8" />
 
         {/* Bottom Metadata Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 w-full">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 w-full"
+        >
           <p className="text-gray-500 font-bold text-sm tracking-tight">
             © {currentYear} ablyart agency. All rights reserved.
           </p>
@@ -115,7 +140,7 @@ export default function Footer() {
           <p className="text-gray-400 font-bold text-sm tracking-tight flex items-center gap-1.5">
             Engineered with <span className="text-[#9bff6e] text-lg">♥</span> for scale.
           </p>
-        </div>
+        </motion.div>
 
       </div>
     </footer>

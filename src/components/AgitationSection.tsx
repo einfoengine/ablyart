@@ -63,7 +63,7 @@ export default function AgitationSection() {
               key={index}
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-[#0e0e11] rounded-3xl p-8 md:p-10 border border-white/5 shadow-2xl relative overflow-hidden group hover:border-red-500/30 transition-colors duration-500"
             >
