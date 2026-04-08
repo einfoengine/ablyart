@@ -2,28 +2,28 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBullseye, FaFeatherAlt, FaChartLine, FaMagnet } from "react-icons/fa";
+import { FaBullseye, FaMagnet, FaBolt, FaSyncAlt } from "react-icons/fa";
 
 const features = [
   {
-    title: "Unified Visibility",
-    description: "Establish a cohesive cross-platform presence to amplify your authority. We ensure consistent positioning everywhere, eliminating customer confusion and building instant trust.",
+    title: "Dominate Market Awareness",
+    description: "We amplify your brand's presence across every key platform. Break through the noise, capture peak attention, and establish your business as the undeniable industry authority.",
     icon: <FaBullseye size={32} />
   },
   {
-    title: "Quality Content",
-    description: "Establish undeniable industry authority with premium, strategically crafted content. We design engaging creatives that position your brand as the definitive leader.",
-    icon: <FaFeatherAlt size={32} />
-  },
-  {
-    title: "Strategic Lead Generation",
-    description: "Build out massive sales potential by capturing high-intent prospects. We engineer scalable, conversion-focused funnels tailored to continuously grow your pipeline.",
+    title: "Magnetize High-Intent Leads",
+    description: "Stop wasting time on unqualified traffic. We engineer scalable, automated pipelines that consistently attract prospects who are actively looking to buy your exact solution.",
     icon: <FaMagnet size={32} />
   },
   {
-    title: "Persistent Optimization",
-    description: "Continuous monitoring, rigorous testing, and relentless scaling. We constantly refine your campaigns to ensure maximum performance and exceptional ROI.",
-    icon: <FaChartLine size={32} />
+    title: "Engineer Rapid Conversions",
+    description: "Turn curious clicks into paying customers. We deploy high-converting funnels and irresistible messaging designed to maximize your profit and close deals seamlessly.",
+    icon: <FaBolt size={32} />
+  },
+  {
+    title: "Cultivate Lifetime Loyalty",
+    description: "The real profit is in repeat business. We implement powerful backend strategies to maximize customer lifetime value, increase retention, and turn buyers into passionate advocates.",
+    icon: <FaSyncAlt size={32} />
   }
 ];
 
