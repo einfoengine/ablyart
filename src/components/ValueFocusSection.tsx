@@ -6,18 +6,18 @@ import { FaBullseye, FaFeatherAlt, FaChartLine, FaMagnet } from "react-icons/fa"
 
 const features = [
   {
-    title: "In Front of Your Leads",
-    description: "Position your brand exactly where your ideal customers are looking. We deliver hyper-targeted visibility that drives high-intent traffic directly to your offers.",
+    title: "Unified Visibility",
+    description: "Establish a cohesive cross-platform presence to amplify your authority. We ensure consistent positioning everywhere, eliminating customer confusion and building instant trust.",
     icon: <FaBullseye size={32} />
   },
   {
-    title: "Quality Content & Creative",
-    description: "Engage and convert your audience with premium, strategically crafted content. We design bold creatives that tell your story and build lasting trust.",
+    title: "Quality Content",
+    description: "Establish undeniable industry authority with premium, strategically crafted content. We design engaging creatives that position your brand as the definitive leader.",
     icon: <FaFeatherAlt size={32} />
   },
   {
-    title: "Quality Lead Generation",
-    description: "We capture high-intent prospects by engineering scalable, conversion-focused funnels designed to continuously fill your sales pipeline.",
+    title: "Strategic Lead Generation",
+    description: "Build out massive sales potential by capturing high-intent prospects. We engineer scalable, conversion-focused funnels tailored to continuously grow your pipeline.",
     icon: <FaMagnet size={32} />
   },
   {
@@ -71,7 +71,7 @@ export default function ValueFocusSection() {
                   className="bg-[#0b0b0e] rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border border-[rgba(255,255,255,0.05)] hover:border-[var(--accent)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] p-8"
                 >
                   {/* Subtle background glow on hover */}
-                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none" />
                   
                   <div className="w-16 h-16 rounded-2xl bg-[#060608] border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[var(--accent)] mb-8 shadow-sm group-hover:bg-[var(--accent-subtle)] group-hover:text-white transition-all duration-300">
                     {feature.icon}
