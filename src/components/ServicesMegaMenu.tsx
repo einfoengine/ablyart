@@ -395,29 +395,35 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
       {mounted && createPortal(
         <AnimatePresence>
         {open && (
+          // Plain div owns all positioning — keeps translateX(-50%) safe from FM transforms
+          <div
+            key="mega-menu-positioner"
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+            style={{
+              position: "fixed",
+              left: "50%",
+              top: isScrolled ? "calc(16px + 64px + 12px)" : "calc(80px + 12px)",
+              transform: "translateX(-50%)",
+              width: isScrolled ? "min(1100px, calc(100vw - 32px))" : "min(1200px, calc(100vw - 48px))",
+              zIndex: 200,
+            }}
+          >
           <motion.div
             key="mega-menu"
             variants={dropdownVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
             style={{
-              position: "fixed",
-              // Centre on the viewport, not on the trigger
-              left: "50vw",
-              top: isScrolled ? "calc(16px + 64px + 12px)" : "calc(80px + 12px)",
-              transform: "translateX(-50%)",
-              width: isScrolled ? "min(1100px, calc(100vw - 32px))" : "min(1200px, calc(100vw - 48px))",
               background: "rgba(7,7,11,0.97)",
               border: "1px solid rgba(255,255,255,0.09)",
               borderRadius: "20px",
               boxShadow: "0 24px 80px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.06)",
               backdropFilter: "blur(28px)",
               WebkitBackdropFilter: "blur(28px)",
-              zIndex: 200,
               overflow: "hidden",
+              width: "100%",
             }}
           >
             {/* Main body: left list + right detail */}
@@ -658,6 +664,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
               </a>
             </div>
           </motion.div>
+          </div>
         )}
         </AnimatePresence>,
         document.body
