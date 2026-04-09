@@ -427,7 +427,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
             }}
           >
             {/* ══ Row 1: Core Growth Services [list | detail] ══ */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", minHeight: "300px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "300px" }}>
 
               {/* ── LEFT: Core Services stacked column ── */}
               <div style={{ padding: "24px 0 20px 24px" }}>
