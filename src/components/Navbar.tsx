@@ -1,5 +1,7 @@
 "use client";
 
+import NextLink from "next/link";
+
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -109,13 +111,16 @@ export default function Navbar() {
         >
           {["Services", "Work", "About", "Blog", "Contact"].map((item) => {
             const isActive = activeSection === item.toLowerCase();
+            const isPageLink = item === "Work";
+            const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
+            const Tag = isPageLink ? NextLink : "a";
             return (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase()}`} 
+              <Tag
+                key={item}
+                href={href}
                 className="nav-link"
-                style={{ 
-                  position: 'relative', 
+                style={{
+                  position: 'relative',
                   color: isActive ? '#ffffff' : 'rgba(240,240,248,0.6)',
                   fontWeight: isActive ? 600 : 500,
                   transition: 'all 0.3s ease'
@@ -123,7 +128,7 @@ export default function Navbar() {
               >
                 {item}
                 {/* Active Indicator Dot */}
-                <span 
+                <span
                   style={{
                     position: 'absolute',
                     bottom: '-8px',
@@ -138,7 +143,7 @@ export default function Navbar() {
                     transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)'
                   }}
                 />
-              </a>
+              </Tag>
             );
           })}
         </div>
@@ -218,17 +223,22 @@ export default function Navbar() {
             borderRadius: scrolled ? "0 0 24px 24px" : "0",
           }}
         >
-          {["Services", "Work", "About", "Blog", "Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-              style={{ fontSize: "1rem" }}
-            >
-              {item}
-            </a>
-          ))}
+          {["Services", "Work", "About", "Blog", "Contact"].map((item) => {
+            const isPageLink = item === "Work";
+            const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
+            const Tag = isPageLink ? NextLink : "a";
+            return (
+              <Tag
+                key={item}
+                href={href}
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
+                style={{ fontSize: "1rem" }}
+              >
+                {item}
+              </Tag>
+            );
+          })}
         </div>
       )}
 
