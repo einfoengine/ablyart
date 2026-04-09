@@ -426,11 +426,11 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
               width: "100%",
             }}
           >
-            {/* Main body: left list + right detail */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", minHeight: "320px" }}>
+            {/* ══ Row 1: Core Growth Services [list | detail] ══ */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", minHeight: "300px" }}>
 
               {/* ── LEFT: Core Services stacked column ── */}
-              <div style={{ padding: "24px 0 0 24px" }}>
+              <div style={{ padding: "24px 0 20px 24px" }}>
                 {/* Section label */}
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px", paddingRight: "24px" }}>
                   <span style={{
@@ -549,72 +549,6 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                     );
                   })}
                 </div>
-
-                {/* General Services label + strip */}
-                <div
-                  style={{
-                    borderTop: "1px solid rgba(255,255,255,0.06)",
-                    marginTop: "16px",
-                    paddingTop: "16px",
-                    paddingBottom: "20px",
-                    paddingRight: "24px",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
-                    <span style={{
-                      width: "6px", height: "6px", borderRadius: "50%",
-                      background: "rgba(240,240,248,0.25)", display: "inline-block", flexShrink: 0,
-                    }} />
-                    <span style={{
-                      fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.16em",
-                      textTransform: "uppercase", color: "rgba(240,240,248,0.3)",
-                    }}>
-                      General Packages
-                    </span>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
-                    {generalServices.map((svc) => (
-                      <a
-                        key={svc.id}
-                        href="#pricing"
-                        onClick={() => setOpen(false)}
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "6px",
-                          padding: "12px",
-                          borderRadius: "10px",
-                          border: "1px solid rgba(255,255,255,0.06)",
-                          background: "rgba(255,255,255,0.02)",
-                          textDecoration: "none",
-                          transition: "border-color 0.18s, background 0.18s",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.13)";
-                          (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
-                          (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)";
-                        }}
-                      >
-                        <div style={{
-                          width: "28px", height: "28px", borderRadius: "7px",
-                          background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          color: "rgba(240,240,248,0.5)",
-                        }}>
-                          {svc.icon}
-                        </div>
-                        <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#f0f0f8" }}>{svc.label}</div>
-                        <div style={{ fontSize: "0.62rem", fontWeight: 700, color: "var(--accent)", marginTop: "auto" }}>
-                          From {svc.startingAt}
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* ── RIGHT: Detail panel ── */}
@@ -629,6 +563,69 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 <AnimatePresence mode="wait">
                   <DetailPanel key={coreServices[activeCore].id} service={coreServices[activeCore]} />
                 </AnimatePresence>
+              </div>
+            </div>
+
+            {/* ══ Row 2: General Packages (full width) ══ */}
+            <div
+              style={{
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+                padding: "16px 24px 20px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                <span style={{
+                  width: "6px", height: "6px", borderRadius: "50%",
+                  background: "rgba(240,240,248,0.25)", display: "inline-block", flexShrink: 0,
+                }} />
+                <span style={{
+                  fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.16em",
+                  textTransform: "uppercase", color: "rgba(240,240,248,0.3)",
+                }}>
+                  General Packages
+                </span>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
+                {generalServices.map((svc) => (
+                  <a
+                    key={svc.id}
+                    href="#pricing"
+                    onClick={() => setOpen(false)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "6px",
+                      padding: "12px",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "rgba(255,255,255,0.02)",
+                      textDecoration: "none",
+                      transition: "border-color 0.18s, background 0.18s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.13)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)";
+                    }}
+                  >
+                    <div style={{
+                      width: "28px", height: "28px", borderRadius: "7px",
+                      background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "rgba(240,240,248,0.5)",
+                    }}>
+                      {svc.icon}
+                    </div>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#f0f0f8" }}>{svc.label}</div>
+                    <div style={{ fontSize: "0.62rem", fontWeight: 700, color: "var(--accent)", marginTop: "auto" }}>
+                      From {svc.startingAt}
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
 
