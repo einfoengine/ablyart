@@ -179,19 +179,14 @@ export default function HeroSection() {
       id="hero"
       style={{
         position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        paddingTop: "140px",
+        paddingBottom: "120px",
         overflow: "hidden",
-        paddingTop: "100px",
-        paddingBottom: "160px",
       }}
     >
-      {/* Background blobs */}
-      <div className="hero-blob-1" />
-      <div className="hero-blob-2" />
+      {/* Background blobs — same opacity as inner pages */}
+      <div className="hero-blob-1" style={{ opacity: 0.6 }} />
+      <div className="hero-blob-2" style={{ opacity: 0.5 }} />
 
       {/* Grid overlay */}
       <div
@@ -199,8 +194,8 @@ export default function HeroSection() {
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            linear-gradient(rgba(155,255,110,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(155,255,110,0.03) 1px, transparent 1px)
+            linear-gradient(rgba(155,255,110,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(155,255,110,0.025) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
           pointerEvents: "none",
@@ -294,7 +289,7 @@ export default function HeroSection() {
           }}
         >
           <a
-            href="#contact"
+            href="/contact"
             className="btn-glow"
             style={{
               padding: "16px 36px",
@@ -306,7 +301,7 @@ export default function HeroSection() {
             Get a Free Audit →
           </a>
           <a
-            href="#work"
+            href="/work"
             className="btn-outline"
             style={{
               padding: "16px 36px",
