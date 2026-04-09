@@ -1,27 +1,25 @@
 "use client";
 
 import NextLink from "next/link";
-
 import { useState, useEffect } from "react";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
-      
+
       const sections = ["services", "work", "about", "blog", "contact"];
       let current = "";
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Check if section is currently active in viewport
           if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
             current = section;
           }
@@ -31,10 +29,12 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Trigger once on mount
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Non-Services nav items
+  const navItems = ["Work", "About", "Blog", "Contact"];
 
   return (
     <header
@@ -47,12 +47,12 @@ export default function Navbar() {
         maxWidth: scrolled ? "1100px" : "100%",
         zIndex: 100,
         transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-        background: scrolled
-          ? "rgba(11, 11, 14, 0.85)"
-          : "transparent",
+        background: scrolled ? "rgba(11, 11, 14, 0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-        border: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        border: scrolled
+          ? "1px solid rgba(255,255,255,0.08)"
+          : "1px solid transparent",
         borderRadius: scrolled ? "24px" : "0px",
         boxShadow: scrolled ? "0 20px 40px rgba(0,0,0,0.4)" : "none",
       }}
@@ -67,13 +67,18 @@ export default function Navbar() {
           alignItems: "center",
           justifyContent: "space-between",
           gap: "24px",
-          transition: "height 0.4s ease"
+          transition: "height 0.4s ease",
         }}
       >
         {/* Logo */}
         <a
-          href="#"
-          style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+          href="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            textDecoration: "none",
+          }}
         >
           <div
             style={{
@@ -102,14 +107,14 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "36px",
-          }}
+          style={{ display: "flex", alignItems: "center", gap: "36px" }}
           className="desktop-nav"
         >
-          {["Services", "Work", "About", "Blog", "Contact"].map((item) => {
+          {/* ── Services mega menu trigger ── */}
+          <ServicesMegaMenu isScrolled={scrolled} />
+
+          {/* ── Other links ── */}
+          {navItems.map((item) => {
             const isActive = activeSection === item.toLowerCase();
             const isPageLink = item === "Work";
             const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
@@ -120,27 +125,29 @@ export default function Navbar() {
                 href={href}
                 className="nav-link"
                 style={{
-                  position: 'relative',
-                  color: isActive ? '#ffffff' : 'rgba(240,240,248,0.6)',
+                  position: "relative",
+                  color: isActive ? "#ffffff" : "rgba(240,240,248,0.6)",
                   fontWeight: isActive ? 600 : 500,
-                  transition: 'all 0.3s ease'
+                  transition: "all 0.3s ease",
                 }}
               >
                 {item}
-                {/* Active Indicator Dot */}
+                {/* Active dot */}
                 <span
                   style={{
-                    position: 'absolute',
-                    bottom: '-8px',
-                    left: '50%',
-                    transform: isActive ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0)',
-                    width: '4px',
-                    height: '4px',
-                    borderRadius: '50%',
-                    backgroundColor: 'var(--accent)',
-                    boxShadow: '0 0 8px var(--accent)',
+                    position: "absolute",
+                    bottom: "-8px",
+                    left: "50%",
+                    transform: isActive
+                      ? "translateX(-50%) scale(1)"
+                      : "translateX(-50%) scale(0)",
+                    width: "4px",
+                    height: "4px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--accent)",
+                    boxShadow: "0 0 8px var(--accent)",
                     opacity: isActive ? 1 : 0,
-                    transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)'
+                    transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   }}
                 />
               </Tag>
@@ -148,7 +155,7 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* CTA */}
+        {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <a
             href="#contact"
@@ -163,7 +170,6 @@ export default function Navbar() {
             Get a Free Audit
           </a>
 
-          {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             style={{
@@ -210,7 +216,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <div
           style={{
@@ -223,7 +229,17 @@ export default function Navbar() {
             borderRadius: scrolled ? "0 0 24px 24px" : "0",
           }}
         >
-          {["Services", "Work", "About", "Blog", "Contact"].map((item) => {
+          {/* Services in mobile: simple anchor */}
+          <a
+            href="#services"
+            className="nav-link"
+            onClick={() => setMenuOpen(false)}
+            style={{ fontSize: "1rem" }}
+          >
+            Services
+          </a>
+
+          {["Work", "About", "Blog", "Contact"].map((item) => {
             const isPageLink = item === "Work";
             const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
             const Tag = isPageLink ? NextLink : "a";
