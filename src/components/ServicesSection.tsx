@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    id: "web-social-media",
+    id: "omnichannel-traffic",
     number: "01",
-    title: "Web & Social Media Management",
-    tagline: "Content and presence that converts scrollers into buyers.",
+    title: "Omnichannel Traffic & Awareness",
+    tagline: "Get seen everywhere your ideal customers spend their time.",
     description:
-      "We build and manage high-performing digital platforms—from your website to your social presence across Instagram, TikTok, LinkedIn, and Facebook. From strategy and creative production to community management, we turn followers into revenue.",
+      "We combine Social Media Management, Video Marketing, and SEO to build an omnipresent brand. We capture peak attention across platforms, turning cold audiences into engaged followers.",
     bullets: [
-      "Platform strategy & audience research",
-      "Content creation & short-form video",
-      "Paid social campaigns & management",
-      "Web flow, UX/UI, and daily updates",
+      "Paid & organic social media",
+      "SEO & intent-based search",
+      "Video production & shorts",
+      "Content strategy & distribution",
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
@@ -28,70 +28,20 @@ const services = [
     ),
     color: "#9bff6e",
     rgb: "155,255,110",
-    platforms: ["Instagram", "TikTok", "LinkedIn", "Next.js", "Webflow"],
-  },
-  {
-    id: "seo",
-    number: "02",
-    title: "Search Engine Optimization",
-    tagline: "Rank higher. Get found. Drive intent traffic.",
-    description:
-      "We combine technical SEO, content strategy, and Google Ads to make sure your brand appears exactly when people are searching for what you offer. More visibility, more qualified clicks, more growth.",
-    bullets: [
-      "Technical SEO & site audits",
-      "Keyword research & content strategy",
-      "Google Ads & PPC management",
-      "Local SEO & maps optimization",
-    ],
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <circle cx="12" cy="12" r="7" stroke="#6ee7ff" strokeWidth="1.8" fill="none" />
-        <line x1="17.5" y1="17.5" x2="24" y2="24" stroke="#6ee7ff" strokeWidth="2" strokeLinecap="round" />
-        <line x1="9" y1="12" x2="15" y2="12" stroke="#6ee7ff" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="12" y1="9" x2="12" y2="15" stroke="#6ee7ff" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    color: "#6ee7ff",
-    rgb: "110,231,255",
-    platforms: ["Google", "Bing", "YouTube", "Maps", "Shopping"],
-  },
-  {
-    id: "video-marketing",
-    number: "03",
-    title: "Video Marketing",
-    tagline: "Stories that stop the scroll and drive action.",
-    description:
-      "From concept to publish, we handle the full video lifecycle. Whether it's brand films, social reels, motion graphics, or YouTube growth — we create video content that captures attention and converts viewers into customers.",
-    bullets: [
-      "Videography & studio/on-location shoots",
-      "2D/3D animation & motion graphics",
-      "Professional video editing & colour grade",
-      "YouTube & social channel management",
-    ],
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <rect x="2" y="6" width="18" height="16" rx="2" stroke="#b09eff" strokeWidth="1.8" fill="none" />
-        <path d="M20 10.5l6-3v13l-6-3V10.5z" stroke="#b09eff" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
-        <circle cx="11" cy="14" r="3" stroke="#b09eff" strokeWidth="1.5" fill="none" />
-        <path d="M10 13.2l3 1.8-3 1.8V13.2z" fill="#b09eff" />
-      </svg>
-    ),
-    color: "#b09eff",
-    rgb: "176,158,255",
-    platforms: ["YouTube", "Instagram", "TikTok", "Vimeo", "After Effects"],
+    platforms: ["Meta", "TikTok", "Google", "YouTube"],
   },
   {
     id: "lead-generation",
-    number: "04",
-    title: "Lead Generation",
+    number: "02",
+    title: "Strategic Lead Generation",
     tagline: "High-intent prospects delivered straight to your pipeline.",
     description:
-      "We design strategic funnels focused purely on capturing intent and acquiring highly qualified leads. No more empty traffic—just engaged prospects actively looking to buy what you sell.",
+      "Traffic is useless without intent. We design automated, highly-targeted funnels focused purely on capturing qualified leads who are actively looking to buy your exact solution.",
     bullets: [
-      "Targeted lead capture & landing pages",
-      "Conversion rate optimization (CRO)",
-      "Automated email & SMS nurturing",
-      "Performance & attribution tracking",
+      "Targeted lead capture systems",
+      "Paid ads lead acquisition",
+      "Email & SMS nurturing sequences",
+      "Performance tracking & attribution",
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
@@ -100,7 +50,52 @@ const services = [
     ),
     color: "#ffb347",
     rgb: "255,179,71",
-    platforms: ["HubSpot", "Salesforce", "ActiveCampaign", "Zapier"],
+    platforms: ["HubSpot", "ActiveCampaign", "Zapier"],
+  },
+  {
+    id: "funnel-optimization",
+    number: "03",
+    title: "Conversion Funnel Optimization",
+    tagline: "Frictionless journeys that turn traffic into profit.",
+    description:
+      "We design, build, and optimize high-converting sales environments. Through relentless testing and UX optimization, we eliminate friction and seamlessly transition leads to paying customers.",
+    bullets: [
+      "Landing page & checkout design",
+      "A/B split testing & heat-mapping",
+      "Buyer psychology & UX analysis",
+      "High-ticket closing systems",
+    ],
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <path d="M3 5h22l-8.5 10.5v8.5l-5-3v-5.5z" stroke="#ff6eb4" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+      </svg>
+    ),
+    color: "#ff6eb4",
+    rgb: "255,110,180",
+    platforms: ["ClickFunnels", "Shopify", "Hotjar", "Google Optimize"],
+  },
+  {
+    id: "retention-maximization",
+    number: "04",
+    title: "Retention & Value Maximization",
+    tagline: "Transform one-time buyers into passionate, loyal advocates.",
+    description:
+      "Acquisition is just the beginning. We build powerful backend retention systems, automated follow-ups, and irresistible upsell sequences that maximize the lifetime value of every customer you win.",
+    bullets: [
+      "Backend offer & upsell strategy",
+      "Customer lifecycle email/SMS",
+      "Loyalty programs & community",
+      "Churn reduction & analytics",
+    ],
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <path d="M4 14a10 10 0 1 1 20 0 10 10 0 0 1-20 0z" stroke="#6ee7ff" strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+        <path d="M14 8v6l4 4" stroke="#6ee7ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    color: "#6ee7ff",
+    rgb: "110,231,255",
+    platforms: ["Klaviyo", "Skool", "Stripe", "Postscript"],
   },
 ];
 
