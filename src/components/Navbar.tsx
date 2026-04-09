@@ -2,39 +2,31 @@
 
 import NextLink from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-
-      const sections = ["services", "work", "about", "blog", "contact"];
-      let current = "";
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
-            current = section;
-          }
-        }
-      }
-      setActiveSection(current);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Non-Services nav items
-  const navItems = ["Work", "About", "Blog", "Contact"];
+  // Close mobile menu on route change
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  // Nav items → all dedicated pages
+  const navItems = [
+    { label: "Work",    href: "/work" },
+    { label: "About",   href: "/about" },
+    { label: "Blog",    href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ];
 
   return (
     <header
@@ -114,14 +106,11 @@ export default function Navbar() {
           <ServicesMegaMenu isScrolled={scrolled} />
 
           {/* ── Other links ── */}
-          {navItems.map((item) => {
-            const isActive = activeSection === item.toLowerCase();
-            const isPageLink = item === "Work";
-            const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
-            const Tag = isPageLink ? NextLink : "a";
+          {navItems.map(({ label, href }) => {
+            const isActive = pathname === href || pathname.startsWith(href + "/");
             return (
-              <Tag
-                key={item}
+              <NextLink
+                key={label}
                 href={href}
                 className="nav-link"
                 style={{
@@ -129,9 +118,10 @@ export default function Navbar() {
                   color: isActive ? "#ffffff" : "rgba(240,240,248,0.6)",
                   fontWeight: isActive ? 600 : 500,
                   transition: "all 0.3s ease",
+                  textDecoration: "none",
                 }}
               >
-                {item}
+                {label}
                 {/* Active dot */}
                 <span
                   style={{
@@ -150,15 +140,15 @@ export default function Navbar() {
                     transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   }}
                 />
-              </Tag>
+              </NextLink>
             );
           })}
         </div>
 
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <a
-            href="#contact"
+          <NextLink
+            href="/contact"
             className="btn-glow"
             style={{
               padding: "10px 22px",
@@ -168,7 +158,7 @@ export default function Navbar() {
             }}
           >
             Get a Free Audit
-          </a>
+          </NextLink>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -229,9 +219,9 @@ export default function Navbar() {
             borderRadius: scrolled ? "0 0 24px 24px" : "0",
           }}
         >
-          {/* Services in mobile: simple anchor */}
+          {/* Services in mobile: links to homepage services section */}
           <a
-            href="#services"
+            href="/#services"
             className="nav-link"
             onClick={() => setMenuOpen(false)}
             style={{ fontSize: "1rem" }}
@@ -239,22 +229,17 @@ export default function Navbar() {
             Services
           </a>
 
-          {["Work", "About", "Blog", "Contact"].map((item) => {
-            const isPageLink = item === "Work";
-            const href = isPageLink ? "/work" : `#${item.toLowerCase()}`;
-            const Tag = isPageLink ? NextLink : "a";
-            return (
-              <Tag
-                key={item}
-                href={href}
-                className="nav-link"
-                onClick={() => setMenuOpen(false)}
-                style={{ fontSize: "1rem" }}
-              >
-                {item}
-              </Tag>
-            );
-          })}
+          {navItems.map(({ label, href }) => (
+            <NextLink
+              key={label}
+              href={href}
+              className="nav-link"
+              onClick={() => setMenuOpen(false)}
+              style={{ fontSize: "1rem", textDecoration: "none" }}
+            >
+              {label}
+            </NextLink>
+          ))}
         </div>
       )}
 
