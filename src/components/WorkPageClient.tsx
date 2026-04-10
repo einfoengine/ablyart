@@ -621,6 +621,7 @@ export default function WorkPageClient() {
           margin: "0 auto",
           padding: "80px 24px 60px",
           position: "relative",
+          overflow: "hidden",
         }}
       >
         {/* Ambient blobs */}

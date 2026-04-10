@@ -149,7 +149,7 @@ export default function Navbar() {
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <NextLink
             href="/contact"
-            className="btn-glow"
+            className="btn-glow nav-cta"
             style={{
               padding: "10px 22px",
               fontSize: "0.875rem",
@@ -235,18 +235,38 @@ export default function Navbar() {
               href={href}
               className="nav-link"
               onClick={() => setMenuOpen(false)}
-              style={{ fontSize: "1rem", textDecoration: "none" }}
+              style={{ fontSize: "1rem", textDecoration: "none", padding: "8px 0" }}
             >
               {label}
             </NextLink>
           ))}
+          
+          {/* Mobile CTA */}
+          <NextLink
+            href="/contact"
+            className="btn-glow"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              padding: "12px 24px",
+              fontSize: "1rem",
+              display: "inline-block",
+              textDecoration: "none",
+              textAlign: "center",
+              marginTop: "12px"
+            }}
+          >
+            Get a Free Audit
+          </NextLink>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+        }
+        @media (max-width: 480px) {
+          .nav-cta { display: none !important; }
         }
       `}</style>
     </header>
