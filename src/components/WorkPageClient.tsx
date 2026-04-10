@@ -612,80 +612,79 @@ export default function WorkPageClient() {
 
   return (
     <main
-      style={{ background: "var(--background)", minHeight: "100vh", paddingTop: "100px" }}
+      style={{ background: "var(--background)", minHeight: "100vh"}}
     >
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section
         style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "80px 24px 60px",
           position: "relative",
+          paddingTop: "140px",
+          paddingBottom: "100px",
           overflow: "hidden",
         }}
       >
-        {/* Ambient blobs */}
+        <div className="hero-blob-1" style={{ opacity: 0.55 }} />
+        <div className="hero-blob-2" style={{ opacity: 0.4 }} />
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: "-200px",
-            width: "600px",
-            height: "500px",
-            background:
-              "radial-gradient(circle, rgba(155,255,110,0.08) 0%, transparent 70%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "100px",
-            right: "-150px",
-            width: "400px",
-            height: "400px",
-            background:
-              "radial-gradient(circle, rgba(110,231,255,0.06) 0%, transparent 70%)",
+            inset: 0,
+            backgroundImage: `
+              linear-gradient(rgba(155,255,110,0.025) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(155,255,110,0.025) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
             pointerEvents: "none",
           }}
         />
 
-        <motion.div
+        <div style={{ position: "relative", zIndex: 2, maxWidth: "900px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ position: "relative", zIndex: 1 }}
         >
-          <div style={{ marginBottom: "20px" }}>
-            <span className="tag-pill">Our Work</span>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
+            <span className="tag-pill">
+              <span className="glow-dot" />
+              Our Work
+            </span>
           </div>
-          <h1
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontSize: "clamp(2.8rem, 6vw, 5rem)",
+              fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
               fontWeight: 900,
-              letterSpacing: "-0.05em",
-              lineHeight: 1.0,
-              maxWidth: "700px",
-              marginBottom: "24px",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.05,
+              marginBottom: "28px",
+              color: "#f0f0f8",
             }}
           >
             Real Brands.{" "}
             <span className="gradient-text">Real Results.</span>
-          </h1>
-          <p
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             style={{
               color: "rgba(240,240,248,0.5)",
-              fontSize: "1.1rem",
-              maxWidth: "520px",
-              lineHeight: 1.8,
-              marginBottom: "56px",
+              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
+              maxWidth: "680px",
+              margin: "0 auto 48px",
+              lineHeight: 1.75,
             }}
           >
             We let the numbers do the talking. Explore how we&apos;ve helped
             founders and brand teams break through plateaus and scale with
             precision.
-          </p>
-
+          </motion.p>
           {/* Stats row */}
           <div
             className="about-stats-grid"
@@ -694,6 +693,7 @@ export default function WorkPageClient() {
               gridTemplateColumns: "repeat(4, 1fr)",
               gap: "2px",
               maxWidth: "680px",
+              margin: "0 auto",
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: "20px",
@@ -728,7 +728,7 @@ export default function WorkPageClient() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ── FILTER TABS ───────────────────────────────────────────────────── */}
