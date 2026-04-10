@@ -319,6 +319,7 @@ function HeroSection() {
           overflow: "hidden",
           border: "1px solid rgba(255,255,255,0.08)",
         }}
+        className="about-stats-grid"
       >
         {stats.map((s, i) => (
           <div
@@ -355,6 +356,7 @@ function MissionSection() {
   return (
     <section style={{ padding: "100px 24px", maxWidth: "1100px", margin: "0 auto" }}>
       <div
+        className="about-mission-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -511,10 +513,9 @@ function MissionSection() {
         </FadeUp>
       </div>
 
-      {/* Mobile stack rule */}
       <style>{`
-        @media (max-width: 768px) {
-          .mission-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        @media (max-width: 640px) {
+          .about-mission-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
       `}</style>
     </section>
@@ -551,6 +552,7 @@ function ValuesSection() {
         </FadeUp>
 
         <div
+          className="about-values-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -677,6 +679,7 @@ function TeamSection() {
         </FadeUp>
 
         <div
+          className="about-team-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",

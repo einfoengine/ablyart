@@ -324,7 +324,7 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
         </span>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
+      <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
         {/* Left */}
         <div>
           <h3
@@ -366,7 +366,7 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
         </div>
 
         {/* Right — Results grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+        <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
           {study.results.map((r) => (
             <div
               key={r.label}
@@ -521,7 +521,7 @@ function StudyCard({ study }: { study: CaseStudy }) {
       </p>
 
       {/* Results — 2×2 mini grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "24px" }}>
+      <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "24px" }}>
         {study.results.slice(0, 4).map((r) => (
           <div
             key={r.label}
@@ -687,6 +687,7 @@ export default function WorkPageClient() {
 
           {/* Stats row */}
           <div
+            className="about-stats-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
@@ -800,7 +801,7 @@ export default function WorkPageClient() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(min(320px, 100%), 1fr))",
                   gap: "20px",
                 }}
               >
@@ -837,12 +838,7 @@ export default function WorkPageClient() {
       {/* ── CTA BANNER ────────────────────────────────────────────────────── */}
       <CtaBanner />
 
-      {/* Responsive style overrides */}
-      <style>{`
-        @media (max-width: 768px) {
-          .featured-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+
     </main>
   );
 }

@@ -236,6 +236,7 @@ function AccordionItem({
         role="button"
         aria-expanded={isOpen}
         onClick={onClick}
+        className="svc-card-padding"
         style={{
           display: "flex",
           alignItems: "center",
@@ -298,7 +299,7 @@ function AccordionItem({
           <div style={{ height: 1, background: "rgba(255,255,255,0.07)", marginBottom: "32px" }} />
 
           {/* 2-column body */}
-          <div className="service-body" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
+          <div className="svc-body-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
             {/* Left: description + CTA */}
             <div>
               <p style={{ fontSize: "0.9rem", color: "rgba(240,240,248,0.55)", lineHeight: 1.85, marginBottom: "28px" }}>

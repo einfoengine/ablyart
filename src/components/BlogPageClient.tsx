@@ -150,7 +150,7 @@ function FeaturedPost({ post }: { post: (typeof posts)[0] }) {
         style={{ textDecoration: "none", display: "block" }}
       >
         <div
-          className="glass-card"
+          className="glass-card blog-featured"
           style={{
             padding: "0",
             overflow: "hidden",
@@ -788,6 +788,7 @@ export default function BlogPageClient() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35 }}
+            className="blog-posts-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -827,15 +828,7 @@ export default function BlogPageClient() {
         <Newsletter />
       </section>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .featured-grid { grid-template-columns: 1fr !important; }
-          .posts-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 600px) {
-          .posts-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+
     </main>
   );
 }
