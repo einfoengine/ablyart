@@ -130,11 +130,11 @@ const generalServices = [
 
 // ─── Animations ────────────────────────────────────────────────────────────────
 
-const dropdownVariants = {
+const dropdownVariants: import("framer-motion").Variants = {
   hidden: { opacity: 0, y: -10, scale: 0.985, filter: "blur(6px)" },
   visible: {
     opacity: 1, y: 0, scale: 1, filter: "blur(0px)",
-    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: {
     opacity: 0, y: -6, scale: 0.99, filter: "blur(4px)",
@@ -142,11 +142,11 @@ const dropdownVariants = {
   },
 };
 
-const detailVariants = {
+const detailVariants: import("framer-motion").Variants = {
   hidden: { opacity: 0, x: 12, filter: "blur(4px)" },
   visible: {
     opacity: 1, x: 0, filter: "blur(0px)",
-    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: {
     opacity: 0, x: -6, filter: "blur(4px)",
