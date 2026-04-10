@@ -281,9 +281,8 @@ function DetailPanel({ service }: { service: (typeof coreServices)[number] }) {
           ))}
         </div>
 
-        {/* CTA link */}
         <a
-          href="#services"
+          href={`/services/${service.id}`}
           style={{
             marginTop: "20px",
             display: "inline-flex",

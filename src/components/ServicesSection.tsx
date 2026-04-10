@@ -306,12 +306,12 @@ function AccordionItem({
                 {service.description}
               </p>
               <a
-                href="#contact"
+                href={`/services/${service.id}`}
                 style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "0.875rem", fontWeight: 700, color: service.color, textDecoration: "none", transition: "gap 0.2s" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = "14px"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = "8px"; }}
               >
-                Start a project
+                View Service Details
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
