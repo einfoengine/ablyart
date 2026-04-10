@@ -60,6 +60,7 @@ export default function VslSection() {
                 title="Ablyart Video Sales Letter" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
+                loading="lazy"
                 style={{ border: 'none' }}
               ></iframe>
             </div>
