@@ -3,7 +3,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const agitations = [
+export type AgitationCardProps = {
+  service: string;
+  title: string;
+  pain: string;
+  accent: string;
+  textAccent: string;
+};
+
+const defaultAgitations: AgitationCardProps[] = [
   {
     service: "Web & Social Media Management",
     title: "Bleeding Credibility",
@@ -34,7 +42,21 @@ const agitations = [
   }
 ];
 
-export default function AgitationSection() {
+export type AgitationSectionProps = {
+  badge?: string;
+  titleBase?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  customAgitations?: AgitationCardProps[];
+};
+
+export default function AgitationSection({
+  badge = "The Cost of Inaction",
+  titleBase = "What You Lose When You",
+  titleHighlight = "Stand Still",
+  subtitle = "Every day you delay optimizing your digital strategy is measurable lost revenue. Here is exactly what is happening to your bottom line right now.",
+  customAgitations = defaultAgitations
+}: AgitationSectionProps) {
   return (
     <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden">
       {/* Background warning ambients */}
@@ -46,19 +68,19 @@ export default function AgitationSection() {
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/20 bg-red-500/5 mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-            <span className="text-sm font-semibold tracking-wider text-red-400 uppercase font-mono">The Cost of Inaction</span>
+            <span className="text-sm font-semibold tracking-wider text-red-400 uppercase font-mono">{badge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-[#f0f0f8]">
-            What You Lose When You <span className="text-red-500 italic">Stand Still</span>
+            {titleBase} <span className="text-red-500 italic">{titleHighlight}</span>
           </h2>
           <p className="text-[var(--muted)] text-lg leading-relaxed">
-            Every day you delay optimizing your digital strategy is measurable lost revenue. Here is exactly what is happening to your bottom line right now.
+            {subtitle}
           </p>
         </div>
 
         {/* Agitation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {agitations.map((item, index) => (
+          {customAgitations.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.95, y: 20 }}

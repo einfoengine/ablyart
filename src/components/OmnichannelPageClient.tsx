@@ -8,6 +8,29 @@ import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
 import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
 
+const deliverables = [
+  {
+    title: "Omnichannel Strategy Playbook",
+    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+  },
+  {
+    title: "High-Converting Content Creation",
+    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+  },
+  {
+    title: "Advanced Tracking & Infrastructure",
+    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+  },
+  {
+    title: "Proactive Media Buying",
+    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
+  },
+  {
+    title: "Dedicated Growth Partner",
+    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+  }
+];
+
 function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -158,8 +181,87 @@ export default function OmnichannelPageClient() {
             icon: <FaSearchDollar size={32} />
           }
         ]}
+        hideBottomSection={true}
       />
-      <AgitationSection />
+      <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "64px" }}>
+            <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#f0f0f8", marginBottom: "16px", letterSpacing: "-0.03em" }}>
+              How Do We <span className="gradient-text">Actually Help You</span>
+            </h2>
+            <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
+              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            {deliverables.map((item, idx) => (
+              <div 
+                key={idx} 
+                style={{ 
+                  background: "rgba(255,255,255,0.03)", 
+                  border: "1px solid rgba(255,255,255,0.08)", 
+                  borderRadius: "16px", 
+                  padding: "32px",
+                  display: "flex",
+                  gap: "24px",
+                  alignItems: "flex-start"
+                }}
+              >
+                <div style={{ 
+                  width: "48px", height: "48px", borderRadius: "12px", 
+                  background: "rgba(155,255,110,0.1)", 
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  flexShrink: 0, color: "var(--accent)", fontSize: "1.2rem", fontWeight: 900
+                }}>
+                  {String(idx + 1).padStart(2, '0')}
+                </div>
+                <div>
+                  <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: "#f0f0f8", marginBottom: "8px" }}>{item.title}</h3>
+                  <p style={{ color: "rgba(240,240,248,0.6)", lineHeight: 1.6, fontSize: "0.95rem" }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <AgitationSection 
+        badge="The Cost of Inaction"
+        titleBase="The High Cost of Being"
+        titleHighlight="Invisible"
+        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        customAgitations={[
+          {
+            service: "Platform Consistency",
+            title: "Scattered & Weak Presence",
+            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            accent: "rgba(255, 80, 80, 0.2)",
+            textAccent: "#ff5050"
+          },
+          {
+            service: "Retargeting Infrastructure",
+            title: "Leaking Acquired Traffic Potential",
+            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            accent: "rgba(255, 120, 80, 0.2)",
+            textAccent: "#ff7850"
+          },
+          {
+            service: "Predictable Traffic Sources",
+            title: "Unscalable Business Growth",
+            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            accent: "rgba(255, 179, 71, 0.2)",
+            textAccent: "#ffb347"
+          },
+          {
+            service: "Channel Diversification",
+            title: "Single Point of Failure",
+            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            accent: "rgba(255, 80, 120, 0.2)",
+            textAccent: "#ff5078"
+          }
+        ]}
+      />
       <PricingSection />
       <TestimonialsSection />
     </main>

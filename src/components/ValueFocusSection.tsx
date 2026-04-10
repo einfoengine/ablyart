@@ -39,6 +39,7 @@ export type ValueFocusSectionProps = {
   titleHighlight?: string;
   subtitle?: string;
   customFeatures?: FeatureCardProps[];
+  hideBottomSection?: boolean;
 };
 
 export default function ValueFocusSection({
@@ -47,6 +48,7 @@ export default function ValueFocusSection({
   titleHighlight = "Results",
   subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
   customFeatures = defaultFeatures,
+  hideBottomSection = false,
 }: ValueFocusSectionProps) {
   return (
     <div className="w-full z-10 relative flex flex-col items-center">
@@ -135,9 +137,10 @@ export default function ValueFocusSection({
       </div>
 
       {/* DARK BACKGROUND AREA (Continues under white box seamlessly) */}
-      <div className="w-full relative flex flex-col items-center pt-24 pb-[120px] md:pb-[140px] z-10">
-        {/* Client Logos */}
-        <div className="w-full relative flex flex-col items-center">
+      {!hideBottomSection && (
+        <div className="w-full relative flex flex-col items-center pt-24 pb-[120px] md:pb-[140px] z-10">
+          {/* Client Logos */}
+          <div className="w-full relative flex flex-col items-center">
           <div className="text-center text-xs font-semibold text-[var(--muted)] uppercase tracking-[0.25em] mb-12 w-full">
             Trusted by 12+ Innovative Brands Worldwide
           </div>
@@ -190,6 +193,7 @@ export default function ValueFocusSection({
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
