@@ -4,7 +4,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBullseye, FaMagnet, FaBolt, FaSyncAlt } from "react-icons/fa";
 
-const features = [
+export type FeatureCardProps = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};
+
+const defaultFeatures: FeatureCardProps[] = [
   {
     title: "Dominate Market Awareness",
     description: "We amplify your brand's presence across every key platform. Break through the noise, capture peak attention, and establish your business as the undeniable industry authority.",
@@ -27,7 +33,21 @@ const features = [
   }
 ];
 
-export default function ValueFocusSection() {
+export type ValueFocusSectionProps = {
+  badge?: string;
+  titleBase?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  customFeatures?: FeatureCardProps[];
+};
+
+export default function ValueFocusSection({
+  badge = "Proven Growth Method",
+  titleBase = "This Is How We Drive",
+  titleHighlight = "Results",
+  subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
+  customFeatures = defaultFeatures,
+}: ValueFocusSectionProps) {
   return (
     <div className="w-full z-10 relative flex flex-col items-center">
       {/* WHITE CARD AREA */}
@@ -48,19 +68,19 @@ export default function ValueFocusSection() {
             >
                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 mb-6 shadow-sm">
                  <div className="w-2 h-2 rounded-full bg-[var(--accent-dim)] animate-pulse"></div>
-                 <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">Proven Growth Method</span>
+                 <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">{badge}</span>
                </div>
                <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-black">
-                 This Is How We Drive <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic">Results</span></span>
+                 {titleBase} <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic">{titleHighlight}</span></span>
                </h2>
                <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
-                 We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.
+                 {subtitle}
                </p>
             </motion.div>
 
             {/* 4 Boxes Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {features.map((feature, index) => (
+              {customFeatures.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}

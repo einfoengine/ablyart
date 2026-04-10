@@ -6,6 +6,7 @@ import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
+import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
 
 function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -130,7 +131,34 @@ export default function OmnichannelPageClient() {
         </svg>
       </div>
 
-      <ValueFocusSection />
+      <ValueFocusSection 
+        badge="Omnichannel Domination"
+        titleBase="Be Everywhere Your"
+        titleHighlight="Buyers Are"
+        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        customFeatures={[
+          {
+            title: "Omnipresent Authority",
+            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
+            icon: <FaGlobe size={32} />
+          },
+          {
+            title: "Multi-Touch Conversions",
+            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
+            icon: <FaShareAlt size={32} />
+          },
+          {
+            title: "Plummeting Ad Costs",
+            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
+            icon: <FaChartLine size={32} />
+          },
+          {
+            title: "Capture Every Intent",
+            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
+            icon: <FaSearchDollar size={32} />
+          }
+        ]}
+      />
       <AgitationSection />
       <PricingSection />
       <TestimonialsSection />
