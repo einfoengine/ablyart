@@ -32,7 +32,7 @@ export default function Footer() {
           <h2 className="text-5xl md:text-7xl lg:text-[8vw] leading-[0.9] font-black tracking-tighter text-black mb-6">
             Ready to <span className="text-[#9bff6e] drop-shadow-md">grow?</span>
           </h2>
-          <p className="text-lg md:text-2xl text-gray-500 max-w-2xl font-medium tracking-tight">
+          <p className="text-lg md:text-2xl text-gray-600 max-w-2xl font-medium tracking-tight">
             Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
           </p>
         </motion.div>
@@ -53,19 +53,19 @@ export default function Footer() {
               <span className="text-2xl font-black text-black tracking-tight">ablyart.</span>
             </a>
             
-            <p className="text-gray-500 font-medium leading-relaxed max-w-sm mb-10 text-[0.95rem]">
+            <p className="text-gray-600 font-medium leading-relaxed max-w-sm mb-10 text-[0.95rem]">
               We execute data-driven digital strategies — from brand identity to paid tracking, we guarantee you dominate the digital ecosystem.
             </p>
             
             {/* Newsletter */}
             <div className="w-full max-w-md bg-gray-50 rounded-3xl p-8 border border-gray-200">
-              <h4 className="text-black font-extrabold mb-1 tracking-tight">Weekly Growth Insights</h4>
-              <p className="text-sm text-gray-500 mb-5 font-medium">No fluff. Just proven scaling tactics.</p>
+              <h3 className="text-black font-extrabold mb-1 tracking-tight">Weekly Growth Insights</h3>
+              <p className="text-sm text-gray-600 mb-5 font-medium">No fluff. Just proven scaling tactics.</p>
               <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-2">
                 <input 
                   type="email" 
                   placeholder="name@company.com" 
-                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#000] transition-colors font-semibold text-black placeholder:text-gray-400"
+                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#000] transition-colors font-semibold text-black placeholder:text-gray-500"
                 />
                 <button type="submit" className="bg-black hover:bg-[#9bff6e] hover:text-black text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg transition-colors whitespace-nowrap">
                   Subscribe
@@ -84,14 +84,14 @@ export default function Footer() {
           >
             {Object.entries(links).map(([title, items]) => (
               <div key={title} className="flex flex-col">
-                <h4 className="text-black font-black uppercase tracking-[0.15em] text-xs mb-8 flex items-center gap-2">
+                <h3 className="text-black font-black uppercase tracking-[0.15em] text-xs mb-8 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#9bff6e]"></span>
                   {title}
-                </h4>
+                </h3>
                 <ul className="flex flex-col gap-5">
                   {items.map((item) => (
                     <li key={item}>
-                      <a href="#" className="text-gray-500 hover:text-black font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
+                      <a href="#" className="text-gray-600 hover:text-black font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
                         {item}
                         <svg className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#9bff6e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -116,20 +116,21 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 w-full"
         >
-          <p className="text-gray-500 font-bold text-sm tracking-tight">
+          <p className="text-gray-600 font-bold text-sm tracking-tight">
             © {currentYear} ablyart agency. All rights reserved.
           </p>
           
           {/* Socials */}
           <div className="flex items-center gap-3">
             {[ 
-              { icon: <FaXTwitter size={18} />, bg: "hover:bg-black hover:text-white" },
-              { icon: <FaLinkedin size={18} />, bg: "hover:bg-[#0A66C2] hover:text-[#fff]" },
-              { icon: <FaInstagram size={18} />, bg: "hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white border-transparent" },
+              { name: "X (Twitter)", icon: <FaXTwitter size={18} />, bg: "hover:bg-black hover:text-white" },
+              { name: "LinkedIn", icon: <FaLinkedin size={18} />, bg: "hover:bg-[#0A66C2] hover:text-[#fff]" },
+              { name: "Instagram", icon: <FaInstagram size={18} />, bg: "hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white border-transparent" },
             ].map((social, i) => (
               <a 
                 key={i} 
                 href="#" 
+                aria-label={social.name}
                 className={`w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-black border border-gray-200 transition-all duration-300 ${social.bg} hover:border-transparent hover:-translate-y-1 shadow-sm`}
               >
                 {social.icon}
@@ -137,7 +138,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <p className="text-gray-400 font-bold text-sm tracking-tight flex items-center gap-1.5">
+          <p className="text-gray-500 font-bold text-sm tracking-tight flex items-center gap-1.5">
             Engineered with <span className="text-[#9bff6e] text-lg">♥</span> for scale.
           </p>
         </motion.div>
