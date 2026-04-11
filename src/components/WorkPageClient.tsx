@@ -324,6 +324,26 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
         </span>
       </div>
 
+      {/* Hero Image Placeholder */}
+      <div 
+        style={{
+          width: "100%",
+          height: "350px",
+          background: "rgba(255,255,255,0.02)",
+          borderRadius: "16px",
+          marginBottom: "32px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px dashed rgba(255,255,255,0.1)",
+          position: "relative",
+          zIndex: 2,
+          overflow: "hidden"
+        }}
+      >
+        <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.95rem", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase" }}>Featured Project Image</span>
+      </div>
+
       <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
         {/* Left */}
         <div>
@@ -443,8 +463,28 @@ function StudyCard({ study }: { study: CaseStudy }) {
         }}
       />
 
+      {/* Image Placeholder */}
+      <div 
+        style={{
+          width: "100%",
+          height: "220px",
+          background: "rgba(255,255,255,0.02)",
+          borderRadius: "16px",
+          marginBottom: "24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px dashed rgba(255,255,255,0.1)",
+          position: "relative",
+          zIndex: 2,
+          overflow: "hidden"
+        }}
+      >
+        <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase" }}>Project Image</span>
+      </div>
+
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px", position: "relative", zIndex: 2 }}>
         <div>
           <span
             style={{

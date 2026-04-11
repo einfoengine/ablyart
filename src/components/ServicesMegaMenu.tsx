@@ -116,8 +116,8 @@ const generalServices = [
   },
   {
     id: "seo",
-    label: "SEO",
-    description: "Rank higher, drive organic traffic, dominate search.",
+    label: "SEO & PPC",
+    description: "Search engine dominance combined with aggressive intent-based paid media (Google Ads).",
     startingAt: "$1,800/mo",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

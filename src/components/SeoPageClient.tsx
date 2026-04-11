@@ -29,44 +29,106 @@ const deliverables = [
 
 const seoPackages = [
   {
-    name: "Foundation SEO",
+    name: "Local Authority",
     price: "$1,800",
     period: "/mo",
-    description: "Perfect for establishing technical health and local supremacy.",
+    description: "Dominate local search results and capture high-intent geographic traffic.",
     features: [
-      "Extensive Technical Audit & Fixes",
       "Google Business Profile Optimization",
-      "4 Optimized Content Pieces / Month",
-      "Basic Foundational Citations",
-      "Monthly Keyword Ranking Report"
+      "Local Citation Building",
+      "Basic Google Search Ads Setup",
+      "Basic Technical SEO Audit",
+      "Keyword Tracking (Up to 50)"
+    ],
+    detailedDeliverables: [
+      {
+        title: "Local SEO Setup",
+        quantity: "1 Location + 50 Citations",
+        quality: "Fully filled maps, 100% NAP consistency",
+        time: "Spread out over first 3 months"
+      },
+      {
+        title: "Paid Search (PPC)",
+        quantity: "Google Search Ads Launch",
+        quality: "High-intent local keywords targeting, strict budget control",
+        time: "Daily ad monitoring"
+      },
+      {
+        title: "Content Optimization",
+        quantity: "2 Target SEO Blogs/mo",
+        quality: "SurferSEO optimized (Score 80+), human written",
+        time: "Bi-weekly publishing"
+      }
     ],
     isPopular: false,
   },
   {
-    name: "Growth Authority",
+    name: "National Ascend",
     price: "$3,500",
     period: "/mo",
-    description: "Our most popular tier. Aggressive content and link building.",
+    description: "Aggressive organic & paid growth targeting highly competitive national keywords.",
     features: [
-      "Advanced Schema & Silo Architecture",
-      "8 SEO-Optimized Articles / Month",
-      "3 High-DR Editorial Backlinks",
-      "Competitor Gap Analysis",
-      "Bi-Weekly Strategy Syncs"
+      "Comprehensive Technical SEO",
+      "Advanced PPC Management ($10k Spend)",
+      "High-Quality Backlink Building",
+      "Paid Retargeting Interception",
+      "Advanced Schema Markup",
+      "Monthly Strategy Deep-Dive"
+    ],
+    detailedDeliverables: [
+      {
+        title: "PPC Engine & Retargeting",
+        quantity: "Google Ads + Performance Max",
+        quality: "Split-tested ad copy, deep conversion API tracking",
+        time: "Daily optimization & Hourly checks"
+      },
+      {
+        title: "Technical Foundation",
+        quantity: "Full Site Architecture Fix",
+        quality: "Zero broken links, lightning fast load, canonicals fixed",
+        time: "First 45 Days"
+      },
+      {
+        title: "Pillar Content & Backlinks",
+        quantity: "4 Indepth Articles + 3-5 DR 40+ Links",
+        quality: "Industry-expert level research, genuine outreach",
+        time: "Weekly alignment"
+      }
     ],
     isPopular: true,
   },
   {
-    name: "Market Domination",
-    price: "$6,500+",
+    name: "Enterprise Dominance",
+    price: "$7,000+",
     period: "/mo",
-    description: "An enterprise-grade strategy to capture national or global search share.",
+    description: "Massive scale SEO & aggressive ad buys for massive websites.",
     features: [
-      "Enterprise Technical Restructuring",
-      "15+ Content Assets (Blogs/Guides)",
-      "High-Volume Custom Link Outreach",
-      "Digital PR & Media Features",
-      "Dedicated Technical SEO Director"
+      "Programmatic SEO Strategy",
+      "Enterprise PPC Scale ($50k+ Spend)",
+      "Google Shopping / PMax Ads",
+      "Digital PR & Link Acquisition",
+      "Log File & Crawl Analysis",
+      "Custom ROI Reporting"
+    ],
+    detailedDeliverables: [
+      {
+        title: "Mass Scale Ads (PPC)",
+        quantity: "Unlimited Campaigns & Spend Mgmt",
+        quality: "Automated bidding rules, rigorous negative keywords",
+        time: "Always-on dedicated monitoring"
+      },
+      {
+        title: "Programmatic Scale",
+        quantity: "Thousands of Generated Pages",
+        quality: "High-quality dynamic data combining without cannibalization",
+        time: "3-6 Month deployment cycle"
+      },
+      {
+        title: "Competitor Interception",
+        quantity: "Deep Gap Analysis & Ad Bidding",
+        quality: "Stealing traffic directly from competitor branded terms",
+        time: "Monthly sprint planning"
+      }
     ],
     isPopular: false,
   }
@@ -152,7 +214,7 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Search Engine <br />
+          SEO & Paid <br />
           <span className="gradient-text">Domination</span>
         </motion.h1>
 

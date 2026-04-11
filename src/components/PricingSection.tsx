@@ -379,7 +379,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     ]
   },
   "seo": {
-    label: "SEO",
+    label: "SEO & PPC",
     packages: [
       {
         name: "Local Authority",
@@ -389,22 +389,22 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         features: [
           "Google Business Profile Optimization",
           "Local Citation Building",
-          "2 Optimized Blog Posts/mo",
+          "Basic Google Search Ads Setup",
           "Basic Technical SEO Audit",
           "Keyword Tracking (Up to 50)"
         ],
         detailedDeliverables: [
           {
-            title: "Google Business Profile",
-            quantity: "1 High-Density Location Setup",
-            quality: "Fully filled, geo-tagged photos, regular updates",
-            time: "Weekly maintenance"
+            title: "Local SEO Setup",
+            quantity: "1 Location + 50 Citations",
+            quality: "Fully filled maps, 100% NAP consistency",
+            time: "Spread out over first 3 months"
           },
           {
-            title: "Citation Building",
-            quantity: "Top 50 Local Directories",
-            quality: "100% NAP consistency across Yelp, YellowPages, etc.",
-            time: "Spread out over first 3 months"
+            title: "Paid Search (PPC)",
+            quantity: "Google Search Ads Launch",
+            quality: "High-intent local keywords targeting, strict budget control",
+            time: "Daily ad monitoring"
           },
           {
             title: "Content Optimization",
@@ -419,16 +419,22 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         name: "National Ascend",
         price: "$3,500",
         period: "/mo",
-        description: "Aggressive organic growth targeting highly competitive national keywords.",
+        description: "Aggressive organic & paid growth targeting highly competitive national keywords.",
         features: [
           "Comprehensive Technical SEO",
-          "4 Long-form Pillar Posts/mo",
+          "Advanced PPC Management ($10k Spend)",
           "High-Quality Backlink Building",
-          "Content Gap Analysis",
+          "Paid Retargeting Interception",
           "Advanced Schema Markup",
           "Monthly Strategy Deep-Dive"
         ],
         detailedDeliverables: [
+          {
+            title: "PPC Engine & Retargeting",
+            quantity: "Google Ads + Performance Max",
+            quality: "Split-tested ad copy, deep conversion API tracking",
+            time: "Daily optimization & Hourly checks"
+          },
           {
             title: "Technical Foundation",
             quantity: "Full Site Architecture Fix",
@@ -436,16 +442,10 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "First 45 Days"
           },
           {
-            title: "Pillar Content",
-            quantity: "4 Indepth Articles (2,000+ words)",
-            quality: "Industry-expert level research, skyscraper technique",
-            time: "Weekly deployment"
-          },
-          {
-            title: "Backlink Acquisition",
-            quantity: "3-5 High DR Links/mo",
-            quality: "DR 40+, genuine outreach (no PBNs)",
-            time: "Continuous Monthly"
+            title: "Pillar Content & Backlinks",
+            quantity: "4 Indepth Articles + 3-5 DR 40+ Links",
+            quality: "Industry-expert level research, genuine outreach",
+            time: "Weekly alignment"
           }
         ],
         isPopular: true,
@@ -454,16 +454,22 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         name: "Enterprise Dominance",
         price: "$7,000+",
         period: "/mo",
-        description: "Massive scale SEO for massive websites with thousands of pages.",
+        description: "Massive scale SEO & aggressive ad buys for massive websites.",
         features: [
           "Programmatic SEO Strategy",
-          "High-Volume Content Production",
+          "Enterprise PPC Scale ($50k+ Spend)",
+          "Google Shopping / PMax Ads",
           "Digital PR & Link Acquisition",
           "Log File & Crawl Analysis",
-          "Competitor Traffic Interception",
           "Custom ROI Reporting"
         ],
         detailedDeliverables: [
+          {
+            title: "Mass Scale Ads (PPC)",
+            quantity: "Unlimited Campaigns & Spend Mgmt",
+            quality: "Automated bidding rules, rigorous negative keywords",
+            time: "Always-on dedicated monitoring"
+          },
           {
             title: "Programmatic Scale",
             quantity: "Thousands of Generated Pages",
@@ -471,15 +477,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "3-6 Month deployment cycle"
           },
           {
-            title: "Advanced Crawl Analysis",
-            quantity: "Server Log Inspections",
-            quality: "Maximizing crawl budget for millions of URLs",
-            time: "Weekly log checks"
-          },
-          {
             title: "Competitor Interception",
-            quantity: "Deep Gap Analysis",
-            quality: "Stealing traffic from legacy competitors actively",
+            quantity: "Deep Gap Analysis & Ad Bidding",
+            quality: "Stealing traffic directly from competitor branded terms",
             time: "Monthly sprint planning"
           }
         ],
