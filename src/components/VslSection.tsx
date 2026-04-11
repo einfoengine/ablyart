@@ -86,8 +86,8 @@ export default function VslSection() {
               thus <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9bff6e] to-[#6ee7ff] font-black tracking-normal ml-1">scale your business by 1000%</span>
             </p>
           </div>
-          <a
-            href="#discovery"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
             className="btn-glow inline-flex items-center justify-center font-bold"
             style={{
               padding: "18px 40px",
@@ -98,7 +98,7 @@ export default function VslSection() {
             }}
           >
             Audit your potential for free
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

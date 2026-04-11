@@ -27,7 +27,7 @@ export default function StartFreeModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 overflow-y-auto w-full min-h-screen">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-y-auto w-full min-h-screen" style={{ pointerEvents: 'auto' }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -41,6 +41,7 @@ export default function StartFreeModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative w-full max-w-2xl bg-[#0b0b0e] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10 my-8"
+            style={{ maxHeight: '85vh' }}
           >
             {/* Header / Dismiss */}
             <div className="p-6 border-b border-white/5 flex justify-between items-start bg-white/[0.02]">

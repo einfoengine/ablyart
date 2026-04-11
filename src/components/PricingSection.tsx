@@ -726,7 +726,7 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
       {/* Modal Overlay */}
       <AnimatePresence>
         {selectedPackage && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" style={{ pointerEvents: 'auto' }}>
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6" style={{ pointerEvents: 'auto' }}>
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -740,7 +740,7 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-4xl bg-[#0b0b0e] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10"
-              style={{ maxHeight: '90vh' }}
+              style={{ maxHeight: '85vh', margin: '2rem 0' }}
             >
               {/* Header */}
               <div className="p-6 md:p-8 border-b border-white/5 flex justify-between items-start bg-white/[0.02]">
