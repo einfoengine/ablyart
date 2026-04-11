@@ -80,10 +80,22 @@ const coreServices = [
 
 const generalServices = [
   {
-    id: "web-social",
-    label: "Web & Social",
-    description: "Social management + web presence for growing brands.",
-    startingAt: "$1,500/mo",
+    id: "web-solutions",
+    label: "Web Solutions",
+    description: "Design, development & full maintenance solutions.",
+    startingAt: "$2,500",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M16 18L22 12L16 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 6L2 12L8 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "social-media",
+    label: "Social Media",
+    description: "Organic community building & viral content scaling.",
+    startingAt: "$1,200/mo",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
@@ -112,17 +124,6 @@ const generalServices = [
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="5" width="15" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
         <path d="M17 9l5-3v12l-5-3V9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    id: "lead-gen",
-    label: "Lead Generation",
-    description: "Predictable pipeline via funnels, ads & automation.",
-    startingAt: "$2,000/mo",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M3 5h18l-7 9v6l-4-2v-4L3 5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
       </svg>
     ),
   },

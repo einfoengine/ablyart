@@ -13,49 +13,98 @@ export type PricingPackage = {
 };
 
 const pricingData: Record<string, { label: string; packages: PricingPackage[] }> = {
-  "web-social": {
-    label: "Web & Social",
+  "web-solutions": {
+    label: "Web Solutions",
     packages: [
       {
-        name: "Starter",
-        price: "$1,500",
-        period: "/mo",
-        description: "Perfect for emerging brands looking to establish a professional baseline.",
+        name: "Landing Pages",
+        price: "$2,500+",
+        period: "/project",
+        description: "Perfect for a high-converting single page or short funnel.",
         features: [
-          "2 Platforms Managed (e.g. IG, TikTok)",
-          "12 Custom Posts per Month",
-          "Website Maintenance (Up to 5hrs)",
-          "Basic Community Management",
-          "Monthly Performance Report"
+          "Custom UI/UX Design",
+          "Next.js / React Architecture",
+          "Mobile & Speed Optimized",
+          "Basic SEO Setup",
+          "Analytics Integration"
         ],
         isPopular: false,
       },
       {
-        name: "Growth",
-        price: "$3,200",
+        name: "Corporate Build",
+        price: "$6,500+",
+        period: "/project",
+        description: "Full multi-page site for established growing businesses.",
+        features: [
+          "Full Brand Identity Integration",
+          "CMS Setup (Sanity)",
+          "Dynamic Routing & SEO",
+          "Advanced Analytics",
+          "2 Weeks Post-Launch Support",
+          "Dedicated Account Manager"
+        ],
+        isPopular: true,
+      },
+      {
+        name: "Enterprise Systems",
+        price: "$15,000+",
+        period: "/project",
+        description: "Complex logic, user portals, or full headless commerce.",
+        features: [
+          "Custom Database Architecture",
+          "Headless E-Commerce Setup",
+          "Third-Party API Integrations",
+          "Rigorous Security & QA",
+          "Priority 24/7 Support",
+          "Continuous Delivery Pipeline"
+        ],
+        isPopular: false,
+      }
+    ]
+  },
+  "social-media": {
+    label: "Social Media",
+    packages: [
+      {
+        name: "Baseline Organic",
+        price: "$1,200",
         period: "/mo",
-        description: "Our most chosen tier for businesses ready to aggressively expand.",
+        description: "Consistent branding to ensure your digital footprint looks alive.",
+        features: [
+          "2 Platforms Managed",
+          "12 Custom Posts per Month",
+          "Basic Community Management",
+          "Monthly Content Calendar",
+          "Analytics Overview"
+        ],
+        isPopular: false,
+      },
+      {
+        name: "Aggressive Growth",
+        price: "$2,800",
+        period: "/mo",
+        description: "Our most chosen tier to rapidly expand and capture audience attention.",
         features: [
           "4 Platforms Managed",
-          "20 Custom Posts (Static + Reels)",
+          "24 Custom Posts (Static + Video)",
           "Proactive Outbound Engagement",
-          "Landing Page Optimization",
+          "Graphic Design Support",
           "Bi-Weekly Strategy Calls",
           "Dedicated Account Manager"
         ],
         isPopular: true,
       },
       {
-        name: "Scale",
-        price: "$5,500+",
+        name: "Viral Machinery",
+        price: "$5,000+",
         period: "/mo",
-        description: "Full-scale content machinery for enterprise or high-volume DTC.",
+        description: "A complete outsourced content team for high-volume brands.",
         features: [
           "Omnichannel Presence",
-          "Unlimited Graphic Design",
-          "Custom Web Development Requests",
+          "Unlimited Daily Posts",
           "Influencer Outreach Management",
-          "24/7 Priority Support",
+          "Dedicated Video Editor",
+          "Priority 24/7 Community Handling",
           "Custom Dashboard Analytics"
         ],
         isPopular: false,
@@ -159,55 +208,6 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         isPopular: false,
       }
     ]
-  },
-  "lead-gen": {
-    label: "Lead Gen",
-    packages: [
-      {
-        name: "Funnel Kickstart",
-        price: "$2,000",
-        period: "/mo",
-        description: "Stop relying on referrals and start generating predictable pipeline.",
-        features: [
-          "1 Custom Landing Page",
-          "Ad Account Setup & Tracking",
-          "Basic Meta/Google Ads Run",
-          "Simple Email Nurture Sequence",
-          "Lead Webhook Integration"
-        ],
-        isPopular: false,
-      },
-      {
-        name: "Conversion Engine",
-        price: "$4,500",
-        period: "/mo",
-        description: "Our complete suite for aggressively lowering your Customer Acquisition Cost.",
-        features: [
-          "Multi-Step Funnel Engineering",
-          "Advanced CRO & A/B Testing",
-          "Omnichannel Retargeting Ads",
-          "Complex Email/SMS Automations",
-          "UTM & Offline Conversion Tracking",
-          "Weekly Lead Quality Review"
-        ],
-        isPopular: true,
-      },
-      {
-        name: "Scale & Dominate",
-        price: "$9,000+",
-        period: "/mo",
-        description: "For agencies/B2B operators who need 100+ highly qualified calls booked per month.",
-        features: [
-          "Custom Outbound & Inbound Systems",
-          "Cold Email Infrastructure (10+ domains)",
-          "Bespoke Lead Scraping & Enrichment",
-          "AI Appointment Setter Integration",
-          "Sales Team Handoff Protocols",
-          "Guaranteed Lead Volumes"
-        ],
-        isPopular: false,
-      }
-    ]
   }
 };
 
@@ -216,7 +216,7 @@ export type PricingSectionProps = {
 };
 
 export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
-  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("web-social");
+  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("web-solutions");
   
   const displayPackages = customPackages || pricingData[activeTab].packages;
 
