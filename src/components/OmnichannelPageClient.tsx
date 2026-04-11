@@ -38,41 +38,81 @@ const omnichannelPackages = [
     period: "/mo",
     description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "Social Media Management (1 Platform)",
+      "10 Assorted Posts / mo",
+      "Basic Profile SEO Setup",
+      "Monthly Strategy Sync"
+    ],
+    detailedDeliverables: [
+      {
+        title: "Social Setup",
+        quantity: "1 Platform",
+        quality: "Standard Optimization",
+        time: "Monthly"
+      },
+      {
+        title: "Content",
+        quantity: "10 Posts",
+        quality: "Standard Graphics",
+        time: "Ongoing"
+      }
     ],
     isPopular: false,
   },
   {
     name: "Omnipresence",
-    price: "$4,800",
+    price: "$4,000",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Scale your presence across multiple traffic channels simultaneously.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "Full Social Management (3 Platforms)",
+      "24 Posts + Short-Form Videos",
+      "Basic SEO Content (2 Blogs/mo)",
+      "Bi-Weekly Analytics Sync",
+      "Dedicated Account Slack"
+    ],
+    detailedDeliverables: [
+      {
+        title: "Platform Scaling",
+        quantity: "3 Platforms",
+        quality: "Aggressive Optimization",
+        time: "Bi-Weekly"
+      },
+      {
+        title: "Content Generation",
+        quantity: "24 Mixed Media Assets",
+        quality: "Premium Design",
+        time: "Ongoing"
+      }
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
+    name: "Market Domination",
     price: "$8,500+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "The peak package for comprehensive ad buying, PR, and mass-scale publishing.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "Unlimited Organic Content",
+      "Ad Setup & Scaling ($10k+ Spend)",
+      "Digital PR Placements",
+      "Full Search Engine Dominance",
+      "Daily Performance Reporting",
+      "Priority 24/7 Adjustments"
+    ],
+    detailedDeliverables: [
+      {
+        title: "Comprehensive Output",
+        quantity: "Unlimited Production",
+        quality: "Enterprise Tier",
+        time: "24/7 Deployment"
+      },
+      {
+        title: "Paid Media",
+        quantity: "Full Budget Ops",
+        quality: "Strict ROAS Targets",
+        time: "Daily Tuning"
+      }
     ],
     isPopular: false,
   }

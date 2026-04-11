@@ -80,6 +80,17 @@ const coreServices = [
 
 const generalServices = [
   {
+    id: "holistic-marketing",
+    label: "Holistic Marketing",
+    description: "Our complete all-in-one digital growth engine.",
+    startingAt: "$5,000/mo",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
     id: "web-solutions",
     label: "Web Solutions",
     description: "Design, development & full maintenance solutions.",
@@ -586,7 +597,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 </span>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px" }}>
                 {generalServices.map((svc) => (
                   <a
                     key={svc.id}

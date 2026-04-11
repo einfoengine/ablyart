@@ -3,16 +3,151 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+export type DetailedDeliverable = {
+  title: string;
+  quality: string;
+  time: string;
+  quantity: string;
+};
+
 export type PricingPackage = {
   name: string;
   price: string;
   period: string;
   description: string;
   features: string[];
+  detailedDeliverables?: DetailedDeliverable[];
   isPopular: boolean;
 };
 
 const pricingData: Record<string, { label: string; packages: PricingPackage[] }> = {
+  "holistic-marketing": {
+    label: "Holistic Marketing",
+    packages: [
+      {
+        name: "Growth Engine",
+        price: "$5,000",
+        period: "/mo",
+        description: "Perfect for taking an established business and digitizing their entire marketing flow.",
+        features: [
+          "Complete Web Redesign",
+          "Basic SEO & Citations",
+          "3 Social Platforms Managed",
+          "Introductory Media Buying",
+          "Bi-Weekly Reporting"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Complete Web Redesign",
+            quantity: "1 Home + 4 Core Pages",
+            quality: "Custom UI/UX, Next.js Architecture, Mobile Perfect",
+            time: "Initial Launch in 30 Days"
+          },
+          {
+            title: "Search & Local SEO",
+            quantity: "50 Citations + Tech Audit",
+            quality: "White-hat Google compliant, Hand-written code fixes",
+            time: "Continuous Monthly Tuning"
+          },
+          {
+            title: "Social Platforms Managed",
+            quantity: "3 Platforms (IG, TikTok, FB), 12 Posts",
+            quality: "High-end Graphic Design & Value-driven Copy",
+            time: "3 Posts Minimum Per Week"
+          },
+          {
+            title: "Introductory Media Buying",
+            quantity: "Up to $3,000 Monthly Ad Spend",
+            quality: "Meta Ads Manager precise targeting & A/B testing",
+            time: "Daily Campaign Monitoring"
+          }
+        ],
+        isPopular: false,
+      },
+      {
+        name: "Market Domination",
+        price: "$8,500",
+        period: "/mo",
+        description: "Our core offering. We run your entire digital department end-to-end.",
+        features: [
+          "Custom Web App Development",
+          "Advanced Topical SEO Architecture",
+          "Omnichannel Social (4 Platforms)",
+          "Aggressive Ad Scale (Up to $50k spend)",
+          "Weekly Strategy & Growth Syncs",
+          "Full Funnel Optimization"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Custom Web App / E-Commerce Built",
+            quantity: "Uncapped Core Pages + CMS integration",
+            quality: "Headless architecture, zero-latency load times",
+            time: "Ongoing dedicated development hours"
+          },
+          {
+            title: "Topical SEO Authority",
+            quantity: "4 Long-Form Pillar Articles + Link Building",
+            quality: "Expert-written, fully Schema marked, deep research",
+            time: "4 Published Articles Monthly"
+          },
+          {
+            title: "Omnichannel Social Play",
+            quantity: "4 Platforms, 24 Posts (Static + Reels)",
+            quality: "Viral hooks matching strict brand identity",
+            time: "6x Posts per week + Active Community Mgmt"
+          },
+          {
+            title: "Aggressive Ad Scaling",
+            quantity: "Up to $50,000 Monthly Ad Spend",
+            quality: "Full retargeting funnels, Lookalike mapping",
+            time: "Daily Optimization & Hourly Budget Adjustments"
+          }
+        ],
+        isPopular: true,
+      },
+      {
+        name: "Enterprise Scaling",
+        price: "$15,000+",
+        period: "/mo",
+        description: "Designed for massive scale, aggressive content production, and enterprise traffic.",
+        features: [
+          "Headless E-Commerce/Web Support",
+          "In-House Quality Video Production",
+          "Digital PR & Link Building",
+          "Unlimited Lead Gen Flows",
+          "Dedicated Team of 4 Experts",
+          "24/7 Priority Support"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Enterprise Web Support",
+            quantity: "Full Dedicated Stack Control",
+            quality: "Bank-level security, instant server-side rendering",
+            time: "24/7 Uptime & Instant Bug Fixes"
+          },
+          {
+            title: "In-House Video Production",
+            quantity: "15 Shorts + 2 Cinematic Long-forms",
+            quality: "4k Camera Equipment, Pro Grading & Editing",
+            time: "Monthly filming days"
+          },
+          {
+            title: "Digital PR Machinery",
+            quantity: "High-Domain Authority Placements",
+            quality: "Real news outlets, DO-FOLLOW context links",
+            time: "3-5 Premium Placements Monthly"
+          },
+          {
+            title: "Unlimited Dedicated Account Support",
+            quantity: "1 Dedicated Director + 3 Specialists",
+            quality: "Direct Slack channel, zero wait times",
+            time: "Responses under 15 minutes, 24/7 emergencies"
+          }
+        ],
+        isPopular: false,
+      }
+    ]
+  },
   "web-solutions": {
     label: "Web Solutions",
     packages: [
@@ -27,6 +162,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Mobile & Speed Optimized",
           "Basic SEO Setup",
           "Analytics Integration"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Custom UI/UX Design",
+            quantity: "1 Long-Form Landing Page",
+            quality: "Premium Figma wireframing & prototyping",
+            time: "Delivered in 10-14 days"
+          },
+          {
+            title: "Frontend Engineering",
+            quantity: "Full Next.js Codebase",
+            quality: "Zero-latency rendering, clean architecture",
+            time: "Built within 7 days of design approval"
+          },
+          {
+            title: "Performance & Tracking",
+            quantity: "Speed Optimization + Tags Setup",
+            quality: "Google Tag Manager, Meta Pixel, 95+ PageSpeed",
+            time: "Pre-launch integration"
+          }
         ],
         isPopular: false,
       },
@@ -43,6 +198,32 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "2 Weeks Post-Launch Support",
           "Dedicated Account Manager"
         ],
+        detailedDeliverables: [
+          {
+            title: "Full Brand Site",
+            quantity: "Up to 10 Custom Pages",
+            quality: "Pixel-perfect multi-viewport responsive design",
+            time: "4-6 Weeks Timeline"
+          },
+          {
+            title: "Headless CMS Setup",
+            quantity: "Sanity.io Integration",
+            quality: "Easy drag-and-drop client dashboard",
+            time: "Delivered at launch"
+          },
+          {
+            title: "Technical SEO & Structure",
+            quantity: "Dynamic Routing for scale",
+            quality: "Schema markup, dynamic sitemaps",
+            time: "Built-in"
+          },
+          {
+            title: "Maintenance",
+            quantity: "2 Weeks Post-Launch Support",
+            quality: "Priority bug-fixing and fine-tuning",
+            time: "First 14 days after go-live"
+          }
+        ],
         isPopular: true,
       },
       {
@@ -57,6 +238,32 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Rigorous Security & QA",
           "Priority 24/7 Support",
           "Continuous Delivery Pipeline"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Database Architecture",
+            quantity: "Custom Backend & PostgreSQL/NoSQL",
+            quality: "Scalable schema, zero failover risk",
+            time: "Scoped per project sprint"
+          },
+          {
+            title: "E-Commerce / Portals",
+            quantity: "Full Headless Shopify/Stripe integration",
+            quality: "PCI-compliant, seamless user portals",
+            time: "8-12 Weeks Timeline"
+          },
+          {
+            title: "API & Infrastructure",
+            quantity: "Unlimited Third Party Integrations",
+            quality: "Enterprise-level CI/CD & Vercel hosting",
+            time: "Managed lifecycle"
+          },
+          {
+            title: "Ongoing Maintenance",
+            quantity: "Dedicated SLA",
+            quality: "24/7 priority support, automated patching",
+            time: "Continuous Retainer"
+          }
         ],
         isPopular: false,
       }
@@ -77,6 +284,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Monthly Content Calendar",
           "Analytics Overview"
         ],
+        detailedDeliverables: [
+          {
+            title: "2 Platforms Managed",
+            quantity: "Any 2 (e.g. IG + LinkedIn)",
+            quality: "Fully optimized bios and highlight covers",
+            time: "Daily monitoring"
+          },
+          {
+            title: "Custom Posts",
+            quantity: "12 High-Quality Graphics/Carousels",
+            quality: "Brand-aligned, no generic stock photos",
+            time: "3 Posts per week"
+          },
+          {
+            title: "Community Management",
+            quantity: "Basic Inbox & Comment Replies",
+            quality: "Professional tone, spam filtering",
+            time: "Handled within 24 hours"
+          }
+        ],
         isPopular: false,
       },
       {
@@ -92,6 +319,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Bi-Weekly Strategy Calls",
           "Dedicated Account Manager"
         ],
+        detailedDeliverables: [
+          {
+            title: "Full Coverage Content",
+            quantity: "24 Custom Posts",
+            quality: "Mix of high-end graphics and short-form video edit",
+            time: "Every other day posting"
+          },
+          {
+            title: "Outbound Engagement",
+            quantity: "50+ Target Accounts Engaged",
+            quality: "Meaningful, non-bot authentic comments to pull traffic",
+            time: "Daily outbound ops"
+          },
+          {
+            title: "Strategy & Support",
+            quantity: "Bi-Weekly Calls",
+            quality: "Data-driven pivots on hooks and engagement rate",
+            time: "2 check-ins per month"
+          }
+        ],
         isPopular: true,
       },
       {
@@ -106,6 +353,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Dedicated Video Editor",
           "Priority 24/7 Community Handling",
           "Custom Dashboard Analytics"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Mass Scale Posting",
+            quantity: "Unlimited Platform Management",
+            quality: "Volume-optimized tailored formats for every feed",
+            time: "Up to 2-3 times daily"
+          },
+          {
+            title: "Influencer Management",
+            quantity: "Up to 10 Micro-Influencer Campaigns/mo",
+            quality: "Vetting, negotiating, and shipping coordination",
+            time: "Ongoing dedicated outreach"
+          },
+          {
+            title: "Priority Community",
+            quantity: "24/7 Dedicated Brand Voice",
+            quality: "Converting DMs directly into sales pipeline",
+            time: "Responses under 1 hour"
+          }
         ],
         isPopular: false,
       }
@@ -126,6 +393,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Basic Technical SEO Audit",
           "Keyword Tracking (Up to 50)"
         ],
+        detailedDeliverables: [
+          {
+            title: "Google Business Profile",
+            quantity: "1 High-Density Location Setup",
+            quality: "Fully filled, geo-tagged photos, regular updates",
+            time: "Weekly maintenance"
+          },
+          {
+            title: "Citation Building",
+            quantity: "Top 50 Local Directories",
+            quality: "100% NAP consistency across Yelp, YellowPages, etc.",
+            time: "Spread out over first 3 months"
+          },
+          {
+            title: "Content Optimization",
+            quantity: "2 Target SEO Blogs/mo",
+            quality: "SurferSEO optimized (Score 80+), human written",
+            time: "Bi-weekly publishing"
+          }
+        ],
         isPopular: false,
       },
       {
@@ -141,6 +428,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Advanced Schema Markup",
           "Monthly Strategy Deep-Dive"
         ],
+        detailedDeliverables: [
+          {
+            title: "Technical Foundation",
+            quantity: "Full Site Architecture Fix",
+            quality: "Zero broken links, lightning fast load, canonicals fixed",
+            time: "First 45 Days"
+          },
+          {
+            title: "Pillar Content",
+            quantity: "4 Indepth Articles (2,000+ words)",
+            quality: "Industry-expert level research, skyscraper technique",
+            time: "Weekly deployment"
+          },
+          {
+            title: "Backlink Acquisition",
+            quantity: "3-5 High DR Links/mo",
+            quality: "DR 40+, genuine outreach (no PBNs)",
+            time: "Continuous Monthly"
+          }
+        ],
         isPopular: true,
       },
       {
@@ -155,6 +462,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Log File & Crawl Analysis",
           "Competitor Traffic Interception",
           "Custom ROI Reporting"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Programmatic Scale",
+            quantity: "Thousands of Generated Pages",
+            quality: "High-quality dynamic data combining without cannibalization",
+            time: "3-6 Month deployment cycle"
+          },
+          {
+            title: "Advanced Crawl Analysis",
+            quantity: "Server Log Inspections",
+            quality: "Maximizing crawl budget for millions of URLs",
+            time: "Weekly log checks"
+          },
+          {
+            title: "Competitor Interception",
+            quantity: "Deep Gap Analysis",
+            quality: "Stealing traffic from legacy competitors actively",
+            time: "Monthly sprint planning"
+          }
         ],
         isPopular: false,
       }
@@ -175,6 +502,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Trending Audio Sourcing",
           "Platform Publishing"
         ],
+        detailedDeliverables: [
+          {
+            title: "Short-Form Production",
+            quantity: "8 Fully Edited Vertical Videos (<60s)",
+            quality: "Dynamic captions, sound design, engaging b-roll",
+            time: "2 Delivered per week"
+          },
+          {
+            title: "Scripting & Hooks",
+            quantity: "8 Custom Scripts",
+            quality: "Psychologically driven hooks that guarantee retention",
+            time: "Provided bi-weekly for your review"
+          },
+          {
+            title: "Audio & Sourcing",
+            quantity: "Trend Surveillance",
+            quality: "Only using high-momentum, rapidly rising audios",
+            time: "Daily trend monitoring"
+          }
+        ],
         isPopular: false,
       },
       {
@@ -189,6 +536,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "A/B Testing Hooks",
           "SEO-Optimized Video Titles",
           "Monthly Audience Retention Analysis"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Hybrid Volume",
+            quantity: "15 Shorts + 2 Long-forms (10m+)",
+            quality: "Broadcast-level editing and color matching",
+            time: "Consistent weekly flow"
+          },
+          {
+            title: "Thumbnail Strategy",
+            quantity: "3 Varsity Templates per video",
+            quality: "High CTR guarantee with A/B testing in native UI",
+            time: "Tested 24hrs post-launch"
+          },
+          {
+            title: "Retention Analytics",
+            quantity: "Deep dive metrics",
+            quality: "Pinpointing the exact millisecond viewers drop off",
+            time: "Monthly Data Report"
+          }
         ],
         isPopular: true,
       },
@@ -205,6 +572,26 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Cinematic Color Grading",
           "Formats Cut for Every Platform"
         ],
+        detailedDeliverables: [
+          {
+            title: "Full Set Production",
+            quantity: "1-3 Day Shoots",
+            quality: "Red/Arri Cinema Cameras, Full Gaffer & Grip crew",
+            time: "Pre-production 2-3 weeks, Shoot 1-3 Days"
+          },
+          {
+            title: "Advanced Post-Production",
+            quantity: "1 Hero Asset + Infinite micro-clips",
+            quality: "Full VFX, sound mixing, multi-platform render passes",
+            time: "3-4 Weeks Post-Production"
+          },
+          {
+            title: "Casting & Sourcing",
+            quantity: "Hand-picked talent",
+            quality: "Authentic UGC creators or professional SAG actors",
+            time: "Handled entirely during pre-pro"
+          }
+        ],
         isPopular: false,
       }
     ]
@@ -216,7 +603,8 @@ export type PricingSectionProps = {
 };
 
 export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
-  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("web-solutions");
+  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("holistic-marketing");
+  const [selectedPackage, setSelectedPackage] = useState<PricingPackage | null>(null);
   
   const displayPackages = customPackages || pricingData[activeTab].packages;
 
@@ -312,16 +700,16 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                     ))}
                   </ul>
 
-                  <a
-                    href="#contact"
-                    className={`mt-auto text-center font-bold py-4 px-6 rounded-xl transition-all duration-300 ${
+                  <button
+                    onClick={() => setSelectedPackage(pkg)}
+                    className={`mt-auto text-center font-bold py-4 px-6 rounded-xl transition-all duration-300 w-full ${
                       pkg.isPopular 
                         ? "bg-[var(--accent)] text-black hover:bg-[#86ea5c] shadow-[0_0_20px_rgba(155,255,110,0.3)]" 
                         : "bg-white/5 text-white hover:bg-white/10"
                     }`}
                   >
-                    Choose {pkg.name}
-                  </a>
+                    View Package Details
+                  </button>
                 </div>
               ))}
             </motion.div>
@@ -334,6 +722,130 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
         </div>
 
       </div>
+
+      {/* Modal Overlay */}
+      <AnimatePresence>
+        {selectedPackage && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" style={{ pointerEvents: 'auto' }}>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-[#060608]/90 backdrop-blur-md"
+              onClick={() => setSelectedPackage(null)}
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl bg-[#0b0b0e] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10"
+              style={{ maxHeight: '90vh' }}
+            >
+              {/* Header */}
+              <div className="p-6 md:p-8 border-b border-white/5 flex justify-between items-start bg-white/[0.02]">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-bold text-[#f0f0f8]">{selectedPackage.name}</h3>
+                    {selectedPackage.isPopular && (
+                      <span className="bg-[var(--accent)] text-black font-bold text-[10px] uppercase tracking-wider py-1 px-3 rounded-full">
+                        Most Selected
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-black text-white">{selectedPackage.price}</span>
+                    <span className="text-gray-500 font-medium">{selectedPackage.period}</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setSelectedPackage(null)}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
+                <p className="text-gray-300 mb-8 text-lg">{selectedPackage.description}</p>
+                
+                <h4 className="text-[var(--accent)] font-bold text-sm tracking-widest uppercase mb-6 flex items-center gap-3">
+                  <span className="w-8 h-px bg-[var(--accent)]/50"></span>
+                  Clarified Deliverables
+                  <span className="flex-1 h-px bg-[var(--accent)]/10"></span>
+                </h4>
+                
+                <div className="flex flex-col gap-4">
+                  {selectedPackage.detailedDeliverables && selectedPackage.detailedDeliverables.length > 0 ? (
+                    selectedPackage.detailedDeliverables.map((item, idx) => (
+                      <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5 hover:border-[var(--accent)]/30 transition-colors">
+                        <h5 className="font-bold text-lg text-white mb-4">{item.title}</h5>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="flex flex-col gap-1">
+                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</span>
+                            <span className="text-sm text-gray-300">{item.quantity}</span>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quality Expectation</span>
+                            <span className="text-sm text-gray-300">{item.quality}</span>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Time / Frequency</span>
+                            <span className="text-sm text-gray-300">{item.time}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-center text-gray-400">
+                      Standard deliverables apply. Please contact us for a detailed breakdown or view the basic features below.
+                      <ul className="mt-4 text-left flex flex-col gap-2 max-w-md mx-auto">
+                        {selectedPackage.features.map((feat, i) => (
+                          <li key={i} className="flex gap-2 text-sm text-gray-300 items-start">
+                            <span className="text-[var(--accent)]">✦</span> {feat}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="p-6 md:p-8 border-t border-white/5 bg-black/20 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-xs text-gray-500 flex-1">
+                  100% transparency. By proceeding, you will be connected with our directors to instantly begin onboarding for these exact deliverables.
+                </p>
+                <a
+                  href="/contact"
+                  className="bg-[var(--accent)] text-black font-bold py-4 px-8 rounded-xl hover:bg-[#86ea5c] shadow-[0_0_20px_rgba(155,255,110,0.2)] transition-all whitespace-nowrap"
+                >
+                  Confirm & Start Onboarding
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255,255,255,0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255,255,255,0.1);
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(255,255,255,0.2);
+        }
+      `}} />
     </section>
   );
 }
