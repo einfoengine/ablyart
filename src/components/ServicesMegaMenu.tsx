@@ -589,7 +589,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 {generalServices.map((svc) => (
                   <a
                     key={svc.id}
-                    href="#pricing"
+                    href={`/services/${svc.id}`}
                     onClick={() => setOpen(false)}
                     style={{
                       display: "flex",

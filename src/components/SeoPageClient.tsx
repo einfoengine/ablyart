@@ -6,98 +6,92 @@ import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
-import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
+import { FaSearch, FaCode, FaLink, FaMapMarkerAlt } from "react-icons/fa";
 
 const deliverables = [
   {
-    title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    title: "Capture High-Intent Traffic (Technical & On-Page)",
+    desc: "We completely overhaul your website's architecture and content. By fixing indexation errors, optimizing metadata, and improving site speed, we ensure Google effortlessly crawls and ranks your most profitable pages.",
   },
   {
-    title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    title: "Dominate the Content Authority (Content Strategy)",
+    desc: "Stop guessing what to write. We deploy data-backed, keyword-rich content clusters that position your website as the definitive, undeniable authority in your industry.",
   },
   {
-    title: "Advanced Tracking & Infrastructure",
-    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+    title: "Build Unshakeable Domain Trust (Link Building)",
+    desc: "We secure high-quality, relevant backlinks from trusted industry publications. Strong link equity is the fuel that permanently locks your pages into the top 3 search results.",
   },
   {
-    title: "Proactive Media Buying",
-    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
-  },
-  {
-    title: "Dedicated Growth Partner",
-    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+    title: "Monopolize Your Geography (Local SEO)",
+    desc: "For local businesses, we aggressively optimize your Google Business Profile and local citations, ensuring your phone rings every time a nearby customer searches for your service.",
   }
 ];
 
-const omnichannelPackages = [
+const seoPackages = [
   {
-    name: "Foundation",
-    price: "$2,500",
+    name: "Foundation SEO",
+    price: "$1,800",
     period: "/mo",
-    description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
+    description: "Perfect for establishing technical health and local supremacy.",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "Extensive Technical Audit & Fixes",
+      "Google Business Profile Optimization",
+      "4 Optimized Content Pieces / Month",
+      "Basic Foundational Citations",
+      "Monthly Keyword Ranking Report"
     ],
     isPopular: false,
   },
   {
-    name: "Omnipresence",
-    price: "$4,800",
+    name: "Growth Authority",
+    price: "$3,500",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Our most popular tier. Aggressive content and link building.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "Advanced Schema & Silo Architecture",
+      "8 SEO-Optimized Articles / Month",
+      "3 High-DR Editorial Backlinks",
+      "Competitor Gap Analysis",
+      "Bi-Weekly Strategy Syncs"
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
-    price: "$8,500+",
+    name: "Market Domination",
+    price: "$6,500+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "An enterprise-grade strategy to capture national or global search share.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "Enterprise Technical Restructuring",
+      "15+ Content Assets (Blogs/Guides)",
+      "High-Volume Custom Link Outreach",
+      "Digital PR & Media Features",
+      "Dedicated Technical SEO Director"
     ],
     isPopular: false,
   }
 ];
 
-const omnichannelArticles = [
+const seoArticles = [
   {
-    category: "Case Study",
-    date: "Sep 14, 2024",
-    title: "How Cross-Platform Retargeting Dropped Average CPA By 42%",
-    excerpt: "See the exact framework we used to capture lost traffic from Facebook and convert them via YouTube ads.",
+    category: "Technical Rescue",
+    date: "Sep 12, 2024",
+    title: "How We Recovered a Site from a 60% Google Core Update Penalty",
+    excerpt: "When thin content and poor technical structure crush your traffic, here is the exact 30-day technical sprint we use to bounce back.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
   },
   {
-    category: "Strategy",
-    date: "Oct 02, 2024",
-    title: "The Death of Single-Channel Marketing",
-    excerpt: "Why relying solely on one traffic source is the biggest risk your business faces this year, and how to diversify.",
+    category: "Content Strategy",
+    date: "Oct 05, 2024",
+    title: "The Topic Cluster Model That Generated $240k in Organic Pipeline",
+    excerpt: "Stop writing random blog posts. Learn how semantic clustering forces Google to view you as the definitive topical authority.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
+    category: "Link Building",
     date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    title: "Why 1 Good Backlink is Worth 100 'Toxic' Directory Submissions",
+    excerpt: "The truth about modern link building. We break down our digital PR process that lands placements on DR 70+ industry publications.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -140,7 +134,7 @@ function HeroSection() {
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
             <span className="tag-pill">
               <span className="glow-dot" style={{ backgroundColor: "#9bff6e", boxShadow: "0 0 10px #9bff6e" }} />
-              Service Landing Page
+              Organic Growth Strategy
             </span>
           </div>
         </motion.div>
@@ -158,8 +152,8 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Omnichannel Traffic <br />
-          <span className="gradient-text">& Awareness</span>
+          Search Engine <br />
+          <span className="gradient-text">Domination</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +168,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Capture the highest-converting traffic on the internet. We deploy elite technical SEO, strategic content clustering, and high-authority link building to rank you #1 when your customers are ready to buy.
         </motion.p>
         
         <motion.div
@@ -207,7 +201,7 @@ function HeroSection() {
   );
 }
 
-export default function OmnichannelPageClient() {
+export default function SeoPageClient() {
   return (
     <main style={{ minHeight: "100vh" }}>
       <HeroSection />
@@ -218,7 +212,7 @@ export default function OmnichannelPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ 
+              TECHNICAL ARCHITECTURE ✦ CONTENT STRATEGY ✦ LINK BUILDING ✦ LOCAL AUTHORITY ✦ TECHNICAL ARCHITECTURE ✦ CONTENT STRATEGY ✦ LINK BUILDING ✦ LOCAL AUTHORITY ✦ TECHNICAL ARCHITECTURE ✦ CONTENT STRATEGY ✦ LINK BUILDING ✦ LOCAL AUTHORITY ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>
@@ -226,34 +220,35 @@ export default function OmnichannelPageClient() {
       </div>
 
       <ValueFocusSection 
-        badge="Omnichannel Domination"
-        titleBase="Be Everywhere Your"
-        titleHighlight="Buyers Are"
-        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        badge="The Organic Flywheel"
+        titleBase="How We Command"
+        titleHighlight="Search Engines"
+        subtitle="SEO is not magic; it's a math equation. We systematically satisfy Google's core ranking pillars to guarantee predictable, sustainable traffic growth."
         customFeatures={[
           {
-            title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
-            icon: <FaGlobe size={32} />
+            title: "Technical Excellence",
+            description: "We optimize your codebase, site speed, and indexability so search bots can instantly crawl and rank your most valuable pages.",
+            icon: <FaCode size={32} />
           },
           {
-            title: "Multi-Touch Conversions",
-            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
-            icon: <FaShareAlt size={32} />
+            title: "Contextual Relevance",
+            description: "Deep keyword gap analysis and topic clustering ensure you capture high-intent searches that your competitors are missing.",
+            icon: <FaSearch size={32} />
           },
           {
-            title: "Plummeting Ad Costs",
-            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
-            icon: <FaChartLine size={32} />
+            title: "Authority Acquisition",
+            description: "We launch digital PR campaigns to acquire powerful, editorial backlinks that permanently boost your domain authority.",
+            icon: <FaLink size={32} />
           },
           {
-            title: "Capture Every Intent",
-            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
-            icon: <FaSearchDollar size={32} />
+            title: "Local Supremacy",
+            description: "Hyper-localized on-page optimization and citation building to guarantee you show up in the top 3 Google Maps pack.",
+            icon: <FaMapMarkerAlt size={32} />
           }
         ]}
         hideBottomSection={true}
       />
+
       <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -261,7 +256,7 @@ export default function OmnichannelPageClient() {
               How Do We <span className="gradient-text">Actually Help You</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+              We do not just offer technical audits; we deliver tangible growth. Here is exactly how our SEO campaigns drive revenue.
             </p>
           </div>
 
@@ -298,48 +293,48 @@ export default function OmnichannelPageClient() {
       </section>
 
       <AgitationSection 
-        badge="The Cost of Inaction"
-        titleBase="The High Cost of Being"
-        titleHighlight="Invisible"
-        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        badge="The Cost of Ignorance"
+        titleBase="Why Your Competitors"
+        titleHighlight="Are Winning"
+        subtitle="If you aren't on the first page, you don't exist. Here is why your current web strategy is actively handing money to your competitors."
         customAgitations={[
           {
-            service: "Platform Consistency",
-            title: "Scattered & Weak Presence",
-            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            service: "Buried Rankings",
+            title: "Zero Inbound Pipeline",
+            pain: "75% of users never scroll past the first page of search results. If you rely on referrals because your organic search is dead, your revenue growth is effectively capped.",
             accent: "rgba(255, 80, 80, 0.2)",
             textAccent: "#ff5050"
           },
           {
-            service: "Retargeting Infrastructure",
-            title: "Leaking Acquired Traffic Potential",
-            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            service: "Poor Architecture",
+            title: "Bleeding Paid Ad Spend",
+            pain: "Without SEO optimizing your landing pages, your Quality Score on Google Ads drops. You end up paying 3x more per click than your optimized competitors for the exact same traffic.",
             accent: "rgba(255, 120, 80, 0.2)",
             textAccent: "#ff7850"
           },
           {
-            service: "Predictable Traffic Sources",
-            title: "Unscalable Business Growth",
-            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            service: "Low Authority",
+            title: "Outranked by Inferior Brands",
+            pain: "It is infuriating to watch a competitor with a worse product beat you simply because they invested in link building and topical authority. They are stealing your high-intent buyers.",
             accent: "rgba(255, 179, 71, 0.2)",
             textAccent: "#ffb347"
           },
           {
-            service: "Channel Diversification",
-            title: "Single Point of Failure",
-            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            service: "Algorithm Penalties",
+            title: "Traffic Wipeouts",
+            pain: "Using outdated, cheap SEO tactics makes you incredibly vulnerable. A single Google Core Update can wipe out 80% of your traffic overnight if your technical baseline isn't perfect.",
             accent: "rgba(255, 80, 120, 0.2)",
             textAccent: "#ff5078"
           }
         ]}
       />
-      <PricingSection customPackages={omnichannelPackages} />
+      <PricingSection customPackages={seoPackages} />
       <BlogSection 
         badge="Proof of Concept"
-        titleBase="See The Strategy"
+        titleBase="See The Rankings"
         titleHighlight="In Action"
-        subtitle="Read exactly how we deploy these omnichannel strategies to create predictable revenue growth for our partners."
-        customPosts={omnichannelArticles}
+        subtitle="Read exactly how we structure enterprise SEO campaigns to capture highly lucrative search positions."
+        customPosts={seoArticles}
       />
     </main>
   );

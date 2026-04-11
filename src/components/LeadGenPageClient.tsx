@@ -6,98 +6,96 @@ import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
-import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
+import { FaMagnet, FaFilter, FaRobot, FaEnvelopeOpenText } from "react-icons/fa";
 
 const deliverables = [
   {
-    title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    title: "Complete Funnel Architecture",
+    desc: "End-to-end design and deployment of high-converting lead generation funnels, including VSLs and opt-in mechanics.",
   },
   {
-    title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    title: "Scalable Outbound Campaigns",
+    desc: "We build and manage robust cold email and LinkedIn outreach infrastructures that bypass spam filters and land in primary inboxes.",
   },
   {
-    title: "Advanced Tracking & Infrastructure",
-    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+    title: "Conversion-Optimized Landing Pages",
+    desc: "Our copywriters and designers build pages strictly engineered to convert absolute cold traffic into hyper-qualified appointments.",
   },
   {
-    title: "Proactive Media Buying",
-    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
+    title: "Automated Lead Nurturing",
+    desc: "Complex Email and SMS sequences designed to warm up early-stage prospects until they are begging to jump on a sales call.",
   },
   {
-    title: "Dedicated Growth Partner",
-    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+    title: "CRM & Performance Dashboards",
+    desc: "Full integration with your CRM (Hubspot, GoHighLevel, Salesforce) so you can track exact acquisition costs down to the dollar.",
   }
 ];
 
-const omnichannelPackages = [
+const leadGenPackages = [
   {
-    name: "Foundation",
-    price: "$2,500",
+    name: "Pipeline Starter",
+    price: "$3,000",
     period: "/mo",
-    description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
+    description: "Launch your first robust inbound funnel and basic outbound outreach.",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "1 Active Sales Funnel",
+      "Up to 1k Outbound Emails / mo",
+      "Basic CRM Integration",
+      "1 Custom Landing Page",
+      "Monthly SLA Reviews"
     ],
     isPopular: false,
   },
   {
-    name: "Omnipresence",
-    price: "$4,800",
+    name: "Growth Engine",
+    price: "$5,500",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Multi-funnel scaling with aggressive outbound volume for B2B ops.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "2 Active Sales Funnels",
+      "Up to 10k Outbound Emails / mo",
+      "Advanced Email Nurture Sequences",
+      "A/B Landing Page Testing",
+      "Bi-Weekly Strategy Calls"
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
-    price: "$8,500+",
+    name: "Enterprise Domination",
+    price: "$10,000+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "For established teams needing massive appointment volume.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "Unlimited Funnels Managed",
+      "50k+ Outbound Volume / mo",
+      "AI Appointment Setter Integration",
+      "Dedicated Full-Time Inbox Manager",
+      "Weekly SLA & Pipeline Huddles"
     ],
     isPopular: false,
   }
 ];
 
-const omnichannelArticles = [
+const leadGenArticles = [
   {
     category: "Case Study",
-    date: "Sep 14, 2024",
-    title: "How Cross-Platform Retargeting Dropped Average CPA By 42%",
-    excerpt: "See the exact framework we used to capture lost traffic from Facebook and convert them via YouTube ads.",
+    date: "Oct 11, 2024",
+    title: "How We Scaled a B2B SaaS from 20 to 150 Demos/Month",
+    excerpt: "Breakdown of the omnichannel lead gen approach that fed their sales floor completely passively.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
   },
   {
-    category: "Strategy",
-    date: "Oct 02, 2024",
-    title: "The Death of Single-Channel Marketing",
-    excerpt: "Why relying solely on one traffic source is the biggest risk your business faces this year, and how to diversify.",
+    category: "Conversion Rate",
+    date: "Nov 04, 2024",
+    title: "The Perfect VSL Structure for High-Ticket Offers",
+    excerpt: "Stop making 40-minute webinars. Here is the 8-minute VSL script that actually generates qualified appointments.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
-    date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    category: "Outbound",
+    date: "Dec 01, 2024",
+    title: "Cold Email is Not Dead: Our 45% Open Rate Framework",
+    excerpt: "Why your outbound goes to spam, and the strict technical infrastructure required to ensure primary inbox delivery.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -158,8 +156,8 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Omnichannel Traffic <br />
-          <span className="gradient-text">& Awareness</span>
+          Strategic Lead <br />
+          <span className="gradient-text">Generation</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +172,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Stop relying on unpredictable referrals. We build highly efficient, predictable inbound funnels and outbound infrastructures to engineer qualified appointments at scale.
         </motion.p>
         
         <motion.div
@@ -207,7 +205,7 @@ function HeroSection() {
   );
 }
 
-export default function OmnichannelPageClient() {
+export default function LeadGenPageClient() {
   return (
     <main style={{ minHeight: "100vh" }}>
       <HeroSection />
@@ -218,7 +216,7 @@ export default function OmnichannelPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ 
+              FILL YOUR PIPELINE TODAY ✦ PREDICTABLE APPOINTMENTS SCHEDULED ✦ GUARANTEED LEAD VOLUME ✦ FILL YOUR PIPELINE TODAY ✦ PREDICTABLE APPOINTMENTS SCHEDULED ✦ GUARANTEED LEAD VOLUME ✦ FILL YOUR PIPELINE TODAY ✦ PREDICTABLE APPOINTMENTS SCHEDULED ✦ GUARANTEED LEAD VOLUME ✦ FILL YOUR PIPELINE TODAY ✦ PREDICTABLE APPOINTMENTS SCHEDULED ✦ GUARANTEED LEAD VOLUME ✦ FILL YOUR PIPELINE TODAY ✦ PREDICTABLE APPOINTMENTS SCHEDULED ✦ GUARANTEED LEAD VOLUME ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>
@@ -226,34 +224,35 @@ export default function OmnichannelPageClient() {
       </div>
 
       <ValueFocusSection 
-        badge="Omnichannel Domination"
-        titleBase="Be Everywhere Your"
-        titleHighlight="Buyers Are"
-        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        badge="Lead Generation Dominance"
+        titleBase="Turn Traffic Into"
+        titleHighlight="Pipeline"
+        subtitle="Relying on hope is not a strategy. We engineer massive acquisition pipelines that seamlessly capture high-intent buyers and turn them into calendar bookings."
         customFeatures={[
           {
-            title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
-            icon: <FaGlobe size={32} />
+            title: "Magnetic Offers",
+            description: "We design irresistible lead magnets and front-end offers that psychologically compel your exact target avatar to give you their contact data.",
+            icon: <FaMagnet size={32} />
           },
           {
-            title: "Multi-Touch Conversions",
-            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
-            icon: <FaShareAlt size={32} />
+            title: "Frictionless Funnels",
+            description: "We identify drop-off points and build custom, split-tested landing pages that maximize opt-in rates without relying on generic templates.",
+            icon: <FaFilter size={32} />
           },
           {
-            title: "Plummeting Ad Costs",
-            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
-            icon: <FaChartLine size={32} />
+            title: "Scalable Outbound",
+            description: "We setup multi-domain architectures to run high-volume cold email that avoids spam filters and creates genuine conversations with decision makers.",
+            icon: <FaEnvelopeOpenText size={32} />
           },
           {
-            title: "Capture Every Intent",
-            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
-            icon: <FaSearchDollar size={32} />
+            title: "Automated Nurturing",
+            description: "Most leads don't buy immediately. We deploy behavioral email flows that educate and push leads down the funnel 24/7.",
+            icon: <FaRobot size={32} />
           }
         ]}
         hideBottomSection={true}
       />
+
       <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -261,7 +260,7 @@ export default function OmnichannelPageClient() {
               How Do We <span className="gradient-text">Actually Help You</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+              No vague promises. Here is exactly what is included when we take over your lead generation engine.
             </p>
           </div>
 
@@ -299,47 +298,47 @@ export default function OmnichannelPageClient() {
 
       <AgitationSection 
         badge="The Cost of Inaction"
-        titleBase="The High Cost of Being"
-        titleHighlight="Invisible"
-        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        titleBase="The High Cost of Empty"
+        titleHighlight="Calendars"
+        subtitle="Without a predictable mechanism for generating qualified appointments, you are constantly trading long-term growth for short-term survival."
         customAgitations={[
           {
-            service: "Platform Consistency",
-            title: "Scattered & Weak Presence",
-            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            service: "Sales Funnels",
+            title: "Paying For Dead Clicks",
+            pain: "Running ads to your home page is financial suicide. Without a dedicated conversion funnel, you're paying thousands of dollars for clicks that instantly bounce and never return.",
             accent: "rgba(255, 80, 80, 0.2)",
             textAccent: "#ff5050"
           },
           {
-            service: "Retargeting Infrastructure",
-            title: "Leaking Acquired Traffic Potential",
-            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            service: "Outbound Infrastructure",
+            title: "Your Emails Hit Spam",
+            pain: "You send hundreds of pitches but get zero replies because your domain reputation is destroyed. Without proper SPF/DKIM infrastructure, your message will never even be seen.",
             accent: "rgba(255, 120, 80, 0.2)",
             textAccent: "#ff7850"
           },
           {
-            service: "Predictable Traffic Sources",
-            title: "Unscalable Business Growth",
-            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            service: "Automated Nurture",
+            title: "Leads Go Cold Instantly",
+            pain: "If your sales team relies entirely on manual follow-up, leads fall through the cracks every single day. A lack of automation ensures your competitors will close them instead.",
             accent: "rgba(255, 179, 71, 0.2)",
             textAccent: "#ffb347"
           },
           {
-            service: "Channel Diversification",
-            title: "Single Point of Failure",
-            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            service: "Predictable Flow",
+            title: "Feast or Famine Revenue",
+            pain: "Relying purely on referrals creates chaotic revenue swings. One great month is followed by extreme panic the next because you have zero control over your acquisition flow.",
             accent: "rgba(255, 80, 120, 0.2)",
             textAccent: "#ff5078"
           }
         ]}
       />
-      <PricingSection customPackages={omnichannelPackages} />
+      <PricingSection customPackages={leadGenPackages} />
       <BlogSection 
         badge="Proof of Concept"
         titleBase="See The Strategy"
         titleHighlight="In Action"
-        subtitle="Read exactly how we deploy these omnichannel strategies to create predictable revenue growth for our partners."
-        customPosts={omnichannelArticles}
+        subtitle="Read exactly how we deploy these lead generation strategies to funnel consistent sales to our partners."
+        customPosts={leadGenArticles}
       />
     </main>
   );

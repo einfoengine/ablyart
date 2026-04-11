@@ -6,98 +6,92 @@ import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
-import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
+import { FaLaptopCode, FaShareAlt, FaPaintBrush, FaSearchDollar } from "react-icons/fa";
 
 const deliverables = [
   {
-    title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    title: "Scale Revenue Predictably (Media Buying)",
+    desc: "Stop gambling with ad spend. We deploy aggressive, data-driven paid advertising campaigns across Meta, Google, and TikTok to generate high-intent traffic with a mathematically proven ROAS.",
   },
   {
-    title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    title: "Dominate Market Attention (Organic Social)",
+    desc: "We transform your social profiles into highly-engaging community hubs. By producing viral, brand-aligned content, we build the unshakeable trust required to close modern buyers.",
   },
   {
-    title: "Advanced Tracking & Infrastructure",
-    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+    title: "Charge Premium Prices (UI/UX Design)",
+    desc: "Buyers judge a book by its cover. Our design team crafts stunning branding, pixel-perfect wireframes, and sophisticated ad creatives that instantly position your business as an industry leader.",
   },
   {
-    title: "Proactive Media Buying",
-    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
-  },
-  {
-    title: "Dedicated Growth Partner",
-    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+    title: "Convert Traffic Effortlessly (Web Development)",
+    desc: "We build lightning-fast, highly optimized landing pages and web applications engineered to eliminate buying friction, ensuring every single click has the highest possible chance of converting.",
   }
 ];
 
-const omnichannelPackages = [
+const webSocialPackages = [
   {
-    name: "Foundation",
-    price: "$2,500",
+    name: "Social Ignition",
+    price: "$1,800",
     period: "/mo",
-    description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
+    description: "Perfect for brands needing to establish a baseline organic and paid presence.",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "2 Organic Social Platforms",
+      "Basic UI/UX Design Requests",
+      "Basic Web Maintenance",
+      "Up to $5k Ad Spend Managed",
+      "Monthly Analytics Report"
     ],
     isPopular: false,
   },
   {
-    name: "Omnipresence",
-    price: "$4,800",
+    name: "Growth Catalyst",
+    price: "$3,800",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Aggressive omnichannel strategy mixing heavy organic content and paid ads.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "4 Organic Social Platforms",
+      "Full Custom UI/UX Redesigns",
+      "Custom Landing Page Dev",
+      "Up to $20k Ad Spend Managed",
+      "Bi-Weekly Strategy Syncs"
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
-    price: "$8,500+",
+    name: "Digital Takeover",
+    price: "$7,500+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "A complete outsourced digital scaling department for 7-figure businesses.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "Omnichannel Organic Presence",
+      "Enterprise Full-Stack Dev",
+      "Unlimited UX/UI Graphic Queues",
+      "Unlimited Media Buying Budgets",
+      "Dedicated Media & Content Team"
     ],
     isPopular: false,
   }
 ];
 
-const omnichannelArticles = [
+const webSocialArticles = [
   {
-    category: "Case Study",
-    date: "Sep 14, 2024",
-    title: "How Cross-Platform Retargeting Dropped Average CPA By 42%",
-    excerpt: "See the exact framework we used to capture lost traffic from Facebook and convert them via YouTube ads.",
+    category: "Branding",
+    date: "May 14, 2024",
+    title: "Why Your Outdated Website is Costing You 40% of Referrals",
+    excerpt: "Word of mouth doesn't work if your digital footprint looks untrustworthy. Here is the modern baseline check.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
   },
   {
-    category: "Strategy",
-    date: "Oct 02, 2024",
-    title: "The Death of Single-Channel Marketing",
-    excerpt: "Why relying solely on one traffic source is the biggest risk your business faces this year, and how to diversify.",
+    category: "Social Presence",
+    date: "Jun 02, 2024",
+    title: "The 'Ghost Town' Effect: Why Consistency Trumps Virality",
+    excerpt: "You don't need a million views to close sales. You just need to show prospects your business is alive and active.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
-    date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    category: "Technical SEO",
+    date: "Aug 29, 2024",
+    title: "How We Accelerated Site Speed by 2.4s and Doubled Traffic",
+    excerpt: "Google strictly penalizes slow websites. Here is the exact maintenance protocol we run on all client servers.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -158,8 +152,8 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Omnichannel Traffic <br />
-          <span className="gradient-text">& Awareness</span>
+          Web, Social <br />
+          <span className="gradient-text">& Media Buying</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +168,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Focus on your core business. From aggressive media buying and organic social management to custom UI/UX design and elite web development, we handle your complete digital scaling engine.
         </motion.p>
         
         <motion.div
@@ -207,7 +201,7 @@ function HeroSection() {
   );
 }
 
-export default function OmnichannelPageClient() {
+export default function WebSocialPageClient() {
   return (
     <main style={{ minHeight: "100vh" }}>
       <HeroSection />
@@ -218,7 +212,7 @@ export default function OmnichannelPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ 
+              SOCIAL MANAGEMENT ✦ MEDIA BUYING ✦ UI/UX DESIGN ✦ WEB DEVELOPMENT ✦ SOCIAL MANAGEMENT ✦ MEDIA BUYING ✦ UI/UX DESIGN ✦ WEB DEVELOPMENT ✦ SOCIAL MANAGEMENT ✦ MEDIA BUYING ✦ UI/UX DESIGN ✦ WEB DEVELOPMENT ✦ SOCIAL MANAGEMENT ✦ MEDIA BUYING ✦ UI/UX DESIGN ✦ WEB DEVELOPMENT ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>
@@ -226,34 +220,35 @@ export default function OmnichannelPageClient() {
       </div>
 
       <ValueFocusSection 
-        badge="Omnichannel Domination"
-        titleBase="Be Everywhere Your"
-        titleHighlight="Buyers Are"
-        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        badge="Done-For-You Operations"
+        titleBase="We Handle The"
+        titleHighlight="Heavy Lifting"
+        subtitle="You shouldn't be spending your weekends fixing broke Wordpress plugins or designing Instagram posts. We take the entire digital burden off your plate."
         customFeatures={[
           {
-            title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
-            icon: <FaGlobe size={32} />
-          },
-          {
-            title: "Multi-Touch Conversions",
-            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
+            title: "Social Management",
+            description: "Consistent, highly-engaging organic content that keeps your audience captivated without you lifting a finger.",
             icon: <FaShareAlt size={32} />
           },
           {
-            title: "Plummeting Ad Costs",
-            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
-            icon: <FaChartLine size={32} />
+            title: "Paid Media Buying",
+            description: "Aggressive advertising campaigns across all major platforms mathematically designed to maximize your ROAS.",
+            icon: <FaSearchDollar size={32} />
           },
           {
-            title: "Capture Every Intent",
-            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
-            icon: <FaSearchDollar size={32} />
+            title: "Premium UI/UX Design",
+            description: "We craft stunning visual identities and intuitive interfaces that instantly build trust and convert visitors.",
+            icon: <FaPaintBrush size={32} />
+          },
+          {
+            title: "Custom Development",
+            description: "Lightning-fast, bespoke performance landing pages engineered with modern tech stacks to handle massive scale.",
+            icon: <FaLaptopCode size={32} />
           }
         ]}
         hideBottomSection={true}
       />
+
       <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -261,7 +256,7 @@ export default function OmnichannelPageClient() {
               How Do We <span className="gradient-text">Actually Help You</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+              We do not just offer technical skills; we deliver tangible growth. Here is exactly what our digital infrastructure achieves for you.
             </p>
           </div>
 
@@ -298,48 +293,48 @@ export default function OmnichannelPageClient() {
       </section>
 
       <AgitationSection 
-        badge="The Cost of Inaction"
-        titleBase="The High Cost of Being"
-        titleHighlight="Invisible"
-        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        badge="The Cost of DIY"
+        titleBase="The High Cost of"
+        titleHighlight="Doing It Yourself"
+        subtitle="When you try to manage your own website and social channels, your growth stagnates because you are working IN your business, not ON it."
         customAgitations={[
           {
-            service: "Platform Consistency",
-            title: "Scattered & Weak Presence",
-            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            service: "Organic Social",
+            title: "Ghost Town Profiles",
+            pain: "You post sporadically when you have free time. When a buyer audits your digital footprint, a dead social presence heavily implies your business is struggling.",
             accent: "rgba(255, 80, 80, 0.2)",
             textAccent: "#ff5050"
           },
           {
-            service: "Retargeting Infrastructure",
-            title: "Leaking Acquired Traffic Potential",
-            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            service: "Paid Promotions",
+            title: "Burning Ad Spend",
+            pain: "Trying to manage media buying yourself is like setting cash on fire. Without strict tracking and A/B testing, you're paying premium rates for zero conversions.",
             accent: "rgba(255, 120, 80, 0.2)",
             textAccent: "#ff7850"
           },
           {
-            service: "Predictable Traffic Sources",
-            title: "Unscalable Business Growth",
-            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            service: "UI/UX Design",
+            title: "Amateur Visuals",
+            pain: "A clunky, outdated design destroys your authority instantly. When prospects compare you to competitors who look premium, they assume your service is inferior.",
             accent: "rgba(255, 179, 71, 0.2)",
             textAccent: "#ffb347"
           },
           {
-            service: "Channel Diversification",
-            title: "Single Point of Failure",
-            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            service: "Web Development",
+            title: "Broken Experiences",
+            pain: "Over 50% of users bounce if a page takes more than 3 seconds to load. Poorly written, sluggish code is literally blocking your customers from giving you their money.",
             accent: "rgba(255, 80, 120, 0.2)",
             textAccent: "#ff5078"
           }
         ]}
       />
-      <PricingSection customPackages={omnichannelPackages} />
+      <PricingSection customPackages={webSocialPackages} />
       <BlogSection 
         badge="Proof of Concept"
         titleBase="See The Strategy"
         titleHighlight="In Action"
-        subtitle="Read exactly how we deploy these omnichannel strategies to create predictable revenue growth for our partners."
-        customPosts={omnichannelArticles}
+        subtitle="Read exactly how we deploy comprehensive web and social strategies for our partners."
+        customPosts={webSocialArticles}
       />
     </main>
   );

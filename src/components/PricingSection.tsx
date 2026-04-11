@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const pricingData = {
+export type PricingPackage = {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  isPopular: boolean;
+};
+
+const pricingData: Record<string, { label: string; packages: PricingPackage[] }> = {
   "web-social": {
     label: "Web & Social",
     packages: [
@@ -202,8 +211,14 @@ const pricingData = {
   }
 };
 
-export default function PricingSection() {
+export type PricingSectionProps = {
+  customPackages?: PricingPackage[];
+};
+
+export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("web-social");
+  
+  const displayPackages = customPackages || pricingData[activeTab].packages;
 
   return (
     <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] z-20 overflow-hidden">
@@ -223,43 +238,45 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* Custom Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-16 p-1.5 bg-white/5 border border-white/10 rounded-2xl md:rounded-full mx-auto max-w-fit shadow-xl backdrop-blur-md">
-          {(Object.keys(pricingData) as Array<keyof typeof pricingData>).map((key) => {
-            const isActive = activeTab === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setActiveTab(key)}
-                className={`relative px-6 py-3 rounded-xl md:rounded-full text-sm font-bold transition-all duration-300 ${
-                  isActive ? "text-black" : "text-gray-400 hover:text-white"
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="active-pill"
-                    className="absolute inset-0 bg-[var(--accent)] rounded-xl md:rounded-full z-0 shadow-[0_0_20px_rgba(155,255,110,0.4)]"
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  />
-                )}
-                <span className="relative z-10">{pricingData[key].label}</span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Custom Tabs (hidden if custom packages provided) */}
+        {!customPackages && (
+          <div className="flex flex-wrap justify-center gap-2 mb-16 p-1.5 bg-white/5 border border-white/10 rounded-2xl md:rounded-full mx-auto max-w-fit shadow-xl backdrop-blur-md">
+            {(Object.keys(pricingData) as Array<keyof typeof pricingData>).map((key) => {
+              const isActive = activeTab === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveTab(key)}
+                  className={`relative px-6 py-3 rounded-xl md:rounded-full text-sm font-bold transition-all duration-300 ${
+                    isActive ? "text-black" : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-pill"
+                      className="absolute inset-0 bg-[var(--accent)] rounded-xl md:rounded-full z-0 shadow-[0_0_20px_rgba(155,255,110,0.4)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  <span className="relative z-10">{pricingData[key].label}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* Pricing Cards */}
         <div className="min-h-[600px]">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab}
+              key={customPackages ? "custom" : activeTab}
               initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -20, filter: "blur(4px)" }}
               transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
+              className={`grid grid-cols-1 md:grid-cols-${Math.min(displayPackages.length, 3)} gap-8 items-stretch justify-center`}
             >
-              {pricingData[activeTab].packages.map((pkg, idx) => (
+              {displayPackages.map((pkg, idx) => (
                 <div
                   key={pkg.name}
                   className={`relative flex flex-col bg-[#0b0b0e] p-8 rounded-3xl border transition-all duration-300 ${

@@ -6,98 +6,96 @@ import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
-import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
+import { FaEnvelopeOpenText, FaMobileAlt, FaCrown, FaArrowUp } from "react-icons/fa";
 
 const deliverables = [
   {
-    title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    title: "Advanced Klaviyo Architecture",
+    desc: "Complete setup and optimization of 15+ automated revenue-generating flows including cart abandons, post-purchase cascades, and win-backs.",
   },
   {
-    title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    title: "Dynamic SMS Campaigns",
+    desc: "High-ROI, compliance-checked text message marketing that cuts through the noise with 90%+ open rates.",
   },
   {
-    title: "Advanced Tracking & Infrastructure",
-    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+    title: "VIP Tier Structuring",
+    desc: "Gamification of your customer journey. We build loyalty programs that mathematically push customers to increase their Average Order Value.",
   },
   {
-    title: "Proactive Media Buying",
-    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
+    title: "Churn Recovery Protocols",
+    desc: "Aggressive, automated systems to identify customers right before they churn and reactivate them using highly targeted dynamic offers.",
   },
   {
-    title: "Dedicated Growth Partner",
-    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+    title: "Continuous Creative Iteration",
+    desc: "Dedicated copywriters and designers who are constantly A/B testing subject lines, imagery, and send times to squeeze out every drop of ROI.",
   }
 ];
 
-const omnichannelPackages = [
+const retentionPackages = [
   {
-    name: "Foundation",
-    price: "$2,500",
+    name: "Backend Foundation",
+    price: "$1,800",
     period: "/mo",
-    description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
+    description: "Perfect for brands ready to stop relying solely on expensive paid ads.",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "5 Core Automated Email Flows",
+      "Basic SMS Infrastructure Setup",
+      "2 Campaign Sends / Week",
+      "Quarterly A/B Subject Line Tests",
+      "Monthly Backend Revenue Report"
     ],
     isPopular: false,
   },
   {
-    name: "Omnipresence",
-    price: "$4,800",
+    name: "LTV Maximizer",
+    price: "$3,500",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Aggressive backend scaling to multiply customer lifetime value.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "15 Advanced Klaviyo Flows",
+      "Dynamic SMS Campaigns Managed",
+      "4 Campaign Sends / Week",
+      "Dedicated Backend Copywriter",
+      "Bi-Weekly Strategy Syncs"
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
-    price: "$8,500+",
+    name: "Retention Enterprise",
+    price: "$6,500+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "Fully bespoke fidelity for high-volume 7 and 8-figure brands.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "Multi-Channel App Integrations",
+      "Custom Loyalty & Rewards Auth",
+      "Predictive Churn AI Modeling",
+      "Daily Multivariate Flow Testing",
+      "Direct Slack Channel Support"
     ],
     isPopular: false,
   }
 ];
 
-const omnichannelArticles = [
+const retentionArticles = [
   {
     category: "Case Study",
-    date: "Sep 14, 2024",
-    title: "How Cross-Platform Retargeting Dropped Average CPA By 42%",
-    excerpt: "See the exact framework we used to capture lost traffic from Facebook and convert them via YouTube ads.",
+    date: "Jul 10, 2024",
+    title: "How 3 Simple Post-Purchase Emails Increased LTV by 45%",
+    excerpt: "The exact email templates we used to turn one-time luxury buyers into fierce, repeat brand advocates.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
   },
   {
     category: "Strategy",
-    date: "Oct 02, 2024",
-    title: "The Death of Single-Channel Marketing",
-    excerpt: "Why relying solely on one traffic source is the biggest risk your business faces this year, and how to diversify.",
+    date: "Sep 05, 2024",
+    title: "Email vs SMS: The Ultimate Omnichannel Backend Sandbox",
+    excerpt: "Stop treating email and SMS as the same. How to intertwine them to avoid fatigue and maximize conversions.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
-    date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    category: "Reactivation",
+    date: "Dec 12, 2024",
+    title: "The 'Win-Back' Formula: Reviving 10,000 Dormant Customers",
+    excerpt: "You have thousands of dollars sitting in a dead email list. Here is the 4-step sequence to wake them up.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -158,8 +156,8 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Omnichannel Traffic <br />
-          <span className="gradient-text">& Awareness</span>
+          Retention & Value <br />
+          <span className="gradient-text">Maximization</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +172,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Acquiring customers is expensive. Making them buy again shouldn't be. We build powerful, automated backend systems using Email and SMS to multiply the lifetime value of every customer you win.
         </motion.p>
         
         <motion.div
@@ -207,7 +205,7 @@ function HeroSection() {
   );
 }
 
-export default function OmnichannelPageClient() {
+export default function RetentionPageClient() {
   return (
     <main style={{ minHeight: "100vh" }}>
       <HeroSection />
@@ -218,7 +216,7 @@ export default function OmnichannelPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ 
+              MAXIMIZE LIFETIME VALUE ✦ TURN BUYERS INTO ADVOCATES ✦ ZERO CUSTOMER CHURN ✦ MAXIMIZE LIFETIME VALUE ✦ TURN BUYERS INTO ADVOCATES ✦ ZERO CUSTOMER CHURN ✦ MAXIMIZE LIFETIME VALUE ✦ TURN BUYERS INTO ADVOCATES ✦ ZERO CUSTOMER CHURN ✦ MAXIMIZE LIFETIME VALUE ✦ TURN BUYERS INTO ADVOCATES ✦ ZERO CUSTOMER CHURN ✦ MAXIMIZE LIFETIME VALUE ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>
@@ -226,34 +224,35 @@ export default function OmnichannelPageClient() {
       </div>
 
       <ValueFocusSection 
-        badge="Omnichannel Domination"
-        titleBase="Be Everywhere Your"
-        titleHighlight="Buyers Are"
-        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        badge="Backend Monetization"
+        titleBase="Stop Relying On"
+        titleHighlight="Acquisition"
+        subtitle="When 80% of your future revenue will come from just 20% of your existing customers, having a bulletproof retention strategy isn't optional—it's mandatory."
         customFeatures={[
           {
-            title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
-            icon: <FaGlobe size={32} />
+            title: "Automated Email Flows",
+            description: "We deploy aggressive abandoned cart, browse abandonment, and welcome sequences that print money in your sleep.",
+            icon: <FaEnvelopeOpenText size={32} />
           },
           {
-            title: "Multi-Touch Conversions",
-            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
-            icon: <FaShareAlt size={32} />
+            title: "VIP Upsell Sequences",
+            description: "Automatically identify your highest spenders and immediately hit them with exclusive, high-ticket backend offers.",
+            icon: <FaArrowUp size={32} />
           },
           {
-            title: "Plummeting Ad Costs",
-            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
-            icon: <FaChartLine size={32} />
+            title: "Loyalty & Rewards",
+            description: "Turn one-time purchasers into fierce brand advocates that generate thousands of dollars in pure organic referrals.",
+            icon: <FaCrown size={32} />
           },
           {
-            title: "Capture Every Intent",
-            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
-            icon: <FaSearchDollar size={32} />
+            title: "Omnichannel SMS",
+            description: "We augment your email capabilities with hyper-targeted text messages to bypass crowded inboxes entirely.",
+            icon: <FaMobileAlt size={32} />
           }
         ]}
         hideBottomSection={true}
       />
+
       <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -261,7 +260,7 @@ export default function OmnichannelPageClient() {
               How Do We <span className="gradient-text">Actually Help You</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+              No vague promises. Here is exactly what is included when we optimize your retention and customer lifecycle.
             </p>
           </div>
 
@@ -299,47 +298,47 @@ export default function OmnichannelPageClient() {
 
       <AgitationSection 
         badge="The Cost of Inaction"
-        titleBase="The High Cost of Being"
-        titleHighlight="Invisible"
-        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        titleBase="The High Cost of"
+        titleHighlight="Customer Churn"
+        subtitle="Without a dedicated backend system, you are essentially paying Facebook and Google to acquire customers, only for them to buy once and disappear forever."
         customAgitations={[
           {
-            service: "Platform Consistency",
-            title: "Scattered & Weak Presence",
-            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            service: "Backend Architecture",
+            title: "Total Acquisition Dependency",
+            pain: "If you rely entirely on paid ads for revenue, your margins are razor thin. When ad costs spike, your profitability vanishes because you have zero backend equity.",
             accent: "rgba(255, 80, 80, 0.2)",
             textAccent: "#ff5050"
           },
           {
-            service: "Retargeting Infrastructure",
-            title: "Leaking Acquired Traffic Potential",
-            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            service: "Email Deliverability",
+            title: "Millions Left in the Inbox",
+            pain: "You have a list of ten thousand people, but you never email them, or they all go straight to spam. That list is a literal goldmine of pure profit that is rusting away.",
             accent: "rgba(255, 120, 80, 0.2)",
             textAccent: "#ff7850"
           },
           {
-            service: "Predictable Traffic Sources",
-            title: "Unscalable Business Growth",
-            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            service: "Loyalty Programs",
+            title: "One-and-Done Buyers",
+            pain: "Without post-purchase nurturing, a buyer feels no loyalty. The exact moment they need your product again, they are just as likely to buy from your competitor.",
             accent: "rgba(255, 179, 71, 0.2)",
             textAccent: "#ffb347"
           },
           {
-            service: "Channel Diversification",
-            title: "Single Point of Failure",
-            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            service: "Churn Tracking",
+            title: "Silent Unsubscribes",
+            pain: "Your customers are churning and you have absolutely no idea why. Lacking automated feedback loops means you cannot fix the leaks in your product delivery.",
             accent: "rgba(255, 80, 120, 0.2)",
             textAccent: "#ff5078"
           }
         ]}
       />
-      <PricingSection customPackages={omnichannelPackages} />
+      <PricingSection customPackages={retentionPackages} />
       <BlogSection 
         badge="Proof of Concept"
         titleBase="See The Strategy"
         titleHighlight="In Action"
-        subtitle="Read exactly how we deploy these omnichannel strategies to create predictable revenue growth for our partners."
-        customPosts={omnichannelArticles}
+        subtitle="Read exactly how we deploy these retention strategies to skyrocket customer lifetime value for our partners."
+        customPosts={retentionArticles}
       />
     </main>
   );

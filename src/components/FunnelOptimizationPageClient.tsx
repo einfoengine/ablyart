@@ -6,98 +6,96 @@ import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import ValueFocusSection from "@/components/ValueFocusSection";
-import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa";
+import { FaSearch, FaFlask, FaChartPie, FaMousePointer } from "react-icons/fa";
 
 const deliverables = [
   {
-    title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    title: "Comprehensive UX/UI Audits",
+    desc: "We analyze heatmaps, session recordings, and drop-off analytics to identify exactly where your users are abandoning the journey.",
   },
   {
-    title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    title: "Continuous A/B Split Testing",
+    desc: "We build and test iterative variations of your headlines, CTA buttons, and layouts to mathematically prove what converts best.",
   },
   {
-    title: "Advanced Tracking & Infrastructure",
-    desc: "Flawless pixel setup, conversion tracking, and retargeting mapping so we capture and utilize data from every single visitor.",
+    title: "Frictionless Checkout Redesign",
+    desc: "Streamlining your cart and opt-in forms to remove cognitive load, reducing cart abandonment and capturing more immediate revenue.",
   },
   {
-    title: "Proactive Media Buying",
-    desc: "Day-to-day management of your ad budgets by senior buyers who optimize pacing, bid caps, and creative testing for maximum ROAS.",
+    title: "Direct Response Copywriting",
+    desc: "Rewriting your landing page messaging to speak directly to your avatar's pain points, dramatically increasing time-on-page and engagement.",
   },
   {
-    title: "Dedicated Growth Partner",
-    desc: "You aren't handed off to an account manager. You get direct access to the strategists actively running your campaigns via Slack/Email.",
+    title: "Site Velocity & Performance",
+    desc: "Technical optimization of your funnel architecture to ensure lightning-fast load speeds, saving mobile traffic from bouncing early.",
   }
 ];
 
-const omnichannelPackages = [
+const optimizationPackages = [
   {
-    name: "Foundation",
-    price: "$2,500",
-    period: "/mo",
-    description: "Establish a unified presence across 2 core platforms (e.g., Meta + Google Search).",
+    name: "Conversion Audit",
+    price: "$1,500",
+    period: "/one-off",
+    description: "A complete teardown of your primary funnel with actionable implementation steps.",
     features: [
-      "2 Ad Platforms Managed",
-      "8 Short-Form Videos / Month",
-      "4 Custom Static Creatives",
-      "Up to $5k/mo Spend Managed",
-      "1 Strategy Call / Month"
+      "Full Heatmap & Session Tracking Setup",
+      "UX/UI Heuristic Evaluation",
+      "Copywriting Competitor Analysis",
+      "Checkout Flow Friction Audit",
+      "Detailed 20+ Page Action Plan"
     ],
     isPopular: false,
   },
   {
-    name: "Omnipresence",
-    price: "$4,800",
+    name: "Continuous CRO",
+    price: "$4,000",
     period: "/mo",
-    description: "Complete coverage across all major discovery and search channels.",
+    description: "Ongoing split testing and aggressive iteration for established traffic streams.",
     features: [
-      "4 Ad Platforms Managed",
-      "16 Short-Form Videos / Month",
-      "10 Custom Static Creatives",
-      "Advanced Pixel & GTM Setup",
-      "Up to $20k/mo Spend Managed",
-      "2 Strategy Calls / Month"
+      "2 Active Split Tests / Month",
+      "Custom Landing Page Redesigns",
+      "Weekly Heatmap Reviews",
+      "Copywriting Optimization",
+      "Bi-Weekly Analytics Sync"
     ],
     isPopular: true,
   },
   {
-    name: "Domination",
-    price: "$8,500+",
+    name: "Enterprise Experience",
+    price: "$7,500+",
     period: "/mo",
-    description: "For aggressive brands needing unlimited creative bandwidth and enterprise media buying.",
+    description: "Full-stack technical and visual optimization for high-volume enterprise stores.",
     features: [
-      "All Major Platforms Managed",
-      "30 Short-Form Videos / Month",
-      "Unlimited Static Creatives",
-      "Custom Looker Studio Dashboard",
-      "Up to $100k/mo Spend Managed",
-      "Weekly Strategy Calls"
+      "5+ Active Split Tests / Month",
+      "Full Headless Commerce Support",
+      "Backend Speed Optimization Setup",
+      "Multi-variate Checkout Testing",
+      "Predictive Behavioral Analytics"
     ],
     isPopular: false,
   }
 ];
 
-const omnichannelArticles = [
+const optimizationArticles = [
   {
     category: "Case Study",
-    date: "Sep 14, 2024",
-    title: "How Cross-Platform Retargeting Dropped Average CPA By 42%",
-    excerpt: "See the exact framework we used to capture lost traffic from Facebook and convert them via YouTube ads.",
+    date: "Aug 22, 2024",
+    title: "How Changing a Single Headline Increased SaaS Trials by 38%",
+    excerpt: "Why what you think sounds good is often killing your conversion rates—and how we used data to fix it.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
   },
   {
-    category: "Strategy",
-    date: "Oct 02, 2024",
-    title: "The Death of Single-Channel Marketing",
-    excerpt: "Why relying solely on one traffic source is the biggest risk your business faces this year, and how to diversify.",
+    category: "E-Commerce",
+    date: "Oct 29, 2024",
+    title: "The Silent Killer: Finding and Fixing Mobile Checkout Friction",
+    excerpt: "Over 70% of traffic is mobile, yet most checkouts are built for desktops. We share 5 immediate fixes.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
-    date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    category: "Analytics",
+    date: "Nov 15, 2024",
+    title: "Stop Guessing: A Beginner's Guide to Heatmaps and Scroll Depth",
+    excerpt: "Numbers don't lie. How to effectively deploy behavioral tools to visually spot where your leads are bleeding out.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -158,8 +156,8 @@ function HeroSection() {
             color: "#f0f0f8",
           }}
         >
-          Omnichannel Traffic <br />
-          <span className="gradient-text">& Awareness</span>
+          Conversion Funnel <br />
+          <span className="gradient-text">Optimization</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +172,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Stop paying for traffic that doesn't convert. We isolate the leaks in your customer journey and deploy data-driven design changes that dramatically increase your conversion rates and lower acquisition costs.
         </motion.p>
         
         <motion.div
@@ -207,7 +205,7 @@ function HeroSection() {
   );
 }
 
-export default function OmnichannelPageClient() {
+export default function FunnelOptimizationPageClient() {
   return (
     <main style={{ minHeight: "100vh" }}>
       <HeroSection />
@@ -218,7 +216,7 @@ export default function OmnichannelPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ FOCUS ON YOUR CORE BUSINESS ✦ LET US MANAGE YOUR ONLINE PRESENCE ✦ MONEY BACK GUARANTEE ✦ 
+              CONVERT CLICKS INTO CASH ✦ STOP LEAKING REVENUE ✦ DATA-DRIVEN CRO ✦ CONVERT CLICKS INTO CASH ✦ STOP LEAKING REVENUE ✦ DATA-DRIVEN CRO ✦ CONVERT CLICKS INTO CASH ✦ STOP LEAKING REVENUE ✦ DATA-DRIVEN CRO ✦ CONVERT CLICKS INTO CASH ✦ STOP LEAKING REVENUE ✦ DATA-DRIVEN CRO ✦ CONVERT CLICKS INTO CASH ✦ STOP LEAKING REVENUE ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>
@@ -226,34 +224,35 @@ export default function OmnichannelPageClient() {
       </div>
 
       <ValueFocusSection 
-        badge="Omnichannel Domination"
-        titleBase="Be Everywhere Your"
-        titleHighlight="Buyers Are"
-        subtitle="Relying on one traffic source is a risk. We engineer a multi-platform presence that surrounds your target audience, builds limitless trust, and slashes acquisition costs."
+        badge="Performance Architecture"
+        titleBase="Turn Friction Into"
+        titleHighlight="Flow"
+        subtitle="A beautiful website means nothing if users can't navigate it. We apply rigorous behavioral psychology and testing to ensure every pixel pushes your customer toward the 'Buy' button."
         customFeatures={[
           {
-            title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
-            icon: <FaGlobe size={32} />
+            title: "Behavioral Analytics",
+            description: "We reveal the invisible. By tracking scroll depths, rage clicks, and mouse movements, we discover exactly what confuses your users.",
+            icon: <FaMousePointer size={32} />
           },
           {
-            title: "Multi-Touch Conversions",
-            description: "Consumers rarely buy on the first click. We design strategic retargeting loops that naturally guide users across platforms until they are begging to work with you.",
-            icon: <FaShareAlt size={32} />
+            title: "Scientific Split Testing",
+            description: "We don't guess what looks good. We run isolated A/B/n tests on layouts and copy to mathematically guarantee a higher conversion rate.",
+            icon: <FaFlask size={32} />
           },
           {
-            title: "Plummeting Ad Costs",
-            description: "When you rely on a single channel, you pay premium prices. By diversifying traffic and sharing cross-platform pixel data, we consistently lower your overall CPA.",
-            icon: <FaChartLine size={32} />
+            title: "Profit Diagnostics",
+            description: "We look deep into your Google Analytics to find the specific audience segments and devices that are bleeding your ad spend.",
+            icon: <FaChartPie size={32} />
           },
           {
-            title: "Capture Every Intent",
-            description: "We seamlessly merge demand generation with demand capture. Cover Facebook/TikTok for impulse buys, and lock down Google/YouTube for direct search intent.",
-            icon: <FaSearchDollar size={32} />
+            title: "UX Heuristic Reviews",
+            description: "Expert audits based on decades of conversion principles. We strip away cognitive overload so buying becomes the path of least resistance.",
+            icon: <FaSearch size={32} />
           }
         ]}
         hideBottomSection={true}
       />
+
       <section style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -261,7 +260,7 @@ export default function OmnichannelPageClient() {
               How Do We <span className="gradient-text">Actually Help You</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              No vague promises. Here is exactly what is included when we take over your traffic and awareness ecosystem.
+              No vague promises. Here is exactly what is included when we optimize your conversion rates.
             </p>
           </div>
 
@@ -299,47 +298,47 @@ export default function OmnichannelPageClient() {
 
       <AgitationSection 
         badge="The Cost of Inaction"
-        titleBase="The High Cost of Being"
-        titleHighlight="Invisible"
-        subtitle="While you're relying on word-of-mouth or a single dying ad channel, your competitors are actively surrounding your ideal buyers and stealing market share."
+        titleBase="The High Cost of A"
+        titleHighlight="Broken Funnel"
+        subtitle="Every 1% drop in your conversion rate forces you to buy twice as much traffic to make the exact same amount of money."
         customAgitations={[
           {
-            service: "Platform Consistency",
-            title: "Scattered & Weak Presence",
-            pain: "Inconsistent posting across platforms destroys trust. If a prospect finds your Instagram dead and your website outdated, they bounce immediately to a competitor who looks alive.",
+            service: "Checkout Optimization",
+            title: "Massive Cart Abandonment",
+            pain: "Your marketing worked, they added to cart, but an unexpected fee or a confusing form made them instantly close the tab. You are losing your warmest buyers at the finish line.",
             accent: "rgba(255, 80, 80, 0.2)",
             textAccent: "#ff5050"
           },
           {
-            service: "Retargeting Infrastructure",
-            title: "Leaking Acquired Traffic Potential",
-            pain: "Driving traffic with no retargeting structure means 98% of your visitors leave and never return. You are paying premium rates to acquire leads and letting them slip right through your fingers.",
+            service: "Data-Driven UX Design",
+            title: "Navigational Dead Ends",
+            pain: "Users are hopelessly lost on your site. If they cannot find the pricing or the exact product variant they want within 5 seconds, they will leave and simply buy it from Amazon.",
             accent: "rgba(255, 120, 80, 0.2)",
             textAccent: "#ff7850"
           },
           {
-            service: "Predictable Traffic Sources",
-            title: "Unscalable Business Growth",
-            pain: "Relying purely on referrals or organic reach creates massive revenue bottlenecks. If you cannot predictably buy attention today, you mathematically cannot scale your business tomorrow.",
+            service: "Performance Tuning",
+            title: "Mobile Loading Friction",
+            pain: "Over 70% of traffic is mobile. If your bloated images and poorly coded scripts take 6 seconds to load, half of your expensive ad traffic will bounce before the page even renders.",
             accent: "rgba(255, 179, 71, 0.2)",
             textAccent: "#ffb347"
           },
           {
-            service: "Channel Diversification",
-            title: "Single Point of Failure",
-            pain: "If your only lead source changes its algorithm or bans your ad account, your entire business collapses overnight. A lack of true omnichannel presence is an existential threat to your revenue.",
+            service: "Iterative Split Testing",
+            title: "Blind Intuition Guesswork",
+            pain: "Making changes to your site based on what you 'feel' looks pretty is a guaranteed way to bleed revenue. Without statistical A/B testing, redesigns are just expensive gambles.",
             accent: "rgba(255, 80, 120, 0.2)",
             textAccent: "#ff5078"
           }
         ]}
       />
-      <PricingSection customPackages={omnichannelPackages} />
+      <PricingSection customPackages={optimizationPackages} />
       <BlogSection 
         badge="Proof of Concept"
         titleBase="See The Strategy"
         titleHighlight="In Action"
-        subtitle="Read exactly how we deploy these omnichannel strategies to create predictable revenue growth for our partners."
-        customPosts={omnichannelArticles}
+        subtitle="Read exactly how we deploy these optimization strategies to multiply organic revenue for our partners."
+        customPosts={optimizationArticles}
       />
     </main>
   );
