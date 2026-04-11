@@ -266,7 +266,7 @@ export default function HeroSection() {
             minHeight: "80px",
           }}
         >
-          Helping you in every possible way: <br />
+          We are helping for free in every possible way: <br />
           <FlipWords 
             words={[
               "Optimizing the strategy",
@@ -288,8 +288,8 @@ export default function HeroSection() {
             flexWrap: "wrap",
           }}
         >
-          <a
-            href="/contact"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openStartFreeModal"))}
             className="btn-glow"
             style={{
               padding: "16px 36px",
@@ -298,8 +298,8 @@ export default function HeroSection() {
               textDecoration: "none",
             }}
           >
-            Get a Free Audit →
-          </a>
+            Start it For Free →
+          </button>
           <a
             href="/work"
             className="btn-outline"
@@ -311,7 +311,7 @@ export default function HeroSection() {
               fontWeight: 600,
             }}
           >
-            See Our Work
+            Know Success Stories
           </a>
         </div>
 

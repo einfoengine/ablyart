@@ -147,8 +147,8 @@ export default function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <NextLink
-            href="/contact"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openStartFreeModal"))}
             className="btn-glow nav-cta"
             style={{
               padding: "10px 22px",
@@ -157,8 +157,8 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            Get a Free Audit
-          </NextLink>
+            Start it for free
+          </button>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -242,21 +242,22 @@ export default function Navbar() {
           ))}
           
           {/* Mobile CTA */}
-          <NextLink
-            href="/contact"
-            className="btn-glow"
-            onClick={() => setMenuOpen(false)}
+          <button
+            onClick={() => {
+              window.dispatchEvent(new Event("openStartFreeModal"));
+              setMenuOpen(false);
+            }}
+            className="btn-glow flex justify-center items-center"
             style={{
               padding: "12px 24px",
               fontSize: "1rem",
-              display: "inline-block",
               textDecoration: "none",
-              textAlign: "center",
-              marginTop: "12px"
+              marginTop: "12px",
+              width: "100%",
             }}
           >
-            Get a Free Audit
-          </NextLink>
+            Start it for free
+          </button>
         </div>
       )}
 

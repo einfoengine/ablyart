@@ -295,7 +295,7 @@ function HeroSection() {
               fontWeight: 600,
             }}
           >
-            See Our Work
+            Know Success Stories
           </a>
         </motion.div>
       </div>
