@@ -48,19 +48,6 @@ const contactMethods = [
     accent: "#6ee7ff",
     rgb: "110,231,255",
   },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M21 2H3v16h5l3 3 3-3h7V2z" stroke="#ffb347" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M7 8h10M7 12h6" stroke="#ffb347" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    ),
-    label: "Live Chat",
-    value: "Available Mon–Fri 9am–6pm",
-    href: "#chat",
-    accent: "#ffb347",
-    rgb: "255,179,71",
-  },
 ];
 
 const faqs = [
@@ -342,7 +329,7 @@ function ContactForm() {
           marginTop: "4px",
         }}
       >
-        Send Message — Get a Free Audit →
+        Send Message →
       </button>
 
       <p style={{ fontSize: "0.72rem", color: "rgba(240,240,248,0.3)", textAlign: "center" }}>
@@ -425,7 +412,7 @@ export default function ContactPageClient() {
 
       {/* ── Contact Methods ── */}
       <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px 64px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+        <div className="contact-methods" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px", maxWidth: "800px", margin: "0 auto" }}>
           {contactMethods.map((m, i) => (
             <FadeUp key={m.label} delay={i * 0.1}>
               <a
