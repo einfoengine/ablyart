@@ -652,15 +652,18 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
               <span style={{ fontSize: "0.72rem", color: "rgba(240,240,248,0.3)" }}>
                 Not sure which fits? We&apos;ll figure it out together.
               </span>
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  window.dispatchEvent(new Event("openAuditPotentialModal"));
+                }}
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "6px",
                   fontSize: "0.72rem", fontWeight: 700, color: "var(--accent)",
                   textDecoration: "none", padding: "6px 14px", borderRadius: "9999px",
                   background: "rgba(155,255,110,0.08)", border: "1px solid rgba(155,255,110,0.2)",
                   transition: "background 0.18s",
+                  cursor: "pointer",
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(155,255,110,0.14)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(155,255,110,0.08)"; }}
@@ -669,7 +672,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                   <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
+              </button>
             </div>
           </motion.div>
           </div>
