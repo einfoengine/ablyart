@@ -116,7 +116,7 @@ export default function TechAndSocial() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-20 text-center relative z-10 flex flex-col items-center w-full">
+        {/* <div className="mt-20 text-center relative z-10 flex flex-col items-center w-full">
           <a
             href="#position"
             className="btn-glow inline-flex items-center justify-center font-bold"
@@ -130,7 +130,7 @@ export default function TechAndSocial() {
           >
             Check Your Position
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

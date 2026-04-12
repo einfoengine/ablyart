@@ -54,7 +54,7 @@ export default function AgitationSection({
   badge = "The Cost of Inaction",
   titleBase = "What You Lose When You",
   titleHighlight = "Stand Still",
-  subtitle = "Every day you delay optimizing your digital strategy is measurable lost revenue. Here is exactly what is happening to your bottom line right now.",
+  subtitle = "Every day you delay optimizing your online presence is measurable lost revenue. Here is exactly what is happening to your bottom line right now.",
   customAgitations = defaultAgitations
 }: AgitationSectionProps) {
   return (

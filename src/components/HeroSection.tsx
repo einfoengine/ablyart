@@ -288,20 +288,22 @@ export default function HeroSection() {
             flexWrap: "wrap",
           }}
         >
-          <a
-            href="https://calendly.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
             className="btn-glow"
             style={{
               padding: "16px 36px",
               fontSize: "1rem",
-              display: "inline-block",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
               textDecoration: "none",
+              cursor: "pointer",
+              border: "none",
             }}
           >
-            Book a Discovery Call →
-          </a>
+            Check your growth potential →
+          </button>
           {/* <a
             href="/work"
             className="btn-outline"

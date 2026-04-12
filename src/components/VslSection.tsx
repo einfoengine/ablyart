@@ -97,7 +97,7 @@ export default function VslSection() {
               letterSpacing: "0.05em",
             }}
           >
-            Audit your potential for free
+            Make Your Journey Predictable →
           </button>
         </motion.div>
       </div>

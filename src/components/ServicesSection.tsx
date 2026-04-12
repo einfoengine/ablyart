@@ -167,10 +167,10 @@ export default function ServicesSection() {
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
           <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "560px" }}>
-            Four Core Services.{" "}<span className="gradient-text">One Strategy.</span>
+            We Findout Your Gaps.{" "}<span className="gradient-text">We Fix Them.</span>
           </h2>
           <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
-            We don&apos;t do everything — we do four things exceptionally well, and we make them work together.
+            We don&apos;t do everything — We plat with audit, content, promotion & strategy.
           </p>
         </div>
       </motion.div>
