@@ -214,12 +214,12 @@ export default function HeroSection() {
         }}
       >
         {/* Tag */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
+        {/* <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
           <span className="tag-pill">
             <span className="glow-dot" />
-            360 Digital Marketing Agency
+            A holistic approach
           </span>
-        </div>
+        </div> */}
 
         {/* Headline */}
         <h1
