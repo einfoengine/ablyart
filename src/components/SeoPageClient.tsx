@@ -190,7 +190,7 @@ function HeroSection() {
       <div style={{ position: "relative", zIndex: 2, maxWidth: "900px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
@@ -203,7 +203,7 @@ function HeroSection() {
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           style={{
             fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
@@ -220,7 +220,7 @@ function HeroSection() {
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           style={{
             color: "rgba(240,240,248,0.5)",
