@@ -147,8 +147,10 @@ export default function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <button
-            onClick={() => window.dispatchEvent(new Event("openStartFreeModal"))}
+          <a
+            href="https://calendly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow nav-cta"
             style={{
               padding: "10px 22px",
@@ -157,8 +159,8 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            Start it for free
-          </button>
+            Discovery Call
+          </a>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -242,11 +244,10 @@ export default function Navbar() {
           ))}
           
           {/* Mobile CTA */}
-          <button
-            onClick={() => {
-              window.dispatchEvent(new Event("openStartFreeModal"));
-              setMenuOpen(false);
-            }}
+          <a
+            href="https://calendly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow flex justify-center items-center"
             style={{
               padding: "12px 24px",
@@ -256,8 +257,8 @@ export default function Navbar() {
               width: "100%",
             }}
           >
-            Start it for free
-          </button>
+            Discovery Call
+          </a>
         </div>
       )}
 

@@ -288,8 +288,10 @@ export default function HeroSection() {
             flexWrap: "wrap",
           }}
         >
-          <button
-            onClick={() => window.dispatchEvent(new Event("openStartFreeModal"))}
+          <a
+            href="https://calendly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow"
             style={{
               padding: "16px 36px",
@@ -298,8 +300,8 @@ export default function HeroSection() {
               textDecoration: "none",
             }}
           >
-            Start it For Free →
-          </button>
+            Book a Discovery Call →
+          </a>
           <a
             href="/work"
             className="btn-outline"
