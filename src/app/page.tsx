@@ -23,8 +23,8 @@ export default function Home() {
         <AgitationSection />
         <PricingSection />
         <TestimonialsSection />
-        <FaqSection />
         <TechAndSocial />
+        <FaqSection />
         <BlogSection />
       </main>
       
