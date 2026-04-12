@@ -302,7 +302,7 @@ export default function HeroSection() {
           >
             Book a Discovery Call →
           </a>
-          <a
+          {/* <a
             href="/work"
             className="btn-outline"
             style={{
@@ -314,7 +314,7 @@ export default function HeroSection() {
             }}
           >
             Know Success Stories
-          </a>
+          </a> */}
         </div>
 
         {/* Trust line */}

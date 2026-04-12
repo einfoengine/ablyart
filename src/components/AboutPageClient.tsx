@@ -284,7 +284,7 @@ function HeroSection() {
           >
             Work With Us →
           </a>
-          <a
+          {/* <a
             href="/work"
             className="btn-outline"
             style={{
@@ -296,7 +296,7 @@ function HeroSection() {
             }}
           >
             Know Success Stories
-          </a>
+          </a> */}
         </motion.div>
       </div>
 
