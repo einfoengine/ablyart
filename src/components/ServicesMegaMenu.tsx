@@ -91,18 +91,6 @@ const generalServices = [
     ),
   },
   {
-    id: "web-solutions",
-    label: "Web Solutions",
-    description: "Design, development & full maintenance solutions.",
-    startingAt: "$2,500",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M16 18L22 12L16 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M8 6L2 12L8 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
     id: "social-media",
     label: "Social Media",
     description: "Organic community building & viral content scaling.",
@@ -135,6 +123,18 @@ const generalServices = [
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="5" width="15" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
         <path d="M17 9l5-3v12l-5-3V9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: "web-solutions",
+    label: "Web Solutions",
+    description: "Design, development & full maintenance solutions.",
+    startingAt: "$2,500",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M16 18L22 12L16 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 6L2 12L8 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
@@ -437,7 +437,70 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
               width: "100%",
             }}
           >
-            {/* ══ Row 1: Core Growth Services [list | detail] ══ */}
+            {/* ══ Row 1: General Packages (full width) ══ */}
+            <div
+              style={{
+                borderBottom: "1px solid rgba(255,255,255,0.06)",
+                padding: "16px 24px 20px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                <span style={{
+                  width: "6px", height: "6px", borderRadius: "50%",
+                  background: "rgba(240,240,248,0.25)", display: "inline-block", flexShrink: 0,
+                }} />
+                <span style={{
+                  fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.16em",
+                  textTransform: "uppercase", color: "rgba(240,240,248,0.3)",
+                }}>
+                  General Packages
+                </span>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px" }}>
+                {generalServices.map((svc) => (
+                  <a
+                    key={svc.id}
+                    href={`/services/${svc.id}`}
+                    onClick={() => setOpen(false)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "6px",
+                      padding: "12px",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "rgba(255,255,255,0.02)",
+                      textDecoration: "none",
+                      transition: "border-color 0.18s, background 0.18s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.13)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)";
+                    }}
+                  >
+                    <div style={{
+                      width: "28px", height: "28px", borderRadius: "7px",
+                      background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "rgba(240,240,248,0.5)",
+                    }}>
+                      {svc.icon}
+                    </div>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#f0f0f8" }}>{svc.label}</div>
+                    <div style={{ fontSize: "0.62rem", fontWeight: 700, color: "var(--accent)", marginTop: "auto" }}>
+                      From {svc.startingAt}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* ══ Row 2: Core Growth Services [list | detail] ══ */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "300px" }}>
 
               {/* ── LEFT: Core Services stacked column ── */}
@@ -574,69 +637,6 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 <AnimatePresence mode="wait">
                   <DetailPanel key={coreServices[activeCore].id} service={coreServices[activeCore]} />
                 </AnimatePresence>
-              </div>
-            </div>
-
-            {/* ══ Row 2: General Packages (full width) ══ */}
-            <div
-              style={{
-                borderTop: "1px solid rgba(255,255,255,0.06)",
-                padding: "16px 24px 20px",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
-                <span style={{
-                  width: "6px", height: "6px", borderRadius: "50%",
-                  background: "rgba(240,240,248,0.25)", display: "inline-block", flexShrink: 0,
-                }} />
-                <span style={{
-                  fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.16em",
-                  textTransform: "uppercase", color: "rgba(240,240,248,0.3)",
-                }}>
-                  General Packages
-                </span>
-              </div>
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px" }}>
-                {generalServices.map((svc) => (
-                  <a
-                    key={svc.id}
-                    href={`/services/${svc.id}`}
-                    onClick={() => setOpen(false)}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "6px",
-                      padding: "12px",
-                      borderRadius: "10px",
-                      border: "1px solid rgba(255,255,255,0.06)",
-                      background: "rgba(255,255,255,0.02)",
-                      textDecoration: "none",
-                      transition: "border-color 0.18s, background 0.18s",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.13)";
-                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
-                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)";
-                    }}
-                  >
-                    <div style={{
-                      width: "28px", height: "28px", borderRadius: "7px",
-                      background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      color: "rgba(240,240,248,0.5)",
-                    }}>
-                      {svc.icon}
-                    </div>
-                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#f0f0f8" }}>{svc.label}</div>
-                    <div style={{ fontSize: "0.62rem", fontWeight: 700, color: "var(--accent)", marginTop: "auto" }}>
-                      From {svc.startingAt}
-                    </div>
-                  </a>
-                ))}
               </div>
             </div>
 
