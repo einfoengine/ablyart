@@ -7,6 +7,7 @@ import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FaqSection from "@/components/FaqSection";
 
 
 
@@ -22,6 +23,7 @@ export default function Home() {
         <AgitationSection />
         <PricingSection />
         <TestimonialsSection />
+        <FaqSection />
         <TechAndSocial />
         <BlogSection />
       </main>

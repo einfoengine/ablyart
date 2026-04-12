@@ -52,20 +52,28 @@ const contactMethods = [
 
 const faqs = [
   {
-    q: "How quickly do you respond?",
-    a: "We respond to all enquiries within 24 business hours. For urgency, use the email above and mention it in the subject.",
+    q: "What digital marketing services does Ablyart provide?",
+    a: "Ablyart is a full-funnel digital growth agency providing Organic Social Growth, Performance Media Buying (Ads), Technical SEO, High-Performance Website Engineering, and complete Funnel Optimization for scaling startups and B2B brands.",
   },
   {
-    q: "What happens after I submit the form?",
-    a: "A senior strategist reviews your details and schedules a free 30-minute audit call within 1–2 business days.",
+    q: "How quickly do you respond to inquiries?",
+    a: "We respond to all enquiries within 24 business hours. For urgency, use our direct email (hello@ablyart.com) and mention priority in the subject line.",
+  },
+  {
+    q: "What is the typical timeframe to see ROI with Ablyart?",
+    a: "While organic initiatives like SEO and community building compound over 3-6 months, our performance media buying and funnel optimizations typically demonstrate a positive ROI and increased qualified lead flow within the first 30 to 45 days.",
+  },
+  {
+    q: "What happens after I submit the contact form?",
+    a: "A senior strategist reviews your business details and schedules a free 30-minute growth audit call within 1–2 business days.",
   },
   {
     q: "Do you work with businesses outside the US?",
-    a: "Yes — we work with brands globally. Time zones have never stopped us from delivering results.",
+    a: "Yes — we work with brands globally. We have robust asynchronous communication protocols, so time zones never stop us from delivering predictable growth.",
   },
   {
-    q: "Is the audit really free?",
-    a: "100%. No pitch deck, no invoice. We audit your current marketing and give you a 90-day roadmap — that's it.",
+    q: "Is the Ablyart growth audit actually free?",
+    a: "100%. No pitch deck, no invoice. We audit your current marketing infrastructure and give you a custom 90-day execution roadmap — that is it.",
   },
 ];
 
@@ -342,8 +350,25 @@ function ContactForm() {
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ContactPageClient() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main id="contact" style={{ minHeight: "100vh" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
 
       {/* ── Hero ── */}
       <section
