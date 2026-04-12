@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StartFreeModal from "@/components/StartFreeModal";
 import AuditPotentialModal from "@/components/AuditPotentialModal";
+import WebinarTicker from "@/components/WebinarTicker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Footer/>
           <StartFreeModal />
           <AuditPotentialModal />
+          <WebinarTicker />
         </div>
       </body>
     </html>
