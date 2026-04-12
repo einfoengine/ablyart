@@ -266,7 +266,7 @@ export default function HeroSection() {
             minHeight: "80px",
           }}
         >
-          We are helping <span className="font-bold text-white relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[var(--accent)]">for free</span> in every possible way: <br />
+          We are helping in every possible way: <br />
           <FlipWords 
             words={[
               "Optimizing the strategy",
