@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import StartFreeModal from "@/components/StartFreeModal";
 import AuditPotentialModal from "@/components/AuditPotentialModal";
 import WebinarTicker from "@/components/WebinarTicker";
+import CustomCursor from "@/components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
     >
       <body className={`${inter.className} min-h-full flex flex-col bg-[#060608] antialiased overflow-x-clip w-full`}>
         <div className="relative w-full overflow-x-clip flex flex-col min-h-screen">
+          <CustomCursor />
           <Navbar/>
           {children}
           <Footer/>
