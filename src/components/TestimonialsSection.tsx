@@ -57,9 +57,9 @@ const testimonialsRow2 = [
   }
 ];
 
-// Combine the array with itself to create a seamless infinite loop illusion
-const marquee1 = [...testimonialsRow1, ...testimonialsRow1];
-const marquee2 = [...testimonialsRow2, ...testimonialsRow2];
+// Combine the arrays and duplicate to create a seamless infinite loop illusion
+const allTestimonials = [...testimonialsRow1, ...testimonialsRow2];
+const marqueeRow = [...allTestimonials, ...allTestimonials];
 
 export default function TestimonialsSection() {
   return (
@@ -86,17 +86,10 @@ export default function TestimonialsSection() {
         {/* Right Fade Overlay */}
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[var(--background)] to-transparent z-10 pointer-events-none"></div>
 
-        {/* Row 1 (Scrolls Left) */}
+        {/* Single Row (Scrolls Left) */}
         <div className="flex w-max animate-marquee-left hover:[animation-play-state:paused]">
-          {marquee1.map((test, index) => (
+          {marqueeRow.map((test, index) => (
             <TestimonialCard key={`r1-${index}`} data={test} />
-          ))}
-        </div>
-
-        {/* Row 2 (Scrolls Right) */}
-        <div className="flex w-max animate-marquee-right hover:[animation-play-state:paused] -ml-[300px]">
-          {marquee2.map((test, index) => (
-            <TestimonialCard key={`r2-${index}`} data={test} />
           ))}
         </div>
 
