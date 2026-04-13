@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { FlipWords } from "./FlipWords";
-
 /* Canvas-based upward trending scrolling wave */
 function TrendingWave() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -266,17 +264,32 @@ export default function HeroSection() {
             minHeight: "80px",
           }}
         >
-          We are helping in every possible way: <br />
-          <FlipWords 
-            words={[
-              "Optimizing the strategy",
-              "Building high quality contents (copy, visuals, videos, etc)",
-              "Running ads",
-              "Generating leads",
-              "Increasing search visibility"
-            ]} 
-            className="font-semibold text-[var(--accent)]" 
-          />
+          We are helping in every possible way:
+          <div style={{
+            marginTop: "16px",
+            overflow: "hidden",
+            width: "100%",
+            position: "relative",
+            maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+          }}>
+            <div className="animate-marquee-left" style={{ padding: "4px 0" }}>
+              <div style={{ display: "flex", gap: "24px", color: "var(--accent)", fontWeight: 600, paddingRight: "24px", whiteSpace: "nowrap" }}>
+                <span>Optimizing the strategy</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Building high quality contents</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Running ads</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Generating leads</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Increasing search visibility</span><span style={{ opacity: 0.5 }}>✦</span>
+              </div>
+              <div style={{ display: "flex", gap: "24px", color: "var(--accent)", fontWeight: 600, paddingRight: "24px", whiteSpace: "nowrap" }}>
+                <span>Optimizing the strategy</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Building high quality contents</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Running ads</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Generating leads</span><span style={{ opacity: 0.5 }}>✦</span>
+                <span>Increasing search visibility</span><span style={{ opacity: 0.5 }}>✦</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* CTAs */}
