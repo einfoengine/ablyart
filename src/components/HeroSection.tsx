@@ -178,7 +178,7 @@ export default function HeroSection() {
       style={{
         position: "relative",
         paddingTop: "140px",
-        paddingBottom: "120px",
+        paddingBottom: "200px",
         overflow: "hidden",
       }}
     >
