@@ -369,7 +369,7 @@ export default function HeroSection() {
 
       {/* Floating Industry Tags */}
       <div
-        className="float-card"
+        className="float-card opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
         style={{
           position: "absolute",
           left: "5%",
@@ -385,7 +385,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="float-card-slow"
+        className="float-card-slow opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
         style={{
           position: "absolute",
           left: "8%",
@@ -402,7 +402,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="float-card"
+        className="float-card opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
         style={{
           position: "absolute",
           right: "6%",
@@ -419,7 +419,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="float-card-slow"
+        className="float-card-slow opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
         style={{
           position: "absolute",
           right: "4%",
@@ -436,7 +436,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="float-card"
+        className="float-card opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
         style={{
           position: "absolute",
           right: "12%",
