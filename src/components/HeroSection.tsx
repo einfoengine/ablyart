@@ -354,31 +354,38 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Floating metric cards */}
+      {/* Floating Industry Tags */}
       <div
         className="float-card"
         style={{
           position: "absolute",
-          left: "4%",
-          top: "35%",
+          left: "5%",
+          top: "25%",
           zIndex: 3,
-          display: "block",
         }}
       >
-        <MetricCard label="Organic Traffic" value="+317%" change="MoM" positive />
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div style={{ fontSize: "0.55rem", color: "rgba(155, 255, 110, 0.6)", fontFamily: "monospace", letterSpacing: "0.1em" }}>[IND_01] / TARGET</div>
+          <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f0f0f8", letterSpacing: "0.02em" }}>AI Startups</div>
+          <div style={{ height: "2px", width: "30px", background: "#9bff6e", boxShadow: "0 0 10px #9bff6e" }} />
+        </div>
       </div>
 
       <div
         className="float-card-slow"
         style={{
           position: "absolute",
-          right: "4%",
-          top: "38%",
+          left: "8%",
+          bottom: "35%",
           zIndex: 3,
-          display: "block",
+          animationDelay: "1s"
         }}
       >
-        <MetricCard label="Conversion Rate" value="8.4%" change="+2.1%" positive />
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div style={{ fontSize: "0.55rem", color: "rgba(110, 231, 255, 0.6)", fontFamily: "monospace", letterSpacing: "0.1em" }}>[IND_02] / TARGET</div>
+          <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f0f0f8", letterSpacing: "0.02em" }}>SaaS</div>
+          <div style={{ height: "2px", width: "30px", background: "#6ee7ff", boxShadow: "0 0 10px #6ee7ff" }} />
+        </div>
       </div>
 
       <div
@@ -386,13 +393,50 @@ export default function HeroSection() {
         style={{
           position: "absolute",
           right: "6%",
-          bottom: "28%",
+          top: "22%",
           zIndex: 3,
-          display: "block",
-          animationDelay: "1s",
+          animationDelay: "0.5s"
         }}
       >
-        <MetricCard label="Ad ROAS" value="6.2×" change="+1.4×" positive />
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", alignItems: "flex-end", textAlign: "right" }}>
+          <div style={{ fontSize: "0.55rem", color: "rgba(155, 255, 110, 0.6)", fontFamily: "monospace", letterSpacing: "0.1em" }}>TARGET \ [IND_03]</div>
+          <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f0f0f8", letterSpacing: "0.02em" }}>Fintech</div>
+          <div style={{ height: "2px", width: "30px", background: "#9bff6e", boxShadow: "0 0 10px #9bff6e" }} />
+        </div>
+      </div>
+
+      <div
+        className="float-card-slow"
+        style={{
+          position: "absolute",
+          right: "4%",
+          top: "50%",
+          zIndex: 3,
+          animationDelay: "1.5s"
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", alignItems: "flex-end", textAlign: "right" }}>
+          <div style={{ fontSize: "0.55rem", color: "rgba(240, 240, 248, 0.4)", fontFamily: "monospace", letterSpacing: "0.1em" }}>TARGET \ [IND_04]</div>
+          <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f0f0f8", letterSpacing: "0.02em" }}>Coach</div>
+          <div style={{ height: "2px", width: "30px", background: "rgba(240, 240, 248, 0.4)" }} />
+        </div>
+      </div>
+
+      <div
+        className="float-card"
+        style={{
+          position: "absolute",
+          right: "12%",
+          bottom: "22%",
+          zIndex: 3,
+          animationDelay: "2s"
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", alignItems: "flex-end", textAlign: "right" }}>
+          <div style={{ fontSize: "0.55rem", color: "rgba(110, 231, 255, 0.6)", fontFamily: "monospace", letterSpacing: "0.1em" }}>TARGET \ [IND_05]</div>
+          <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f0f0f8", letterSpacing: "0.02em" }}>High value professionals</div>
+          <div style={{ height: "2px", width: "30px", background: "#6ee7ff", boxShadow: "0 0 10px #6ee7ff" }} />
+        </div>
       </div>
 
       {/* Upward trending wave at bottom */}
