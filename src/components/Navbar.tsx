@@ -22,6 +22,7 @@ export default function Navbar() {
 
   // Nav items → all dedicated pages
   const navItems = [
+    { label: "Home",    href: "/" },
     { label: "Work",    href: "/work" },
     { label: "About",   href: "/about" },
     { label: "Blog",    href: "/blog" },
@@ -102,13 +103,9 @@ export default function Navbar() {
           style={{ display: "flex", alignItems: "center", gap: "36px" }}
           className="desktop-nav"
         >
-          {/* ── Services mega menu trigger ── */}
-          <ServicesMegaMenu isScrolled={scrolled} />
-
-          {/* ── Other links ── */}
-          {navItems.map(({ label, href }) => {
+          {navItems.map(({ label, href }, index) => {
             const isActive = pathname === href || pathname.startsWith(href + "/");
-            return (
+            const linkNode = (
               <NextLink
                 key={label}
                 href={href}
@@ -142,6 +139,12 @@ export default function Navbar() {
                 />
               </NextLink>
             );
+
+            // Render Services dropdown immediately after Home (index 0)
+            return [
+              linkNode,
+              index === 0 ? <ServicesMegaMenu key="services-menu" isScrolled={scrolled} /> : null
+            ];
           })}
         </div>
 
@@ -221,27 +224,34 @@ export default function Navbar() {
             borderRadius: scrolled ? "0 0 24px 24px" : "0",
           }}
         >
-          {/* Services in mobile: links to homepage services section */}
-          <a
-            href="/#services"
-            className="nav-link"
-            onClick={() => setMenuOpen(false)}
-            style={{ fontSize: "1rem" }}
-          >
-            Services
-          </a>
+          {navItems.map(({ label, href }, index) => {
+            const linkNode = (
+              <NextLink
+                key={label}
+                href={href}
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
+                style={{ fontSize: "1rem", textDecoration: "none", padding: "8px 0" }}
+              >
+                {label}
+              </NextLink>
+            );
 
-          {navItems.map(({ label, href }) => (
-            <NextLink
-              key={label}
-              href={href}
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-              style={{ fontSize: "1rem", textDecoration: "none", padding: "8px 0" }}
-            >
-              {label}
-            </NextLink>
-          ))}
+            return [
+              linkNode,
+              index === 0 ? (
+                <a
+                  key="services-mobile"
+                  href="/#services"
+                  className="nav-link"
+                  onClick={() => setMenuOpen(false)}
+                  style={{ fontSize: "1rem" }}
+                >
+                  Services
+                </a>
+              ) : null
+            ];
+          })}
           
           {/* Mobile CTA */}
           <button
