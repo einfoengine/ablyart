@@ -61,7 +61,7 @@ export default function WebinarTicker() {
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#9bff6e] to-transparent opacity-50"></div>
           
           <div className="max-w-7xl mx-auto px-4 md:px-6 h-[60px] flex items-center justify-between text-sm">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 z-50">
               <span className="w-2 h-2 rounded-full bg-[#9bff6e] animate-pulse shrink-0"></span>
               <span className="text-[#f0f0f8] font-bold hidden md:inline tracking-tight">
                 FREE MASTERCLASS:
