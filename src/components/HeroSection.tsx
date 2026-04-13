@@ -264,7 +264,16 @@ export default function HeroSection() {
             minHeight: "80px",
           }}
         >
-          We are helping in every possible way:
+          <div style={{
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontStyle: "italic",
+            fontSize: "0.95rem",
+            color: "rgba(240,240,248,0.45)",
+            letterSpacing: "0.02em",
+            marginBottom: "-4px"
+          }}>
+            We are helping in every possible way:
+          </div>
           <div style={{
             marginTop: "16px",
             overflow: "hidden",
