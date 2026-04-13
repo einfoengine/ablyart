@@ -27,9 +27,9 @@ export default function CustomCursor() {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
 
-      const isInteractive = target.closest("a, button, [role='button'], .cursor-pointer") !== null;
+      const isInteractive = target.closest("a, button, [role='button'], .cursor-pointer, h1, h2, h3, h4, h5, h6") !== null;
       // Define text elements where we want the bubble to expand, but NOT show a system hand pointer
-      const isText = target.closest("p, h1, h2, h3, h4, h5, h6, span") !== null;
+      const isText = target.closest("p, span") !== null;
 
       if (isInteractive) {
         setIsHovering(true);
@@ -62,12 +62,12 @@ export default function CustomCursor() {
     <>
       <style>{`
         /* Hide all default cursors unless it's explicitly an interactive element we're hovering */
-        *:not(a):not(button):not([role="button"]):not(.cursor-pointer) {
+        *:not(:is(a, button, [role="button"], .cursor-pointer, h1, h2, h3, h4, h5, h6)) {
           cursor: none;
         }
         
         /* Ensure interactive elements ALWAYS display the classic hand pointer */
-        a, button, [role="button"], .cursor-pointer {
+        :is(a, button, [role="button"], .cursor-pointer, h1, h2, h3, h4, h5, h6) {
           cursor: pointer !important;
         }
       `}</style>
