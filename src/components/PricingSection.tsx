@@ -21,45 +21,46 @@ export type PricingPackage = {
 };
 
 const pricingData: Record<string, { label: string; packages: PricingPackage[] }> = {
-  "holistic-marketing": {
-    label: "Holistic Marketing",
+  "growth-marketing": {
+    label: "Growth Marketing",
     packages: [
       {
         name: "Growth Engine",
         price: "$5,000",
         period: "/mo",
-        description: "Perfect for taking an established business and digitizing their entire marketing flow.",
+        description: "Focus: Building the digital foundation and establishing a lead-capture system.",
         features: [
-          "Complete Web Redesign",
-          "Basic SEO & Citations",
-          "3 Social Platforms Managed",
-          "Introductory Media Buying",
-          "Bi-Weekly Reporting"
+          "Conversion-focused Landing Pages",
+          "GTM & Server-side Tracking Setup",
+          "Topical Authority Mapping",
+          "AEO & SEO Baseline",
+          "2 Social Platforms Managed",
+          "Monthly Audit & Attribution"
         ],
         detailedDeliverables: [
           {
-            title: "Complete Web Redesign",
-            quantity: "1 Home + 4 Core Pages",
-            quality: "Custom UI/UX, Next.js Architecture, Mobile Perfect",
-            time: "Initial Launch in 30 Days"
+            title: "Growth Infrastructure",
+            quantity: "Custom Landing Page + GTM",
+            quality: "Next.js/React architecture, 100% data accuracy",
+            time: "Initial Foundation Build"
           },
           {
-            title: "Search & Local SEO",
-            quantity: "50 Citations + Tech Audit",
-            quality: "White-hat Google compliant, Hand-written code fixes",
-            time: "Continuous Monthly Tuning"
+            title: "AEO & SEO Baseline",
+            quantity: "5-10 Pillar Pages",
+            quality: "Answer Engine Optimization for AI search queries",
+            time: "Continuous Content Mapping"
           },
           {
-            title: "Social Platforms Managed",
-            quantity: "3 Platforms (IG, TikTok, FB), 12 Posts",
-            quality: "High-end Graphic Design & Value-driven Copy",
-            time: "3 Posts Minimum Per Week"
+            title: "Social & Content",
+            quantity: "2 Platforms + 4 Articles",
+            quality: "High-authority content designed for 'Search & Share'",
+            time: "4 Published Articles Monthly"
           },
           {
-            title: "Introductory Media Buying",
-            quantity: "Up to $3,000 Monthly Ad Spend",
-            quality: "Meta Ads Manager precise targeting & A/B testing",
-            time: "Daily Campaign Monitoring"
+            title: "Reporting",
+            quantity: "Monthly Growth Audit",
+            quality: "Deep attribution tracking to ensure ROI",
+            time: "1 Audit/Month"
           }
         ],
         isPopular: false,
@@ -68,39 +69,39 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         name: "Market Domination",
         price: "$8,500",
         period: "/mo",
-        description: "Our core offering. We run your entire digital department end-to-end.",
+        description: "Focus: Rapid scaling, aggressive experimentation, and full-funnel management.",
         features: [
-          "Custom Web App Development",
-          "Advanced Topical SEO Architecture",
-          "Omnichannel Social (4 Platforms)",
-          "Aggressive Ad Scale (Up to $50k spend)",
-          "Weekly Strategy & Growth Syncs",
-          "Full Funnel Optimization"
+          "Continuous CRO via A/B Testing",
+          "Custom Web App / Prototypes",
+          "Paid Ads Mgmt (Up to $50k spend)",
+          "Retargeting Funnel Setup",
+          "Advanced GEO (ChatGPT Citations)",
+          "8 Short-form Videos / Month"
         ],
         detailedDeliverables: [
           {
-            title: "Custom Web App / E-Commerce Built",
-            quantity: "Uncapped Core Pages + CMS integration",
-            quality: "Headless architecture, zero-latency load times",
-            time: "Ongoing dedicated development hours"
+            title: "Advanced Web & Tech",
+            quantity: "CRO + Interactive Prototypes",
+            quality: "Continuous A/B testing to maximize engagement",
+            time: "Ongoing dedicated development"
           },
           {
-            title: "Topical SEO Authority",
-            quantity: "4 Long-Form Pillar Articles + Link Building",
-            quality: "Expert-written, fully Schema marked, deep research",
-            time: "4 Published Articles Monthly"
+            title: "Omnichannel Growth",
+            quantity: "Paid Ads ($50k) + Retargeting",
+            quality: "Capturing leaky traffic across Meta/Google/LinkedIn",
+            time: "Daily optimization & strategy"
           },
           {
-            title: "Omnichannel Social Play",
-            quantity: "4 Platforms, 24 Posts (Static + Reels)",
-            quality: "Viral hooks matching strict brand identity",
-            time: "6x Posts per week + Active Community Mgmt"
+            title: "Advanced GEO",
+            quantity: "Generative Engine Optimization",
+            quality: "Ensuring brand citations globally in ChatGPT/Perplexity",
+            time: "Constant algorithmic tuning"
           },
           {
-            title: "Aggressive Ad Scaling",
-            quantity: "Up to $50,000 Monthly Ad Spend",
-            quality: "Full retargeting funnels, Lookalike mapping",
-            time: "Daily Optimization & Hourly Budget Adjustments"
+            title: "Volume Content & Video",
+            quantity: "4 Social Platforms + 8 Video Edits",
+            quality: "High retention short-form edits for TikTok/Reels/LinkedIn",
+            time: "Weekly 1-on-1 Growth Syncs"
           }
         ],
         isPopular: true,
@@ -109,39 +110,39 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         name: "Enterprise Scaling",
         price: "$15,000+",
         period: "/mo",
-        description: "Designed for massive scale, aggressive content production, and enterprise traffic.",
+        description: "Focus: Owning the category, massive content volume, and dedicated technical support.",
         features: [
-          "Headless E-Commerce/Web Support",
-          "In-House Quality Video Production",
+          "Dedicated 4-Person Digital Dept",
+          "Priority 24/7 Tech Support",
+          "Full-service Video Production",
           "Digital PR & Link Building",
-          "Unlimited Lead Gen Flows",
-          "Dedicated Team of 4 Experts",
-          "24/7 Priority Support"
+          "Automated CRM Lead Flows",
+          "Performance Guarantee"
         ],
         detailedDeliverables: [
           {
-            title: "Enterprise Web Support",
-            quantity: "Full Dedicated Stack Control",
-            quality: "Bank-level security, instant server-side rendering",
-            time: "24/7 Uptime & Instant Bug Fixes"
+            title: "The 'Digital Department'",
+            quantity: "1 Strategist, 1 Dev, 1 Content, 1 Ads",
+            quality: "Fully dedicated elite team operating as your agency",
+            time: "24/7 Priority Technical Support"
           },
           {
-            title: "In-House Video Production",
-            quantity: "15 Shorts + 2 Cinematic Long-forms",
-            quality: "4k Camera Equipment, Pro Grading & Editing",
-            time: "Monthly filming days"
+            title: "High-End Production",
+            quantity: "Full Video + Digital PR",
+            quality: "Scripting, editing, and high-tier link building",
+            time: "Monthly production & distribution"
           },
           {
-            title: "Digital PR Machinery",
-            quantity: "High-Domain Authority Placements",
-            quality: "Real news outlets, DO-FOLLOW context links",
-            time: "3-5 Premium Placements Monthly"
+            title: "Total Automation",
+            quantity: "HubSpot/Salesforce flows",
+            quality: "Retention & Lifecycle email/SMS automation for LTV",
+            time: "Always-on triggered infrastructure"
           },
           {
-            title: "Unlimited Dedicated Account Support",
-            quantity: "1 Dedicated Director + 3 Specialists",
-            quality: "Direct Slack channel, zero wait times",
-            time: "Responses under 15 minutes, 24/7 emergencies"
+            title: "Outcome Security",
+            quantity: "Performance Guarantees",
+            quality: "Custom KPI-based incentives and revenue-share options",
+            time: "Contractual Baseline"
           }
         ],
         isPopular: false,
@@ -603,7 +604,7 @@ export type PricingSectionProps = {
 };
 
 export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
-  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("holistic-marketing");
+  const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("growth-marketing");
   const [selectedPackage, setSelectedPackage] = useState<PricingPackage | null>(null);
   
   const displayPackages = customPackages || pricingData[activeTab].packages;
