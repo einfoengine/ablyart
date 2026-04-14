@@ -149,6 +149,131 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       }
     ]
   },
+  "performance-marketing": {
+    label: "Performance Marketing",
+    packages: [
+      {
+        name: "Scale Starter",
+        price: "$3,500",
+        period: "/mo + 10% Ad Spend",
+        description: "Perfect for validating a new product and establishing profitable unit economics.",
+        features: [
+          "1 Platform (e.g., Google or Meta)",
+          "4 Static + 2 Video Edits/mo",
+          "Standard Tracking Setup",
+          "Weekly Bid Adjustments",
+          "Monthly ROI Report"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Channel Deployment",
+            quantity: "1 Primary Platform",
+            quality: "Deep intent targeting on Google or Meta",
+            time: "Always-on deployment"
+          },
+          {
+            title: "Creative Laboratory",
+            quantity: "4 Static + 2 Video Edits",
+            quality: "Direct-response ad copy and scroll-stopping visuals",
+            time: "New creatives introduced monthly"
+          },
+          {
+            title: "Technical Foundation",
+            quantity: "Tracking & Conversion Pixels",
+            quality: "Standard tracking implementation for accurate attribution",
+            time: "Built during onboarding"
+          },
+          {
+            title: "Campaign Management",
+            quantity: "Weekly Optimization Cycle",
+            quality: "Bid-cap adjustments, audience pruning, and scaling",
+            time: "Weekly tuning + Monthly Reporting"
+          }
+        ],
+        isPopular: false,
+      },
+      {
+        name: "Market Dominator",
+        price: "$6,500",
+        period: "/mo + 15% Ad Spend",
+        description: "Built for aggressive growth, B2B SaaS, and e-commerce scaling.",
+        features: [
+          "2-3 Platforms (Omnichannel)",
+          "8 Static + 4 Video Edits/mo",
+          "Server-side Tagging (CAPI)",
+          "Daily Testing & CRO",
+          "Bi-Weekly Strategy Syncs"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Omnichannel Funnel",
+            quantity: "2-3 Platforms Running Synchronously",
+            quality: "Cross-platform retargeting capturing leaky traffic",
+            time: "Always-on deployment"
+          },
+          {
+            title: "Scaled Creative Output",
+            quantity: "8 Static + 4 Video Edits",
+            quality: "High-volume hook variations and strict A/B formats",
+            time: "Delivered consistently over exactly 30 days"
+          },
+          {
+            title: "Advanced Data Layer",
+            quantity: "Server-side Tagging (Meta CAPI)",
+            quality: "Bypassing iOS14 restrictions for precise event capturing",
+            time: "Maintained 24/7"
+          },
+          {
+            title: "Iterative Optimization",
+            quantity: "Daily Ad Tuning + CRO",
+            quality: "Granular pause/scale rules applied strictly to roas metrics",
+            time: "Daily checks + Bi-weekly Syncs"
+          }
+        ],
+        isPopular: true,
+      },
+      {
+        name: "Enterprise Performance",
+        price: "$12,000+",
+        period: "/mo + 20% Ad Spend",
+        description: "Total category leadership for massive ad budgets and intricate custom attribution models.",
+        features: [
+          "Unlimited Platforms + Native Ads",
+          "Unlimited Creative Testing",
+          "Full Data Attribution Modeling",
+          "24/7 Algorithmic Monitoring",
+          "Real-time Dashboard + Weekly Syncs"
+        ],
+        detailedDeliverables: [
+          {
+            title: "Total Market Coverage",
+            quantity: "Unlimited Platform Strategy",
+            quality: "Meta, Google, LinkedIn, TikTok, Native, DSPs",
+            time: "24/7 active management"
+          },
+          {
+            title: "Infinite Creative Engine",
+            quantity: "Unlimited Testing Limits",
+            quality: "Mass scale dynamic creative optimization (DCO)",
+            time: "Continuous iteration"
+          },
+          {
+            title: "Data Science & Attribution",
+            quantity: "Custom Attribution Modeling",
+            quality: "Multi-touch, fractional mapping—no more 'black box' data",
+            time: "Real-time dashboard updates"
+          },
+          {
+            title: "Algorithmic Precision",
+            quantity: "Dedicated Elite Team",
+            quality: "Machine learning augmented bidding strategies",
+            time: "24/7 Monitoring + Weekly Executive Syncs"
+          }
+        ],
+        isPopular: false,
+      }
+    ]
+  },
   "social-media": {
     label: "Social Media",
     packages: [
