@@ -28,15 +28,10 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement;
 
       const isInteractive = target.closest("a, button, [role='button'], .cursor-pointer, h1, h2, h3, h4, h5, h6") !== null;
-      // Define text elements where we want the bubble to expand, but NOT show a system hand pointer
-      const isText = target.closest("p, span") !== null;
 
       if (isInteractive) {
         setIsHovering(true);
         document.body.style.cursor = "pointer";
-      } else if (isText) {
-        setIsHovering(true);
-        document.body.style.cursor = "none";
       } else {
         setIsHovering(false);
         document.body.style.cursor = "none";
