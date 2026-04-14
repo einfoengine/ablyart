@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// [... data block unchanged ...]
 
 const servicesData = [
   {
@@ -89,17 +91,72 @@ const servicesData = [
 ];
 
 export default function ServicesSection() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const phaseRef = useRef<number>(-1);
+  const [scrollActiveIdx, setScrollActiveIdx] = useState<number>(0);
+  const [clickActiveIdx, setClickActiveIdx] = useState<number | null>(null);
+
+  const activeIdx = clickActiveIdx !== null ? clickActiveIdx : scrollActiveIdx;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const outer = outerRef.current;
+      if (!outer) return;
+
+      const rect = outer.getBoundingClientRect();
+      const scrolledPast = Math.max(0, -rect.top);
+      const scrollable = outer.offsetHeight - window.innerHeight;
+
+      if (scrollable <= 0) return;
+
+      let newActive = 0;
+
+      if (scrolledPast > 0) {
+        const n = servicesData.length;
+        if (scrolledPast >= scrollable) {
+          newActive = n - 1;
+        } else {
+          const phaseSize = scrollable / n;
+          const phase = Math.floor(scrolledPast / phaseSize);
+          newActive = Math.max(0, Math.min(phase, n - 1));
+        }
+      }
+
+      if (newActive !== phaseRef.current) {
+        phaseRef.current = newActive;
+        setScrollActiveIdx(newActive);
+        setClickActiveIdx(null); // Clear manual clicks on large scroll shifts
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleTabClick = (idx: number) => {
+    setClickActiveIdx(idx);
+    
+    if (outerRef.current) {
+      const n = servicesData.length;
+      const scrollable = outerRef.current.offsetHeight - window.innerHeight;
+      const phaseSize = scrollable / n;
+      const targetScrollPast = phaseSize * idx + (phaseSize / 2);
+      
+      const targetWindowScroll = (window.scrollY + outerRef.current.getBoundingClientRect().top) + targetScrollPast;
+      window.scrollTo({ top: targetWindowScroll, behavior: "smooth" });
+    }
+  };
 
   return (
-    <section id="services" className="py-24 md:py-32" style={{ position: "relative" }}>
+    <section id="services" className="pt-24 md:pt-32" style={{ position: "relative" }}>
       {/* Section header */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        style={{ padding: "0 24px", maxWidth: "1200px", margin: "0 auto", marginBottom: "60px" }}
+        style={{ padding: "0 24px", maxWidth: "1200px", margin: "0 auto", marginBottom: "40px" }}
       >
         <div style={{ display: "inline-flex", marginBottom: "20px" }}>
           <span className="tag-pill">What we do</span>
@@ -114,17 +171,19 @@ export default function ServicesSection() {
         </div>
       </motion.div>
 
-      {/* Tabs Layout */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 items-start">
-        
-        {/* Left column: The Options / Tabs */}
-        <div className="flex flex-col gap-3">
-          {servicesData.map((svc, idx) => {
-            const isActive = activeIdx === idx;
-            return (
-              <button
-                key={svc.id}
-                onClick={() => setActiveIdx(idx)}
+      <div ref={outerRef} style={{ height: "400vh", position: "relative" }}>
+        <div style={{ position: "sticky", top: "120px", paddingBottom: "120px" }}>
+          {/* Tabs Layout */}
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 items-start">
+            
+            {/* Left column: The Options / Tabs */}
+            <div className="flex flex-col gap-3">
+              {servicesData.map((svc, idx) => {
+                const isActive = activeIdx === idx;
+                return (
+                  <button
+                    key={svc.id}
+                    onClick={() => handleTabClick(idx)}
                 className="group"
                 style={{
                   textAlign: "left",
@@ -285,6 +344,8 @@ export default function ServicesSection() {
           </AnimatePresence>
         </div>
 
+          </div>
+        </div>
       </div>
     </section>
   );
