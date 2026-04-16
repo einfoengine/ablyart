@@ -70,7 +70,7 @@ export default function WhyChooseUsSection() {
             <span className="tag-pill">Why Choose Ablyart</span>
           </div>
           <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black tracking-tighter leading-[1.05] mb-6 text-[#f0f0f8]">
-            We operate like a <span className="gradient-text italic">tech company.</span>
+            No Vanity Metrics. <span className="gradient-text italic">Just Predictable Growth.</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
             Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets.
