@@ -90,8 +90,8 @@ export default function FaqSection({ faqs = defaultFaqs }: { faqs?: { q: string,
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <div style={{ maxWidth: "740px", margin: "0 auto" }}>
         <SectionHeader
-          titleBase="Frequently Asked"
-          titleHighlight="Questions"
+          titleBase="You got a question?"
+          titleHighlight="Ask us"
           subtitle="Everything you need to know about partnering with Ablyart for your growth."
           alignment="center"
         />
