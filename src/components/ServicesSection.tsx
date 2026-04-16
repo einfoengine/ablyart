@@ -32,8 +32,8 @@ const servicesData = [
       "Multivariate Testing: Testing multiple variables simultaneously to see which combination performs best.",
       "Channel Testing: Identifying which platforms (LinkedIn, Meta, Google, etc.) yield the highest ROI."
     ],
-    color: "#ffb347",
-    rgb: "255, 179, 71",
+    color: "#ffec8fff",
+    rgb: "255, 236, 143",
   },
   {
     id: "data-analysis",
@@ -46,8 +46,8 @@ const servicesData = [
       "Perform Attribution Modeling to understand which touchpoints actually led to a conversion.",
       "Monitor key KPIs like Customer Acquisition Cost (CAC) and Churn Rate."
     ],
-    color: "#ff6eb4",
-    rgb: "255, 110, 180",
+    color: "#5d98f7ff",
+    rgb: "93, 152, 247",
   },
   {
     id: "search-gen-ai",
@@ -85,8 +85,8 @@ const servicesData = [
       "Loyalty Programs: Encouraging repeat purchases.",
       "Onboarding: Helping new users understand the product's value quickly."
     ],
-    color: "#ff5050",
-    rgb: "255, 80, 80",
+    color: "#73d39bff",
+    rgb: "115, 211, 155",
   }
 ];
 

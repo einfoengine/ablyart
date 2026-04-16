@@ -23,24 +23,42 @@ export default function VslSection() {
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
             A Powerful Online Presence & Growth Optimization <span className="gradient-text italic">Drives 600% of Leads & Conversions. The Remaining 400% Relies on Outbound Performance.</span>
           </h2>
-          <div className="flex flex-col md:flex-row justify-center items-stretch border border-white/10 rounded-2xl md:rounded-full bg-[#0b0b0e]/60 backdrop-blur-md shadow-2xl max-w-4xl mx-auto mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 lg:gap-4 max-w-5xl mx-auto mt-10 w-full px-2">
             {[
               "Digital Foundation",
               "Topical Authority",
               "Promotion",
-              "Lead Generation",
+              "Lead Gen",
               "Management"
             ].map((item, idx, arr) => (
-              <div 
-                key={idx} 
-                className={`py-4 px-4 xl:px-6 text-sm font-semibold tracking-wide text-gray-400 hover:text-[var(--accent)] hover:bg-white/[0.03] transition-all flex-1 text-center whitespace-nowrap ${
-                  idx !== arr.length - 1 ? 'border-b md:border-b-0 md:border-r border-white/10' : ''
-                } ${idx === 0 ? 'rounded-t-2xl md:rounded-t-none md:rounded-l-full' : ''} ${
-                  idx === arr.length - 1 ? 'rounded-b-2xl md:rounded-b-none md:rounded-r-full' : ''
-                }`}
-              >
-                {item}
-              </div>
+              <React.Fragment key={idx}>
+                <div className="flex flex-row items-center gap-2 lg:gap-3 group cursor-default">
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/10 bg-[#0b0b0e]/80 flex items-center justify-center text-[0.7rem] font-bold text-gray-500 font-mono group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] group-hover:shadow-[0_0_15px_rgba(155,255,110,0.15)] transition-all duration-300 shrink-0">
+                    0{idx + 1}
+                  </div>
+                  <h3 className="text-sm lg:text-[15px] font-semibold text-gray-400 whitespace-nowrap group-hover:text-white transition-colors">
+                    {item}
+                  </h3>
+                </div>
+                
+                {/* Desktop Right Arrow */}
+                {idx !== arr.length - 1 && (
+                  <div className="hidden md:flex items-center text-white/20 shrink-0">
+                    <svg className="w-4 h-4 lg:w-5 lg:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                )}
+                
+                {/* Mobile Down Arrow */}
+                {idx !== arr.length - 1 && (
+                  <div className="md:hidden flex items-center text-white/20 py-1">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </motion.div>
