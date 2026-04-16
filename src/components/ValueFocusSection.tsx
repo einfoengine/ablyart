@@ -43,9 +43,9 @@ export type ValueFocusSectionProps = {
 };
 
 export default function ValueFocusSection({
-  badge = "Proven Growth Method",
-  titleBase = "This Is How We Drive",
-  titleHighlight = "Results",
+  badge = "Architecting your growth",
+  titleBase = "From Day Zero to",
+  titleHighlight = "Market Dominance",
   subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
   customFeatures = defaultFeatures,
   hideBottomSection = false,
@@ -129,7 +129,7 @@ export default function ValueFocusSection({
                   letterSpacing: "0.05em",
                 }}
               >
-                Book a Discovery Call
+                Start it for free →
               </a>
             </motion.div>
           </div>

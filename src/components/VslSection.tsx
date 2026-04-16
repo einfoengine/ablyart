@@ -18,7 +18,7 @@ export default function VslSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)] mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></div>
-            <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Watch The Breakdown</span>
+            <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Your Growth Breakdown</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
             The Growth Split: <span className="gradient-text italic">60% Digital Foundation, 40% Outbound Marketing&nbsp;</span>
@@ -132,7 +132,7 @@ export default function VslSection() {
               letterSpacing: "0.05em",
             }}
           >
-            Make Your Journey Predictable →
+            Know how it works →
           </button>
         </motion.div>
       </div>

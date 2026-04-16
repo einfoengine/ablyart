@@ -159,11 +159,12 @@ export default function ServicesSection() {
         style={{ padding: "0 24px", maxWidth: "1200px", margin: "0 auto", marginBottom: "40px" }}
       >
         <div style={{ display: "inline-flex", marginBottom: "20px" }}>
-          <span className="tag-pill">What we do</span>
+          <span className="tag-pill"><div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></div>
+          Services We Provide</span>
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
           <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "600px" }}>
-            We Findout Your Gaps.{" "}<span className="gradient-text">We Fix Them.</span>
+            We Findout Your Gaps.{" "}<span className="gradient-text italic">& We Fix Them.</span>
           </h2>
           <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
             We don&apos;t do everything — We play with audit, content, promotion & strategy.

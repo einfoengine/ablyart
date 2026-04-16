@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import VslSection from "@/components/VslSection";
 import ServicesSection from "@/components/ServicesSection";
+import CompanyLogosSection from "@/components/CompanyLogosSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import TechAndSocial from "@/components/TechAndSocial";
 import ValueFocusSection from "@/components/ValueFocusSection";
@@ -21,6 +22,7 @@ export default function Home() {
         <VslSection />
         <ValueFocusSection />
         <ServicesSection />
+        <CompanyLogosSection />
         <WhyChooseUsSection />
         <AgitationSection />
         <PricingSection />
