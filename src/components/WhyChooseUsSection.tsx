@@ -78,7 +78,7 @@ export default function WhyChooseUsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-[#0b0b0e]/80 backdrop-blur-sm p-8 md:p-12 transition-all hover:bg-[#111116] hover:border-white/10 ${reason.span}`}
+              className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-[#0b0b0e]/80 backdrop-blur-sm p-6 md:p-8 transition-all hover:bg-[#111116] hover:border-white/10 ${reason.span}`}
             >
               {/* Card Glow FX */}
               <div 
@@ -89,24 +89,18 @@ export default function WhyChooseUsSection() {
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div>
                   <div 
-                    className="mb-8 inline-flex p-4 rounded-2xl bg-white/[0.02] border border-white/5"
+                    className="mb-6 inline-flex p-4 rounded-2xl bg-white/[0.02] border border-white/5"
                     style={{ color: reason.color }}
                   >
                     {reason.icon}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-tight">
                     {reason.title}
                   </h3>
-                  <p className="text-[1.05rem] text-gray-400 leading-relaxed font-medium">
+                  <p className="text-[1rem] text-gray-400 leading-relaxed font-medium">
                     {reason.description}
                   </p>
                 </div>
-
-                {/* Subtle decorative bottom border */}
-                <div 
-                  className="absolute bottom-0 left-0 h-1 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-[2rem]"
-                  style={{ background: `linear-gradient(90deg, transparent, ${reason.color}, transparent)` }}
-                />
               </div>
             </motion.div>
           ))}
