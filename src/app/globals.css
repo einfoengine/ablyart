@@ -85,7 +85,7 @@ body {
   height: 700px;
   right: -200px;
   top: 50px;
-  background: radial-gradient(circle, rgba(100, 80, 255, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(110, 255, 160, 0.18) 0%, transparent 60%);
   pointer-events: none;
   animation: blobRoam2 28s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -96,7 +96,7 @@ body {
   height: 700px;
   right: -150px;
   top: 0px;
-  background: radial-gradient(circle, rgba(200, 230, 255, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(50, 255, 120, 0.15) 0%, transparent 60%);
   pointer-events: none;
   animation: blobRoam3 32s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -107,7 +107,7 @@ body {
   height: 600px;
   left: -100px;
   top: 120px;
-  background: radial-gradient(circle, rgba(50, 180, 255, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(175, 255, 100, 0.18) 0%, transparent 60%);
   pointer-events: none;
   animation: blobRoam4 22s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
