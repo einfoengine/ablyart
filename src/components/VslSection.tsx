@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
 
 export default function VslSection() {
   return (
@@ -121,19 +122,14 @@ export default function VslSection() {
               thus <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9bff6e] to-[#6ee7ff] font-black tracking-normal ml-1">scale your business by 1000%</span>
             </p>
           </div>
-          <button
+          <Button
             onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
-            className="btn-glow inline-flex items-center justify-center font-bold"
-            style={{
-              padding: "18px 40px",
-              fontSize: "1.125rem",
-              textDecoration: "none",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
+            variant="primary"
+            size="lg"
+            className="uppercase tracking-[0.05em]"
           >
             Know how it works →
-          </button>
+          </Button>
         </motion.div>
       </div>
     </section>

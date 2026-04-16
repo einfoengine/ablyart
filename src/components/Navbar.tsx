@@ -4,6 +4,7 @@ import NextLink from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ServicesMegaMenu from "./ServicesMegaMenu";
+import { Button } from "@/components/ui/Button";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -150,20 +151,14 @@ export default function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <button
+          <Button
             onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
-            className="btn-glow nav-cta"
-            style={{
-              padding: "10px 22px",
-              fontSize: "0.875rem",
-              display: "inline-block",
-              textDecoration: "none",
-              cursor: "pointer",
-              border: "none",
-            }}
+            variant="primary"
+            size="sm"
+            className="nav-cta"
           >
             Discovery call
-          </button>
+          </Button>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -254,24 +249,17 @@ export default function Navbar() {
           })}
           
           {/* Mobile CTA */}
-          <button
+          <Button
             onClick={() => {
               setMenuOpen(false);
               window.dispatchEvent(new Event("openAuditPotentialModal"));
             }}
-            className="btn-glow flex justify-center items-center"
-            style={{
-              padding: "12px 24px",
-              fontSize: "1rem",
-              textDecoration: "none",
-              marginTop: "12px",
-              width: "100%",
-              cursor: "pointer",
-              border: "none",
-            }}
+            variant="primary"
+            size="md"
+            className="w-full mt-3"
           >
             Discovery call
-          </button>
+          </Button>
         </div>
       )}
 

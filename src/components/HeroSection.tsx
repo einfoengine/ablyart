@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/Button";
+
 /* Canvas-based upward trending scrolling wave */
 function TrendingWave() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -312,22 +314,13 @@ export default function HeroSection() {
             flexWrap: "wrap",
           }}
         >
-          <button
+          <Button
             onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
-            className="btn-glow"
-            style={{
-              padding: "16px 36px",
-              fontSize: "1rem",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textDecoration: "none",
-              cursor: "pointer",
-              border: "none",
-            }}
+            variant="primary"
+            size="lg"
           >
             Check your scalability →
-          </button>
+          </Button>
           {/* <a
             href="/work"
             className="btn-outline"

@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBullseye, FaMagnet, FaBolt, FaSyncAlt } from "react-icons/fa";
+import { Button } from "@/components/ui/Button";
 
 export type FeatureCardProps = {
   title: string;
@@ -118,19 +119,14 @@ export default function ValueFocusSection({
                transition={{ duration: 0.6, delay: 0.2 }}
                className="mt-16 text-center relative z-10 flex flex-col items-center"
             >
-              <a
+              <Button
                 href="#discovery"
-                className="btn-glow inline-flex items-center justify-center font-bold"
-                style={{
-                  padding: "18px 40px",
-                  fontSize: "1.125rem",
-                  textDecoration: "none",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                }}
+                variant="primary"
+                size="lg"
+                className="uppercase tracking-[0.05em] font-bold"
               >
                 Start it for free →
-              </a>
+              </Button>
             </motion.div>
           </div>
         </section>
