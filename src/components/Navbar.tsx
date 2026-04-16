@@ -162,7 +162,7 @@ export default function Navbar() {
               border: "none",
             }}
           >
-            Free Audit
+            Discovery call
           </button>
 
           <button
@@ -270,7 +270,7 @@ export default function Navbar() {
               border: "none",
             }}
           >
-            Free Audit
+            Discovery call
           </button>
         </div>
       )}
