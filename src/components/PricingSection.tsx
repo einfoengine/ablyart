@@ -745,9 +745,10 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
         
         {/* Header */}
         <SectionHeader
-          titleBase="Transparent"
-          titleHighlight="Pricing"
-          subtitle="No hidden fees. No bloated agency retainers. Just clear, ROI-focused packages designed to scale exactly as fast as you do."
+          badge="ROI-Focused Capital Allocation"
+          titleBase="Strategic Growth"
+          titleHighlight="Investments"
+          subtitle="Stop buying isolated services. Start deploying capital into high-yield growth engines. No bloated retainers—just completely quantified packages designed to compound your revenue."
           alignment="center"
         />
 
