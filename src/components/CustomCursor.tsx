@@ -69,7 +69,7 @@ export default function CustomCursor() {
       
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 bg-white pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 bg-white pointer-events-none z-[999999] mix-blend-difference"
         style={{
           width: 8,
           height: 8,
@@ -88,7 +88,7 @@ export default function CustomCursor() {
       
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] flex items-center justify-center overflow-hidden"
+        className="fixed top-0 left-0 pointer-events-none z-[999998] flex items-center justify-center overflow-hidden"
         style={{
           width: 44,
           height: 44,
