@@ -23,9 +23,26 @@ export default function VslSection() {
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
             A Powerful Online Presence & Growth Optimization <span className="gradient-text italic">Drives 600% of Leads & Conversions. The Remaining 400% Relies on Outbound Performance.</span>
           </h2>
-          <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto">
-            This involves the digital foundation, topical authority, promotion, lead generation & management.
-          </p>
+          <div className="flex flex-col md:flex-row justify-center items-stretch border border-white/10 rounded-2xl md:rounded-full bg-[#0b0b0e]/60 backdrop-blur-md shadow-2xl max-w-4xl mx-auto mt-8">
+            {[
+              "Digital Foundation",
+              "Topical Authority",
+              "Promotion",
+              "Lead Generation",
+              "Management"
+            ].map((item, idx, arr) => (
+              <div 
+                key={idx} 
+                className={`py-4 px-4 xl:px-6 text-sm font-semibold tracking-wide text-gray-400 hover:text-[var(--accent)] hover:bg-white/[0.03] transition-all flex-1 text-center whitespace-nowrap ${
+                  idx !== arr.length - 1 ? 'border-b md:border-b-0 md:border-r border-white/10' : ''
+                } ${idx === 0 ? 'rounded-t-2xl md:rounded-t-none md:rounded-l-full' : ''} ${
+                  idx === arr.length - 1 ? 'rounded-b-2xl md:rounded-b-none md:rounded-r-full' : ''
+                }`}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Thick Glass Container */}
