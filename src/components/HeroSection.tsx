@@ -183,8 +183,10 @@ export default function HeroSection() {
       }}
     >
       {/* Background blobs — same opacity as inner pages */}
-      <div className="hero-blob-1" style={{ opacity: 0.6 }} />
-      <div className="hero-blob-2" style={{ opacity: 0.5 }} />
+      <div className="hero-blob-1" />
+      <div className="hero-blob-2" />
+      <div className="hero-blob-3" />
+      <div className="hero-blob-4" />
 
       {/* Grid overlay */}
       <div
@@ -324,7 +326,7 @@ export default function HeroSection() {
               border: "none",
             }}
           >
-            Check your growth potential →
+            Check your scalability →
           </button>
           {/* <a
             href="/work"
