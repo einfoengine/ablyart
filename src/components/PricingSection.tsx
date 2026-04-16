@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export type DetailedDeliverable = {
   title: string;
@@ -743,14 +744,12 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
       <div className="max-w-7xl mx-auto px-6 relative w-full">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#f0f0f8]">
-            Transparent <span className="gradient-text italic">Pricing</span>
-          </h2>
-          <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto">
-            No hidden fees. No bloated agency retainers. Just clear, ROI-focused packages designed to scale exactly as fast as you do.
-          </p>
-        </div>
+        <SectionHeader
+          titleBase="Transparent"
+          titleHighlight="Pricing"
+          subtitle="No hidden fees. No bloated agency retainers. Just clear, ROI-focused packages designed to scale exactly as fast as you do."
+          alignment="center"
+        />
 
         {/* Custom Tabs (hidden if custom packages provided) */}
         {!customPackages && (

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const testimonialsRow1 = [
   {
@@ -68,14 +69,13 @@ export default function TestimonialsSection() {
       {/* Background radial highlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent)] opacity-[0.02] blur-[150px] rounded-full pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)] mb-6 shadow-sm">
-          <div className="w-2 h-2 rounded-full bg-[var(--accent)]"></div>
-          <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Client Success</span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-[#f0f0f8]">
-          Don't Just Take <span className="gradient-text italic">Our Word For It.</span>
-        </h2>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <SectionHeader
+          badge="Client Success"
+          titleBase="Don't Just Take"
+          titleHighlight="Our Word For It."
+          alignment="center"
+        />
       </div>
 
       {/* Marquee Container */}

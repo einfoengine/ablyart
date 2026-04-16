@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 function FadeUp({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   return (
@@ -88,16 +89,12 @@ export default function FaqSection({ faqs = defaultFaqs }: { faqs?: { q: string,
     <section id="faq" style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <div style={{ maxWidth: "740px", margin: "0 auto" }}>
-        <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: "52px" }}>
-            <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#f0f0f8", marginBottom: "16px", letterSpacing: "-0.03em" }}>
-              Frequently Asked <span className="gradient-text">Questions</span>
-            </h2>
-            <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto" }}>
-              Everything you need to know about partnering with Ablyart for your growth.
-            </p>
-          </div>
-        </FadeUp>
+        <SectionHeader
+          titleBase="Frequently Asked"
+          titleHighlight="Questions"
+          subtitle="Everything you need to know about partnering with Ablyart for your growth."
+          alignment="center"
+        />
 
         <div>
           {faqs.map((faq, i) => (

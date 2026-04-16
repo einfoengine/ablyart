@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export default function VslSection() {
   return (
@@ -10,6 +11,13 @@ export default function VslSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
+        <SectionHeader
+          badge="Your Growth Breakdown"
+          titleBase="The Growth Split:"
+          titleHighlight="60% Digital Foundation, 40% Outbound Marketing."
+          alignment="center"
+          className="mb-6"
+        />
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,13 +25,6 @@ export default function VslSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)] mb-6 shadow-sm">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></div>
-            <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Your Growth Breakdown</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            The Growth Split: <span className="gradient-text italic">60% Digital Foundation, 40% Outbound Marketing&nbsp;</span>
-          </h2>
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 lg:gap-4 max-w-5xl mx-auto mt-10 w-full px-2">
             {[
               "Digital Foundation",

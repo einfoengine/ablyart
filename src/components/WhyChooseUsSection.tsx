@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const reasons = [
   {
@@ -59,25 +60,14 @@ export default function WhyChooseUsSection() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 md:mb-24"
-        >
-          <div className="inline-flex mb-6">
-            <span className="tag-pill">
-              <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></div>
-              Why Leaders Choose Ablyart</span>
-          </div>
-          <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black tracking-tighter leading-[1.05] mb-6 text-[#f0f0f8]">
-            Others are going behind <span className="gradient-text italic">We are Battling for you&nbsp;</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-            Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets.
-          </p>
-        </motion.div>
+        {/* Header */}
+        <SectionHeader
+          badge="Why Leaders Choose Ablyart"
+          titleBase="We are equipped with technology"
+          titleHighlight="Battling with master minds"
+          subtitle="Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets."
+          alignment="center"
+        />
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

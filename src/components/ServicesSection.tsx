@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 // [... data block unchanged ...]
 
@@ -151,26 +152,14 @@ export default function ServicesSection() {
   return (
     <section id="services" className="pt-24 md:pt-32" style={{ position: "relative" }}>
       {/* Section header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        style={{ padding: "0 24px", maxWidth: "1200px", margin: "0 auto", marginBottom: "40px" }}
-      >
-        <div style={{ display: "inline-flex", marginBottom: "20px" }}>
-          <span className="tag-pill"><div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></div>
-          Services We Provide</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
-          <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "600px" }}>
-            We Findout Your Gaps.{" "}<span className="gradient-text italic">& We Fix Them.</span>
-          </h2>
-          <p style={{ fontSize: "0.95rem", color: "rgba(240,240,248,0.5)", maxWidth: "340px", lineHeight: 1.8 }}>
-            We don&apos;t do everything — We play with audit, content, promotion & strategy.
-          </p>
-        </div>
-      </motion.div>
+      {/* Section header */}
+      <SectionHeader
+        badge="All The Ways We Help You"
+        titleBase="We Findout Your Gaps."
+        titleHighlight="& We Fix Them."
+        subtitle="We don't do everything — We play with audit, content, promotion & strategy."
+        alignment="split"
+      />
 
       <div ref={outerRef} style={{ height: "400vh", position: "relative" }}>
         <div style={{ position: "sticky", top: "120px", paddingBottom: "120px" }}>

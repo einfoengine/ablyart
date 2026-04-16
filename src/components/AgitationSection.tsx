@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export type AgitationCardProps = {
   service: string;
@@ -65,18 +66,14 @@ export default function AgitationSection({
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         {/* Section Header */}
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/20 bg-red-500/5 mb-6 shadow-sm">
-            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-            <span className="text-sm font-semibold tracking-wider text-red-400 uppercase font-mono">{badge}</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-[#f0f0f8]">
-            {titleBase} <span className="text-red-500 italic">{titleHighlight}</span>
-          </h2>
-          <p className="text-[var(--muted)] text-lg leading-relaxed">
-            {subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          badge={badge}
+          titleBase={titleBase}
+          titleHighlight={titleHighlight}
+          subtitle={subtitle}
+          alignment="center"
+          colorScheme="danger"
+        />
 
         {/* Agitation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
