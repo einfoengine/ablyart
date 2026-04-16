@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import HotServicesSection from "@/components/HotServicesSection";
 import VslSection from "@/components/VslSection";
 import ServicesSection from "@/components/ServicesSection";
 import CompanyLogosSection from "@/components/CompanyLogosSection";
@@ -19,6 +20,7 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
+        <HotServicesSection />
         <VslSection />
         <ValueFocusSection />
         <ServicesSection />

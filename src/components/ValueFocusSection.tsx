@@ -43,7 +43,7 @@ export type ValueFocusSectionProps = {
 };
 
 export default function ValueFocusSection({
-  badge = "Architecting your growth",
+  badge = "We Help You Along The Way",
   titleBase = "From Day Zero to",
   titleHighlight = "Market Dominance",
   subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
