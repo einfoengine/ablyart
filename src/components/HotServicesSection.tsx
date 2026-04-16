@@ -51,7 +51,7 @@ export default function HotServicesSection() {
             <span className="text-xs md:text-sm font-semibold tracking-wider text-gray-300 uppercase font-mono">Our Hot Services</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white">
-            Specialized For <span className="gradient-text italic">Sustainable Growth.</span>
+            Designed For <span className="gradient-text italic">Sustainable Growth.</span>
           </h2>
         </div>
 
