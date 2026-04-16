@@ -21,7 +21,7 @@ export default function VslSection() {
             <span className="text-sm font-semibold tracking-wider text-[var(--foreground)] uppercase font-mono">Watch The Breakdown</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            A Powerful Online Presence & Growth Optimization <span className="gradient-text italic">Drives 600% of Leads & Conversions. The Remaining 400% Relies on Outbound Performance.</span>
+            The Growth Split: <span className="gradient-text italic">60% Digital Foundation, 40% Outbound Marketing&nbsp;</span>
           </h2>
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 lg:gap-4 max-w-5xl mx-auto mt-10 w-full px-2">
             {[
@@ -33,12 +33,12 @@ export default function VslSection() {
             ].map((item, idx, arr) => (
               <React.Fragment key={idx}>
                 <div className="flex flex-row items-center gap-2 lg:gap-3 group cursor-default">
-                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/10 bg-[#0b0b0e]/80 flex items-center justify-center text-[0.7rem] font-bold text-gray-500 font-mono group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] group-hover:shadow-[0_0_15px_rgba(155,255,110,0.15)] transition-all duration-300 shrink-0">
+                  <span className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/10 bg-[#0b0b0e]/80 flex items-center justify-center text-[0.7rem] font-bold text-gray-500 font-mono group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] group-hover:shadow-[0_0_15px_rgba(155,255,110,0.15)] transition-all duration-300 shrink-0">
                     0{idx + 1}
-                  </div>
-                  <h3 className="text-sm lg:text-[15px] font-semibold text-gray-400 whitespace-nowrap group-hover:text-white transition-colors">
+                  </span>
+                  <span className="text-sm lg:text-[15px] font-semibold text-gray-400 whitespace-nowrap group-hover:text-white transition-colors">
                     {item}
-                  </h3>
+                  </span>
                 </div>
                 
                 {/* Desktop Right Arrow */}
