@@ -1,12 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    const updateClock = () => {
+      setTime(new Date().toLocaleTimeString('en-US', { 
+        timeZone: 'America/New_York', 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+      }) + " EST");
+    };
+    updateClock();
+    const interval = setInterval(updateClock, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const links = {
     Services: ["SEO & Content", "Paid Ads", "Social Media", "Web Design", "Email Marketing"],
@@ -16,80 +31,111 @@ export default function Footer() {
 
   return (
     <footer className="w-full px-4 md:px-6 pb-4 md:pb-6 relative z-30 mt-12 md:mt-24">
-      <div className="bg-[#0b0b0e] border border-white/10 rounded-[40px] p-10 md:p-16 lg:p-24 relative overflow-hidden flex flex-col">
+      {/* Semi-transparent Backdrop Container */}
+      <div className="bg-[#0b0b0e]/80 backdrop-blur-3xl border border-white/10 rounded-[40px] p-8 md:p-16 lg:p-20 relative overflow-hidden flex flex-col group shadow-2xl">
         
         {/* Decorative ambient elements */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent)] opacity-[0.03] blur-[120px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#6ee7ff] opacity-[0.02] blur-[100px] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent)] opacity-[0.05] blur-[120px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#6ee7ff] opacity-[0.03] blur-[100px] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
 
-        {/* Massive Call to Action */}
+        {/* Live Status Bar */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20 relative z-10"
+          className="flex flex-wrap items-center gap-3 mb-10 relative z-10"
         >
-          <h2 className="text-5xl md:text-7xl lg:text-[8vw] leading-[0.9] font-black tracking-tighter text-white mb-6">
-            Ready to <span className="gradient-text drop-shadow-[0_0_20px_rgba(155,255,110,0.2)]">grow?</span>
-          </h2>
-          <p className="text-lg md:text-2xl text-gray-400 max-w-2xl font-medium tracking-tight">
-            Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
-          </p>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/5 backdrop-blur-md shadow-[0_0_20px_rgba(155,255,110,0.05)]">
+            <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_10px_rgba(155,255,110,0.8)]"></div>
+            <span className="text-xs md:text-sm font-semibold tracking-wider text-[var(--accent)] uppercase font-mono">
+              Accepting New Partners
+            </span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md">
+            <span className="text-xs md:text-sm font-semibold tracking-wider text-gray-400 uppercase font-mono w-[110px] text-center">
+              {time || "SYNCING..."}
+            </span>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20 relative z-10 w-full">
-          {/* Brand Info & Newsletter */}
+        {/* Top Block: CTA & Newsletter */}
+        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-20 relative z-10 border-b border-white/10 pb-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col items-start pr-0 md:pr-8"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex-1"
           >
-            <a href="#" className="flex items-center gap-3 mb-6 no-underline bg-white/[0.02] border border-white/5 pr-5 py-1 rounded-2xl hover:bg-white/[0.05] transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-[#111116] border border-white/10 flex items-center justify-center shadow-lg">
-                <span className="text-xl font-black text-[var(--accent)]">A</span>
-              </div>
-              <span className="text-2xl font-black text-white tracking-tight">ablyart.</span>
-            </a>
-            
-            <p className="text-gray-400 font-medium leading-relaxed max-w-sm mb-10 text-[1rem]">
-              We execute data-driven digital strategies. From brand identity to paid tracking, we guarantee you dominate the digital ecosystem.
+            <h2 className="text-5xl md:text-7xl lg:text-[7vw] leading-[0.9] font-black tracking-tighter text-white mb-6">
+              Ready to <span className="gradient-text drop-shadow-[0_0_20px_rgba(155,255,110,0.2)]">grow?</span>
+            </h2>
+            <p className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight max-w-xl">
+              Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
             </p>
-            
-            {/* Newsletter */}
-            <div className="w-full max-w-md bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-md">
-              <h3 className="text-white font-extrabold mb-1 tracking-tight text-lg">Weekly Growth Insights</h3>
-              <p className="text-sm text-gray-400 mb-6 font-medium">No fluff. Just proven scaling tactics.</p>
-              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="email" 
-                  placeholder="name@company.com" 
-                  className="w-full bg-[#060608] border border-white/10 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-[var(--accent)] transition-colors font-semibold text-white placeholder:text-gray-600 shadow-inner"
-                />
-                <button type="submit" className="bg-[var(--accent)] hover:bg-[#86ea5c] text-black px-6 py-3.5 rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(155,255,110,0.2)] transition-all whitespace-nowrap hover:scale-[1.02]">
-                  Subscribe
-                </button>
-              </form>
-            </div>
           </motion.div>
 
-          {/* Core Footer Links */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full xl:w-auto xl:min-w-[480px]"
+          >
+            {/* Newsletter */}
+            <div className="w-full bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-[2rem] p-8 backdrop-blur-md transition-colors relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)] opacity-[0.08] blur-[50px] pointer-events-none"></div>
+              
+              <h3 className="text-white font-extrabold mb-1 tracking-tight text-lg relative z-10">Weekly Growth Insights</h3>
+              <p className="text-[0.95rem] text-gray-400 mb-6 font-medium relative z-10">No fluff. Just proven scaling tactics delivered straight to your inbox.</p>
+              
+              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 relative z-10">
+                <input 
+                  type="email" 
+                  placeholder="name@company.com" 
+                  className="w-full bg-[#060608]/80 border border-white/10 rounded-xl px-4 py-4 text-[0.95rem] outline-none focus:border-[var(--accent)] transition-colors font-semibold text-white placeholder:text-gray-600 shadow-inner"
+                />
+                <button type="submit" className="bg-white hover:bg-[var(--accent)] text-black px-8 py-4 rounded-xl text-[0.95rem] font-bold shadow-lg transition-all whitespace-nowrap hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50">
+                  <span>Join</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Middle Block: Links */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-16 relative z-10 w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 mt-4 lg:mt-0 lg:ml-auto w-full"
+            className="lg:col-span-4 flex flex-col items-start pr-0 md:pr-8"
+          >
+            <p className="text-gray-400 font-medium leading-relaxed max-w-sm text-[1rem]">
+              We execute data-driven digital strategies. From absolute brand identity to surgical paid tracking, we guarantee you dominate the modern digital ecosystem.
+            </p>
+          </motion.div>
+
+          {/* Core Footer Links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 w-full"
           >
             {Object.entries(links).map(([title, items]) => (
               <div key={title} className="flex flex-col">
                 <h3 className="text-gray-300 font-black uppercase tracking-[0.15em] text-xs mb-8 flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_10px_rgba(155,255,110,0.5)]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] shadow-[0_0_10px_rgba(155,255,110,0.5)]"></span>
                   {title}
                 </h3>
-                <ul className="flex flex-col gap-6">
+                <ul className="flex flex-col gap-5">
                   {items.map((item) => (
                     <li key={item}>
                       <a href="#" className="text-gray-400 hover:text-white font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
@@ -106,8 +152,23 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Thick Divider */}
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10" />
+        {/* Big Brand Logo Block */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full flex justify-center items-center py-10 md:py-16 relative z-10 border-t border-white/5"
+        >
+          <a href="#" className="flex items-center gap-4 md:gap-6 no-underline group/logo">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-2xl md:rounded-[2rem] bg-[#111116] border border-white/10 flex items-center justify-center shadow-2xl group-hover/logo:border-[var(--accent)]/50 group-hover/logo:scale-105 transition-all duration-500">
+              <span className="text-4xl sm:text-5xl md:text-7xl font-black text-[var(--accent)]">A</span>
+            </div>
+            <span className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white leading-none group-hover/logo:text-white transition-colors duration-500">
+              ablyart<span className="text-[var(--accent)]">.</span>
+            </span>
+          </a>
+        </motion.div>
 
         {/* Bottom Metadata Bar */}
         <motion.div 
@@ -115,9 +176,9 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 w-full"
+          className="flex flex-col xl:flex-row items-center justify-between gap-6 relative z-10 w-full pt-8 border-t border-gradient-to-r from-transparent via-white/10 to-transparent"
         >
-          <p className="text-gray-500 font-bold text-sm tracking-tight order-3 md:order-1">
+          <p className="text-gray-500 font-bold text-sm tracking-tight order-3 xl:order-1">
             © {currentYear} ablyart agency. All rights reserved.
           </p>
           
@@ -132,14 +193,14 @@ export default function Footer() {
                 key={i} 
                 href="#" 
                 aria-label={social.name}
-                className={`w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-white border border-white/10 transition-all duration-300 ${social.bg} hover:-translate-y-1.5 shadow-lg`}
+                className={`w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-white border border-white/10 transition-all duration-300 ${social.bg} hover:-translate-y-1.5 shadow-lg relative group/btn overflow-hidden`}
               >
-                {social.icon}
+                <div className="relative z-10">{social.icon}</div>
               </a>
             ))}
           </div>
 
-          <p className="text-gray-500 font-bold text-sm tracking-tight flex items-center gap-2 order-1 md:order-3">
+          <p className="text-gray-500 font-bold text-sm tracking-tight flex items-center gap-2 order-1 xl:order-3">
             Engineered with <span className="text-[var(--accent)] text-lg animate-pulse drop-shadow-md">♥</span> for scale.
           </p>
         </motion.div>
