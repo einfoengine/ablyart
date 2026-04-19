@@ -26,9 +26,19 @@ const services = [
     )
   },
   {
+    title: "Lead Generation Engine",
+    description: "High-volume, hyper-qualified B2B & B2C lead systems. We combine tailored funnels with systemic nurturing to transform traffic into closed deals.",
+    color: "#9bff6e", // Lime
+    icon: (
+     <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+     </svg>
+    )
+  },
+  {
     title: "Paid Performance Marketing",
     description: "Ruthless algorithmic ROI scaling. We stop funding vanity metrics and maximize closed conversions via Meta, TikTok, and Google APIs.",
-    color: "#9bff6e", // Lime
+    color: "#ff5078", // Pink
     icon: (
      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -55,8 +65,8 @@ export default function HotServicesSection() {
           alignment="center"
         />
 
-        {/* 3-Column Glass Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+        {/* 4-Column Glass Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
           {services.map((service, idx) => (
             <motion.div
               key={idx}

@@ -77,8 +77,22 @@ const servicesData = [
     rgb: "176, 158, 255",
   },
   {
-    id: "retention-lifecycle",
+    id: "lead-generation",
     number: "06",
+    title: "B2B & B2C Lead Generation",
+    description: "Traffic means nothing if it doesn't convert into qualified pipeline. A dedicated lead gen framework ensures:",
+    bullets: [
+      "Lead Magnets & Offers: Creating irresistible entry points for your buyers.",
+      "Funnel Engineering: Building multi-step qualification flows that weed out bad leads.",
+      "Omnichannel Capture: Intercepting intent across Search, Meta, LinkedIn, and cold email.",
+      "CRM Integration: Seamlessly passing enriched data into HubSpot or Salesforce."
+    ],
+    color: "#ff5078",
+    rgb: "255, 80, 120",
+  },
+  {
+    id: "retention-lifecycle",
+    number: "07",
     title: "Retention & Lifecycle Marketing",
     description: "It is often cheaper to keep an existing customer than to acquire a new one. Growth companies manage:",
     bullets: [
@@ -155,7 +169,7 @@ export default function ServicesSection() {
       {/* Section header */}
       <SectionHeader
         badge="All The Ways We Help You"
-        titleBase="Six Ways We Engineer"
+        titleBase="Seven Ways We Engineer"
         titleHighlight="Your Growth"
         subtitle="We don't do everything - we go deep on audit, content, promotion & strategic optimization."
         alignment="split"

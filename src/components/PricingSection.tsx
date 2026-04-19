@@ -35,7 +35,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "GTM & Server-side Tracking Setup",
           "Topical Authority Mapping",
           "AEO & SEO Baseline",
-          "2 Social Platforms Managed",
+          "Lead Capture System & Funnels",
           "Monthly Audit & Attribution"
         ],
         detailedDeliverables: [
@@ -52,10 +52,10 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "Continuous Content Mapping"
           },
           {
-            title: "Social & Content",
-            quantity: "2 Platforms + 4 Articles",
-            quality: "High-authority content designed for 'Search & Share'",
-            time: "4 Published Articles Monthly"
+            title: "Lead Generation",
+            quantity: "Funnel & Capture Systems",
+            quality: "High-converting opt-in systems for qualified traffic",
+            time: "Always-on capture"
           },
           {
             title: "Reporting",
@@ -75,7 +75,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Continuous CRO via A/B Testing",
           "Custom Web App / Prototypes",
           "Paid Ads Mgmt (Up to $50k spend)",
-          "Retargeting Funnel Setup",
+          "B2B/B2C Lead Generation Systems",
           "Advanced GEO (ChatGPT Citations)",
           "8 Short-form Videos / Month"
         ],
@@ -87,9 +87,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "Ongoing dedicated development"
           },
           {
-            title: "Omnichannel Growth",
-            quantity: "Paid Ads ($50k) + Retargeting",
-            quality: "Capturing leaky traffic across Meta/Google/LinkedIn",
+            title: "Lead Gen & Omnichannel",
+            quantity: "Paid Ads ($50k) + Lead Funnels",
+            quality: "Capturing leaky traffic and generating high-intent leads",
             time: "Daily optimization & strategy"
           },
           {
@@ -117,7 +117,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Priority 24/7 Tech Support",
           "Full-service Video Production",
           "Digital PR & Link Building",
-          "Automated CRM Lead Flows",
+          "End-to-End Lead Gen Engine",
           "Performance Guarantee"
         ],
         detailedDeliverables: [
@@ -134,9 +134,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "Monthly production & distribution"
           },
           {
-            title: "Total Automation",
-            quantity: "HubSpot/Salesforce flows",
-            quality: "Retention & Lifecycle email/SMS automation for LTV",
+            title: "Full Lead Gen Automation",
+            quantity: "HubSpot/Salesforce lead scoring & flows",
+            quality: "Acquisition + Retention email/SMS automation for LTV",
             time: "Always-on triggered infrastructure"
           },
           {

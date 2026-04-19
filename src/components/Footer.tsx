@@ -24,9 +24,26 @@ export default function Footer() {
   }, []);
 
   const links = {
-    Services: ["SEO & Content", "Paid Ads", "Social Media", "Web Design", "Email Marketing"],
-    Company: ["About Us", "Case Studies", "Careers", "Blog", "Press"],
-    Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+    Services: [
+      { name: "Lead Generation", href: "/services/lead-generation" },
+      { name: "SEO & Content", href: "#" },
+      { name: "Paid Ads", href: "#" },
+      { name: "Social Media", href: "#" },
+      { name: "Web Design", href: "#" },
+      { name: "Email Marketing", href: "#" }
+    ],
+    Company: [
+      { name: "About Us", href: "#" },
+      { name: "Case Studies", href: "#" },
+      { name: "Careers", href: "#" },
+      { name: "Blog", href: "#" },
+      { name: "Press", href: "#" }
+    ],
+    Legal: [
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
+      { name: "Cookie Policy", href: "#" }
+    ],
   };
 
   return (
@@ -137,9 +154,9 @@ export default function Footer() {
                 </h3>
                 <ul className="flex flex-col gap-5">
                   {items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-gray-400 hover:text-white font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
-                        {item}
+                    <li key={item.name}>
+                      <a href={item.href} className="text-gray-400 hover:text-white font-semibold text-[0.95rem] transition-colors relative group inline-flex items-center gap-1">
+                        {item.name}
                         <svg className="w-3.5 h-3.5 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>

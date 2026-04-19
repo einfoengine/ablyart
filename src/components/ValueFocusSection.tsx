@@ -19,7 +19,7 @@ const defaultFeatures: FeatureCardProps[] = [
   },
   {
     title: "Magnetize High-Intent Leads",
-    description: "Stop wasting time on unqualified traffic. We engineer scalable, automated pipelines that consistently attract prospects who are actively looking to buy your exact solution.",
+    description: "Stop wasting time on unqualified traffic. We engineer scalable data-driven funnels, gated playbooks, and dynamic capture systems that pull prospects directly into an automated sales pipeline.",
     icon: <FaMagnet size={32} />
   },
   {
