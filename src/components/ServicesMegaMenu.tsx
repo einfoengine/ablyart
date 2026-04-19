@@ -81,7 +81,7 @@ const coreServices = [
 const generalServices = [
   {
     id: "holistic-marketing",
-    label: "Holistic Marketing",
+    label: "Unified Digital Presence",
     description: "Our complete all-in-one digital growth engine.",
     startingAt: "$5,000/mo",
     icon: (
