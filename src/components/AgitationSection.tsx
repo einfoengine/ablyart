@@ -23,21 +23,21 @@ const defaultAgitations: AgitationCardProps[] = [
   {
     service: "Search Engine Optimization",
     title: "Invisible When It Matters",
-    pain: "Your ideal customers are actively typing their problems into Google right now. If you aren't on page one, you simply don't exist. You are literally handing high-intent buyers—and their wallets—directly over to your competitors.",
+    pain: "Your ideal customers are actively typing their problems into Google right now. If you aren't on page one, you simply don't exist. You are literally handing high-intent buyers directly to your competitors — along with every dollar they were about to spend with you.",
     accent: "rgba(255, 120, 80, 0.2)",
     textAccent: "#ff7850"
   },
   {
     service: "Video Marketing",
     title: "Drowning in the Noise",
-    pain: "Static text simply doesn't convert anymore. If you rely on blocks of text while your competitors are capturing attention with high-retention video, your message is being actively ignored. You are losing the battle for your customer's attention.",
+    pain: "Static text simply doesn't convert anymore. While your competitors are capturing attention with high-retention video, your message is being scrolled past in milliseconds. Attention is currency — and right now, you're broke.",
     accent: "rgba(255, 179, 71, 0.2)",
     textAccent: "#ffb347"
   },
   {
     service: "Lead Generation",
     title: "Burning Your Ad Budget",
-    pain: "Driving random traffic without a hyper-optimized sales funnel is like pouring water into a bucket with a hole in it. If you lack a systemic way to capture and nurture leads, you are burning your marketing budget every single week.",
+    pain: "Driving traffic without a conversion system is pouring water into a broken bucket. Every unqualified click is a real dollar wasted. Without a lead capture system, your ad budget isn't marketing — it's a donation to Meta and Google.",
     accent: "rgba(255, 80, 120, 0.2)",
     textAccent: "#ff5078"
   }
