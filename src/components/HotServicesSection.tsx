@@ -43,8 +43,8 @@ export default function HotServicesSection() {
         {/* Section Heading */}
         <SectionHeader
           badge="Our Hot Services"
-          titleBase="Designed For"
-          titleHighlight="Sustainable Growth."
+          titleBase="Strategic Moves"
+          titleHighlight="For Sustainable Growth."
           subtitle="Four Systems. One Goal — Your Market Dominance."
           alignment="center"
         />
