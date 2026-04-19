@@ -9,27 +9,27 @@ import { FaFire, FaSearch, FaFilter, FaChartLine } from "react-icons/fa";
 
 const services = [
   {
-    category: "Dominate social media",
+    category: "Dominate Social Media",
     title: "Become the Brand Everyone's Talking About.",
-    description: "Dominating organic reach. We architect viral content and hyper-engaged communities across every native platform.",
+    description: "End-to-end social presence: compelling content creation, posting, community engagement, growth optimization. Result? A brand people recognize, trust, and buy from.",
     icon: <FaFire size={28} />
   },
   {
-    category: "Own the search engines",
+    category: "Own the Search Engines",
     title: "Be There When They're Ready to Buy.",
-    description: "Building content monopolies. We leverage deep technical SEO and search intent to attract high-value leads entirely on autopilot.",
+    description: "Full-stack SEO: technical audits, keyword strategy, content creation, link building. Result? Your business ranking where buyers are already searching — bringing in traffic without paying for every click.",
     icon: <FaSearch size={28} />
   },
   {
-    category: "Knock at your leads door",
-    title: "Convert them to buyers.",
-    description: "High-volume, hyper-qualified B2B & B2C lead systems. We combine tailored funnels with systemic nurturing to transform traffic into closed deals.",
+    category: "We Knock. They Answer.",
+    title: "Precision Outreach. Real Conversations. Closed Deals.",
+    description: "Precision outbound: Apollo prospecting, hyper-targeted lists, personalized cold email sequences at scale. Result? Real sales conversations with decision-makers who are ready to buy.",
     icon: <FaFilter size={28} />
   },
   {
-    category: "Go Massive With Ads.",
-    title: "Multiply Your Growth.",
-    description: "Ruthless algorithmic ROI scaling. We stop funding vanity metrics and maximize closed conversions via Meta, TikTok, and Google APIs.",
+    category: "Go Massive With Ads",
+    title: "Multiply Your Revenue.",
+    description: "Performance advertising across Meta, TikTok, and Google: strategy, creatives, targeting, optimization. Result? More revenue from every dollar spent — zero wasted on vanity metrics.",
     icon: <FaChartLine size={28} />
   }
 ];
