@@ -15,22 +15,22 @@ const defaultFeatures: FeatureCardProps[] = [
   {
     title: "Dominate Market Awareness",
     description: "We amplify your brand's presence across every key platform. Break through the noise, capture peak attention, and establish your business as the undeniable industry authority.",
-    icon: <FaBullseye size={32} />
+    icon: <FaBullseye size={30} />
   },
   {
     title: "Magnetize High-Intent Leads",
     description: "Stop wasting time on unqualified traffic. We engineer scalable data-driven funnels, gated playbooks, and dynamic capture systems that pull prospects directly into an automated sales pipeline.",
-    icon: <FaMagnet size={32} />
+    icon: <FaMagnet size={30} />
   },
   {
     title: "Engineer Rapid Conversions",
     description: "Turn curious clicks into paying customers. We deploy high-converting funnels and irresistible messaging designed to maximize your profit and close deals seamlessly.",
-    icon: <FaBolt size={32} />
+    icon: <FaBolt size={30} />
   },
   {
     title: "Cultivate Lifetime Loyalty",
     description: "The real profit is in repeat business. We implement powerful backend strategies to maximize customer lifetime value, increase retention, and turn buyers into passionate advocates.",
-    icon: <FaSyncAlt size={32} />
+    icon: <FaSyncAlt size={30} />
   }
 ];
 
@@ -96,7 +96,7 @@ export default function ValueFocusSection({
                   {/* Subtle background glow on hover */}
                   <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none" />
                   
-                  <div className="w-16 h-16 rounded-2xl bg-[#060608] border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[var(--accent)] mb-8 shadow-sm group-hover:bg-[var(--accent-subtle)] group-hover:text-white transition-all duration-300">
+                  <div className="w-16 h-16 bg-[var(--accent)] text-[#060608] flex items-center justify-center rounded-[1rem] border-[3px] border-white shadow-[0_6px_0_rgba(0,0,0,0.5)] transform -rotate-[6deg] group-hover:rotate-[3deg] group-hover:-translate-y-2 group-hover:shadow-[0_12px_20px_rgba(155,255,110,0.3),0_6px_0_rgba(0,0,0,0.5)] group-hover:scale-105 transition-all duration-300 mb-8 relative z-10">
                     {feature.icon}
                   </div>
                   
