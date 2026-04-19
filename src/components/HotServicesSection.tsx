@@ -11,21 +11,25 @@ const services = [
   {
     category: "Dominate social media",
     title: "Become the Brand Everyone's Talking About.",
+    description: "Dominating organic reach. We architect viral content and hyper-engaged communities across every native platform.",
     icon: <FaFire size={28} />
   },
   {
     category: "Own the search engines",
     title: "Be There When They're Ready to Buy.",
+    description: "Building content monopolies. We leverage deep technical SEO and search intent to attract high-value leads entirely on autopilot.",
     icon: <FaSearch size={28} />
   },
   {
     category: "Knock at your leads door",
     title: "Convert them to buyers.",
+    description: "High-volume, hyper-qualified B2B & B2C lead systems. We combine tailored funnels with systemic nurturing to transform traffic into closed deals.",
     icon: <FaFilter size={28} />
   },
   {
     category: "Go Massive With Ads.",
     title: "Multiply Your Growth.",
+    description: "Ruthless algorithmic ROI scaling. We stop funding vanity metrics and maximize closed conversions via Meta, TikTok, and Google APIs.",
     icon: <FaChartLine size={28} />
   }
 ];
@@ -54,22 +58,50 @@ export default function HotServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="flex group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="group h-full"
+              style={{ perspective: "1500px" }}
             >
-              <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 h-full w-full text-center sm:text-left">
+              <div 
+                className="relative w-full h-full rounded-[2rem] transition-transform duration-[700ms] shadow-xl group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] group-hover:[transform:rotateY(180deg)]"
+                style={{ transformStyle: "preserve-3d", display: "grid" }}
+              >
+                {/* FRONT FACE */}
                 <div 
-                  className="flex-shrink-0 w-16 h-16 bg-[var(--accent)] text-[#060608] flex items-center justify-center rounded-[1rem] border-[3px] border-white shadow-[0_6px_0_rgba(0,0,0,0.15)] transform -rotate-[6deg] group-hover:rotate-[3deg] group-hover:-translate-y-2 group-hover:shadow-[0_12px_20px_rgba(155,255,110,0.3),0_6px_0_rgba(0,0,0,0.15)] group-hover:scale-105 transition-all duration-300 relative z-10 sm:mt-1 ml-1"
+                  className="w-full h-full bg-white border border-gray-200 rounded-[2rem] p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left z-10"
+                  style={{ gridArea: "1 / 1", backfaceVisibility: "hidden" }}
                 >
-                  {service.icon}
+                  <div className="flex-shrink-0 w-16 h-16 bg-[var(--accent)] text-[#060608] flex items-center justify-center rounded-[1rem] border-[3px] border-white shadow-[0_6px_0_rgba(0,0,0,0.15)] transform -rotate-[6deg] relative z-10 sm:mt-1 ml-1 group-hover:scale-105 transition-all duration-300">
+                    {service.icon}
+                  </div>
+                  
+                  <div className="flex flex-col flex-1 relative w-full pt-1">
+                    <h3 className="text-xl md:text-[1.4rem] font-bold text-gray-900 tracking-tight leading-snug mb-1.5 capitalize">
+                      {service.category}
+                    </h3>
+                    <p className="font-semibold italic leading-snug text-gray-500 text-[1.1rem]">
+                      "{service.title}"
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="flex flex-col flex-1 relative w-full pt-1">
-                  <h3 className="text-xl md:text-[1.4rem] font-bold text-gray-900 tracking-tight leading-snug mb-1.5 capitalize">
-                    {service.category}
-                  </h3>
-                  <p className="font-semibold italic leading-snug text-gray-500 text-[1.1rem]">
-                    "{service.title}"
-                  </p>
+
+                {/* BACK FACE */}
+                <div 
+                  className="w-full h-full bg-white border border-gray-100 rounded-[2rem] p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left shadow-[0_20px_40px_rgba(0,0,0,0.05)]"
+                  style={{ 
+                    gridArea: "1 / 1", 
+                    backfaceVisibility: "hidden", 
+                    transform: "rotateY(180deg)" 
+                  }}
+                >
+                  <div className="flex-shrink-0 w-16 h-16 bg-[#060608] text-[var(--accent)] flex items-center justify-center rounded-[1rem] border-[3px] border-gray-50 shadow-[0_4px_0_rgba(0,0,0,0.1)] transform -rotate-[3deg] sm:mt-1 ml-1">
+                    {service.icon}
+                  </div>
+                  
+                  <div className="flex flex-col flex-1 relative w-full pt-1">
+                    <p className="text-gray-600 font-medium text-[0.95rem] md:text-[1.05rem] leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
