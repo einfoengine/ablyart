@@ -126,18 +126,7 @@ const generalServices = [
       </svg>
     ),
   },
-  {
-    id: "web-solutions",
-    label: "Web Solutions",
-    description: "Design, development & full maintenance solutions.",
-    startingAt: "$2,500",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M16 18L22 12L16 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M8 6L2 12L8 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
+
 ];
 
 // ─── Animations ────────────────────────────────────────────────────────────────
@@ -457,7 +446,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                 </span>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
                 {generalServices.map((svc) => (
                   <a
                     key={svc.id}

@@ -77,7 +77,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Top Block: CTA & Newsletter */}
-        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-20 relative z-10 border-b border-white/10 pb-16">
+        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-20 relative z-10 pb-4">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -175,25 +175,27 @@ export default function Footer() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full flex justify-center items-center py-10 md:py-16 relative z-10 border-t border-white/5"
+          className="w-full flex justify-center items-center py-10 md:py-16 relative z-10"
         >
           <a href="#" className="flex items-center gap-4 md:gap-6 no-underline group/logo">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-2xl md:rounded-[2rem] bg-[#111116] border border-white/10 flex items-center justify-center shadow-2xl group-hover/logo:border-[var(--accent)]/50 group-hover/logo:scale-105 transition-all duration-500">
-              <span className="text-4xl sm:text-5xl md:text-7xl font-black text-[var(--accent)]">A</span>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 flex items-center justify-center transition-all duration-500 group-hover/logo:scale-105">
+              <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="49.5" cy="60" r="28" stroke="#2FD27A" strokeWidth="14" fill="none" />
+                <rect x="91.5" y="25" width="14" height="70" fill="#2FD27A" />
+              </svg>
             </div>
-            <span className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white leading-none group-hover/logo:text-white transition-colors duration-500">
-              ablyart<span className="text-[var(--accent)]">.</span>
+            <span className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white leading-none transition-colors duration-500">
+              Ably<em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.5)" }}>Art</em>
             </span>
           </a>
         </motion.div>
 
-        {/* Bottom Metadata Bar */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col xl:flex-row items-center justify-between gap-6 relative z-10 w-full pt-8 border-t border-gradient-to-r from-transparent via-white/10 to-transparent"
+          className="flex flex-col xl:flex-row items-center justify-between gap-6 relative z-10 w-full pt-8"
         >
           <p className="text-gray-500 font-bold text-sm tracking-tight order-3 xl:order-1">
             © {currentYear} ablyart agency. All rights reserved.

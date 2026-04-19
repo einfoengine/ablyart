@@ -292,7 +292,7 @@ export default function HolisticMarketingPageClient() {
           <path id="wavy-path-static" d="M 0 70 Q 250 10 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70" fill="none" stroke="var(--accent)" strokeWidth="52" />
           <text fill="#060608" fontSize="20" fontWeight="900" letterSpacing="0.1em">
             <textPath href="#wavy-path-static" startOffset="0" textLength="6000" dominantBaseline="central">
-              WEB SOLUTIONS ✦ SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ WEB SOLUTIONS ✦ SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ WEB SOLUTIONS ✦ SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ 
+              SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ SOCIAL Dominance ✦ PAID MEDIA ✦ SEARCH AUTHORITY ✦ 
               <animate attributeName="startOffset" from="0" to="-1000" dur="12s" repeatCount="indefinite" />
             </textPath>
           </text>

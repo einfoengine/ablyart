@@ -72,31 +72,25 @@ export default function Navbar() {
             alignItems: "center",
             gap: "10px",
             textDecoration: "none",
+            color: "#f0f0f8",
           }}
         >
-          <div
-            style={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "8px",
-              background: "linear-gradient(135deg, #9bff6e, #6ee7ff)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span style={{ fontSize: "16px", fontWeight: 900, color: "#060608" }}>A</span>
+          <div style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="49.5" cy="60" r="28" stroke="#2FD27A" strokeWidth="14" fill="none" />
+              <rect x="91.5" y="25" width="14" height="70" fill="#2FD27A" />
+            </svg>
           </div>
-          <span
+          <div 
+            className="word"
             style={{
               fontSize: "1.25rem",
               fontWeight: 800,
-              color: "#f0f0f8",
               letterSpacing: "-0.02em",
             }}
           >
-            ablyart
-          </span>
+            Ably<em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.5)" }}>Art</em>
+          </div>
         </a>
 
         {/* Desktop Nav */}

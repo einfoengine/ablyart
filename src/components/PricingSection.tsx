@@ -541,128 +541,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         isPopular: false,
       }
     ]
-  },
-  "web-solutions": {
-    label: "Web Solutions",
-    packages: [
-      {
-        name: "Landing Pages",
-        price: "$2,500+",
-        period: "/project",
-        description: "Perfect for a high-converting single page or short funnel.",
-        features: [
-          "Custom UI/UX Design",
-          "Next.js / React Architecture",
-          "Mobile & Speed Optimized",
-          "Basic SEO Setup",
-          "Analytics Integration"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Custom UI/UX Design",
-            quantity: "1 Long-Form Landing Page",
-            quality: "Premium Figma wireframing & prototyping",
-            time: "Delivered in 10-14 days"
-          },
-          {
-            title: "Frontend Engineering",
-            quantity: "Full Next.js Codebase",
-            quality: "Zero-latency rendering, clean architecture",
-            time: "Built within 7 days of design approval"
-          },
-          {
-            title: "Performance & Tracking",
-            quantity: "Speed Optimization + Tags Setup",
-            quality: "Google Tag Manager, Meta Pixel, 95+ PageSpeed",
-            time: "Pre-launch integration"
-          }
-        ],
-        isPopular: false,
-      },
-      {
-        name: "Corporate Build",
-        price: "$6,500+",
-        period: "/project",
-        description: "Full multi-page site for established growing businesses.",
-        features: [
-          "Full Brand Identity Integration",
-          "CMS Setup (Sanity)",
-          "Dynamic Routing & SEO",
-          "Advanced Analytics",
-          "2 Weeks Post-Launch Support",
-          "Dedicated Account Manager"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Full Brand Site",
-            quantity: "Up to 10 Custom Pages",
-            quality: "Pixel-perfect multi-viewport responsive design",
-            time: "4-6 Weeks Timeline"
-          },
-          {
-            title: "Headless CMS Setup",
-            quantity: "Sanity.io Integration",
-            quality: "Easy drag-and-drop client dashboard",
-            time: "Delivered at launch"
-          },
-          {
-            title: "Technical SEO & Structure",
-            quantity: "Dynamic Routing for scale",
-            quality: "Schema markup, dynamic sitemaps",
-            time: "Built-in"
-          },
-          {
-            title: "Maintenance",
-            quantity: "2 Weeks Post-Launch Support",
-            quality: "Priority bug-fixing and fine-tuning",
-            time: "First 14 days after go-live"
-          }
-        ],
-        isPopular: true,
-      },
-      {
-        name: "Enterprise Systems",
-        price: "$15,000+",
-        period: "/project",
-        description: "Complex logic, user portals, or full headless commerce.",
-        features: [
-          "Custom Database Architecture",
-          "Headless E-Commerce Setup",
-          "Third-Party API Integrations",
-          "Rigorous Security & QA",
-          "Priority 24/7 Support",
-          "Continuous Delivery Pipeline"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Database Architecture",
-            quantity: "Custom Backend & PostgreSQL/NoSQL",
-            quality: "Scalable schema, zero failover risk",
-            time: "Scoped per project sprint"
-          },
-          {
-            title: "E-Commerce / Portals",
-            quantity: "Full Headless Shopify/Stripe integration",
-            quality: "PCI-compliant, seamless user portals",
-            time: "8-12 Weeks Timeline"
-          },
-          {
-            title: "API & Infrastructure",
-            quantity: "Unlimited Third Party Integrations",
-            quality: "Enterprise-level CI/CD & Vercel hosting",
-            time: "Managed lifecycle"
-          },
-          {
-            title: "Ongoing Maintenance",
-            quantity: "Dedicated SLA",
-            quality: "24/7 priority support, automated patching",
-            time: "Continuous Retainer"
-          }
-        ],
-        isPopular: false,
-      }
-    ]
-  },
+  }
 };
 
 export type PricingSectionProps = {
@@ -794,8 +673,8 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                     )}
                     <span className="text-gray-500 font-medium">{pkg.period}</span>
                     </div>
-                    {isFourMonthForPkg(pkg.name) && typeof pkg.price === 'number' && (
-                      <span className="text-xs text-[var(--accent)]/90 font-medium tracking-wide">Requires 4-month commitment for max results</span>
+                    {typeof pkg.price === 'number' && (
+                      <span className={`text-xs font-medium tracking-wide transition-colors ${isFourMonthForPkg(pkg.name) ? 'text-[var(--accent)]/90' : 'text-red-500'}`}>Requires 4-month commitment for max results</span>
                     )}
                   </div>
 
