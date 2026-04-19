@@ -64,7 +64,7 @@ export default function WhyChooseUsSection() {
         <SectionHeader
           badge="Why Leaders Choose Ablyart"
           titleBase="We are equipped with technology"
-          titleHighlight="Battling with master minds"
+          titleHighlight="Empowered by master minds"
           subtitle="Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets."
           alignment="center"
         />
