@@ -13,10 +13,13 @@ export type DetailedDeliverable = {
 
 export type PricingPackage = {
   name: string;
-  price: string;
+  price: string | number;
+  originalPrice?: string;
+  discountPercentage?: number;
+  monthlyDiscountPercentage?: number;
   period: string;
   description: string;
-  features: string[];
+  features: Array<string | { text: React.ReactNode; included: boolean }>;
   detailedDeliverables?: DetailedDeliverable[];
   isPopular: boolean;
 };
@@ -26,127 +29,64 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     label: "Growth Marketing",
     packages: [
       {
-        name: "Growth Engine",
-        price: "$5,000",
+        name: "Starter",
+        price: 1500,
+        discountPercentage: 10,
+        monthlyDiscountPercentage: 0,
         period: "/mo",
-        description: "Focus: Building the digital foundation and establishing a lead-capture system.",
+        description: "For startups planting their first flag.",
         features: [
-          "Conversion-focused Landing Pages",
-          "GTM & Server-side Tracking Setup",
-          "Topical Authority Mapping",
-          "AEO & SEO Baseline",
-          "Lead Capture System & Funnels",
-          "Monthly Audit & Attribution"
+          { text: <><span className="text-[#eab308] font-bold">500</span> Apollo prospects/mo</>, included: true },
+          { text: <><span className="text-[#eab308] font-bold">500</span> cold emails/mo</>, included: true },
+          { text: <><span className="text-[#eab308] font-bold">1</span> social platform managed</>, included: true },
+          { text: "Basic SEO audit + keywords", included: true },
+          { text: "Monthly performance report", included: true },
+          { text: "Landing page build", included: false },
+          { text: "Paid ads management", included: false },
+          { text: "Short-form video production", included: false },
         ],
-        detailedDeliverables: [
-          {
-            title: "Growth Infrastructure",
-            quantity: "Custom Landing Page + GTM",
-            quality: "Next.js/React architecture, 100% data accuracy",
-            time: "Initial Foundation Build"
-          },
-          {
-            title: "AEO & SEO Baseline",
-            quantity: "5-10 Pillar Pages",
-            quality: "Answer Engine Optimization for AI search queries",
-            time: "Continuous Content Mapping"
-          },
-          {
-            title: "Lead Generation",
-            quantity: "Funnel & Capture Systems",
-            quality: "High-converting opt-in systems for qualified traffic",
-            time: "Always-on capture"
-          },
-          {
-            title: "Reporting",
-            quantity: "Monthly Growth Audit",
-            quality: "Deep attribution tracking to ensure ROI",
-            time: "1 Audit/Month"
-          }
+        detailedDeliverables: [],
+        isPopular: false,
+      },
+      {
+        name: "Growth Engine",
+        price: 3000,
+        discountPercentage: 20,
+        monthlyDiscountPercentage: 10,
+        period: "/mo",
+        description: "For startups ready to build real pipeline.",
+        features: [
+          { text: "2,000 Apollo prospects/mo", included: true },
+          { text: "2,000 cold emails/mo", included: true },
+          { text: "2 social platforms managed", included: true },
+          { text: "Full SEO (Technical + 4 blogs)", included: true },
+          { text: "1 custom landing page", included: true },
+          { text: "GTM & tracking setup", included: true },
+          { text: "Paid ads (Meta/TikTok/Google)", included: false },
+          { text: "8 short-form videos/mo", included: false },
         ],
+        detailedDeliverables: [],
         isPopular: false,
       },
       {
         name: "Market Domination",
-        price: "$8,500",
+        price: 5000,
+        discountPercentage: 30,
+        monthlyDiscountPercentage: 20,
         period: "/mo",
-        description: "Focus: Rapid scaling, aggressive experimentation, and full-funnel management.",
+        description: "For startups ready to dominate their market.",
         features: [
-          "Continuous CRO via A/B Testing",
-          "Custom Web App / Prototypes",
-          "Paid Ads Mgmt (Up to $50k spend)",
-          "B2B/B2C Lead Generation Systems",
-          "Advanced GEO (ChatGPT Citations)",
-          "8 Short-form Videos / Month"
+          { text: "5,000 Apollo prospects/mo", included: true },
+          { text: "5,000 cold emails/mo", included: true },
+          { text: "4 social platforms managed", included: true },
+          { text: "Advanced SEO (8 blogs + links)", included: true },
+          { text: "Custom landing page build", included: true },
+          { text: "Paid ads (Meta/TikTok/Google)", included: true },
+          { text: "8 short-form videos/mo", included: true },
+          { text: "Retargeting, A/B testing & CRO", included: true },
         ],
-        detailedDeliverables: [
-          {
-            title: "Advanced Web & Tech",
-            quantity: "CRO + Interactive Prototypes",
-            quality: "Continuous A/B testing to maximize engagement",
-            time: "Ongoing dedicated development"
-          },
-          {
-            title: "Lead Gen & Omnichannel",
-            quantity: "Paid Ads ($50k) + Lead Funnels",
-            quality: "Capturing leaky traffic and generating high-intent leads",
-            time: "Daily optimization & strategy"
-          },
-          {
-            title: "Advanced GEO",
-            quantity: "Generative Engine Optimization",
-            quality: "Ensuring brand citations globally in ChatGPT/Perplexity",
-            time: "Constant algorithmic tuning"
-          },
-          {
-            title: "Volume Content & Video",
-            quantity: "4 Social Platforms + 8 Video Edits",
-            quality: "High retention short-form edits for TikTok/Reels/LinkedIn",
-            time: "Weekly 1-on-1 Growth Syncs"
-          }
-        ],
+        detailedDeliverables: [],
         isPopular: true,
-      },
-      {
-        name: "Enterprise Scaling",
-        price: "$15,000+",
-        period: "/mo",
-        description: "Focus: Owning the category, massive content volume, and dedicated technical support.",
-        features: [
-          "Dedicated 4-Person Digital Dept",
-          "Priority 24/7 Tech Support",
-          "Full-service Video Production",
-          "Digital PR & Link Building",
-          "End-to-End Lead Gen Engine",
-          "Performance Guarantee"
-        ],
-        detailedDeliverables: [
-          {
-            title: "The 'Digital Department'",
-            quantity: "1 Strategist, 1 Dev, 1 Content, 1 Ads",
-            quality: "Fully dedicated elite team operating as your agency",
-            time: "24/7 Priority Technical Support"
-          },
-          {
-            title: "High-End Production",
-            quantity: "Full Video + Digital PR",
-            quality: "Scripting, editing, and high-tier link building",
-            time: "Monthly production & distribution"
-          },
-          {
-            title: "Full Lead Gen Automation",
-            quantity: "HubSpot/Salesforce lead scoring & flows",
-            quality: "Acquisition + Retention email/SMS automation for LTV",
-            time: "Always-on triggered infrastructure"
-          },
-          {
-            title: "Outcome Security",
-            quantity: "Performance Guarantees",
-            quality: "Custom KPI-based incentives and revenue-share options",
-            time: "Contractual Baseline"
-          }
-        ],
-        isPopular: false,
       }
     ]
   },
@@ -732,6 +672,9 @@ export type PricingSectionProps = {
 export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("growth-marketing");
   const [selectedPackage, setSelectedPackage] = useState<PricingPackage | null>(null);
+  const [packageTerms, setPackageTerms] = useState<Record<string, boolean>>({});
+  
+  const isFourMonthForPkg = (name: string) => packageTerms[name] !== false;
   
   const displayPackages = customPackages || pricingData[activeTab].packages;
 
@@ -805,25 +748,76 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                     </div>
                   )}
 
-                  <h3 className="text-xl font-bold text-[#f0f0f8] mb-2">{pkg.name}</h3>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <h3 className="text-xl font-bold text-[#f0f0f8]">{pkg.name}</h3>
+                    {typeof pkg.price === 'number' && (
+                      <div className="flex items-center bg-[#111115] p-0.5 rounded-full border border-white/5 shrink-0">
+                        <button 
+                          onClick={() => setPackageTerms(p => ({...p, [pkg.name]: false}))}
+                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${!isFourMonthForPkg(pkg.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300'}`}
+                        >
+                          1-Mo
+                        </button>
+                        <button 
+                          onClick={() => setPackageTerms(p => ({...p, [pkg.name]: true}))}
+                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${isFourMonthForPkg(pkg.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500 hover:text-gray-300'}`}
+                        >
+                          4-Mo
+                        </button>
+                      </div>
+                    )}
+                  </div>
                   <p className="text-gray-400 text-sm mb-6 min-h-[40px] leading-relaxed">
                     {pkg.description}
                   </p>
 
-                  <div className="mb-8 border-b border-white/10 pb-8">
-                    <span className="text-4xl font-black text-white">{pkg.price}</span>
+                  <div className="mb-4 border-b border-white/10 pb-8 flex flex-col gap-1">
+
+                    <div className="flex items-baseline gap-2">
+                    {typeof pkg.price === 'number' ? (
+                      (() => {
+                        const discount = isFourMonthForPkg(pkg.name) ? (pkg.discountPercentage||0) : (pkg.monthlyDiscountPercentage||0);
+                        return discount > 0 ? (
+                          <>
+                            <span className="text-xl font-medium text-gray-500/70 line-through">${pkg.price.toLocaleString()}</span>
+                            <span className="text-4xl font-black text-white">${(pkg.price * (1 - discount / 100)).toLocaleString()}</span>
+                          </>
+                        ) : (
+                           <span className="text-4xl font-black text-white">${pkg.price.toLocaleString()}</span>
+                        );
+                      })()
+                    ) : (
+                      <>
+                        {pkg.originalPrice && <span className="text-xl font-medium text-gray-500/70 line-through">{pkg.originalPrice}</span>}
+                        <span className="text-4xl font-black text-white">{pkg.price}</span>
+                      </>
+                    )}
                     <span className="text-gray-500 font-medium">{pkg.period}</span>
+                    </div>
+                    {isFourMonthForPkg(pkg.name) && typeof pkg.price === 'number' && (
+                      <span className="text-xs text-[var(--accent)]/90 font-medium tracking-wide">Requires 4-month commitment for max results</span>
+                    )}
                   </div>
 
                   <ul className="flex flex-col gap-4 mb-10 flex-1">
-                    {pkg.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-[var(--accent)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-[0.95rem] text-gray-300">{feature}</span>
-                      </li>
-                    ))}
+                    {pkg.features.map((feature, fIdx) => {
+                      const isObj = typeof feature === 'object' && feature !== null && 'included' in feature;
+                      const isIncluded = isObj ? (feature as any).included : true;
+                      const content = isObj ? (feature as any).text : feature;
+
+                      return (
+                        <li key={fIdx} className={`flex items-start gap-3 ${!isIncluded ? 'opacity-50' : ''}`}>
+                          <svg className={`w-5 h-5 shrink-0 mt-0.5 ${isIncluded ? 'text-[var(--accent)]' : 'text-gray-600'}`} fill="none" viewBox="0 0 24 24">
+                            {isIncluded ? (
+                              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                            ) : (
+                              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            )}
+                          </svg>
+                          <span className={`text-[0.95rem] ${isIncluded ? 'text-gray-300' : 'text-gray-500 line-through'}`}>{content}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
 
                   <button
@@ -878,10 +872,45 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                         Most Selected
                       </span>
                     )}
+                    {typeof selectedPackage.price === 'number' && (
+                      <div className="flex items-center bg-[#111115] p-0.5 rounded-full border border-white/5 ml-auto">
+                        <button 
+                          onClick={() => setPackageTerms(p => ({...p, [selectedPackage.name]: false}))}
+                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${!isFourMonthForPkg(selectedPackage.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300'}`}
+                        >
+                          1-Mo
+                        </button>
+                        <button 
+                          onClick={() => setPackageTerms(p => ({...p, [selectedPackage.name]: true}))}
+                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${isFourMonthForPkg(selectedPackage.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500 hover:text-gray-300'}`}
+                        >
+                          4-Mo
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-white">{selectedPackage.price}</span>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-baseline gap-2 mt-1">
+                    {typeof selectedPackage.price === 'number' ? (
+                      (() => {
+                        const discount = isFourMonthForPkg(selectedPackage.name) ? (selectedPackage.discountPercentage||0) : (selectedPackage.monthlyDiscountPercentage||0);
+                        return discount > 0 ? (
+                          <>
+                            <span className="text-xl font-medium text-gray-500/70 line-through">${selectedPackage.price.toLocaleString()}</span>
+                            <span className="text-3xl font-black text-white">${(selectedPackage.price * (1 - discount / 100)).toLocaleString()}</span>
+                          </>
+                        ) : (
+                           <span className="text-3xl font-black text-white">${selectedPackage.price.toLocaleString()}</span>
+                        );
+                      })()
+                    ) : (
+                      <>
+                        {selectedPackage.originalPrice && <span className="text-xl font-medium text-gray-500/70 line-through">{selectedPackage.originalPrice}</span>}
+                        <span className="text-3xl font-black text-white">{selectedPackage.price}</span>
+                      </>
+                    )}
                     <span className="text-gray-500 font-medium">{selectedPackage.period}</span>
+                    </div>
                   </div>
                 </div>
                 <button 
@@ -929,11 +958,19 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                     <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-center text-gray-400">
                       Standard deliverables apply. Please contact us for a detailed breakdown or view the basic features below.
                       <ul className="mt-4 text-left flex flex-col gap-2 max-w-md mx-auto">
-                        {selectedPackage.features.map((feat, i) => (
-                          <li key={i} className="flex gap-2 text-sm text-gray-300 items-start">
-                            <span className="text-[var(--accent)]">✦</span> {feat}
-                          </li>
-                        ))}
+                        {selectedPackage.features.map((feat, i) => {
+                          const isObj = typeof feat === 'object' && feat !== null && 'included' in feat;
+                          const isIncluded = isObj ? (feat as any).included : true;
+                          const content = isObj ? (feat as any).text : feat;
+                          return (
+                            <li key={i} className={`flex gap-2 text-sm items-start ${!isIncluded ? 'opacity-50 text-gray-500 line-through' : 'text-gray-300'}`}>
+                              <span className={isIncluded ? 'text-[var(--accent)]' : 'text-gray-600'}>
+                                {isIncluded ? '✦' : '✕'}
+                              </span> 
+                              <span>{content}</span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}
