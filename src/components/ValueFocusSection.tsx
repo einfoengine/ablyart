@@ -95,7 +95,7 @@ export default function ValueFocusSection({
   badge = "So, we battle in two grounds",
   titleBase = "Batteling one ground",
   titleHighlight = "is a dumb way to die",
-  subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
+  subtitle = "Over-indexing on paid ads burns cash without building loyalty, while pure organic growth starves you of immediate revenue. To truly scale, you must attack both fronts simultaneously.",
   categories = defaultCategories,
   hideBottomSection = false,
 }: ValueFocusSectionProps) {
