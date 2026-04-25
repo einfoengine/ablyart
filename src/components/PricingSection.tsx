@@ -31,7 +31,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
   {
     name: "Starter",
     price: 1500,
-    discountPercentage: 10,
+    discountPercentage: 40,
     monthlyDiscountPercentage: 0,
     period: "/mo",
     description: "For startups planting their first flag.",
@@ -51,8 +51,8 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
   {
     name: "Growth Engine",
     price: 3000,
-    discountPercentage: 20,
-    monthlyDiscountPercentage: 10,
+    discountPercentage: 50,
+    monthlyDiscountPercentage: 20,
     period: "/mo",
     description: "For startups ready to build real pipeline.",
     features: [
@@ -71,8 +71,8 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
   {
     name: "Market Domination",
     price: 5000,
-    discountPercentage: 30,
-    monthlyDiscountPercentage: 20,
+    discountPercentage: 60,
+    monthlyDiscountPercentage: 30,
     period: "/mo",
     description: "For startups ready to dominate their market.",
     features: [
@@ -95,7 +95,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     packages: [
       {
         name: "Scale Starter",
-        price: "$3,500",
+        price: "$2,800",
+        originalPrice: "$3,500",
+        discountPercentage: 20,
         period: "/mo + 10% Ad Spend",
         description: "Perfect for validating a new product and establishing profitable unit economics.",
         features: [
@@ -135,7 +137,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Market Dominator",
-        price: "$6,500",
+        price: "$4,550",
+        originalPrice: "$6,500",
+        discountPercentage: 30,
         period: "/mo + 15% Ad Spend",
         description: "Built for aggressive growth, B2B SaaS, and e-commerce scaling.",
         features: [
@@ -175,7 +179,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Enterprise Performance",
-        price: "$12,000+",
+        price: "$7,200+",
+        originalPrice: "$12,000+",
+        discountPercentage: 40,
         period: "/mo + 20% Ad Spend",
         description: "Total category leadership for massive ad budgets and intricate custom attribution models.",
         features: [
@@ -220,7 +226,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     packages: [
       {
         name: "Baseline Organic",
-        price: "$1,200",
+        price: "$840",
+        originalPrice: "$1,200",
+        discountPercentage: 30,
         period: "/mo",
         description: "Consistent branding to ensure your digital footprint looks alive.",
         features: [
@@ -254,7 +262,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Aggressive Growth",
-        price: "$2,800",
+        price: "$1,680",
+        originalPrice: "$2,800",
+        discountPercentage: 40,
         period: "/mo",
         description: "Our most chosen tier to rapidly expand and capture audience attention.",
         features: [
@@ -289,7 +299,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Viral Machinery",
-        price: "$5,000+",
+        price: "$2,000+",
+        originalPrice: "$5,000+",
+        discountPercentage: 60,
         period: "/mo",
         description: "A complete outsourced content team for high-volume brands.",
         features: [
@@ -329,7 +341,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     packages: [
       {
         name: "Local Authority",
-        price: "$1,800",
+        price: "$1,080",
+        originalPrice: "$1,800",
+        discountPercentage: 40,
         period: "/mo",
         description: "Dominate local search results and capture high-intent geographic traffic.",
         features: [
@@ -363,7 +377,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "National Ascend",
-        price: "$3,500",
+        price: "$2,100",
+        originalPrice: "$3,500",
+        discountPercentage: 40,
         period: "/mo",
         description: "Aggressive organic & paid growth targeting highly competitive national keywords.",
         features: [
@@ -398,7 +414,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Enterprise Dominance",
-        price: "$7,000+",
+        price: "$2,800+",
+        originalPrice: "$7,000+",
+        discountPercentage: 60,
         period: "/mo",
         description: "Massive scale SEO & aggressive ad buys for massive websites.",
         features: [
@@ -438,7 +456,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     packages: [
       {
         name: "Short-Form Core",
-        price: "$2,200",
+        price: "$1,100",
+        originalPrice: "$2,200",
+        discountPercentage: 50,
         period: "/mo",
         description: "Consistent TikTok, Reels, and Shorts designed to go viral and capture eyes.",
         features: [
@@ -472,7 +492,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Brand Storyteller",
-        price: "$4,500",
+        price: "$2,250",
+        originalPrice: "$4,500",
+        discountPercentage: 50,
         period: "/mo",
         description: "A hybrid approach mixing short-form viral hits with long-form authority.",
         features: [
@@ -507,7 +529,9 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       },
       {
         name: "Studio Production",
-        price: "$8,500+",
+        price: "$3,400+",
+        originalPrice: "$8,500+",
+        discountPercentage: 60,
         period: "/project",
         description: "High-end cinematic commercials, VSLs, and full documentary-style content.",
         features: [
@@ -566,6 +590,13 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
       <div className="max-w-7xl mx-auto px-6 relative w-full">
         
         {/* Header */}
+        <div className="flex justify-center mb-4">
+          <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 font-black text-sm uppercase tracking-widest px-5 py-2 rounded-full">
+            <span className="inline-block w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+            Limited-Time: Up to 60% OFF All Packages
+            <span className="inline-block w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+          </div>
+        </div>
         <SectionHeader
           badge="ROI-Focused Capital Allocation"
           titleBase="Strategic Growth"
@@ -624,6 +655,16 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
                   {pkg.isPopular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--accent)] text-black font-bold text-xs uppercase tracking-wider py-1.5 px-4 rounded-full shadow-lg">
                       Most Selected
+                    </div>
+                  )}
+                  {!pkg.isPopular && pkg.discountPercentage && pkg.discountPercentage > 0 && (
+                    <div className="absolute -top-3.5 right-4 bg-red-500 text-white font-black text-[10px] uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
+                      {pkg.discountPercentage}% OFF
+                    </div>
+                  )}
+                  {pkg.isPopular && pkg.discountPercentage && pkg.discountPercentage > 0 && (
+                    <div className="absolute -top-3.5 right-4 bg-red-500 text-white font-black text-[10px] uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
+                      {pkg.discountPercentage}% OFF
                     </div>
                   )}
 

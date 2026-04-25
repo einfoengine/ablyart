@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import GrowthCalculatorSection from "@/components/GrowthCalculatorSection";
 import HotServicesSection from "@/components/HotServicesSection";
 import VslSection from "@/components/VslSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -20,6 +21,7 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
+        <GrowthCalculatorSection />
         <HotServicesSection />
         <VslSection />
         <ValueFocusSection />

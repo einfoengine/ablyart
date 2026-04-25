@@ -252,7 +252,7 @@ export default function HeroSection() {
               Predictable
             </span>
           </div>
-          10X Growth{" "}
+          n<sup>x</sup> Growth{" "}
           <span className="gradient-text break-words">for Scalable Startups</span>
         </h1>
 

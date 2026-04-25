@@ -11,7 +11,7 @@ const services = [
   {
     category: "Dominate Social Media",
     title: "Become the Brand Everyone's Talking About.",
-    description: "End-to-end social presence: compelling content creation, posting, community engagement, growth optimization. Result? A brand people recognize, trust, and buy from.",
+    description: "End-to-end social presence: compelling content creation, posting, community engagement followup, growth optimization. Result? A brand people recognize, trust, and buy from.",
     icon: <FaFire size={28} />
   },
   {
@@ -21,16 +21,16 @@ const services = [
     icon: <FaSearch size={28} />
   },
   {
-    category: "We Knock. They Answer.",
-    title: "Precision Outreach. Real Conversations. Closed Deals.",
-    description: "Precision outbound: Apollo prospecting, hyper-targeted lists, personalized cold email sequences at scale. Result? Real sales conversations with decision-makers who are ready to buy.",
-    icon: <FaFilter size={28} />
-  },
-  {
-    category: "Go Massive With Ads",
+    category: "Grow with paid ads",
     title: "Multiply Your Revenue.",
     description: "Performance advertising across Meta, TikTok, and Google: strategy, creatives, targeting, optimization. Result? More revenue from every dollar spent — zero wasted on vanity metrics.",
     icon: <FaChartLine size={28} />
+  },
+  {
+    category: "Convert Leads to Customers",
+    title: "Precision Outreach. Real Conversations. Closed Deals.",
+    description: "Precision outbound: Apollo prospecting, hyper-targeted lists, personalized cold email sequences at scale. Result? Real sales conversations with decision-makers who are ready to buy.",
+    icon: <FaFilter size={28} />
   }
 ];
 
@@ -42,10 +42,10 @@ export default function HotServicesSection() {
         
         {/* Section Heading */}
         <SectionHeader
-          badge="Our Hot Services"
-          titleBase="Strategic Moves"
-          titleHighlight="For Sustainable Growth."
-          subtitle="Four Systems. One Goal — Your Market Dominance."
+          badge="How we make it sure"
+          titleBase="Influencing Your Leads - "
+          titleHighlight="& Nurturing Interest to Conversion"
+          subtitle="Four Systems. One Goal - Your Market Dominance."
           alignment="center"
         />
 
