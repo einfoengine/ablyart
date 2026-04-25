@@ -36,8 +36,8 @@ export default function GrowthCalculatorSection() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionHeader
           badge="Measure Your Potential"
-          titleBase="Plan Your "
-          titleHighlight="Growth Pathway."
+          titleBase="Here is how "
+          titleHighlight="we plan the growth."
           subtitle="Growth = Traffic × Conversion Rate × Average Order Value × Purchase Frequency"
           alignment="center"
         />
@@ -151,7 +151,6 @@ export default function GrowthCalculatorSection() {
           {/* Results - Right Side */}
           <div className="flex-[0.8] relative flex flex-col justify-center">
              <motion.div 
-               key={growthMultiplier}
                initial={{ scale: 0.95, opacity: 0 }}
                animate={{ scale: 1, opacity: 1 }}
                transition={{ duration: 0.2 }}

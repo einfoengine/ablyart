@@ -14,7 +14,7 @@ export default function VslSection() {
         <SectionHeader
           badge="Your Growth Breakdown"
           titleBase="The Growth Split:"
-          titleHighlight="60% Digital Foundation, 40% Outbound Marketing."
+          titleHighlight="60% Digital Foundation, 40% Performance Marketing."
           alignment="center"
           className="mb-6"
         />

@@ -42,7 +42,7 @@ export default function HotServicesSection() {
         
         {/* Section Heading */}
         <SectionHeader
-          badge="What are we doing?"
+          badge="This is how we help you"
           titleBase="Influencing Your Leads - "
           titleHighlight="&nbsp;& Nurturing Interest to Conversion."
           subtitle="Four actionable systems. One clear outcome: Predictable Growth."
