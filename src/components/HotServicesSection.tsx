@@ -9,28 +9,28 @@ import { FaFire, FaSearch, FaFilter, FaChartLine } from "react-icons/fa";
 
 const services = [
   {
-    category: "Dominate Social Media",
-    title: "Become the Brand Everyone's Talking About.",
-    description: "End-to-end social presence: compelling content creation, posting, community engagement followup, growth optimization. Result? A brand people recognize, trust, and buy from.",
+    category: "Drive Potential Traffic",
+    title: "Bring the Right Audience to Your Platforms.",
+    description: "We utilize smart, multi-channel targeting to bring high-quality, product-aware visitors straight to your website and social media platforms, ensuring you reach people ready to engage.",
     icon: <FaFire size={28} />
   },
   {
-    category: "Own the Search Engines",
-    title: "Be There When They're Ready to Buy.",
-    description: "Full-stack SEO: technical audits, keyword strategy, content creation, link building. Result? Your business ranking where buyers are already searching — bringing in traffic without paying for every click.",
-    icon: <FaSearch size={28} />
+    category: "Optimize Conversion Rates",
+    title: "Turn Casual Visitors into Confident Buyers.",
+    description: "Traffic is useless without action. We re-engineer your user experience, refine your messaging, and optimize your sales funnels to significantly increase the percentage of visitors who complete a purchase.",
+    icon: <FaFilter size={28} />
   },
   {
-    category: "Grow with paid ads",
-    title: "Multiply Your Revenue.",
-    description: "Performance advertising across Meta, TikTok, and Google: strategy, creatives, targeting, optimization. Result? More revenue from every dollar spent — zero wasted on vanity metrics.",
+    category: "Increase Purchase Frequency",
+    title: "Drive Repeat Sales via Precision Paid Ads.",
+    description: "We deploy highly optimized remarketing campaigns across ad platforms to keep your brand top-of-mind, encouraging past buyers to return and purchase from you more frequently.",
     icon: <FaChartLine size={28} />
   },
   {
-    category: "Convert Leads to Customers",
-    title: "Precision Outreach. Real Conversations. Closed Deals.",
-    description: "Precision outbound: Apollo prospecting, hyper-targeted lists, personalized cold email sequences at scale. Result? Real sales conversations with decision-makers who are ready to buy.",
-    icon: <FaFilter size={28} />
+    category: "Full Audit & Digital Strategy",
+    title: "Your Blueprint for Scalable Ecosystem Growth.",
+    description: "We perform a deep-dive audit of your digital presence to find bottlenecks and leaks. Then, we provide a customized, step-by-step marketing strategy mathematically built to scale.",
+    icon: <FaSearch size={28} />
   }
 ];
 
@@ -42,10 +42,10 @@ export default function HotServicesSection() {
         
         {/* Section Heading */}
         <SectionHeader
-          badge="How we make it sure"
+          badge="What are we doing?"
           titleBase="Influencing Your Leads - "
-          titleHighlight="& Nurturing Interest to Conversion"
-          subtitle="Four Systems. One Goal - Your Market Dominance."
+          titleHighlight="&nbsp;& Nurturing Interest to Conversion."
+          subtitle="Four actionable systems. One clear outcome: Predictable Growth."
           alignment="center"
         />
 
