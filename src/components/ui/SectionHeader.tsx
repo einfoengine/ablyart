@@ -81,7 +81,7 @@ export function SectionHeader({
         </div>
       )}
       {(titleBase || titleHighlight) && (
-        <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white max-w-3xl">
+        <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white s">
           {titleBase} {titleHighlight && <span className={highlightClass}>{titleHighlight}</span>}
         </h2>
       )}

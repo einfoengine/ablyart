@@ -6,10 +6,10 @@ import { SectionHeader } from "./ui/SectionHeader";
 import { FaUsers, FaPercentage, FaShoppingCart, FaSync } from "react-icons/fa";
 
 export default function GrowthCalculatorSection() {
-  const [traffic, setTraffic] = useState(10000);
-  const [conversionRate, setConversionRate] = useState(2.0);
-  const [aov, setAov] = useState(50);
-  const [frequency, setFrequency] = useState(1.5);
+  const [trafficGrowth, setTrafficGrowth] = useState(30);
+  const [conversionGrowth, setConversionGrowth] = useState(25);
+  const [aovGrowth, setAovGrowth] = useState(20);
+  const [frequencyGrowth, setFrequencyGrowth] = useState(15);
 
   const [mounted, setMounted] = useState(false);
 
@@ -18,15 +18,12 @@ export default function GrowthCalculatorSection() {
   }, []);
 
   // Calculations
-  const annualTraffic = traffic * 12;
-  const annualCustomers = annualTraffic * (conversionRate / 100);
-  const annualOrders = annualCustomers * frequency;
-  const annualRevenue = annualOrders * aov;
-
-  // Formatting helpers
-  const formatNumber = (num: number) => Math.round(num).toLocaleString();
-  const formatCurrency = (num: number) => 
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+  const trafficMult = 1 + trafficGrowth / 100;
+  const conversionMult = 1 + conversionGrowth / 100;
+  const aovMult = 1 + aovGrowth / 100;
+  const frequencyMult = 1 + frequencyGrowth / 100;
+  
+  const growthMultiplier = trafficMult * conversionMult * aovMult * frequencyMult;
 
   if (!mounted) return null;
 
@@ -39,8 +36,8 @@ export default function GrowthCalculatorSection() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionHeader
           badge="Measure Your Potential"
-          titleBase="Calculate Your "
-          titleHighlight="Growth Potential."
+          titleBase="Plan Your "
+          titleHighlight="Growth Pathway."
           subtitle="Growth = Traffic × Conversion Rate × Average Order Value × Purchase Frequency"
           alignment="center"
         />
@@ -53,24 +50,24 @@ export default function GrowthCalculatorSection() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                  <FaUsers className="text-[var(--accent)]" /> Monthly Traffic
+                  <FaUsers className="text-[var(--accent)]" /> Increase Traffic
                 </label>
                 <div className="text-xl font-bold bg-white/5 px-4 py-1 rounded-lg tabular-nums">
-                  {formatNumber(traffic)}
+                  +{trafficGrowth}%
                 </div>
               </div>
               <input 
                 type="range" 
-                min="1000" 
-                max="500000" 
-                step="1000"
-                value={traffic} 
-                onChange={(e) => setTraffic(Number(e.target.value))}
+                min="0" 
+                max="200" 
+                step="5"
+                value={trafficGrowth} 
+                onChange={(e) => setTrafficGrowth(Number(e.target.value))}
                 className="w-full accent-[var(--accent)] h-2 bg-white/10 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-xs text-gray-500 font-medium">
-                <span>1K</span>
-                <span>500K+</span>
+                <span>0%</span>
+                <span>200%</span>
               </div>
             </div>
 
@@ -78,24 +75,24 @@ export default function GrowthCalculatorSection() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                  <FaPercentage className="text-[var(--accent)]" /> Conversion Rate
+                  <FaPercentage className="text-[var(--accent)]" /> Improve Conversion Rate
                 </label>
                 <div className="text-xl font-bold bg-white/5 px-4 py-1 rounded-lg tabular-nums">
-                  {conversionRate.toFixed(1)}%
+                  +{conversionGrowth}%
                 </div>
               </div>
               <input 
                 type="range" 
-                min="0.1" 
-                max="10" 
-                step="0.1"
-                value={conversionRate} 
-                onChange={(e) => setConversionRate(Number(e.target.value))}
+                min="0" 
+                max="100" 
+                step="1"
+                value={conversionGrowth} 
+                onChange={(e) => setConversionGrowth(Number(e.target.value))}
                 className="w-full accent-[var(--accent)] h-2 bg-white/10 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-xs text-gray-500 font-medium">
-                <span>0.1%</span>
-                <span>10%</span>
+                <span>0%</span>
+                <span>100%</span>
               </div>
             </div>
 
@@ -103,24 +100,24 @@ export default function GrowthCalculatorSection() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                  <FaShoppingCart className="text-[var(--accent)]" /> Average Order Value
+                  <FaShoppingCart className="text-[var(--accent)]" /> Increase Average Order Value
                 </label>
                 <div className="text-xl font-bold bg-white/5 px-4 py-1 rounded-lg tabular-nums">
-                  ${formatNumber(aov)}
+                  +{aovGrowth}%
                 </div>
               </div>
               <input 
                 type="range" 
-                min="10" 
-                max="2000" 
-                step="10"
-                value={aov} 
-                onChange={(e) => setAov(Number(e.target.value))}
+                min="0" 
+                max="100" 
+                step="1"
+                value={aovGrowth} 
+                onChange={(e) => setAovGrowth(Number(e.target.value))}
                 className="w-full accent-[var(--accent)] h-2 bg-white/10 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-xs text-gray-500 font-medium">
-                <span>$10</span>
-                <span>$2,000+</span>
+                <span>0%</span>
+                <span>100%</span>
               </div>
             </div>
 
@@ -128,24 +125,24 @@ export default function GrowthCalculatorSection() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                  <FaSync className="text-[var(--accent)]" /> Purchase Frequency
+                  <FaSync className="text-[var(--accent)]" /> Increase Purchase Frequency
                 </label>
                 <div className="text-xl font-bold bg-white/5 px-4 py-1 rounded-lg tabular-nums">
-                  {frequency.toFixed(1)} <span className="text-sm font-medium text-gray-400">x / year</span>
+                  +{frequencyGrowth}%
                 </div>
               </div>
               <input 
                 type="range" 
-                min="1" 
-                max="12" 
-                step="0.25"
-                value={frequency} 
-                onChange={(e) => setFrequency(Number(e.target.value))}
+                min="0" 
+                max="100" 
+                step="1"
+                value={frequencyGrowth} 
+                onChange={(e) => setFrequencyGrowth(Number(e.target.value))}
                 className="w-full accent-[var(--accent)] h-2 bg-white/10 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-xs text-gray-500 font-medium">
-                <span>1x</span>
-                <span>12x</span>
+                <span>0%</span>
+                <span>100%</span>
               </div>
             </div>
 
@@ -154,32 +151,32 @@ export default function GrowthCalculatorSection() {
           {/* Results - Right Side */}
           <div className="flex-[0.8] relative flex flex-col justify-center">
              <motion.div 
-               key={annualRevenue}
+               key={growthMultiplier}
                initial={{ scale: 0.95, opacity: 0 }}
                animate={{ scale: 1, opacity: 1 }}
-               transition={{ duration: 0.3 }}
+               transition={{ duration: 0.2 }}
                className="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden"
              >
                 {/* Floating Glow */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--accent)]/20 blur-[60px] rounded-full mix-blend-screen" />
                 
-                <h4 className="text-gray-400 font-semibold mb-2 uppercase tracking-wide text-sm">Potential Annual Revenue</h4>
-                <div className="text-5xl md:text-6xl font-black text-white tabular-nums tracking-tighter mb-8">
-                  {formatCurrency(annualRevenue)}
+                <h4 className="text-gray-400 font-semibold mb-2 uppercase tracking-wide text-sm">Potential Business Growth</h4>
+                <div className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#6ee7ff] tabular-nums tracking-tighter mb-4">
+                  {growthMultiplier.toFixed(2)}x
                 </div>
 
+                <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                  Small, incremental improvements across multiple areas of your business create a <strong className="text-white">massive compounding effect</strong> on your total growth.
+                </p>
+
                 <div className="space-y-4 pt-6 border-t border-white/10">
-                  <div className="flex justify-between items-end">
-                    <span className="text-gray-400 text-sm font-medium">Annual Traffic</span>
-                    <span className="text-white font-bold text-lg tabular-nums">{formatNumber(annualTraffic)}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400 text-sm font-medium">Current State</span>
+                    <span className="text-white font-semibold text-md">1.00x Base</span>
                   </div>
-                  <div className="flex justify-between items-end">
-                    <span className="text-gray-400 text-sm font-medium">Annual Customers</span>
-                    <span className="text-white font-bold text-lg tabular-nums">{formatNumber(annualCustomers)}</span>
-                  </div>
-                  <div className="flex justify-between items-end">
-                    <span className="text-gray-400 text-sm font-medium">Annual Orders</span>
-                    <span className="text-white font-bold text-lg tabular-nums">{formatNumber(annualOrders)}</span>
+                  <div className="flex justify-between items-center text-[var(--accent)]">
+                    <span className="text-[var(--accent)] text-sm font-bold">New Trajectory</span>
+                    <span className="font-bold text-lg tabular-nums">+{((growthMultiplier - 1) * 100).toFixed(0)}% Growth</span>
                   </div>
                 </div>
 
