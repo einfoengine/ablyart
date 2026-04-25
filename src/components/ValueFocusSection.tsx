@@ -2,35 +2,83 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBullseye, FaMagnet, FaBolt, FaSyncAlt } from "react-icons/fa";
+import { FaSearch, FaUsers, FaProjectDiagram, FaHandshake, FaMousePointer, FaEnvelopeOpenText, FaHeart, FaChartLine, FaSearchLocation, FaSyncAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/Button";
 
-export type FeatureCardProps = {
-  title: string;
+type ServiceDetail = {
+  name: string;
   description: string;
   icon: React.ReactNode;
 };
 
-const defaultFeatures: FeatureCardProps[] = [
+export type ServiceCategory = {
+  title: string;
+  focus: string;
+  services: ServiceDetail[];
+};
+
+const defaultCategories: ServiceCategory[] = [
   {
-    title: "Dominate Market Awareness",
-    description: "We amplify your brand's presence across every key platform. Break through the noise, capture peak attention, and establish your business as the undeniable industry authority.",
-    icon: <FaBullseye size={30} />
+    title: "Performance Marketing Services",
+    focus: "Immediate ROI, high-intent acquisition, and \"pay-for-results\" scaling.",
+    services: [
+      {
+        name: "Paid Search (SEM)",
+        description: "Management of Google and Bing Ads to capture users actively searching for your solution.",
+        icon: <FaSearch size={22} />
+      },
+      {
+        name: "Paid Social Acquisition",
+        description: "Data-driven ad campaigns on Meta, TikTok, and LinkedIn designed to stop the scroll and drive immediate conversions.",
+        icon: <FaUsers size={22} />
+      },
+      {
+        name: "Programmatic Advertising",
+        description: "Automated ad buying across premium websites to reach your target audience at scale.",
+        icon: <FaProjectDiagram size={22} />
+      },
+      {
+        name: "Affiliate & Partner Marketing",
+        description: "Building a network of third-party partners who promote your brand for a commission on every sale.",
+        icon: <FaHandshake size={22} />
+      },
+      {
+        name: "Landing Page Optimization",
+        description: "Technical and creative tweaks to your \"entry pages\" to ensure paid traffic converts at the highest possible rate.",
+        icon: <FaMousePointer size={22} />
+      }
+    ]
   },
   {
-    title: "Magnetize High-Intent Leads",
-    description: "Stop wasting time on unqualified traffic. We engineer scalable data-driven funnels, gated playbooks, and dynamic capture systems that pull prospects directly into an automated sales pipeline.",
-    icon: <FaMagnet size={30} />
-  },
-  {
-    title: "Engineer Rapid Conversions",
-    description: "Turn curious clicks into paying customers. We deploy high-converting funnels and irresistible messaging designed to maximize your profit and close deals seamlessly.",
-    icon: <FaBolt size={30} />
-  },
-  {
-    title: "Cultivate Lifetime Loyalty",
-    description: "The real profit is in repeat business. We implement powerful backend strategies to maximize customer lifetime value, increase retention, and turn buyers into passionate advocates.",
-    icon: <FaSyncAlt size={30} />
+    title: "Growth Marketing Services",
+    focus: "Long-term retention, customer lifetime value, and full-funnel health.",
+    services: [
+      {
+        name: "Lifecycle & CRM Strategy",
+        description: "Automated email and SMS flows that nurture leads and turn one-time buyers into repeat customers.",
+        icon: <FaEnvelopeOpenText size={22} />
+      },
+      {
+        name: "Organic Social & Community",
+        description: "Building a brand presence and engagement strategy to foster loyalty and lower long-term acquisition costs.",
+        icon: <FaHeart size={22} />
+      },
+      {
+        name: "Conversion Rate Optimization (CRO)",
+        description: "Constant experimentation across the entire user journey to remove friction and improve the customer experience.",
+        icon: <FaChartLine size={22} />
+      },
+      {
+        name: "SEO & Content Strategy",
+        description: "Developing organic authority and high-value content to bring in consistent, \"free\" traffic over time.",
+        icon: <FaSearchLocation size={22} />
+      },
+      {
+        name: "Retention & Referral Programs",
+        description: "Implementing loyalty rewards and \"invite-a-friend\" loops to turn your current users into your biggest growth engine.",
+        icon: <FaSyncAlt size={22} />
+      }
+    ]
   }
 ];
 
@@ -39,16 +87,16 @@ export type ValueFocusSectionProps = {
   titleBase?: string;
   titleHighlight?: string;
   subtitle?: string;
-  customFeatures?: FeatureCardProps[];
+  categories?: ServiceCategory[];
   hideBottomSection?: boolean;
 };
 
 export default function ValueFocusSection({
-  badge = "Therefore, our services are splited",
-  titleBase = "From Day Zero to",
-  titleHighlight = "Market Dominance",
+  badge = "So, we battle in two grounds",
+  titleBase = "Batteling one ground",
+  titleHighlight = "is a dumb way to die",
   subtitle = "We don't just run ads. We build a comprehensive growth ecosystem designed to scale your business predictably and profitably.",
-  customFeatures = defaultFeatures,
+  categories = defaultCategories,
   hideBottomSection = false,
 }: ValueFocusSectionProps) {
   return (
@@ -67,7 +115,7 @@ export default function ValueFocusSection({
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: false, margin: "-100px" }}
                transition={{ duration: 0.6 }}
-               className="text-center mb-20"
+               className="text-center mb-16"
             >
                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 mb-6 shadow-sm">
                  <div className="w-2 h-2 rounded-full bg-[var(--accent-dim)] animate-pulse"></div>
@@ -81,32 +129,43 @@ export default function ValueFocusSection({
                </p>
             </motion.div>
 
-            {/* 4 Boxes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {customFeatures.map((feature, index) => (
+            {/* 2 Column Categories Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              {categories.map((category, idx) => (
                 <motion.div
-                  key={index}
+                  key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  
-                  className="bg-[#0b0b0e] rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border border-[rgba(255,255,255,0.05)] hover:border-[var(--accent)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] p-8"
+                  transition={{ duration: 0.6, delay: idx * 0.15 }}
+                  className="bg-[#0b0b0e] rounded-3xl p-8 md:p-12 border border-[rgba(255,255,255,0.05)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col relative overflow-hidden group"
                 >
-                  {/* Subtle background glow on hover */}
-                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none" />
-                  
-                  <div className="w-16 h-16 bg-[var(--accent)] text-[#060608] flex items-center justify-center rounded-[1rem] border-[3px] border-white shadow-[0_6px_0_rgba(0,0,0,0.5)] transform -rotate-[6deg] group-hover:rotate-[3deg] group-hover:-translate-y-2 group-hover:shadow-[0_12px_20px_rgba(155,255,110,0.3),0_6px_0_rgba(0,0,0,0.5)] group-hover:scale-105 transition-all duration-300 mb-8 relative z-10">
-                    {feature.icon}
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4 text-white tracking-tight">
-                    {feature.title}
+                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none" />
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
+                    {category.title}
                   </h3>
-                  
-                  <p className="text-gray-400 leading-relaxed text-base">
-                    {feature.description}
-                  </p>
+                  <div className="inline-block px-4 py-2 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-10">
+                    <p className="text-[var(--accent)] font-semibold text-sm leading-relaxed">
+                      Focus: {category.focus}
+                    </p>
+                  </div>
+
+                  <div className="space-y-8 flex-1">
+                    {category.services.map((service, sIdx) => (
+                      <div key={sIdx} className="flex items-start gap-5">
+                        <div className="w-12 h-12 shrink-0 bg-white/5 flex items-center justify-center rounded-xl text-gray-300 border border-white/10 shadow-sm">
+                          {service.icon}
+                        </div>
+                        <div className="flex flex-col pt-1">
+                          <h4 className="text-lg font-bold text-white mb-2 leading-tight">{service.name}</h4>
+                          <p className="text-gray-400 text-sm leading-relaxed">
+                            {service.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>

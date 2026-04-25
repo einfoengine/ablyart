@@ -168,9 +168,9 @@ export default function ServicesSection() {
       {/* Section header */}
       {/* Section header */}
       <SectionHeader
-        badge="All The Ways We Help You"
-        titleBase="Seven Ways We Engineer"
-        titleHighlight="Your Growth"
+        badge="An Unified Action Plan Takes"
+        titleBase="Seven steps"
+        titleHighlight="Growth Engineering"
         subtitle="We don't do everything - we go deep on audit, content, promotion & strategic optimization."
         alignment="split"
       />
