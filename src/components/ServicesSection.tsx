@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import PricingTable from "@/components/PricingSection";
 
 // [... data block unchanged ...]
 
@@ -165,7 +164,6 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="pt-24 md:pt-32" style={{ position: "relative" }}>
-      <PricingTable />
       
       {/* Section header */}
       <SectionHeader

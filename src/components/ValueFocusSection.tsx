@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaSearch, FaUsers, FaProjectDiagram, FaHandshake, FaMousePointer, FaEnvelopeOpenText, FaHeart, FaChartLine, FaSearchLocation, FaSyncAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/Button";
+import PricingTable from "@/components/PricingSection";
 
 type ServiceDetail = {
   name: string;
@@ -218,6 +219,11 @@ export default function ValueFocusSection({
                 {logo}
               </span>
             ))}
+          </div>
+
+          {/* Pricing Table Component rendered beneath the logos */}
+          <div className="w-full mt-24 relative z-30">
+             <PricingTable />
           </div>
         </div>
 
