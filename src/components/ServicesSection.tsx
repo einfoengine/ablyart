@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import PricingTable from "@/components/PricingSection";
 
 // [... data block unchanged ...]
 
@@ -157,7 +158,6 @@ export default function ServicesSection() {
       const scrollable = outerRef.current.offsetHeight - window.innerHeight;
       const phaseSize = scrollable / n;
       const targetScrollPast = phaseSize * idx + (phaseSize / 2);
-      
       const targetWindowScroll = (window.scrollY + outerRef.current.getBoundingClientRect().top) + targetScrollPast;
       window.scrollTo({ top: targetWindowScroll, behavior: "smooth" });
     }
@@ -165,7 +165,8 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="pt-24 md:pt-32" style={{ position: "relative" }}>
-      {/* Section header */}
+      <PricingTable />
+      
       {/* Section header */}
       <SectionHeader
         badge="An Unified Action Plan Takes"

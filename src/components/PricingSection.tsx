@@ -568,11 +568,11 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
   }
 };
 
-export type PricingSectionProps = {
+export type PricingTableProps = {
   customPackages?: PricingPackage[];
 };
 
-export default function PricingSection({ customPackages }: PricingSectionProps = {}) {
+export default function PricingTable({ customPackages }: PricingTableProps = {}) {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("growth-marketing");
   const [selectedPackage, setSelectedPackage] = useState<PricingPackage | null>(null);
   const [packageTerms, setPackageTerms] = useState<Record<string, boolean>>({});
@@ -582,7 +582,7 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
   const displayPackages = customPackages || pricingData[activeTab].packages;
 
   return (
-    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] z-20 overflow-hidden">
+    <div className="w-full relative flex flex-col items-center justify-center z-20 overflow-visible mb-24">
       
       {/* Background glow behind pricing */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent)] opacity-[0.04] blur-[150px] rounded-full pointer-events-none"></div>
@@ -929,6 +929,6 @@ export default function PricingSection({ customPackages }: PricingSectionProps =
           background: rgba(255,255,255,0.2);
         }
       `}} />
-    </section>
+    </div>
   );
 }
