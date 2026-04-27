@@ -1,21 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
 
-const placeholderLogos = [
-  // Using simple tech-sounding names as typography logos for now
-  { name: "Quantum", weight: "font-black tracking-tighter" },
-  { name: "NEXUS", weight: "font-bold tracking-widest uppercase" },
-  { name: "AeroStack", weight: "font-medium italic" },
-  { name: "Vertex", weight: "font-extrabold tracking-tight" },
-  { name: "Omni.ai", weight: "font-mono font-bold" },
-  { name: "Synapse", weight: "font-bold" },
-  { name: "Hyperion", weight: "font-light tracking-widest uppercase" }
+import Image from "next/image";
+
+const clientLogos = [
+  { name: "HBK", src: "/client-HBK.png" },
+  { name: "An Naada", src: "/client-an-naada.png" },
+  { name: "Hayawear", src: "/client-hayawear.png" },
+  { name: "Jadroo", src: "/client-jadroo.png" },
+  { name: "Khas Food", src: "/client-khas-food.png" },
+  { name: "OS PPharma", src: "/client-os-ppharma.png" },
+  { name: "Ultima", src: "/client-ultima.png" },
+  { name: "Zaag", src: "/client-zaag.png" },
+  { name: "Zaag XD", src: "/client-zaag-xd.png" }
 ];
 
 export default function CompanyLogosSection({ id }: { id?: string }) {
-  // Duplicate array to achieve seamless infinite scroll
-  const duplicatedLogos = [...placeholderLogos, ...placeholderLogos];
+  const duplicatedLogos = [...clientLogos, ...clientLogos];
 
   return (
     <section id={id} className="py-20 md:py-24 bg-[var(--background)] relative overflow-hidden border-y border-white/5">
@@ -58,10 +59,13 @@ export default function CompanyLogosSection({ id }: { id?: string }) {
                 key={idx} 
                 className="px-10 md:px-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer grayscale hover:grayscale-0"
               >
-                {/* Fallback to styled text acting as a modern monochrome logo */}
-                <span className={`text-2xl md:text-3xl text-white ${logo.weight}`}>
-                  {logo.name}
-                </span>
+                <Image 
+                  src={logo.src} 
+                  alt={`${logo.name} logo`} 
+                  width={160} 
+                  height={80} 
+                  className="object-contain h-12 w-auto md:h-14 brightness-0 invert"
+                />
               </div>
             ))}
           </div>

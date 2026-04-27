@@ -26,12 +26,12 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: "nova-ecom",
-    client: "Nova Commerce",
+    client: "HBK",
     industry: "E-Commerce / Fashion",
     category: "Funnel",
     tagline: "From 1.2% to 4.8% conversion rate in 90 days.",
     description:
-      "Nova Commerce was burning budget on ads but losing customers at checkout. We rebuilt their entire funnel — landing pages, checkout flow, email sequences — and deployed A/B tests weekly until the numbers moved.",
+      "HBK was burning budget on ads but losing customers at checkout. We rebuilt their entire funnel — landing pages, checkout flow, email sequences — and deployed A/B tests weekly until the numbers moved.",
     services: ["Funnel Redesign", "CRO", "Email Automation", "Paid Ads"],
     results: [
       { label: "Conversion Rate", value: "4.8%", delta: "+300%" },
@@ -46,12 +46,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "apex-saas",
-    client: "Apex SaaS",
+    client: "An Naada",
     industry: "B2B / Software",
     category: "Lead Generation",
     tagline: "482 qualified demos booked in a single quarter.",
     description:
-      "Apex had a great product but zero inbound engine. We built a LinkedIn outbound system paired with SEO-driven content and a high-converting demo booking funnel that flooded their pipeline with decision-makers.",
+      "An Naada had a great product but zero inbound engine. We built a LinkedIn outbound system paired with SEO-driven content and a high-converting demo booking funnel that flooded their pipeline with decision-makers.",
     services: ["LinkedIn Outbound", "Content Marketing", "SEO", "Demo Funnels"],
     results: [
       { label: "Demos Booked", value: "482", delta: "+0 to 482" },
@@ -66,12 +66,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "bright-clinic",
-    client: "Bright Clinic",
+    client: "Hayawear",
     industry: "Healthcare / Aesthetics",
     category: "Social Media",
     tagline: "0 to 84K followers and fully booked 6 weeks out.",
     description:
-      "Bright Clinic had no social presence. We developed a content strategy, built a production system, and ran targeted awareness campaigns that built a loyal community and filled their appointment calendar.",
+      "Hayawear had no social presence. We developed a content strategy, built a production system, and ran targeted awareness campaigns that built a loyal community and filled their appointment calendar.",
     services: [
       "Social Media Management",
       "Custom Web Design",
@@ -90,12 +90,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "zenith-legal",
-    client: "Zenith Legal",
+    client: "Jadroo",
     industry: "Legal Services",
     category: "SEO",
     tagline: "Page 1 for 38 high-intent keywords in 4 months.",
     description:
-      "Zenith was invisible on Google. We performed a full technical SEO audit, rebuilt their content architecture, and launched a targeted link-building campaign that pushed them to the top for their most competitive terms.",
+      "Jadroo was invisible on Google. We performed a full technical SEO audit, rebuilt their content architecture, and launched a targeted link-building campaign that pushed them to the top for their most competitive terms.",
     services: ["Technical SEO", "Content Strategy", "Link Building", "Local SEO"],
     results: [
       { label: "Pg-1 Keywords", value: "38", delta: "from 3" },
@@ -109,12 +109,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "pulse-fitness",
-    client: "Pulse Fitness",
+    client: "Khas Food",
     industry: "Health & Wellness",
     category: "Social Media",
     tagline: "Viral campaign generated 2.1M organic impressions.",
     description:
-      "Pulse wanted a brand moment. We designed and executed a 30-day challenge campaign that went viral on TikTok and Instagram, dramatically growing their email list and driving a surge in memberships.",
+      "Khas Food wanted a brand moment. We designed and executed a 30-day challenge campaign that went viral on TikTok and Instagram, dramatically growing their email list and driving a surge in memberships.",
     services: [
       "Campaign Strategy",
       "UGC Production",
@@ -133,12 +133,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "vela-agency",
-    client: "Vela Agency",
+    client: "OS PPharma",
     industry: "Creative / B2B",
     category: "Lead Generation",
     tagline: "Cold email system bringing in 30+ discovery calls/month.",
     description:
-      "Vela struggled to grow beyond referrals. We built a data-enriched cold email infrastructure, wrote high-converting sequences, and set up a simple CRM workflow that now runs almost entirely on autopilot.",
+      "OS PPharma struggled to grow beyond referrals. We built a data-enriched cold email infrastructure, wrote high-converting sequences, and set up a simple CRM workflow that now runs almost entirely on autopilot.",
     services: [
       "Cold Email Infrastructure",
       "Copywriting",

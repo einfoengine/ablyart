@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FaSearch, FaUsers, FaProjectDiagram, FaHandshake, FaMousePointer, FaEnvelopeOpenText, FaHeart, FaChartLine, FaSearchLocation, FaSyncAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/Button";
 import PricingTable from "@/components/PricingSection";
@@ -200,26 +201,33 @@ export default function ValueFocusSection({
           {/* Client Logos */}
           <div className="w-full relative flex flex-col items-center">
           <div className="text-center text-xs font-semibold text-[var(--muted)] uppercase tracking-[0.25em] mb-12 w-full">
-            Trusted by 12+ Innovative Brands Worldwide
+            Trusted by many Innovative Brands Worldwide
           </div>
           
           <div className="w-full max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-x-10 md:gap-x-16 gap-y-8 md:gap-y-10">
             {[
-              "Acme Corp", "Quantum", "Sysco", "Vertex", 
-              "Apex Edge", "Velocity", "Nimbus", "Starlight", 
-              "Horizon", "Zenith", "Matrix Labs", "Innova", 
-              "BlueShift", "Nova", "Orbital", "Pioneer"
+              { name: "HBK", src: "/client-HBK.png" },
+              { name: "An Naada", src: "/client-an-naada.png" },
+              { name: "Hayawear", src: "/client-hayawear.png" },
+              { name: "Jadroo", src: "/client-jadroo.png" },
+              { name: "Khas Food", src: "/client-khas-food.png" },
+              { name: "OS PPharma", src: "/client-os-ppharma.png" },
+              { name: "Ultima", src: "/client-ultima.png" },
+              { name: "Zaag", src: "/client-zaag.png" },
+              { name: "Zaag XD", src: "/client-zaag-xd.png" }
             ].map((logo, idx) => (
-              <span 
+              <div 
                 key={idx} 
-                className="text-xl md:text-3xl font-black text-neutral-400 uppercase tracking-tighter hover:text-[var(--foreground)] hover:-translate-y-1 transition-all duration-300 cursor-default"
-                style={{
-                   opacity: idx % 3 === 0 ? 0.7 : 1,
-                   fontSize: idx % 5 === 0 ? "1.5em" : "1em"
-                }}
+                className="opacity-40 hover:opacity-100 transition-all duration-300 hover:-translate-y-1"
               >
-                {logo}
-              </span>
+                <Image 
+                  src={logo.src} 
+                  alt={`${logo.name} logo`} 
+                  width={140} 
+                  height={60} 
+                  className="object-contain h-10 w-auto md:h-12 brightness-0 invert"
+                />
+              </div>
             ))}
           </div>
 

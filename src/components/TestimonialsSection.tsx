@@ -8,25 +8,25 @@ const testimonialsRow1 = [
   {
     quote: "Our lead volume literally tripled within the first 60 days. They completely rebuilt our funnel, and the ROI has been nothing short of staggering.",
     name: "Sarah Jenkins",
-    role: "CMO, Vertex Tech",
+    role: "CMO, HBK",
     imgGrad: "linear-gradient(135deg, #ff7a59, #ff5050)"
   },
   {
     quote: "The web design team is on another level. The custom UI they built for our platform increased our conversion rate by 35% in the first month.",
     name: "Marcus Cole",
-    role: "Founder, Zenith Apparel",
+    role: "Founder, An Naada",
     imgGrad: "linear-gradient(135deg, #00A1E0, #0055FF)"
   },
   {
     quote: "Finally, an agency that doesn't just send spreadsheets. They actually care about our bottom line. Our SEO traffic is up 400% YoY.",
     name: "Elena Rodriguez",
-    role: "Head of Growth, Nova AI",
+    role: "Head of Growth, Hayawear",
     imgGrad: "linear-gradient(135deg, #9bff6e, #339933)"
   },
   {
     quote: "We were burning cash on Facebook ads before they stepped in. They restructured our entire ad account and slashed our CAC by 65%.",
     name: "David Kim",
-    role: "CEO, Quantum Scale",
+    role: "CEO, Jadroo",
     imgGrad: "linear-gradient(135deg, #b09eff, #F24E1E)"
   }
 ];
@@ -35,25 +35,25 @@ const testimonialsRow2 = [
   {
     quote: "Their web development team is insanely fast and incredibly detail-oriented. Our new landing page converts at 14%—unheard of in our industry.",
     name: "Amanda Chen",
-    role: "VP Marketing, Apex Edge",
+    role: "VP Marketing, Khas Food",
     imgGrad: "linear-gradient(135deg, #06B6D4, #3178C6)"
   },
   {
     quote: "They act as a true extension of our internal team. The communication is flawless, and the creative strategy gave us an unfair advantage.",
     name: "James Thorne",
-    role: "Director, Velocity Brands",
+    role: "Director, OS PPharma",
     imgGrad: "linear-gradient(135deg, #FFFC00, #FFE01B)"
   },
   {
     quote: "It's rare to find an agency that excels at both the highly technical SEO side and the high-level custom web development. Absolutely elite.",
     name: "Priya Patel",
-    role: "Founder, Starlight Ed.",
+    role: "Founder, Ultima",
     imgGrad: "linear-gradient(135deg, #FF0000, #BD081C)"
   },
   {
     quote: "If you want to scale aggressively, hire them. We jumped from $1M to $4M ARR this year, and their demand gen strategy is the exact reason why.",
     name: "Tom Harrison",
-    role: "CEO, Matrix Labs",
+    role: "CEO, Zaag",
     imgGrad: "linear-gradient(135deg, #6ee7ff, #00A1E0)"
   }
 ];
