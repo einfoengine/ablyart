@@ -12,7 +12,7 @@ const testimonialsRow1 = [
     imgGrad: "linear-gradient(135deg, #ff7a59, #ff5050)"
   },
   {
-    quote: "The video marketing team is on another level. The short-form content they produced for us went viral three times this month alone.",
+    quote: "The web design team is on another level. The custom UI they built for our platform increased our conversion rate by 35% in the first month.",
     name: "Marcus Cole",
     role: "Founder, Zenith Apparel",
     imgGrad: "linear-gradient(135deg, #00A1E0, #0055FF)"
@@ -45,7 +45,7 @@ const testimonialsRow2 = [
     imgGrad: "linear-gradient(135deg, #FFFC00, #FFE01B)"
   },
   {
-    quote: "It's rare to find an agency that excels at both the highly technical SEO side and the high-level creative video production. Absolutely elite.",
+    quote: "It's rare to find an agency that excels at both the highly technical SEO side and the high-level custom web development. Absolutely elite.",
     name: "Priya Patel",
     role: "Founder, Starlight Ed.",
     imgGrad: "linear-gradient(135deg, #FF0000, #BD081C)"
@@ -62,9 +62,9 @@ const testimonialsRow2 = [
 const allTestimonials = [...testimonialsRow1, ...testimonialsRow2];
 const marqueeRow = [...allTestimonials, ...allTestimonials];
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ id }: { id?: string }) {
   return (
-    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden z-20">
+    <section id={id} className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden z-20">
       
       {/* Background radial highlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent)] opacity-[0.02] blur-[150px] rounded-full pointer-events-none"></div>

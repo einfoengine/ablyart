@@ -71,7 +71,7 @@ const defaultFaqs = [
   },
 ];
 
-export default function FaqSection({ faqs = defaultFaqs }: { faqs?: { q: string, a: string }[] }) {
+export default function FaqSection({ id, faqs = defaultFaqs }: { id?: string; faqs?: { q: string, a: string }[] }) {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -86,7 +86,7 @@ export default function FaqSection({ faqs = defaultFaqs }: { faqs?: { q: string,
   };
 
   return (
-    <section id="faq" style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
+    <section id={id || "faq"} style={{ padding: "100px 24px", background: "var(--background)", position: "relative" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <div style={{ maxWidth: "740px", margin: "0 auto" }}>
         <SectionHeader

@@ -116,7 +116,7 @@ const holisticPackages = [
     description: "Designed for massive scale, aggressive content production, and enterprise traffic.",
     features: [
       "Headless E-Commerce/Web Support",
-      "In-House Quality Video Production",
+      "Custom Complex Web Apps & UX/UI Design",
       "Digital PR & Link Building",
       "Unlimited Lead Gen Flows",
       "Dedicated Team of 4 Experts",
@@ -130,10 +130,10 @@ const holisticPackages = [
         time: "24/7 Uptime & Instant Bug Fixes"
       },
       {
-        title: "In-House Video Production",
-        quantity: "15 Shorts + 2 Cinematic Long-forms",
-        quality: "4k Camera Equipment, Pro Grading & Editing",
-        time: "Monthly filming days"
+        title: "Custom Web Engineering",
+        quantity: "Bespoke Portals, Apps, and Dashboards",
+        quality: "React/Next.js stack, highly secure and scalable",
+        time: "Dedicated engineering cycles"
       },
       {
         title: "Digital PR Machinery",

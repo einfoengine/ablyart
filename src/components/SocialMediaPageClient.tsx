@@ -49,7 +49,7 @@ const socialPackages = [
     description: "Our most chosen tier to rapidly expand and capture audience attention.",
     features: [
       "4 Platforms Managed",
-      "24 Custom Posts (Static + Video)",
+      "24 Custom Posts (Static + Motion Graphics)",
       "Proactive Outbound Engagement",
       "Graphic Design Support",
       "Bi-Weekly Strategy Calls",
@@ -66,7 +66,7 @@ const socialPackages = [
       "Omnichannel Presence",
       "Unlimited Daily Posts",
       "Influencer Outreach Management",
-      "Dedicated Video Editor",
+      "Dedicated UI/UX Designer",
       "Priority 24/7 Community Handling",
       "Custom Dashboard Analytics"
     ],

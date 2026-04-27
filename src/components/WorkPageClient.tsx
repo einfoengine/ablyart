@@ -74,7 +74,7 @@ const caseStudies: CaseStudy[] = [
       "Bright Clinic had no social presence. We developed a content strategy, built a production system, and ran targeted awareness campaigns that built a loyal community and filled their appointment calendar.",
     services: [
       "Social Media Management",
-      "Short-Form Video",
+      "Custom Web Design",
       "Paid Social",
       "Community",
     ],

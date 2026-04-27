@@ -28,9 +28,9 @@ const defaultAgitations: AgitationCardProps[] = [
     textAccent: "#ff7850"
   },
   {
-    service: "Video Marketing",
-    title: "Drowning in the Noise",
-    pain: "Static text simply doesn't convert anymore. While your competitors are capturing attention with high-retention video, your message is being scrolled past in milliseconds. Attention is currency — and right now, you're broke.",
+    service: "Web Design & Development",
+    title: "Drowning in Poor UX",
+    pain: "A generic template simply doesn't convert anymore. While your competitors are capturing leads with custom, highly optimized web experiences, your visitors are bouncing in milliseconds due to poor UX and slow load times. Trust is currency — and right now, you're losing it.",
     accent: "rgba(255, 179, 71, 0.2)",
     textAccent: "#ffb347"
   },
@@ -44,6 +44,7 @@ const defaultAgitations: AgitationCardProps[] = [
 ];
 
 export type AgitationSectionProps = {
+  id?: string;
   badge?: string;
   titleBase?: string;
   titleHighlight?: string;
@@ -52,6 +53,7 @@ export type AgitationSectionProps = {
 };
 
 export default function AgitationSection({
+  id,
   badge = "The Cost of Inaction",
   titleBase = "What You Lose When You",
   titleHighlight = "Stand Still",
@@ -59,7 +61,7 @@ export default function AgitationSection({
   customAgitations = defaultAgitations
 }: AgitationSectionProps) {
   return (
-    <section className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden">
+    <section id={id} className="py-16 md:py-24 relative flex flex-col items-center justify-center bg-[var(--background)] overflow-hidden">
       {/* Background warning ambients */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-900/10 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-900/10 blur-[150px] rounded-full pointer-events-none"></div>

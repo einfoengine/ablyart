@@ -42,7 +42,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       { text: "Technical SEO fixes", included: true },
       { text: "Landing page build", included: false },
       { text: <>Paid ads up to <span className="text-[#eab308] font-bold">$2,000</span> spend — Meta, TikTok & Google</>, included: true },
-      { text: "Short-form video production", included: false },
+      { text: "Custom web development support", included: false },
       { text: "Monthly performance report", included: true },
     ],
     detailedDeliverables: [],
@@ -62,7 +62,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       { text: "On-page & technical SEO fixes", included: true },
       { text: "1 landing page build or optimization + 1 funnel optimization", included: true },
       { text: <>Paid ads up to <span className="text-white font-bold">$10,000</span> spend — Meta, TikTok & Google</>, included: true },
-      { text: <><span className="text-white font-bold">2</span> short-form videos/mo (scripted + edited)</>, included: true },
+      { text: <><span className="text-white font-bold">2</span> custom landing pages or web components/mo</>, included: true },
       { text: "Monthly audit & attribution report", included: true },
     ],
     detailedDeliverables: [],
@@ -82,7 +82,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       { text: "Full technical SEO + Core Web Vitals", included: true },
       { text: "Custom landing page + funnel build", included: true },
       { text: <>Paid ads up to <span className="text-white font-bold">$20,000</span> spend — Meta, TikTok & Google</>, included: true },
-      { text: <><span className="text-white font-bold">8</span> short-form videos/mo (scripted + edited)</>, included: true },
+      { text: <><span className="text-white font-bold">Dedicated</span> web developer support</>, included: true },
       { text: "Weekly performance dashboard", included: true },
     ],
     detailedDeliverables: [],
@@ -102,7 +102,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         description: "Perfect for validating a new product and establishing profitable unit economics.",
         features: [
           "1 Platform (e.g., Google or Meta)",
-          "4 Static + 2 Video Edits/mo",
+          "4 Static + 2 Web Banners/mo",
           "Standard Tracking Setup",
           "Weekly Bid Adjustments",
           "Monthly ROI Report"
@@ -116,7 +116,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           },
           {
             title: "Creative Laboratory",
-            quantity: "4 Static + 2 Video Edits",
+            quantity: "4 Static + 2 Web Banners",
             quality: "Direct-response ad copy and scroll-stopping visuals",
             time: "New creatives introduced monthly"
           },
@@ -144,7 +144,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         description: "Built for aggressive growth, B2B SaaS, and e-commerce scaling.",
         features: [
           "2-3 Platforms (Omnichannel)",
-          "8 Static + 4 Video Edits/mo",
+          "8 Static + 4 Animated Banners/mo",
           "Server-side Tagging (CAPI)",
           "Daily Testing & CRO",
           "Bi-Weekly Strategy Syncs"
@@ -158,7 +158,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           },
           {
             title: "Scaled Creative Output",
-            quantity: "8 Static + 4 Video Edits",
+            quantity: "8 Static + 4 Animated Banners",
             quality: "High-volume hook variations and strict A/B formats",
             time: "Delivered consistently over exactly 30 days"
           },
@@ -269,7 +269,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         description: "Our most chosen tier to rapidly expand and capture audience attention.",
         features: [
           "4 Platforms Managed",
-          "24 Custom Posts (Static + Video)",
+          "24 Custom Posts (Static + Motion Graphics)",
           "Proactive Outbound Engagement",
           "Graphic Design Support",
           "Bi-Weekly Strategy Calls",
@@ -279,7 +279,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           {
             title: "Full Coverage Content",
             quantity: "24 Custom Posts",
-            quality: "Mix of high-end graphics and short-form video edit",
+            quality: "Mix of high-end graphics and motion design",
             time: "Every other day posting"
           },
           {
@@ -308,7 +308,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
           "Omnichannel Presence",
           "Unlimited Daily Posts",
           "Influencer Outreach Management",
-          "Dedicated Video Editor",
+          "Dedicated UI/UX Designer",
           "Priority 24/7 Community Handling",
           "Custom Dashboard Analytics"
         ],
@@ -451,115 +451,113 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       }
     ]
   },
-  "video": {
-    label: "Video Marketing",
+  "web-design": {
+    label: "Web Design & Development",
     packages: [
       {
-        name: "Short-Form Core",
-        price: "$1,100",
-        originalPrice: "$2,200",
-        discountPercentage: 50,
-        period: "/mo",
-        description: "Consistent TikTok, Reels, and Shorts designed to go viral and capture eyes.",
+        name: "Landing Page Core",
+        price: "$1,500",
+        originalPrice: "$2,500",
+        discountPercentage: 40,
+        period: "/project",
+        description: "High-converting landing pages designed to turn traffic into qualified leads.",
         features: [
-          "8 Short-Form Videos/mo",
-          "Scripting & Hook Engineering",
-          "Professional Editing & Grading",
-          "Trending Audio Sourcing",
-          "Platform Publishing"
+          "1 Custom Landing Page",
+          "Conversion-Optimized Copywriting",
+          "Mobile Responsive Design",
+          "Basic SEO Setup",
+          "Fast Turnaround"
         ],
         detailedDeliverables: [
           {
-            title: "Short-Form Production",
-            quantity: "8 Fully Edited Vertical Videos (<60s)",
-            quality: "Dynamic captions, sound design, engaging b-roll",
-            time: "2 Delivered per week"
+            title: "Custom Design",
+            quantity: "1 Landing Page",
+            quality: "Modern UI/UX with smooth animations",
+            time: "1-2 Weeks"
           },
           {
-            title: "Scripting & Hooks",
-            quantity: "8 Custom Scripts",
-            quality: "Psychologically driven hooks that guarantee retention",
-            time: "Provided bi-weekly for your review"
+            title: "Copywriting",
+            quantity: "Full Page Copy",
+            quality: "Psychologically driven hooks that guarantee conversions",
+            time: "Included in timeline"
           },
           {
-            title: "Audio & Sourcing",
-            quantity: "Trend Surveillance",
-            quality: "Only using high-momentum, rapidly rising audios",
-            time: "Daily trend monitoring"
+            title: "Development",
+            quantity: "Next.js / React Build",
+            quality: "Lightning fast loading speeds",
+            time: "Included in timeline"
           }
         ],
         isPopular: false,
       },
       {
-        name: "Brand Storyteller",
-        price: "$2,250",
-        originalPrice: "$4,500",
-        discountPercentage: 50,
-        period: "/mo",
-        description: "A hybrid approach mixing short-form viral hits with long-form authority.",
+        name: "Corporate Website",
+        price: "$3,500",
+        originalPrice: "$6,000",
+        discountPercentage: 40,
+        period: "/project",
+        description: "A complete professional website to establish authority and trust in your industry.",
         features: [
-          "15 Short-Form Videos/mo",
-          "2 Long-Form YouTube Videos/mo",
-          "Custom Thumbnail Design",
-          "A/B Testing Hooks",
-          "SEO-Optimized Video Titles",
-          "Monthly Audience Retention Analysis"
+          "Up to 5 Pages (Home, About, Services, etc.)",
+          "Custom UI/UX Design",
+          "CMS Integration",
+          "Advanced SEO & Analytics Setup",
+          "Premium Animations & Interactions"
         ],
         detailedDeliverables: [
           {
-            title: "Hybrid Volume",
-            quantity: "15 Shorts + 2 Long-forms (10m+)",
-            quality: "Broadcast-level editing and color matching",
-            time: "Consistent weekly flow"
+            title: "Full Website Build",
+            quantity: "5 Core Pages",
+            quality: "Pixel-perfect development tailored to your brand",
+            time: "3-4 Weeks"
           },
           {
-            title: "Thumbnail Strategy",
-            quantity: "3 Varsity Templates per video",
-            quality: "High CTR guarantee with A/B testing in native UI",
-            time: "Tested 24hrs post-launch"
+            title: "Content Management",
+            quantity: "CMS Integration",
+            quality: "Easily edit and add content without coding",
+            time: "Included in timeline"
           },
           {
-            title: "Retention Analytics",
-            quantity: "Deep dive metrics",
-            quality: "Pinpointing the exact millisecond viewers drop off",
-            time: "Monthly Data Report"
+            title: "Performance & SEO",
+            quantity: "Technical Foundation",
+            quality: "Core Web Vitals optimized, semantic HTML",
+            time: "Post-launch setup"
           }
         ],
         isPopular: true,
       },
       {
-        name: "Studio Production",
-        price: "$3,400+",
-        originalPrice: "$8,500+",
-        discountPercentage: 60,
+        name: "Custom Web Application",
+        price: "$8,000+",
+        originalPrice: "$12,000+",
+        discountPercentage: 30,
         period: "/project",
-        description: "High-end cinematic commercials, VSLs, and full documentary-style content.",
+        description: "Complex scalable applications, E-commerce platforms, and custom SaaS MVPs.",
         features: [
-          "On-Location Film Crew",
-          "Director & Lighting Setup",
-          "Actors / UGC Sourcing",
-          "Advanced VFX & 3D Motion",
-          "Cinematic Color Grading",
-          "Formats Cut for Every Platform"
+          "Unlimited Pages / Custom Features",
+          "Full Stack Development",
+          "Database Architecture & API Integrations",
+          "User Authentication & Roles",
+          "E-commerce / Payment Gateway Setup"
         ],
         detailedDeliverables: [
           {
-            title: "Full Set Production",
-            quantity: "1-3 Day Shoots",
-            quality: "Red/Arri Cinema Cameras, Full Gaffer & Grip crew",
-            time: "Pre-production 2-3 weeks, Shoot 1-3 Days"
+            title: "Architecture & Design",
+            quantity: "Complete System Design",
+            quality: "Scalable databases, highly secure infrastructure",
+            time: "2-4 Weeks (Phase 1)"
           },
           {
-            title: "Advanced Post-Production",
-            quantity: "1 Hero Asset + Infinite micro-clips",
-            quality: "Full VFX, sound mixing, multi-platform render passes",
-            time: "3-4 Weeks Post-Production"
+            title: "Full Stack Development",
+            quantity: "Custom Features",
+            quality: "React, Node.js, Next.js, specialized tools",
+            time: "8-12 Weeks"
           },
           {
-            title: "Casting & Sourcing",
-            quantity: "Hand-picked talent",
-            quality: "Authentic UGC creators or professional SAG actors",
-            time: "Handled entirely during pre-pro"
+            title: "Testing & Launch",
+            quantity: "QA & Deployment",
+            quality: "Rigorous testing across devices, CI/CD pipeline",
+            time: "Final 2 Weeks"
           }
         ],
         isPopular: false,
@@ -569,10 +567,11 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
 };
 
 export type PricingTableProps = {
+  id?: string;
   customPackages?: PricingPackage[];
 };
 
-export default function PricingTable({ customPackages }: PricingTableProps = {}) {
+export default function PricingTable({ id, customPackages }: PricingTableProps = {}) {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>("growth-marketing");
   const [selectedPackage, setSelectedPackage] = useState<PricingPackage | null>(null);
   const [packageTerms, setPackageTerms] = useState<Record<string, boolean>>({});
@@ -582,7 +581,7 @@ export default function PricingTable({ customPackages }: PricingTableProps = {})
   const displayPackages = customPackages || pricingData[activeTab].packages;
 
   return (
-    <div className="w-full relative flex flex-col items-center justify-center z-20 overflow-visible mb-24">
+    <div id={id || "pricing-table"} className="w-full relative flex flex-col items-center justify-center z-20 overflow-visible mb-24">
       
       {/* Background glow behind pricing */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent)] opacity-[0.04] blur-[150px] rounded-full pointer-events-none"></div>

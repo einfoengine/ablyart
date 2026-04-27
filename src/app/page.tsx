@@ -19,19 +19,19 @@ export default function Home() {
     // On branch maruf
     <>
       <main>
-        <HeroSection />
-        <GrowthCalculatorSection />
-        <HotServicesSection />
-        <VslSection />
-        <ValueFocusSection />
-        <ServicesSection />
-        <CompanyLogosSection />
-        <WhyChooseUsSection />
-        <AgitationSection />
-        <TestimonialsSection />
-        <TechAndSocial />
-        <FaqSection />
-        <BlogSection />
+        <HeroSection id="hero-section" />
+        <GrowthCalculatorSection id="growth-calculator-section" />
+        <HotServicesSection id="hot-services-section" />
+        <VslSection id="vsl-section" />
+        <ValueFocusSection id="value-focus-section" />
+        <ServicesSection id="services-section" />
+        <AgitationSection id="agitation-section" />
+        {/* <CompanyLogosSection id="company-logos-section" /> */}
+        <WhyChooseUsSection id="why-choose-us-section" />
+        <TestimonialsSection id="testimonials-section" />
+        <TechAndSocial id="tech-and-social-section" />
+        <FaqSection id="faq-section" />
+        <BlogSection id="blog-section" />
       </main>
       
     </>

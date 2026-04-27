@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Button } from "@/components/ui/Button";
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 // [... data block unchanged ...]
 
@@ -105,7 +107,7 @@ const servicesData = [
   }
 ];
 
-export default function ServicesSection() {
+export default function ServicesSection({ id }: { id?: string }) {
   const outerRef = useRef<HTMLDivElement>(null);
   const phaseRef = useRef<number>(-1);
   const [scrollActiveIdx, setScrollActiveIdx] = useState<number>(0);
@@ -163,15 +165,15 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" className="pt-24 md:pt-32" style={{ position: "relative" }}>
+    <section id={id || "services"} className="pt-24 md:pt-32" style={{ position: "relative" }}>
       
       {/* Section header */}
       <SectionHeader
-        badge="An Unified Action Plan Takes"
+        badge="No procastination, Start it today"
         titleBase="Seven steps"
         titleHighlight="Growth Engineering"
-        subtitle="We don't do everything - we go deep on audit, content, promotion & strategic optimization."
-        alignment="split"
+        subtitle="It's not costing you. Our active support team even help you for free! Join our community and let's grow together."
+        alignment="center"
       />
 
       <div ref={outerRef} style={{ height: "400vh", position: "relative" }}>
@@ -348,6 +350,22 @@ export default function ServicesSection() {
         </div>
 
           </div>
+        </div>
+      </div>
+
+      {/* CTA and Community Links */}
+      <div className="flex flex-col items-center gap-6 mt-4 mb-20 relative z-20 px-6">
+        <Button variant="primary" size="lg" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+          Book a free session →
+        </Button>
+        <div className="flex items-center gap-4 text-gray-400 font-medium bg-white/5 px-6 py-3 rounded-full border border-white/10 shadow-sm">
+          <span className="text-sm tracking-wide">Join our community:</span>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors">
+            <FaLinkedin size={22} />
+          </a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877f2] transition-colors">
+            <FaFacebook size={22} />
+          </a>
         </div>
       </div>
     </section>

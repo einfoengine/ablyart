@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Button } from "@/components/ui/Button";
 
 const reasons = [
   {
@@ -50,9 +51,9 @@ const reasons = [
   }
 ];
 
-export default function WhyChooseUsSection() {
+export default function WhyChooseUsSection({ id }: { id?: string }) {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--background)]">
+    <section id={id} className="py-24 md:py-32 relative overflow-hidden bg-[var(--background)]">
       {/* Subtle Background Glows */}
       <div className="absolute top-1/3 -left-[10%] w-[500px] h-[500px] bg-[#86ea5c] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/3 -right-[10%] w-[500px] h-[500px] bg-[#b09eff] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
@@ -62,7 +63,7 @@ export default function WhyChooseUsSection() {
         {/* Header */}
         {/* Header */}
         <SectionHeader
-          badge="Why Leaders Choose Ablyart"
+          badge="We are always with you"
           titleBase="We are equipped with technology"
           titleHighlight="Empowered by master minds"
           subtitle="Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets."
@@ -105,6 +106,19 @@ export default function WhyChooseUsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-20 flex flex-col items-center text-center relative z-10"
+        >
+          <Button variant="primary" size="lg" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+            Lets talk: How may we help you?
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

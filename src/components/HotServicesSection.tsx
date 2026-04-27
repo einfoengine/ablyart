@@ -35,9 +35,9 @@ const services = [
 ];
 
 
-export default function HotServicesSection() {
+export default function HotServicesSection({ id }: { id?: string }) {
   return (
-    <section className="py-20 md:py-24 bg-[var(--background)] relative z-20">
+    <section id={id} className="py-20 md:py-24 bg-[var(--background)] relative z-20">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Heading */}

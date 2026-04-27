@@ -28,15 +28,16 @@ const defaultBlogPosts: BlogPost[] = [
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Creative Content",
+    category: "Web Design",
     date: "Jul 30, 2024",
-    title: "Anatomy of a Winning TikTok Creative Strategy",
-    excerpt: "Breaking down the hook, story, and offer structures that actually stop the scroll and drive action on short-form video.",
+    title: "Anatomy of a High-Converting Landing Page",
+    excerpt: "Breaking down the UI, copy, and offer structures that actually keep visitors engaged and drive action on your website.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
 
 export type BlogSectionProps = {
+  id?: string;
   badge?: string;
   titleBase?: string;
   titleHighlight?: string;
@@ -45,6 +46,7 @@ export type BlogSectionProps = {
 };
 
 export default function BlogSection({
+  id,
   badge = "Insights",
   titleBase = "Our Latest",
   titleHighlight = "Thoughts",
@@ -52,7 +54,7 @@ export default function BlogSection({
   customPosts = defaultBlogPosts
 }: BlogSectionProps = {}) {
   return (
-    <section id="blog" className="py-16 md:py-24 relative flex flex-col items-center justify-center z-10 w-full">
+    <section id={id || "blog"} className="py-16 md:py-24 relative flex flex-col items-center justify-center z-10 w-full">
       <div className="max-w-7xl mx-auto px-6 w-full">
         
         {/* Section Header */}

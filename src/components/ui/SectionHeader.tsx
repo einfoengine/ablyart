@@ -49,7 +49,7 @@ export function SectionHeader({
           </div>
         )}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "24px" }}>
-          <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, maxWidth: "600px" }} className="text-white">
+          <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1}} className="text-white max-w-xl">
             {titleBase} {titleHighlight && <span className={highlightClass}>{titleHighlight}</span>}
           </h2>
           {subtitle && (

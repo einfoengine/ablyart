@@ -11,11 +11,11 @@ import { FaGlobe, FaShareAlt, FaChartLine, FaSearchDollar } from "react-icons/fa
 const deliverables = [
   {
     title: "Omnichannel Strategy Playbook",
-    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and video to maximize impact.",
+    desc: "A custom roadmap detailing exactly how we will position your brand across social, search, and web platforms to maximize impact.",
   },
   {
     title: "High-Converting Content Creation",
-    desc: "We write, design, and produce native video and static assets tailored specifically to perform on FB, IG, TikTok, and YouTube.",
+    desc: "We write, design, and produce custom web assets and static content tailored specifically to perform on FB, IG, TikTok, and your website.",
   },
   {
     title: "Advanced Tracking & Infrastructure",
@@ -66,7 +66,7 @@ const omnichannelPackages = [
     description: "Scale your presence across multiple traffic channels simultaneously.",
     features: [
       "Full Social Management (3 Platforms)",
-      "24 Posts + Short-Form Videos",
+      "24 Posts + Custom Web Graphics",
       "Basic SEO Content (2 Blogs/mo)",
       "Bi-Weekly Analytics Sync",
       "Dedicated Account Slack"
@@ -134,10 +134,10 @@ const omnichannelArticles = [
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
   },
   {
-    category: "Video Tactics",
+    category: "Design Tactics",
     date: "Nov 18, 2024",
-    title: "Why Syncing TikTok & Meta Ads Creates Unbeatable Warm Audiences",
-    excerpt: "Break down the exact funnel structure that leverages cheap video views into highly qualified search intent.",
+    title: "Why High-Converting Landing Pages Create Unbeatable Audiences",
+    excerpt: "Break down the exact funnel structure that leverages optimized web design into highly qualified search intent.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   }
 ];
@@ -214,7 +214,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Get seen everywhere your customers spend time. We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
+          Get seen everywhere your customers spend time. We combine Social Media, Web Design, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.
         </motion.p>
         
         <motion.div
@@ -273,7 +273,7 @@ export default function OmnichannelPageClient() {
         customFeatures={[
           {
             title: "Omnipresent Authority",
-            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and video that builds absolute trust and makes competitors irrelevant.",
+            description: "Appear everywhere your customers look. We create an inescapable ecosystem across social, search, and the web that builds absolute trust and makes competitors irrelevant.",
             icon: <FaGlobe size={32} />
           },
           {

@@ -13,12 +13,12 @@ const placeholderLogos = [
   { name: "Hyperion", weight: "font-light tracking-widest uppercase" }
 ];
 
-export default function CompanyLogosSection() {
+export default function CompanyLogosSection({ id }: { id?: string }) {
   // Duplicate array to achieve seamless infinite scroll
   const duplicatedLogos = [...placeholderLogos, ...placeholderLogos];
 
   return (
-    <section className="py-20 md:py-24 bg-[var(--background)] relative overflow-hidden border-y border-white/5">
+    <section id={id} className="py-20 md:py-24 bg-[var(--background)] relative overflow-hidden border-y border-white/5">
       {/* Background Accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[var(--accent)] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
 

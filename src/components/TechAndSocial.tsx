@@ -25,11 +25,11 @@ const ecosystemItems = [
   { name: "Zapier", icon: <SiZapier size={32} /> },
 ];
 
-export default function TechAndSocial() {
+export default function TechAndSocial({ id }: { id?: string }) {
   const marqueeItems = [...ecosystemItems, ...ecosystemItems]; // Duplicate for seamless loop
 
   return (
-    <section className="py-12 overflow-hidden bg-transparent">
+    <section id={id} className="py-12 overflow-hidden bg-transparent">
       <div className="w-full flex animate-marquee-left items-center opacity-[0.55] hover:opacity-100 transition-opacity duration-300">
         {marqueeItems.map((item, idx) => (
           <div key={idx} className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 mx-8 text-[var(--muted)] hover:text-[#f0f0f8]">

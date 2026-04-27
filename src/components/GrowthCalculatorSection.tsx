@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "./ui/SectionHeader";
 import { FaUsers, FaPercentage, FaShoppingCart, FaSync } from "react-icons/fa";
 
-export default function GrowthCalculatorSection() {
+export default function GrowthCalculatorSection({ id }: { id?: string }) {
   const [trafficGrowth, setTrafficGrowth] = useState(30);
   const [conversionGrowth, setConversionGrowth] = useState(25);
   const [aovGrowth, setAovGrowth] = useState(20);
@@ -28,7 +28,7 @@ export default function GrowthCalculatorSection() {
   if (!mounted) return null;
 
   return (
-    <section className="py-20 bg-[var(--background)] relative z-20 relative overflow-hidden border-b border-white/5">
+    <section id={id} className="py-20 bg-[var(--background)] relative z-20 relative overflow-hidden border-b border-white/5">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[var(--accent)]/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6ee7ff]/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />

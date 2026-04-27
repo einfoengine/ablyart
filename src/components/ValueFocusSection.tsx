@@ -84,6 +84,7 @@ const defaultCategories: ServiceCategory[] = [
 ];
 
 export type ValueFocusSectionProps = {
+  id?: string;
   badge?: string;
   titleBase?: string;
   titleHighlight?: string;
@@ -93,6 +94,7 @@ export type ValueFocusSectionProps = {
 };
 
 export default function ValueFocusSection({
+  id,
   badge = "So, we battle in two grounds",
   titleBase = "Batteling one ground",
   titleHighlight = "is a dumb way to die",
@@ -101,7 +103,7 @@ export default function ValueFocusSection({
   hideBottomSection = false,
 }: ValueFocusSectionProps) {
   return (
-    <div className="w-full z-10 relative flex flex-col items-center">
+    <div id={id} className="w-full z-10 relative flex flex-col items-center">
       {/* WHITE CARD AREA */}
       <div className="w-full px-4 md:px-[40px] pt-10 relative z-20">
         <section className="bg-white rounded-[40px] pt-24 pb-24 md:pt-32 relative flex flex-col items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.05)]">

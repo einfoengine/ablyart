@@ -13,8 +13,8 @@ const coreServices = [
     title: "Omnichannel Traffic & Awareness",
     tagline: "Get seen everywhere your customers spend time.",
     description:
-      "We combine Social Media, Video Marketing, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.",
-    bullets: ["Social Media Management", "SEO & Content Strategy", "Video Production & Shorts", "Paid Social Campaigns"],
+      "We combine Social Media, Web Design, and SEO to build an omnipresent brand — capturing peak attention across every platform your buyers are on.",
+    bullets: ["Social Media Management", "SEO & Content Strategy", "Web Design & Development", "Paid Social Campaigns"],
     color: "#9bff6e",
     rgb: "155,255,110",
     icon: (
@@ -115,10 +115,10 @@ const generalServices = [
     ),
   },
   {
-    id: "video",
-    label: "Video Marketing",
-    description: "Short-form, long-form, and cinematic production.",
-    startingAt: "$2,200/mo",
+    id: "web-design",
+    label: "Web Design & Development",
+    description: "Custom landing pages, corporate websites, and complex web applications.",
+    startingAt: "$1,500/project",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="5" width="15" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />

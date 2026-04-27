@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-export default function VslSection() {
+export default function VslSection({ id }: { id?: string }) {
   return (
-    <section className="py-16 md:py-20 relative flex flex-col items-center justify-center z-10 overflow-hidden">
+    <section id={id} className="py-16 md:py-20 relative flex flex-col items-center justify-center z-10 overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none"></div>
 

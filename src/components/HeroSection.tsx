@@ -173,10 +173,10 @@ function MetricCard({
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({ id = "hero" }: { id?: string }) {
   return (
     <section
-      id="hero"
+      id={id}
       style={{
         position: "relative",
         paddingTop: "140px",

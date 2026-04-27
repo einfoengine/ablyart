@@ -85,10 +85,10 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex-1"
           >
-            <h2 className="text-5xl md:text-7xl lg:text-[7vw] leading-[0.9] font-black tracking-tighter text-white mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-[5vw] leading-tight font-black tracking-tighter text-white mb-6">
               Ready to <span className="gradient-text drop-shadow-[0_0_20px_rgba(155,255,110,0.2)]">grow?</span>
             </h2>
-            <p className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight max-w-xl">
+            <p className="text-lg md:text-xl text-gray-400 font-medium tracking-tight max-w-xl">
               Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
             </p>
           </motion.div>
