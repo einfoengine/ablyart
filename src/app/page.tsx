@@ -16,7 +16,6 @@ import FaqSection from "@/components/FaqSection";
 
 export default function Home() {
   return (
-    // On branch maruf
     <>
       <main>
         <HeroSection id="hero-section" />
