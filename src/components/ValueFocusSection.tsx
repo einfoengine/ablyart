@@ -84,6 +84,12 @@ const defaultCategories: ServiceCategory[] = [
   }
 ];
 
+export type CustomFeature = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};
+
 export type ValueFocusSectionProps = {
   id?: string;
   badge?: string;
@@ -91,6 +97,7 @@ export type ValueFocusSectionProps = {
   titleHighlight?: string;
   subtitle?: string;
   categories?: ServiceCategory[];
+  customFeatures?: CustomFeature[];
   hideBottomSection?: boolean;
 };
 
@@ -101,6 +108,7 @@ export default function ValueFocusSection({
   titleHighlight = "is a dumb way to die",
   subtitle = "Over-indexing on paid ads burns cash without building loyalty, while pure organic growth starves you of immediate revenue. To truly scale, you must attack both fronts simultaneously.",
   categories = defaultCategories,
+  customFeatures,
   hideBottomSection = false,
 }: ValueFocusSectionProps) {
   return (
@@ -133,46 +141,68 @@ export default function ValueFocusSection({
                </p>
             </motion.div>
 
-            {/* 2 Column Categories Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {categories.map((category, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: idx * 0.15 }}
-                  className="bg-[#0b0b0e] rounded-3xl p-8 md:p-12 border border-[rgba(255,255,255,0.05)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col relative overflow-hidden group"
-                >
-                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none" />
+            {/* Feature Grid — flat customFeatures or default categories */}
+            {customFeatures ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+                {customFeatures.map((feature, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: idx * 0.12 }}
+                    className="bg-[#0b0b0e] rounded-3xl p-8 border border-[rgba(255,255,255,0.05)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col relative overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none" />
+                    <div className="w-14 h-14 shrink-0 bg-white/5 flex items-center justify-center rounded-xl text-gray-300 border border-white/10 shadow-sm mb-6">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 tracking-tight">{feature.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed flex-1">{feature.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                {categories.map((category, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: idx * 0.15 }}
+                    className="bg-[#0b0b0e] rounded-3xl p-8 md:p-12 border border-[rgba(255,255,255,0.05)] shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col relative overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none" />
 
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-                    {category.title}
-                  </h3>
-                  <div className="inline-block px-4 py-2 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-10">
-                    <p className="text-[var(--accent)] font-semibold text-sm leading-relaxed">
-                      Focus: {category.focus}
-                    </p>
-                  </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
+                      {category.title}
+                    </h3>
+                    <div className="inline-block px-4 py-2 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-10">
+                      <p className="text-[var(--accent)] font-semibold text-sm leading-relaxed">
+                        Focus: {category.focus}
+                      </p>
+                    </div>
 
-                  <div className="space-y-8 flex-1">
-                    {category.services.map((service, sIdx) => (
-                      <div key={sIdx} className="flex items-start gap-5">
-                        <div className="w-12 h-12 shrink-0 bg-white/5 flex items-center justify-center rounded-xl text-gray-300 border border-white/10 shadow-sm">
-                          {service.icon}
+                    <div className="space-y-8 flex-1">
+                      {category.services.map((service, sIdx) => (
+                        <div key={sIdx} className="flex items-start gap-5">
+                          <div className="w-12 h-12 shrink-0 bg-white/5 flex items-center justify-center rounded-xl text-gray-300 border border-white/10 shadow-sm">
+                            {service.icon}
+                          </div>
+                          <div className="flex flex-col pt-1">
+                            <h4 className="text-lg font-bold text-white mb-2 leading-tight">{service.name}</h4>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                              {service.description}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex flex-col pt-1">
-                          <h4 className="text-lg font-bold text-white mb-2 leading-tight">{service.name}</h4>
-                          <p className="text-gray-400 text-sm leading-relaxed">
-                            {service.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
 
             {/* Call to Action */}
             <motion.div 
