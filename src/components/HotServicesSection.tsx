@@ -82,60 +82,48 @@ export default function HotServicesSection({ id }: { id?: string }) {
           alignment="center"
         />
 
-        {/* Full-width gapless bordered service boxes */}
+        {/* Connected flex cards */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          className="w-full border border-white/10 rounded-2xl overflow-hidden mb-10"
+          className="w-full flex flex-col lg:flex-row mb-10"
         >
           {services.map((service, idx) => (
             <motion.div
               key={idx}
               variants={{
-                hidden: { opacity: 0, x: -24 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className={`group relative flex flex-col sm:flex-row items-start gap-6 px-8 py-8 md:px-12 md:py-10 bg-transparent hover:bg-white/[0.03] transition-colors duration-300 cursor-default${
-                idx < services.length - 1 ? " border-b border-white/10" : ""
-              }`}
+              className="group relative flex flex-col items-start gap-5 p-6 md:p-7 border border-slate-200 bg-slate-50 text-slate-900 transition-colors duration-300 cursor-default w-full lg:flex-1 lg:-ml-px first:lg:ml-0 first:rounded-t-2xl first:lg:rounded-l-2xl first:lg:rounded-tr-none last:rounded-b-2xl last:lg:rounded-r-2xl last:lg:rounded-bl-none hover:bg-white"
             >
-              {/* Number */}
-              <span className="shrink-0 text-[0.7rem] font-mono font-bold text-[var(--accent)] tracking-widest opacity-60 pt-1 w-6">
-                {service.number}
-              </span>
-
-              {/* Icon bubble */}
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)]/20 transition-colors duration-300">
-                {service.icon}
+              {/* Number + Icon row */}
+              <div className="flex items-center gap-3 w-full">
+                <span className="text-[0.65rem] font-mono font-bold text-[var(--accent)] tracking-widest opacity-70">
+                  {service.number}
+                </span>
+                <div className="ml-auto w-11 h-11 rounded-xl bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)]/20 transition-colors duration-300">
+                  {service.icon}
+                </div>
               </div>
 
               {/* Text */}
               <div className="flex flex-col flex-1 min-w-0">
-                <h3 className="text-lg md:text-xl font-bold text-white tracking-tight mb-1">
+                <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight mb-1 leading-snug">
                   {service.label}
                 </h3>
-                <p className="text-[var(--accent)] font-semibold text-sm mb-3 italic">
+                <p className="text-[var(--accent)] font-semibold text-xs mb-3 italic">
                   {service.tagline}
                 </p>
-                <p className="text-gray-400 text-sm md:text-[0.95rem] leading-relaxed max-w-2xl">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {service.description}
                 </p>
               </div>
 
-              {/* Hover right arrow */}
-              <div className="shrink-0 self-center ml-auto pl-4 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-[var(--accent)]">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M4 10h12M12 6l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
+              {/* Bottom accent line on hover */}
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-[var(--accent)]/40 transition-all duration-500 rounded-full" />
             </motion.div>
           ))}
         </motion.div>
