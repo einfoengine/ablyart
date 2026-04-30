@@ -97,33 +97,34 @@ export default function HotServicesSection({ id }: { id?: string }) {
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className="group relative flex flex-col items-start gap-5 p-6 md:p-7 border border-slate-200 bg-slate-50 text-slate-900 transition-colors duration-300 cursor-default w-full lg:flex-1 lg:-ml-px first:lg:ml-0 first:rounded-t-2xl first:lg:rounded-l-2xl first:lg:rounded-tr-none last:rounded-b-2xl last:lg:rounded-r-2xl last:lg:rounded-bl-none hover:bg-white"
+              className="group relative flex flex-col gap-5 p-7 border border-gray-200 bg-white text-gray-900 transition-colors duration-300 cursor-default w-full lg:flex-1 lg:-ml-px first:lg:ml-0 first:rounded-t-2xl first:lg:rounded-l-2xl first:lg:rounded-tr-none last:rounded-b-2xl last:lg:rounded-r-2xl last:lg:rounded-bl-none hover:bg-gray-50 shadow-sm"
             >
-              {/* Number + Icon row */}
-              <div className="flex items-center gap-3 w-full">
-                <span className="text-[0.65rem] font-mono font-bold text-[var(--accent)] tracking-widest opacity-70">
-                  {service.number}
-                </span>
-                <div className="ml-auto w-11 h-11 rounded-xl bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)]/20 transition-colors duration-300">
+              {/* Number — subtle label top-right */}
+              <div className="flex items-start justify-between w-full">
+                {/* Icon — dark, left-aligned */}
+                <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-gray-200 group-hover:text-gray-700 transition-all duration-300">
                   {service.icon}
                 </div>
+                <span className="text-[10px] font-mono font-medium text-gray-300 tracking-[0.2em] uppercase select-none">
+                  {service.number}
+                </span>
               </div>
 
               {/* Text */}
               <div className="flex flex-col flex-1 min-w-0">
-                <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight mb-1 leading-snug">
+                <h3 className="text-base md:text-[1.05rem] font-extrabold text-gray-900 tracking-tight mb-1.5 leading-snug">
                   {service.label}
                 </h3>
-                <p className="text-[var(--accent)] font-semibold text-xs mb-3 italic">
+                <p className="text-gray-500 font-medium text-xs mb-3 italic">
                   {service.tagline}
                 </p>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   {service.description}
                 </p>
               </div>
 
               {/* Bottom accent line on hover */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-[var(--accent)]/40 transition-all duration-500 rounded-full" />
+              <div className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full bg-gray-800 transition-all duration-500" />
             </motion.div>
           ))}
         </motion.div>
