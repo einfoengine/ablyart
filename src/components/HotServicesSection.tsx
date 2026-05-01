@@ -169,7 +169,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
                       >
                         {service.label}
                       </h3>
-                      <span className="text-[var(--accent)] text-[10px] md:text-[11px] uppercase tracking-widest bg-black">
+                      <span className="text-[var(--accent)] px-2 py-1 rounded-sm text-[10px] md:text-[11px] uppercase tracking-widest bg-black">
                         {service.tagline}
                       </span>
                     </div>
