@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "./ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import {
@@ -11,40 +12,37 @@ import {
   FaArrowUp,
   FaMousePointer,
   FaRedoAlt,
+  FaChevronDown,
 } from "react-icons/fa";
 
 const services = [
   {
-    number: "01",
     label: "SEO, AEO & GEO",
     tagline: "Be Found Everywhere — Search, AI & Maps.",
     description:
       "We dominate every discovery layer: traditional search rankings, AI-powered answer engines, and local map packs — so your brand is the first answer, every time a buyer is looking.",
-    icon: <FaSearch size={26} />,
+    icon: <FaSearch size={20} />,
   },
   {
-    number: "02",
     label: "Social Media Management",
     tagline: "Build an Audience That Buys.",
     description:
       "Consistent, on-brand content across every platform that transforms passive scrollers into engaged followers and loyal customers — without you lifting a finger.",
-    icon: <FaBullhorn size={26} />,
+    icon: <FaBullhorn size={20} />,
   },
   {
-    number: "03",
     label: "Media Buying",
     tagline: "Put Your Budget Where the Revenue Is.",
     description:
       "Precision-targeted paid campaigns on Meta, Google, and TikTok engineered for maximum ROAS. Every dollar is tracked, every audience is tested, and every creative is optimised.",
-    icon: <FaChartLine size={26} />,
+    icon: <FaChartLine size={20} />,
   },
   {
-    number: "04",
     label: "Lead Generation",
     tagline: "Fill Your Pipeline with Ready-to-Buy Prospects.",
     description:
       "From cold outreach and lead magnets to retargeting sequences and CRM automation — we build the full system that turns strangers into warm, qualified leads on autopilot.",
-    icon: <FaFilter size={26} />,
+    icon: <FaFilter size={20} />,
   },
 ];
 
@@ -67,101 +65,184 @@ const benefits = [
 ];
 
 export default function HotServicesSection({ id }: { id?: string }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isClicking = useRef(false);
+  const clickTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Robust Scroll Spy for Accordion
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isClicking.current) return;
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = activeIndex;
+      let minDistance = Infinity;
+
+      itemRefs.current.forEach((ref, idx) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          // Calculate distance from the top of the accordion item to the viewport center
+          const distance = Math.abs(rect.top + 60 - viewportCenter); 
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = idx;
+          }
+        }
+      });
+
+      // Only change if the closest item is reasonably close to the center
+      if (closestIndex !== activeIndex && minDistance < window.innerHeight * 0.4) {
+        setActiveIndex(closestIndex);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check initial position
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeIndex]);
+
+  const handleItemClick = (idx: number) => {
+    setActiveIndex(idx);
+    isClicking.current = true;
+    
+    if (clickTimeout.current) clearTimeout(clickTimeout.current);
+    
+    // Pause scroll-spy for 1 second to allow smooth open/close animation
+    clickTimeout.current = setTimeout(() => {
+      isClicking.current = false;
+    }, 1000);
+  };
+
   return (
     <section
       id={id}
-      className="py-20 md:py-28 bg-[var(--background)] relative z-20"
+      className="py-24 md:py-32 bg-[var(--background)] relative z-20"
     >
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Heading */}
+        {/* Section Header */}
         <SectionHeader
-          badge="This is how we help you"
+          badge="Our Actionable Systems"
           titleBase="Attracting Your Leads From"
           titleHighlight="&nbsp; Interest to Conversion."
-          subtitle="Four actionable systems. One clear outcome: Predictable Growth."
+          subtitle="Watch how we turn your digital presence into a customer-generating machine."
           alignment="center"
         />
 
-        {/* Connected flex cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          className="w-full flex flex-col lg:flex-row mb-10"
-        >
-          {services.map((service, idx) => (
-            <motion.div
-              key={idx}
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-              }}
-              className="group relative flex flex-col gap-5 p-7 border border-gray-200 bg-white text-gray-900 transition-colors duration-300 cursor-default w-full lg:flex-1 lg:-ml-px first:lg:ml-0 first:rounded-t-2xl first:lg:rounded-l-2xl first:lg:rounded-tr-none last:rounded-b-2xl last:lg:rounded-r-2xl last:lg:rounded-bl-none hover:bg-gray-50 shadow-sm"
-            >
-              {/* Number — subtle label top-right */}
-              <div className="flex items-start justify-between w-full">
-                {/* Icon — dark, left-aligned */}
-                <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-gray-200 group-hover:text-gray-700 transition-all duration-300">
-                  {service.icon}
-                </div>
-                <span className="text-[10px] font-mono font-medium text-gray-300 tracking-[0.2em] uppercase select-none">
-                  {service.number}
-                </span>
+        {/* Accordion Container */}
+        <div className="mt-20 max-w-4xl mx-auto flex flex-col gap-4">
+          {services.map((service, idx) => {
+            const isOpen = activeIndex === idx;
+
+            return (
+              <div
+                key={idx}
+                ref={(el) => {
+                  itemRefs.current[idx] = el;
+                }}
+                className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${
+                  isOpen
+                    ? "bg-white shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-transparent"
+                    : "bg-white/[0.03] border border-white/10 hover:border-white/20"
+                }`}
+              >
+                <button
+                  onClick={() => handleItemClick(idx)}
+                  className="w-full text-left px-6 md:px-10 py-8 flex items-center justify-between gap-6"
+                >
+                  <div className="flex items-center gap-6">
+                    <div
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0 ${
+                        isOpen
+                          ? "bg-[var(--accent)] text-black"
+                          : "bg-white/5 text-white/40"
+                      }`}
+                    >
+                      {service.icon}
+                    </div>
+                    
+                    <h3
+                      className={`text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 ${
+                        isOpen ? "text-gray-900" : "text-white/70"
+                      }`}
+                    >
+                      {service.label}
+                    </h3>
+                  </div>
+
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    className={`text-xl transition-colors duration-500 ${
+                      isOpen ? "text-[var(--accent)]" : "text-white/20"
+                    }`}
+                  >
+                    <FaChevronDown />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="px-6 md:px-10 pb-10 pt-0 md:ml-[72px]">
+                        <div className="max-w-2xl">
+                          <p className="text-[11px] uppercase font-bold tracking-widest text-[var(--accent)] mb-3">
+                            {service.tagline}
+                          </p>
+                          <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
+                            {service.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+            );
+          })}
+        </div>
 
-              {/* Text */}
-              <div className="flex flex-col flex-1 min-w-0">
-                <h3 className="text-base md:text-[1.05rem] font-extrabold text-gray-900 tracking-tight mb-1.5 leading-snug">
-                  {service.label}
-                </h3>
-                <p className="text-gray-500 font-medium text-xs mb-3 italic">
-                  {service.tagline}
-                </p>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Bottom accent line on hover */}
-              <div className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full bg-gray-800 transition-all duration-500" />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Benefit bullets */}
+        {/* Benefits Row */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-14"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-24 flex flex-wrap items-center justify-center gap-4 lg:gap-8 mb-16"
         >
           {benefits.map((b, idx) => (
-            <div key={idx} className="flex items-center gap-0">
-              <div className="flex items-center gap-3 px-6 py-3 bg-white/[0.03] border border-white/10 rounded-full hover:border-[var(--accent)]/30 hover:bg-[var(--accent)]/5 transition-all duration-300 group/benefit">
-                <span className="w-6 h-6 rounded-full bg-[var(--accent)]/15 border border-[var(--accent)]/30 flex items-center justify-center text-[var(--accent)] group-hover/benefit:bg-[var(--accent)]/25 transition-colors duration-300">
-                  {b.icon}
+            <div
+              key={idx}
+              className="flex items-center gap-4 px-8 py-5 bg-white/5 border border-white/10 rounded-3xl hover:border-[var(--accent)]/30 hover:bg-[var(--accent)]/5 transition-all duration-500 group/benefit cursor-default"
+            >
+              <div className="w-10 h-10 rounded-2xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] group-hover/benefit:scale-110 transition-transform duration-300">
+                {b.icon}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base font-bold text-white mb-0.5">
+                  {b.label}
                 </span>
-                <span className="text-sm font-bold text-white">{b.label}</span>
-                <span className="hidden md:inline text-xs text-gray-500 font-medium">
-                  — {b.detail}
+                <span className="text-xs text-gray-400 font-medium tracking-tight whitespace-nowrap">
+                  {b.detail}
                 </span>
               </div>
-              {idx < benefits.length - 1 && (
-                <span className="hidden sm:block w-8 h-px bg-white/10 mx-1" />
-              )}
             </div>
           ))}
         </motion.div>
 
         {/* Call to Action */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.45 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Button
               variant="primary"
@@ -169,6 +250,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
               href="https://calendly.com/"
               target="_blank"
               rel="noopener noreferrer"
+              className="px-12 py-5 text-lg font-bold shadow-2xl"
             >
               Discuss for premium support →
             </Button>
