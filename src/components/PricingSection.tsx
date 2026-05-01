@@ -614,13 +614,13 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
                   key={key}
                   onClick={() => setActiveTab(key)}
                   className={`relative px-6 py-3 rounded-xl md:rounded-full text-sm font-bold transition-all duration-300 ${
-                    isActive ? "text-black" : "text-gray-400 hover:text-white"
+                    isActive ? "text-black" : "text-gray-400"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-[var(--accent)] rounded-xl md:rounded-full z-0 shadow-[0_0_20px_rgba(155,255,110,0.4)]"
+                      className="absolute inset-0 bg-[var(--accent)] rounded-xl md:rounded-full z-0"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}
@@ -648,7 +648,7 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
                   className={`relative flex flex-col bg-[#0b0b0e] p-8 rounded-3xl border transition-all duration-300 ${
                     pkg.isPopular 
                       ? "border-[var(--accent)] shadow-[0_0_40px_rgba(155,255,110,0.1)] md:-translate-y-4" 
-                      : "border-white/10 hover:border-white/20"
+                      : "border-white/10"
                   }`}
                 >
                   {pkg.isPopular && (
@@ -673,13 +673,13 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
                       <div className="flex items-center bg-[#111115] p-0.5 rounded-full border border-white/5 shrink-0">
                         <button 
                           onClick={() => setPackageTerms(p => ({...p, [pkg.name]: false}))}
-                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${!isFourMonthForPkg(pkg.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300'}`}
+                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${!isFourMonthForPkg(pkg.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500'}`}
                         >
                           1-Mo
                         </button>
                         <button 
                           onClick={() => setPackageTerms(p => ({...p, [pkg.name]: true}))}
-                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${isFourMonthForPkg(pkg.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500 hover:text-gray-300'}`}
+                          className={`text-[9px] font-bold px-2 py-1 flex items-center rounded-full transition-all duration-300 ${isFourMonthForPkg(pkg.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500'}`}
                         >
                           4-Mo
                         </button>
@@ -795,13 +795,13 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
                       <div className="flex items-center bg-[#111115] p-0.5 rounded-full border border-white/5 ml-auto">
                         <button 
                           onClick={() => setPackageTerms(p => ({...p, [selectedPackage.name]: false}))}
-                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${!isFourMonthForPkg(selectedPackage.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300'}`}
+                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${!isFourMonthForPkg(selectedPackage.name) ? 'bg-white/10 text-white shadow-sm' : 'text-gray-500'}`}
                         >
                           1-Mo
                         </button>
                         <button 
                           onClick={() => setPackageTerms(p => ({...p, [selectedPackage.name]: true}))}
-                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${isFourMonthForPkg(selectedPackage.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500 hover:text-gray-300'}`}
+                          className={`text-[10px] font-bold px-3 py-1 rounded-full transition-all duration-300 ${isFourMonthForPkg(selectedPackage.name) ? 'bg-[var(--accent)] text-black shadow-[0_0_10px_rgba(155,255,110,0.2)]' : 'text-gray-500'}`}
                         >
                           4-Mo
                         </button>
