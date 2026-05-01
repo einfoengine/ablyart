@@ -115,10 +115,24 @@ export default function ValueFocusSection({
     <div id={id} className="w-full z-10 relative flex flex-col items-center">
       {/* WHITE CARD AREA */}
       <div className="w-full px-4 md:px-[40px] pt-10 relative z-20">
-        <section className="bg-white rounded-[40px] pt-24 pb-24 md:pt-32 relative flex flex-col items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
+        <section className="bg-[#1a1a1c] border border-[#444] rounded-[40px] pt-24 pb-24 md:pt-32 relative flex flex-col items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
           
-          {/* White background specific ambient glow */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
+          {/* Graph Paper Grid Texture */}
+          <div 
+            className="absolute inset-0 pointer-events-none opacity-40 z-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+              `,
+              backgroundSize: "40px 40px",
+              maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)"
+            }}
+          ></div>
+
+          {/* Ambient glow */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-10 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             {/* Section Header */}
@@ -129,14 +143,14 @@ export default function ValueFocusSection({
                transition={{ duration: 0.6 }}
                className="text-center mb-16"
             >
-               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 mb-6 shadow-sm">
+               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-6 shadow-sm">
                  <div className="w-2 h-2 rounded-full bg-[var(--accent-dim)] animate-pulse"></div>
-                 <span className="text-sm font-semibold tracking-wider text-gray-900 uppercase font-mono">{badge}</span>
+                 <span className="text-sm font-semibold tracking-wider text-gray-200 uppercase font-mono">{badge}</span>
                </div>
-               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-black">
-                 {titleBase} <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic">{titleHighlight}</span></span>
+               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-white">
+                 {titleBase} <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic text-white">{titleHighlight}</span></span>
                </h2>
-               <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
+               <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
                  {subtitle}
                </p>
             </motion.div>
