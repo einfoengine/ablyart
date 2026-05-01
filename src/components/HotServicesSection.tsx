@@ -12,7 +12,8 @@ import {
   FaArrowUp,
   FaMousePointer,
   FaRedoAlt,
-  FaChevronDown,
+  FaPlus,
+  FaMinus,
 } from "react-icons/fa";
 
 const services = [
@@ -172,14 +173,13 @@ export default function HotServicesSection({ id }: { id?: string }) {
                     </h3>
                   </div>
 
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    className={`text-xl transition-colors duration-500 ${
-                      isOpen ? "text-[var(--accent)]" : "text-white/20"
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shrink-0 ${
+                      isOpen ? "bg-gray-100 text-gray-500" : "bg-white/5 text-white/40 group-hover:bg-white/10"
                     }`}
                   >
-                    <FaChevronDown />
-                  </motion.div>
+                    {isOpen ? <FaMinus size={16} /> : <FaPlus size={16} />}
+                  </div>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -192,7 +192,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
                     >
                       <div className="px-6 md:px-10 pb-10 pt-0 md:ml-[72px]">
                         <div className="max-w-2xl">
-                          <p className="text-[11px] uppercase font-bold tracking-widest text-[var(--accent)] mb-3">
+                          <p className="text-[11px] uppercase font-bold tracking-widest text-gray-500 mb-3">
                             {service.tagline}
                           </p>
                           <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
