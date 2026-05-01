@@ -12,8 +12,6 @@ import {
   FaArrowUp,
   FaMousePointer,
   FaRedoAlt,
-  FaPlus,
-  FaMinus,
 } from "react-icons/fa";
 
 const services = [
@@ -145,15 +143,15 @@ export default function HotServicesSection({ id }: { id?: string }) {
                 }}
                 className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${
                   isOpen
-                    ? "bg-white shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-transparent"
+                    ? "bg-white shadow-[0_0_30px_rgba(155,255,110,0.3)] border border-[var(--accent)]"
                     : "bg-white/[0.03] border border-white/10 hover:border-white/20"
                 }`}
               >
                 <button
                   onClick={() => handleItemClick(idx)}
-                  className="w-full text-left px-6 md:px-10 py-8 flex items-center justify-between gap-6"
+                  className="w-full text-left px-6 md:px-10 py-8 flex justify-between gap-6"
                 >
-                  <div className="flex items-center gap-6">
+                  <div className="flex gap-6">
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0 ${
                         isOpen
@@ -163,38 +161,49 @@ export default function HotServicesSection({ id }: { id?: string }) {
                     >
                       {service.icon}
                     </div>
-                    
-                    <h3
-                      className={`text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 ${
-                        isOpen ? "text-gray-900" : "text-white/70"
-                      }`}
-                    >
-                      {service.label}
-                    </h3>
+                    <div>
+                      <h3
+                        className={`text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 ${
+                          isOpen ? "text-gray-900" : "text-white/70"
+                        }`}
+                      >
+                        {service.label}
+                      </h3>
+                      <span className="text-[var(--accent)] text-[10px] md:text-[11px] uppercase tracking-widest bg-black">
+                        {service.tagline}
+                      </span>
+                    </div>
                   </div>
 
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shrink-0 ${
-                      isOpen ? "bg-gray-100 text-gray-500" : "bg-white/5 text-white/40 group-hover:bg-white/10"
+                    className={`relative w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-500 shrink-0 ${
+                      isOpen
+                        ? "border-gray-200 bg-gray-100 text-gray-900 shadow-sm"
+                        : "border-white/5 bg-black/20 text-white/30 group-hover:border-white/10 group-hover:text-white/60"
                     }`}
                   >
-                    {isOpen ? <FaMinus size={16} /> : <FaPlus size={16} />}
+                    <div className="absolute w-3.5 h-[1.5px] bg-current rounded-full transition-all duration-500" />
+                    <div
+                      className={`absolute w-3.5 h-[1.5px] bg-current rounded-full transition-all duration-500 ${
+                        isOpen ? "rotate-0 opacity-0" : "rotate-90 opacity-100"
+                      }`}
+                    />
                   </div>
+                  
                 </button>
 
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      key="content"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ overflow: "hidden" }}
                     >
                       <div className="px-6 md:px-10 pb-10 pt-0 md:ml-[72px]">
                         <div className="max-w-2xl">
-                          <p className="text-[11px] uppercase font-bold tracking-widest text-gray-500 mb-3">
-                            {service.tagline}
-                          </p>
                           <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
                             {service.description}
                           </p>
