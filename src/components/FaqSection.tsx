@@ -91,7 +91,7 @@ export default function FaqSection({ id, faqs = defaultFaqs }: { id?: string; fa
       <div style={{ maxWidth: "740px", margin: "0 auto" }}>
         <SectionHeader
           titleBase="You got a question?"
-          titleHighlight="Ask us"
+          titleHighlight="Ask us..."
           subtitle="Everything you need to know about partnering with Ablyart for your growth."
           alignment="center"
         />

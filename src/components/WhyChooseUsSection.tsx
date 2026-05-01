@@ -6,72 +6,67 @@ import { Button } from "@/components/ui/Button";
 
 const reasons = [
   {
-    title: "Engineers, Not Just Marketers",
-    description: "We don't just run ads. We build zero-latency landing pages, custom interactive web apps, and headless e-com architectures to guarantee conversion.",
+    title: "Built to Convert",
+    description: "Traffic is useless without sales. We optimize your entire funnel—from the first ad click straight to checkout.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    span: "md:col-span-2",
-    color: "#b09eff", // Purple
+    color: "#b09eff",
   },
   {
-    title: "True Omnichannel Sync",
-    description: "While others isolate Google and Meta, our server-side API tagging seamlessly unifies your audience across every digital network.",
+    title: "Data Over Guesses",
+    description: "Every decision is backed by hard data. We scale what works and cut what doesn't, instantly and ruthlessly.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-    span: "md:col-span-1",
-    color: "#86ea5c", // Primary lime/green
+    color: "#86ea5c",
   },
   {
-    title: "Transparent Data Logic",
-    description: "No black-box reporting spreadsheets. We build custom multi-touch dashboards to map exactly where your ad dollars are landing.",
+    title: "Engineered for Scaling",
+    description: "We build robust technical architectures that handle hyper-growth smoothly without breaking under pressure.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
-    span: "md:col-span-1",
-    color: "#ff8450", // Orange
+    color: "#50d5ff",
   },
   {
-    title: "Ruthless A/B Iteration",
-    description: "We constantly engineer viral hooks, rewrite scripts, and run dynamic creative optimizations to beat ad fatigue daily.",
+    title: "Absolute Transparency",
+    description: "No vanity metrics. You see exactly where every dollar is spent and the precise revenue it generates for you.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
       </svg>
     ),
-    span: "md:col-span-2",
-    color: "#50d5ff", // Blue
+    color: "#ff8450",
   }
 ];
 
 export default function WhyChooseUsSection({ id }: { id?: string }) {
   return (
-    <section id={id} className="py-24 md:py-32 relative overflow-hidden bg-[var(--background)]">
+    <section id={id} className="py-20 md:py-24 relative overflow-hidden bg-[var(--background)]">
       {/* Subtle Background Glows */}
-      <div className="absolute top-1/3 -left-[10%] w-[500px] h-[500px] bg-[#86ea5c] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/3 -right-[10%] w-[500px] h-[500px] bg-[#b09eff] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.02] blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        {/* Header */}
         <SectionHeader
-          badge="We are always with you"
-          titleBase="We are equipped with technology"
-          titleHighlight="Empowered by master minds"
-          subtitle="Most agencies guess with templates. We leverage hard engineering, behavioral science, and unyielding data attribution to dominate markets."
+          badge="The Ablyart Advantage"
+          titleBase="Why partner with"
+          titleHighlight="Ablyart?"
+          subtitle="We don't just run ads—we build complete growth engines. Here is what makes our approach fundamentally different."
           alignment="center"
         />
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Vertical List */}
+        <div className="flex flex-col gap-4 mt-16 max-w-4xl mx-auto">
           {reasons.map((reason, idx) => (
             <motion.div
               key={idx}
@@ -79,29 +74,28 @@ export default function WhyChooseUsSection({ id }: { id?: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-[#0b0b0e]/80 backdrop-blur-sm p-6 md:p-8 transition-all hover:bg-[#111116] hover:border-white/10 ${reason.span}`}
+              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#0b0b0e]/80 backdrop-blur-sm p-6 md:p-8 transition-all hover:bg-[#111116] hover:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8"
             >
               {/* Card Glow FX */}
               <div 
-                className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-10 transition-opacity duration-500 group-hover:opacity-30 pointer-events-none"
+                className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-[80px] opacity-10 transition-opacity duration-500 group-hover:opacity-30 pointer-events-none"
                 style={{ backgroundColor: reason.color }}
               />
 
-              <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                  <div 
-                    className="mb-6 inline-flex p-4 rounded-2xl bg-white/[0.02] border border-white/5"
-                    style={{ color: reason.color }}
-                  >
-                    {reason.icon}
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-tight">
-                    {reason.title}
-                  </h3>
-                  <p className="text-[1rem] text-gray-400 leading-relaxed font-medium">
-                    {reason.description}
-                  </p>
-                </div>
+              <div 
+                className="shrink-0 inline-flex p-4 rounded-2xl bg-white/[0.02] border border-white/5"
+                style={{ color: reason.color }}
+              >
+                {reason.icon}
+              </div>
+
+              <div className="relative z-10 flex flex-col flex-1">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
+                  {reason.title}
+                </h3>
+                <p className="text-[15px] md:text-base text-gray-400 leading-relaxed font-medium max-w-2xl">
+                  {reason.description}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -113,10 +107,10 @@ export default function WhyChooseUsSection({ id }: { id?: string }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-20 flex flex-col items-center text-center relative z-10"
+          className="mt-16 flex justify-center relative z-10"
         >
           <Button variant="primary" size="lg" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
-            Lets talk: How may we help you?
+            Let's talk: How may we help you?
           </Button>
         </motion.div>
       </div>
