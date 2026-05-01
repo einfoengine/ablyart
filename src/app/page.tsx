@@ -21,7 +21,7 @@ export default function Home() {
         <HeroSection id="hero-section" />
         <GrowthCalculatorSection id="growth-calculator-section" />
         <HotServicesSection id="hot-services-section" />
-        <VslSection id="vsl-section" />
+        {/* <VslSection id="vsl-section" /> */}
         <ValueFocusSection id="value-focus-section" />
         <ServicesSection id="services-section" />
         <AgitationSection id="agitation-section" />

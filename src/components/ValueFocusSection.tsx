@@ -104,7 +104,7 @@ export type ValueFocusSectionProps = {
 export default function ValueFocusSection({
   id,
   badge = "So, we battle in two grounds",
-  titleBase = "Batteling one ground",
+  titleBase = "Batteling in one ground",
   titleHighlight = "is a dumb way to die",
   subtitle = "Over-indexing on paid ads burns cash without building loyalty, while pure organic growth starves you of immediate revenue. To truly scale, you must attack both fronts simultaneously.",
   categories = defaultCategories,
@@ -148,7 +148,7 @@ export default function ValueFocusSection({
                  <span className="text-sm font-semibold tracking-wider text-gray-200 uppercase font-mono">{badge}</span>
                </div>
                <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-white">
-                 {titleBase} <span className="relative z-10 whitespace-nowrap"><span className="absolute inset-x-0 bottom-2 top-auto h-4 bg-[var(--accent)] -z-10 opacity-70"></span><span className="italic text-white">{titleHighlight}</span></span>
+                 {titleBase} <span className="italic text-[var(--accent)]">{titleHighlight}</span>
                </h2>
                <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed inline-block font-medium">
                  {subtitle}
