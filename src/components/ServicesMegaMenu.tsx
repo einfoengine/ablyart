@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 const services = [
   {
@@ -262,10 +263,12 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                     <span style={{ fontSize: "0.72rem", color: "rgba(240,240,248,0.3)" }}>
                       Not sure which fits? We&apos;ll figure it out together.
                     </span>
-                    <button
+                    <a
+                      href={OFFICIAL_LINKS.calendly}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => {
                         setOpen(false);
-                        window.dispatchEvent(new Event("openAuditPotentialModal"));
                       }}
                       style={{
                         display: "inline-flex",
@@ -293,7 +296,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                       <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
-                    </button>
+                    </a>
                   </div>
                 </motion.div>
               </div>

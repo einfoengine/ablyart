@@ -1,13 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 // ─── FadeUp ────────────────────────────────────────────────────────────────────
 
 function FadeUp({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
@@ -555,9 +555,10 @@ export default function ContactPageClient() {
                 </h3>
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   {[
-                    { label: "LinkedIn", href: "https://linkedin.com/company/ablyart" },
-                    { label: "Twitter / X", href: "https://twitter.com/ablyart" },
-                    { label: "Instagram", href: "https://instagram.com/ablyart" },
+                    { label: "X", href: OFFICIAL_LINKS.x },
+                    { label: "Facebook", href: OFFICIAL_LINKS.facebook },
+                    { label: "Instagram", href: OFFICIAL_LINKS.instagram },
+                    { label: "YouTube", href: OFFICIAL_LINKS.youtube },
                   ].map((s) => (
                     <a
                       key={s.label}

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "./ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 import {
   FaSearch,
   FaBullhorn,
@@ -256,7 +257,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
             <Button
               variant="primary"
               size="lg"
-              href="https://calendly.com/"
+              href={OFFICIAL_LINKS.calendly}
               target="_blank"
               rel="noopener noreferrer"
               className="px-12 py-5 text-lg font-bold shadow-2xl"

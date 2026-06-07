@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 // ─── Animation helpers ─────────────────────────────────────────────────────────
 
@@ -273,7 +274,9 @@ function HeroSection() {
           }}
         >
           <a
-            href="#contact"
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow"
             style={{
               padding: "14px 32px",
@@ -971,7 +974,9 @@ function CtaSection() {
 
             <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
               <a
-                href="#contact"
+                href={OFFICIAL_LINKS.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glow"
                 style={{
                   padding: "16px 40px",

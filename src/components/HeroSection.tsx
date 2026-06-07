@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 /* Canvas-based upward trending scrolling wave */
 function TrendingWave() {
@@ -64,7 +65,11 @@ function TrendingWave() {
       for (let i = 0; i <= steps; i++) {
         const x = (i / steps) * W;
         const y = getY(x, W, H, t);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
       ctx.shadowColor = "#9bff6e";
       ctx.shadowBlur = 20;
@@ -78,7 +83,11 @@ function TrendingWave() {
       for (let i = 0; i <= steps; i++) {
         const x = (i / steps) * W;
         const y = getY(x, W, H, t);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
       ctx.shadowColor = "#9bff6e";
       ctx.shadowBlur = 10;
@@ -124,7 +133,7 @@ function TrendingWave() {
   );
 }
 /* Floating metric card */
-function MetricCard({
+export function MetricCard({
   label,
   value,
   change,
@@ -315,7 +324,9 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
           }}
         >
           <Button
-            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="lg"
           >

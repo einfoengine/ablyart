@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,9 +18,6 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   // Nav items → all dedicated pages
   const navItems = [
@@ -65,7 +63,7 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <a
+        <NextLink
           href="/"
           style={{
             display: "flex",
@@ -91,7 +89,7 @@ export default function Navbar() {
           >
             Ably<em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.5)" }}>Art</em>
           </div>
-        </a>
+        </NextLink>
 
         {/* Desktop Nav */}
         <div
@@ -146,7 +144,9 @@ export default function Navbar() {
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Button
-            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="sm"
             className="nav-cta"
@@ -229,7 +229,7 @@ export default function Navbar() {
             return [
               linkNode,
               index === 0 ? (
-                <a
+                <NextLink
                   key="services-mobile"
                   href="/#services"
                   className="nav-link"
@@ -237,7 +237,7 @@ export default function Navbar() {
                   style={{ fontSize: "1rem" }}
                 >
                   Services
-                </a>
+                </NextLink>
               ) : null
             ];
           })}
@@ -246,8 +246,10 @@ export default function Navbar() {
           <Button
             onClick={() => {
               setMenuOpen(false);
-              window.dispatchEvent(new Event("openAuditPotentialModal"));
             }}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="md"
             className="w-full mt-3"

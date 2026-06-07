@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 type Category = "All" | "Social Media" | "Lead Generation" | "Funnel" | "SEO";
@@ -229,7 +230,9 @@ function CtaBanner() {
           </p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
             <a
-              href="#contact"
+              href={OFFICIAL_LINKS.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-glow"
               style={{
                 padding: "16px 36px",

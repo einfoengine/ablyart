@@ -4,7 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
-import { FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 // [... data block unchanged ...]
 
@@ -355,16 +357,22 @@ export default function ServicesSection({ id }: { id?: string }) {
 
       {/* CTA and Community Links */}
       <div className="flex flex-col items-center gap-6 mt-4 mb-20 relative z-20 px-6">
-        <Button variant="primary" size="lg" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+        <Button variant="primary" size="lg" href={OFFICIAL_LINKS.calendly} target="_blank" rel="noopener noreferrer">
           Book a free session →
         </Button>
         <div className="flex items-center gap-4 text-gray-400 font-medium bg-white/5 px-6 py-3 rounded-full border border-white/10 shadow-sm">
           <span className="text-sm tracking-wide">Join our community:</span>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors">
-            <FaLinkedin size={22} />
+          <a href={OFFICIAL_LINKS.x} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="AblyArt on X">
+            <FaXTwitter size={22} />
           </a>
-          <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877f2] transition-colors">
+          <a href={OFFICIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877f2] transition-colors" aria-label="AblyArt on Facebook">
             <FaFacebook size={22} />
+          </a>
+          <a href={OFFICIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#e6683c] transition-colors" aria-label="AblyArt on Instagram">
+            <FaInstagram size={22} />
+          </a>
+          <a href={OFFICIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff0000] transition-colors" aria-label="AblyArt on YouTube">
+            <FaYoutube size={22} />
           </a>
         </div>
       </div>

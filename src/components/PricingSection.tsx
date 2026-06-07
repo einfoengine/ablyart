@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 export type DetailedDeliverable = {
   title: string;
@@ -23,6 +24,20 @@ export type PricingPackage = {
   detailedDeliverables?: DetailedDeliverable[];
   isPopular: boolean;
 };
+
+function getFeatureDisplay(feature: PricingPackage["features"][number]) {
+  if (typeof feature === "object" && feature !== null && "included" in feature) {
+    return {
+      isIncluded: feature.included,
+      content: feature.text,
+    };
+  }
+
+  return {
+    isIncluded: true,
+    content: feature,
+  };
+}
 
 const pricingData: Record<string, { label: string; packages: PricingPackage[] }> = {
   "growth-marketing": {
@@ -642,7 +657,7 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
               transition={{ duration: 0.4 }}
               className={`grid grid-cols-1 md:grid-cols-${Math.min(displayPackages.length, 3)} gap-8 items-stretch justify-center`}
             >
-              {displayPackages.map((pkg, idx) => (
+              {displayPackages.map((pkg) => (
                 <div
                   key={pkg.name}
                   className={`relative flex flex-col bg-[#0b0b0e] p-8 rounded-3xl border transition-all duration-300 ${
@@ -720,9 +735,7 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
 
                   <ul className="flex flex-col gap-4 mb-10 flex-1">
                     {pkg.features.map((feature, fIdx) => {
-                      const isObj = typeof feature === 'object' && feature !== null && 'included' in feature;
-                      const isIncluded = isObj ? (feature as any).included : true;
-                      const content = isObj ? (feature as any).text : feature;
+                      const { isIncluded, content } = getFeatureDisplay(feature);
 
                       return (
                         <li key={fIdx} className={`flex items-start gap-3 ${!isIncluded ? 'opacity-50' : ''}`}>
@@ -757,7 +770,7 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
 
         {/* Bottom text */}
         <div className="mt-16 text-center text-gray-500 text-sm">
-          Want a custom hybrid plan combining multiple services? <a href="#contact" className="text-[var(--accent)] underline underline-offset-4 hover:text-[#86ea5c]">Let's talk.</a>
+          Want a custom hybrid plan combining multiple services? <a href={OFFICIAL_LINKS.calendly} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] underline underline-offset-4 hover:text-[#86ea5c]">Let&apos;s talk.</a>
         </div>
 
       </div>
@@ -878,9 +891,7 @@ export default function PricingTable({ id, customPackages }: PricingTableProps =
                       Standard deliverables apply. Please contact us for a detailed breakdown or view the basic features below.
                       <ul className="mt-4 text-left flex flex-col gap-2 max-w-md mx-auto">
                         {selectedPackage.features.map((feat, i) => {
-                          const isObj = typeof feat === 'object' && feat !== null && 'included' in feat;
-                          const isIncluded = isObj ? (feat as any).included : true;
-                          const content = isObj ? (feat as any).text : feat;
+                          const { isIncluded, content } = getFeatureDisplay(feat);
                           return (
                             <li key={i} className={`flex gap-2 text-sm items-start ${!isIncluded ? 'opacity-50 text-gray-500 line-through' : 'text-gray-300'}`}>
                               <span className={isIncluded ? 'text-[var(--accent)]' : 'text-gray-600'}>
