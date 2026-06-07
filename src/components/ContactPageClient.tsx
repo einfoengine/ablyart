@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OFFICIAL_LINKS } from "@/constants/links";
+import { submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 // ─── FadeUp ────────────────────────────────────────────────────────────────────
 
@@ -43,8 +44,8 @@ const contactMethods = [
       </svg>
     ),
     label: "Call Us",
-    value: "+1 (555) 000-0000",
-    href: "tel:+15550000000",
+    value: "+880 1790-508929",
+    href: "tel:+8801790508929",
     accent: "#6ee7ff",
     rgb: "110,231,255",
   },
@@ -172,6 +173,8 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", company: "", budget: "", message: "" });
 
   const inputStyle: React.CSSProperties = {
@@ -188,9 +191,29 @@ function ContactForm() {
     fontFamily: "inherit",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      await submitWebsiteForm({
+        formType: "Contact growth audit",
+        source: "/contact",
+        name: form.name,
+        email: form.email,
+        message: form.message,
+        fields: {
+          company: form.company,
+          budget: form.budget,
+        },
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to submit the form right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -328,17 +351,25 @@ function ContactForm() {
       <button
         type="submit"
         className="btn-glow"
+        disabled={isSubmitting}
         style={{
           padding: "15px 32px",
           fontSize: "0.95rem",
-          cursor: "pointer",
+          cursor: isSubmitting ? "not-allowed" : "pointer",
           border: "none",
           width: "100%",
           marginTop: "4px",
+          opacity: isSubmitting ? 0.75 : 1,
         }}
       >
         Send Message →
       </button>
+
+      {error && (
+        <p role="alert" style={{ fontSize: "0.78rem", color: "#ff8a8a", textAlign: "center", lineHeight: 1.5 }}>
+          {error}
+        </p>
+      )}
 
       <p style={{ fontSize: "0.72rem", color: "rgba(240,240,248,0.3)", textAlign: "center" }}>
         No spam. No sales pressure. Just an honest conversation about your growth.

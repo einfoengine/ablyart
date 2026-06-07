@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 // ─── FadeUp helper ─────────────────────────────────────────────────────────────
 
@@ -21,7 +22,7 @@ function FadeUp({
       ref={ref}
       style={style}
       initial={{ opacity: 0, y: 36 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -478,10 +479,30 @@ function PostCard({ post, index }: { post: (typeof posts)[0]; index: number }) {
 function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      await submitWebsiteForm({
+        formType: "Blog newsletter",
+        source: "/blog",
+        email,
+        fields: {
+          email,
+        },
+      });
+      setSubmitted(true);
+      setEmail("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to subscribe right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -614,12 +635,14 @@ function Newsletter() {
                 <button
                   type="submit"
                   className="btn-glow"
+                  disabled={isSubmitting}
                   style={{
                     padding: "12px 24px",
                     fontSize: "0.88rem",
-                    cursor: "pointer",
+                    cursor: isSubmitting ? "not-allowed" : "pointer",
                     border: "none",
                     whiteSpace: "nowrap",
+                    opacity: isSubmitting ? 0.75 : 1,
                   }}
                 >
                   Subscribe →
@@ -627,6 +650,12 @@ function Newsletter() {
               </motion.form>
             )}
           </AnimatePresence>
+
+          {error && (
+            <p role="alert" style={{ fontSize: "0.78rem", color: "#ff8a8a", marginTop: "14px", lineHeight: 1.5 }}>
+              {error}
+            </p>
+          )}
 
           <p
             style={{

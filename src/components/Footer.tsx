@@ -6,10 +6,14 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { OFFICIAL_LINKS } from "@/constants/links";
+import { submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [time, setTime] = useState<string>("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [newsletterError, setNewsletterError] = useState("");
 
   useEffect(() => {
     const updateClock = () => {
@@ -24,6 +28,28 @@ export default function Footer() {
     const interval = setInterval(updateClock, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleNewsletterSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setNewsletterError("");
+    setNewsletterStatus("loading");
+
+    try {
+      await submitWebsiteForm({
+        formType: "Footer newsletter",
+        source: "Footer",
+        email: newsletterEmail,
+        fields: {
+          email: newsletterEmail,
+        },
+      });
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+    } catch (err) {
+      setNewsletterStatus("error");
+      setNewsletterError(err instanceof Error ? err.message : "Unable to subscribe right now. Please try again.");
+    }
+  };
 
   const links = {
     Services: [
@@ -109,19 +135,28 @@ export default function Footer() {
               <h3 className="text-white font-extrabold mb-1 tracking-tight text-lg relative z-10">Weekly Growth Insights</h3>
               <p className="text-[0.95rem] text-gray-400 mb-6 font-medium relative z-10">No fluff. Just proven scaling tactics delivered straight to your inbox.</p>
               
-              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 relative z-10">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 relative z-10">
                 <input 
                   type="email" 
+                  required
+                  value={newsletterEmail}
+                  onChange={(event) => setNewsletterEmail(event.target.value)}
                   placeholder="name@company.com" 
                   className="w-full bg-[#060608]/80 border border-white/10 rounded-xl px-4 py-4 text-[0.95rem] outline-none focus:border-[var(--accent)] transition-colors font-semibold text-white placeholder:text-gray-600 shadow-inner"
                 />
-                <button type="submit" className="bg-white hover:bg-[var(--accent)] text-black px-8 py-4 rounded-xl text-[0.95rem] font-bold shadow-lg transition-all whitespace-nowrap hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50">
-                  <span>Join</span>
+                <button type="submit" disabled={newsletterStatus === "loading"} className="bg-white hover:bg-[var(--accent)] text-black px-8 py-4 rounded-xl text-[0.95rem] font-bold shadow-lg transition-all whitespace-nowrap hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50">
+                  <span>{newsletterStatus === "loading" ? "Joining..." : "Join"}</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
               </form>
+              {newsletterStatus === "success" && (
+                <p className="relative z-10 mt-3 text-sm font-semibold text-[var(--accent)]">You&apos;re in. Check your inbox.</p>
+              )}
+              {newsletterStatus === "error" && (
+                <p role="alert" className="relative z-10 mt-3 text-sm font-semibold text-[#ff8a8a]">{newsletterError}</p>
+              )}
             </div>
           </motion.div>
         </div>

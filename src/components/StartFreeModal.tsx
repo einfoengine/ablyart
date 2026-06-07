@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { formDataToRecord, submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 export default function StartFreeModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
@@ -13,15 +16,32 @@ export default function StartFreeModal() {
     return () => window.removeEventListener("openStartFreeModal", handleOpen);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setError("");
+    setIsSubmitting(true);
     
-    // Auto close after 4 seconds and reset
-    setTimeout(() => {
-      setIsOpen(false);
-      setTimeout(() => setIsSubmitted(false), 500); // reset after exit animation
-    }, 4000);
+    try {
+      const fields = formDataToRecord(new FormData(e.currentTarget));
+      await submitWebsiteForm({
+        formType: "Start free audit",
+        source: "Start Free modal",
+        email: fields.email,
+        message: "Request Free Audit",
+        fields,
+      });
+      setIsSubmitted(true);
+
+      // Auto close after 4 seconds and reset
+      setTimeout(() => {
+        setIsOpen(false);
+        setTimeout(() => setIsSubmitted(false), 500); // reset after exit animation
+      }, 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to submit the audit request right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,8 +95,20 @@ export default function StartFreeModal() {
                       <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">WhatsApp Number *</label>
                       <input 
                         type="tel" 
+                        name="whatsapp"
                         required 
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+880 1790-508929"
+                        className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Work Email *</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        required 
+                        placeholder="you@company.com"
                         className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                       />
                     </div>
@@ -85,6 +117,7 @@ export default function StartFreeModal() {
                       <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Facebook / Social Links *</label>
                       <input 
                         type="text" 
+                        name="socialLinks"
                         required 
                         placeholder="https://facebook.com/yourbrand"
                         className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
@@ -95,6 +128,7 @@ export default function StartFreeModal() {
                       <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Website URL</label>
                       <input 
                         type="url" 
+                        name="website"
                         placeholder="https://yourwebsite.com"
                         className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                       />
@@ -103,8 +137,8 @@ export default function StartFreeModal() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="flex flex-col gap-2">
                         <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Monthly Revenue Range</label>
-                        <select className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all appearance-none cursor-pointer">
-                          <option value="" disabled selected>Select an option</option>
+                        <select name="monthlyRevenue" defaultValue="" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all appearance-none cursor-pointer">
+                          <option value="" disabled>Select an option</option>
                           <option value="Pre-revenue">Pre-revenue</option>
                           <option value="$0 - $10k">$0 - $10,000</option>
                           <option value="$10k - $50k">$10,000 - $50,000</option>
@@ -117,6 +151,7 @@ export default function StartFreeModal() {
                         <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Marketing Budget (Next 6 Mo)</label>
                         <input 
                           type="text" 
+                          name="marketingBudget"
                           placeholder="e.g. $10,000"
                           className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                         />
@@ -127,6 +162,7 @@ export default function StartFreeModal() {
                       <label className="text-sm font-semibold text-gray-400 uppercase tracking-wider">How many times do you want to scale?</label>
                       <input 
                         type="text" 
+                        name="scalingGoal"
                         placeholder="e.g. 5x in 12 months"
                         className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                       />
@@ -134,10 +170,16 @@ export default function StartFreeModal() {
 
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="mt-4 w-full bg-[var(--accent)] text-black font-bold py-4 px-8 rounded-xl hover:bg-[#86ea5c] shadow-[0_0_20px_rgba(155,255,110,0.2)] transition-all tracking-wide text-[1.1rem]"
                     >
-                      Request Free Audit
+                      {isSubmitting ? "Submitting..." : "Request Free Audit"}
                     </button>
+                    {error && (
+                      <p role="alert" className="text-sm font-semibold text-[#ff8a8a] text-center leading-relaxed">
+                        {error}
+                      </p>
+                    )}
                   </form>
                 </>
               ) : (
