@@ -386,6 +386,25 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
               </span>
             ))}
           </div>
+          <Link
+            href={`/case-studies/${study.id}`}
+            className="btn-outline"
+            style={{
+              marginTop: "28px",
+              padding: "12px 24px",
+              fontSize: "0.9rem",
+              fontWeight: 700,
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
 
         {/* Right — Results grid */}
@@ -613,6 +632,26 @@ function StudyCard({ study }: { study: CaseStudy }) {
           </span>
         ))}
       </div>
+      <Link
+        href={`/case-studies/${study.id}`}
+        className="btn-outline"
+        style={{
+          marginTop: "24px",
+          padding: "11px 20px",
+          fontSize: "0.85rem",
+          fontWeight: 700,
+          textDecoration: "none",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+        }}
+      >
+        View Case Study
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </Link>
     </motion.article>
   );
 }
