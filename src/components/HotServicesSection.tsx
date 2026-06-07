@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "./ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -21,6 +22,7 @@ const services = [
     tagline: "Be Found Everywhere — Search, AI & Maps.",
     description:
       "We dominate every discovery layer: traditional search rankings, AI-powered answer engines, and local map packs — so your brand is the first answer, every time a buyer is looking.",
+    href: "/services/seo-geo-aeo",
     icon: <FaSearch size={20} />,
   },
   {
@@ -28,6 +30,7 @@ const services = [
     tagline: "Build an Audience That Buys.",
     description:
       "Consistent, on-brand content across every platform that transforms passive scrollers into engaged followers and loyal customers — without you lifting a finger.",
+    href: "/services/social-media-management",
     icon: <FaBullhorn size={20} />,
   },
   {
@@ -35,6 +38,7 @@ const services = [
     tagline: "Put Your Budget Where the Revenue Is.",
     description:
       "Precision-targeted paid campaigns on Meta, Google, and TikTok engineered for maximum ROAS. Every dollar is tracked, every audience is tested, and every creative is optimised.",
+    href: "/services/media-buying",
     icon: <FaChartLine size={20} />,
   },
   {
@@ -42,6 +46,7 @@ const services = [
     tagline: "Fill Your Pipeline with Ready-to-Buy Prospects.",
     description:
       "From cold outreach and lead magnets to retargeting sequences and CRM automation — we build the full system that turns strangers into warm, qualified leads on autopilot.",
+    href: "/services/lead-generation",
     icon: <FaFilter size={20} />,
   },
 ];
@@ -66,15 +71,11 @@ const benefits = [
 
 export default function HotServicesSection({ id }: { id?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isClicking = useRef(false);
-  const clickTimeout = useRef<NodeJS.Timeout | null>(null);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   // Robust Scroll Spy for Accordion
   useEffect(() => {
     const handleScroll = () => {
-      if (isClicking.current) return;
-
       const viewportCenter = window.innerHeight / 2;
       let closestIndex = activeIndex;
       let minDistance = Infinity;
@@ -104,18 +105,6 @@ export default function HotServicesSection({ id }: { id?: string }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [activeIndex]);
 
-  const handleItemClick = (idx: number) => {
-    setActiveIndex(idx);
-    isClicking.current = true;
-    
-    if (clickTimeout.current) clearTimeout(clickTimeout.current);
-    
-    // Pause scroll-spy for 1 second to allow smooth open/close animation
-    clickTimeout.current = setTimeout(() => {
-      isClicking.current = false;
-    }, 1000);
-  };
-
   return (
     <section
       id={id}
@@ -137,21 +126,20 @@ export default function HotServicesSection({ id }: { id?: string }) {
             const isOpen = activeIndex === idx;
 
             return (
-              <div
+              <Link
                 key={idx}
+                href={service.href}
+                aria-label={`View ${service.label} service`}
                 ref={(el) => {
                   itemRefs.current[idx] = el;
                 }}
-                className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${
+                className={`block group relative overflow-hidden rounded-3xl transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${
                   isOpen
                     ? "bg-white shadow-[0_0_30px_rgba(155,255,110,0.3)] border border-[var(--accent)]"
                     : "bg-white/[0.03] border border-white/10 hover:border-white/20"
                 }`}
               >
-                <button
-                  onClick={() => handleItemClick(idx)}
-                  className="w-full text-left px-6 md:px-10 py-8 flex justify-between gap-6"
-                >
+                <div className="w-full text-left px-6 md:px-10 py-8 flex justify-between gap-6">
                   <div className="flex gap-6">
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0 ${
@@ -191,7 +179,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
                     />
                   </div>
                   
-                </button>
+                </div>
 
                 <AnimatePresence initial={false}>
                   {isOpen && (
@@ -213,7 +201,7 @@ export default function HotServicesSection({ id }: { id?: string }) {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </Link>
             );
           })}
         </div>
