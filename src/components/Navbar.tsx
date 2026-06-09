@@ -3,7 +3,7 @@
 import NextLink from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import ServicesMegaMenu from "./ServicesMegaMenu";
+import ServicesMegaMenu, { coreServices } from "./ServicesMegaMenu";
 import { Button } from "@/components/ui/Button";
 import { OFFICIAL_LINKS } from "@/constants/links";
 
@@ -229,15 +229,27 @@ export default function Navbar() {
             return [
               linkNode,
               index === 0 ? (
-                <NextLink
+                <div
                   key="services-mobile"
-                  href="/#services"
-                  className="nav-link"
-                  onClick={() => setMenuOpen(false)}
-                  style={{ fontSize: "1rem" }}
+                  style={{ display: "flex", flexDirection: "column", gap: "8px" }}
                 >
-                  Services
-                </NextLink>
+                  <span className="nav-link" style={{ fontSize: "1rem", padding: "8px 0 2px" }}>
+                    Services
+                  </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", paddingLeft: "12px" }}>
+                    {coreServices.map((service) => (
+                      <NextLink
+                        key={service.href}
+                        href={service.href}
+                        className="nav-link"
+                        onClick={() => setMenuOpen(false)}
+                        style={{ fontSize: "0.92rem", textDecoration: "none", padding: "6px 0" }}
+                      >
+                        {service.title}
+                      </NextLink>
+                    ))}
+                  </div>
+                </div>
               ) : null
             ];
           })}

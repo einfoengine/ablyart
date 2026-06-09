@@ -347,21 +347,6 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
           </a> */}
         </div>
 
-        {/* Trust line */}
-        <div className="mt-12 md:mt-14 flex flex-wrap items-center justify-center gap-3 px-2">
-          {[
-            "Focused on four core growth services",
-            "Built for search, social, paid media, and lead generation",
-            "Strategy-first execution for growing businesses",
-          ].map((item) => (
-            <span
-              key={item}
-              className="max-w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.08em] text-[rgba(240,240,248,0.55)]"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
       </div>
 
       {/* Floating Industry Tags */}

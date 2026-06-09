@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import { OFFICIAL_LINKS } from "@/constants/links";
 
-const services = [
+export const coreServices = [
   {
     title: "SEO, GEO & AEO",
     description: "Get found on Google, AI search, and answer engines.",
@@ -195,7 +195,7 @@ export default function ServicesMegaMenu({ isScrolled }: { isScrolled: boolean }
                     }}
                   >
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
-                      {services.map((service) => (
+                      {coreServices.map((service) => (
                         <a
                           key={service.href}
                           href={service.href}

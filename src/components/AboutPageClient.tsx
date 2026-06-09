@@ -103,72 +103,56 @@ const values = [
 const team = [
   {
     name: "Shane Wazal Maruf",
-    role: "Chairman",
-    bio: "Shane Wazal Maruf supports AblyArt's direction, operations, and long-term company focus.",
+    role: "Chairman & Chief Growth Strategist",
     initials: "SW",
     accent: "#9bff6e",
     slug: "shane-wazal-maruf",
   },
   {
     name: "Sheikh Abir Ali",
-    role: "Founder & Chief Growth Strategist",
-    bio: "Sheikh Abir Ali helps shape AblyArt's growth strategy, search direction, and client acquisition systems.",
+    role: "SEO Strategist",
     initials: "SA",
     accent: "#6ee7ff",
     slug: "sheikh-abir-ali",
   },
   {
     name: "Sharar Tazbi",
-    role: "Co-Founder & SEO Strategist",
-    bio: "Sharar Tazbi focuses on SEO planning, search visibility, and organic growth strategy.",
+    role: "Lead Generation Expert",
     initials: "ST",
     accent: "#ffb347",
     slug: "sharar-tazbi",
   },
   {
-    name: "Fahim Bin Reza",
-    role: "Co-Founder & Lead Generation Expert",
-    bio: "Fahim Bin Reza focuses on lead generation systems, prospecting strategy, and client acquisition paths.",
-    initials: "FR",
+    name: "Mridul Ishat Dip",
+    role: "Animation Specialist",
+    initials: "MD",
     accent: "#ff6eb4",
+    slug: "mridul-ishat-dip",
+  },
+  {
+    name: "Fahim Bin Reza",
+    role: "Production Manager",
+    initials: "FR",
+    accent: "#9bff6e",
     slug: "fahim-bin-reza",
   },
   {
     name: "Thouhid Azim",
-    role: "Production Manager",
-    bio: "Thouhid Azim coordinates production workflow and helps keep delivery organized.",
+    role: "Content Writer",
     initials: "TA",
-    accent: "#9bff6e",
+    accent: "#6ee7ff",
     slug: "thouhid-azim",
   },
   {
     name: "Affan Ahmed",
-    role: "Content Writer",
-    bio: "Affan Ahmed supports content writing, messaging, and campaign copy needs.",
-    initials: "AA",
-    accent: "#6ee7ff",
-    slug: "affan-ahmed",
-  },
-  {
-    name: "Mridul Ishat Dip",
     role: "Digital Marketing Strategist",
-    bio: "Mridul Ishat Dip supports digital marketing planning and channel strategy.",
-    initials: "MD",
+    initials: "AA",
     accent: "#ffb347",
-    slug: "mridul-ishat-dip",
-  },
-  {
-    name: "Atikur Rahman",
-    role: "Animation Specialist",
-    bio: "Atikur Rahman supports motion, animation, and visual production work.",
-    initials: "AR",
-    accent: "#ff6eb4",
-    slug: "atikur-rahman-animation",
+    slug: "affan-ahmed",
   },
   {
     name: "Atikur Rahman",
     role: "UI/UX Specialist",
-    bio: "Atikur Rahman supports interface structure, usability, and user experience details.",
     initials: "AR",
     accent: "#9bff6e",
     slug: "atikur-rahman-ui-ux",
@@ -752,9 +736,6 @@ function TeamSection() {
                   }}
                 >
                   {member.role}
-                </p>
-                <p style={{ fontSize: "0.82rem", color: "rgba(240,240,248,0.5)", lineHeight: 1.65 }}>
-                  {member.bio}
                 </p>
               </div>
             </FadeUp>
