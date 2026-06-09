@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 export default function VslSection({ id }: { id?: string }) {
   return (
@@ -115,7 +116,7 @@ export default function VslSection({ id }: { id?: string }) {
           <div className="max-w-4xl mx-auto mb-10 w-full relative">
             <div className="absolute inset-x-10 top-1/2 -translate-y-1/2 h-1/2 bg-[var(--accent)] opacity-[0.03] blur-2xl rounded-full"></div>
             <p className="text-xl md:text-[22px] font-medium leading-relaxed text-gray-400 text-center tracking-tight relative z-10">
-              It's a <span className="text-white font-bold px-1">holistic approach.</span> We ensure your 
+              It&apos;s a <span className="text-white font-bold px-1">holistic approach.</span> We ensure your 
               <span className="text-[var(--accent)] font-semibold mx-1">unified visibility</span>, build 
               <span className="text-white font-semibold mx-1">brand authority</span>, generate 
               <span className="text-white font-semibold mx-1">leads</span>, help 
@@ -124,7 +125,9 @@ export default function VslSection({ id }: { id?: string }) {
             </p>
           </div>
           <Button
-            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="lg"
             className="uppercase tracking-[0.05em]"

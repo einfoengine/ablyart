@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import WorkPageClient from "@/components/WorkPageClient";
 
 export const metadata: Metadata = {
-  title: "Our Work — ablyart",
+  title: "Founder-Backed Case Studies | AblyArt",
   description:
-    "Explore ablyart's portfolio of case studies — real results, real brands. See how we drive measurable growth through strategic marketing and bold creative.",
+    "Explore founder-backed AblyArt case studies across media buying, lead generation, SEO, social media, and conversion-focused websites.",
 };
 
 export default function WorkPage() {

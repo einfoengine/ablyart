@@ -3,8 +3,9 @@
 import NextLink from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import ServicesMegaMenu from "./ServicesMegaMenu";
+import ServicesMegaMenu, { coreServices } from "./ServicesMegaMenu";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,13 +19,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
-
   // Nav items → all dedicated pages
   const navItems = [
     { label: "Home",    href: "/" },
-    { label: "Work",    href: "/work" },
+    { label: "Work",    href: "/case-studies" },
     { label: "About",   href: "/about" },
     { label: "Blog",    href: "/blog" },
     { label: "Contact", href: "/contact" },
@@ -65,7 +63,7 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <a
+        <NextLink
           href="/"
           style={{
             display: "flex",
@@ -91,7 +89,7 @@ export default function Navbar() {
           >
             Ably<em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.5)" }}>Art</em>
           </div>
-        </a>
+        </NextLink>
 
         {/* Desktop Nav */}
         <div
@@ -146,7 +144,9 @@ export default function Navbar() {
         {/* CTA + Mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Button
-            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="sm"
             className="nav-cta"
@@ -229,15 +229,27 @@ export default function Navbar() {
             return [
               linkNode,
               index === 0 ? (
-                <a
+                <div
                   key="services-mobile"
-                  href="/#services"
-                  className="nav-link"
-                  onClick={() => setMenuOpen(false)}
-                  style={{ fontSize: "1rem" }}
+                  style={{ display: "flex", flexDirection: "column", gap: "8px" }}
                 >
-                  Services
-                </a>
+                  <span className="nav-link" style={{ fontSize: "1rem", padding: "8px 0 2px" }}>
+                    Services
+                  </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", paddingLeft: "12px" }}>
+                    {coreServices.map((service) => (
+                      <NextLink
+                        key={service.href}
+                        href={service.href}
+                        className="nav-link"
+                        onClick={() => setMenuOpen(false)}
+                        style={{ fontSize: "0.92rem", textDecoration: "none", padding: "6px 0" }}
+                      >
+                        {service.title}
+                      </NextLink>
+                    ))}
+                  </div>
+                </div>
               ) : null
             ];
           })}
@@ -246,8 +258,10 @@ export default function Navbar() {
           <Button
             onClick={() => {
               setMenuOpen(false);
-              window.dispatchEvent(new Event("openAuditPotentialModal"));
             }}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="md"
             className="w-full mt-3"

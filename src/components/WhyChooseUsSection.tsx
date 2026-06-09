@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 const reasons = [
   {
@@ -109,8 +110,8 @@ export default function WhyChooseUsSection({ id }: { id?: string }) {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-16 flex justify-center relative z-10"
         >
-          <Button variant="primary" size="lg" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
-            Let's talk: How may we help you?
+          <Button variant="primary" size="lg" href={OFFICIAL_LINKS.calendly} target="_blank" rel="noopener noreferrer">
+            Let&apos;s talk: How may we help you?
           </Button>
         </motion.div>
       </div>

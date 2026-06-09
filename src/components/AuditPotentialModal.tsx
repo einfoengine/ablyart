@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { formDataToRecord, submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 const TOTAL_STEPS = 5;
 
@@ -9,11 +10,16 @@ export default function AuditPotentialModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formValues, setFormValues] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const handleOpen = () => {
       setStep(1);
       setIsSubmitted(false);
+      setFormValues({});
+      setError("");
       setIsOpen(true);
     };
     window.addEventListener("openAuditPotentialModal", handleOpen);
@@ -23,20 +29,43 @@ export default function AuditPotentialModal() {
   const nextStep = () => { if (step < TOTAL_STEPS) setStep(step + 1); };
   const prevStep = () => { if (step > 1) setStep(step - 1); };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const currentValues = formDataToRecord(new FormData(e.currentTarget));
+    const nextValues = { ...formValues, ...currentValues };
+    setFormValues(nextValues);
+    setError("");
+
     if (step < TOTAL_STEPS) {
       nextStep();
       return;
     }
-    
-    setIsSubmitted(true);
-    
-    // Auto close after 4 seconds and reset
-    setTimeout(() => {
-      setIsOpen(false);
-      setTimeout(() => setIsSubmitted(false), 500);
-    }, 4000);
+
+    setIsSubmitting(true);
+
+    try {
+      await submitWebsiteForm({
+        formType: "Growth potential audit",
+        source: "Audit Potential modal",
+        email: nextValues.email,
+        message: "Comprehensive audit request",
+        fields: nextValues,
+      });
+      setIsSubmitted(true);
+
+      // Auto close after 4 seconds and reset
+      setTimeout(() => {
+        setIsOpen(false);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormValues({});
+        }, 500);
+      }, 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to submit the audit right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const StepProgress = () => (
@@ -104,22 +133,29 @@ export default function AuditPotentialModal() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Company Name *</span>
-                            <input type="text" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="companyName" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                           <label className="flex flex-col gap-2">
                             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Website URL *</span>
-                            <input type="url" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="url" name="websiteUrl" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
-                            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">WhatsApp Number *</span>
-                            <input type="tel" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Work Email *</span>
+                            <input type="email" name="email" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                           <label className="flex flex-col gap-2">
+                            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">WhatsApp Number *</span>
+                            <input type="tel" name="whatsapp" required className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                          </label>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <label className="flex flex-col gap-2">
                             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Role</span>
-                            <input type="text" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="role" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                         </div>
                       </motion.div>
@@ -132,7 +168,7 @@ export default function AuditPotentialModal() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Total Addressable Market (TAM)</span>
-                            <select className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
+                            <select name="tam" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
                               <option value="Local">Local</option>
                               <option value="National">National</option>
                               <option value="Global">Global</option>
@@ -140,18 +176,18 @@ export default function AuditPotentialModal() {
                           </label>
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Problem Urgency (1-10)</span>
-                            <input type="number" min="1" max="10" placeholder="e.g. 8" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="number" name="problemUrgency" min="1" max="10" placeholder="e.g. 8" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                         </div>
 
                         <label className="flex flex-col gap-2">
                           <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Top 3 Competitors & Your Unfair Advantage</span>
-                          <textarea rows={3} className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all"></textarea>
+                          <textarea name="competitorsAndAdvantage" rows={3} className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all"></textarea>
                         </label>
                         
                         <label className="flex flex-col gap-2">
-                          <span className="text-[13px] font-semibold text-gray-400 tracking-wider">How many "ideal" customers exist who haven't heard of you yet?</span>
-                          <input type="text" placeholder="Estimated unused market size" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                          <span className="text-[13px] font-semibold text-gray-400 tracking-wider">How many &quot;ideal&quot; customers exist who haven&apos;t heard of you yet?</span>
+                          <input type="text" name="unusedMarketSize" placeholder="Estimated unused market size" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                         </label>
                       </motion.div>
                     )}
@@ -163,28 +199,28 @@ export default function AuditPotentialModal() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Current Monthly Revenue</span>
-                            <input type="text" placeholder="e.g. $50k" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="monthlyRevenue" placeholder="e.g. $50k" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Scaling Target</span>
-                            <input type="text" placeholder="e.g. 3x in 12 months" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="scalingTarget" placeholder="e.g. 3x in 12 months" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Estimated CAC vs LTV</span>
-                            <input type="text" placeholder="e.g. $200 CAC to $5000 LTV" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="cacLtv" placeholder="e.g. $200 CAC to $5000 LTV" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Monthly Churn (%)</span>
-                            <input type="text" placeholder="e.g. 5%" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="monthlyChurn" placeholder="e.g. 5%" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                         </div>
 
                         <label className="flex flex-col gap-2">
                           <span className="text-[13px] font-semibold text-gray-400 tracking-wider">If you doubled customers tomorrow, your profit margins would:</span>
-                          <select className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
+                          <select name="profitMarginImpact" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
                             <option value="Increase (Economies of Scale)">Increase (Economies of Scale)</option>
                             <option value="Decrease (Resource Overload)">Decrease (Heavy Fulfillment Costs)</option>
                             <option value="Stay the Same">Stay the Same</option>
@@ -200,7 +236,7 @@ export default function AuditPotentialModal() {
                         <div className="grid grid-cols-1 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">If the CEO took a 30-day vacation without a phone, the business would:</span>
-                            <select className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
+                            <select name="ceoVacationImpact" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
                               <option value="Grow">Grow (Team autonomous)</option>
                               <option value="Stall">Stall (Treading water)</option>
                               <option value="Collapse">Collapse (Fires everywhere)</option>
@@ -209,17 +245,17 @@ export default function AuditPotentialModal() {
                           
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Which parts of your fulfillment are still 100% manual?</span>
-                            <input type="text" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="manualFulfillment" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <label className="flex flex-col gap-2">
                               <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Ramp-up Time for New Hires?</span>
-                              <input type="text" placeholder="e.g. 3 Months" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                              <input type="text" name="newHireRampTime" placeholder="e.g. 3 Months" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                             </label>
                             <label className="flex flex-col gap-2">
-                              <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Any "Single Point of Failure" Employees?</span>
-                              <input type="text" placeholder="e.g. Lead Dev or CEO" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                              <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Any &quot;Single Point of Failure&quot; Employees?</span>
+                              <input type="text" name="singlePointOfFailure" placeholder="e.g. Lead Dev or CEO" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                             </label>
                           </div>
                         </div>
@@ -233,11 +269,11 @@ export default function AuditPotentialModal() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Marketing Budget (Next 6 Mo)</span>
-                            <input type="text" placeholder="$" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
+                            <input type="text" name="marketingBudget" placeholder="$" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all" />
                           </label>
                           <label className="flex flex-col gap-2">
                             <span className="text-[13px] font-semibold text-gray-400 tracking-wider">Primary Lead Source</span>
-                            <select className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
+                            <select name="primaryLeadSource" className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer">
                               <option value="Predictable">Predictable (Ads, SEO, Cold Outbound)</option>
                               <option value="Unpredictable">Unpredictable (Referrals, Luck)</option>
                             </select>
@@ -246,17 +282,17 @@ export default function AuditPotentialModal() {
                         
                         <label className="flex flex-col gap-2">
                           <span className="text-[13px] font-semibold text-gray-400 tracking-wider">If your primary marketing channel vanished, how would you get customers?</span>
-                          <textarea rows={2} className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all"></textarea>
+                          <textarea name="backupAcquisitionPlan" rows={2} className="w-full bg-[#13131a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--accent)] transition-all"></textarea>
                         </label>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <label className="flex items-center gap-3 bg-[#13131a] border border-white/10 rounded-xl p-4">
-                            <input type="checkbox" className="w-5 h-5 accent-[var(--accent)]" />
+                            <input type="checkbox" name="coreSopsDocumented" value="Yes" className="w-5 h-5 accent-[var(--accent)]" />
                             <span className="text-sm text-gray-300">Are 90% of core SOPs documented?</span>
                           </label>
                           <label className="flex items-center gap-3 bg-[#13131a] border border-white/10 rounded-xl p-4">
-                            <input type="checkbox" className="w-5 h-5 accent-[var(--accent)]" />
-                            <span className="text-sm text-gray-300">Is data "Clean" (Single truth source)?</span>
+                            <input type="checkbox" name="cleanDataSource" value="Yes" className="w-5 h-5 accent-[var(--accent)]" />
+                            <span className="text-sm text-gray-300">Is data &quot;Clean&quot; (Single truth source)?</span>
                           </label>
                         </div>
 
@@ -275,11 +311,17 @@ export default function AuditPotentialModal() {
                       )}
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="flex-1 bg-[var(--accent)] text-black font-bold py-4 px-8 rounded-xl hover:bg-[#86ea5c] shadow-[0_0_20px_rgba(155,255,110,0.2)] transition-all tracking-wide text-[1.1rem]"
                       >
-                        {step === TOTAL_STEPS ? "Submit Comprehensive Audit" : "Continue to Next Section"}
+                        {isSubmitting ? "Submitting..." : step === TOTAL_STEPS ? "Submit Comprehensive Audit" : "Continue to Next Section"}
                       </button>
                     </div>
+                    {error && (
+                      <p role="alert" className="text-sm font-semibold text-[#ff8a8a] text-center leading-relaxed">
+                        {error}
+                      </p>
+                    )}
                   </form>
                 </>
               ) : (

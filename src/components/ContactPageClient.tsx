@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { OFFICIAL_LINKS } from "@/constants/links";
+import { submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 // ─── FadeUp ────────────────────────────────────────────────────────────────────
 
 function FadeUp({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
@@ -43,8 +44,8 @@ const contactMethods = [
       </svg>
     ),
     label: "Call Us",
-    value: "+1 (555) 000-0000",
-    href: "tel:+15550000000",
+    value: "+880 1790-508929",
+    href: "tel:+8801790508929",
     accent: "#6ee7ff",
     rgb: "110,231,255",
   },
@@ -172,6 +173,8 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", company: "", budget: "", message: "" });
 
   const inputStyle: React.CSSProperties = {
@@ -188,9 +191,29 @@ function ContactForm() {
     fontFamily: "inherit",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      await submitWebsiteForm({
+        formType: "Contact growth audit",
+        source: "/contact",
+        name: form.name,
+        email: form.email,
+        message: form.message,
+        fields: {
+          company: form.company,
+          budget: form.budget,
+        },
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to submit the form right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -238,7 +261,7 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       {/* Name + Email */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+      <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
           <label style={{ fontSize: "0.75rem", fontWeight: 700, color: "rgba(240,240,248,0.5)", display: "block", marginBottom: "6px", letterSpacing: "0.04em" }}>
             Full Name *
@@ -272,7 +295,7 @@ function ContactForm() {
       </div>
 
       {/* Company + Budget */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+      <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
           <label style={{ fontSize: "0.75rem", fontWeight: 700, color: "rgba(240,240,248,0.5)", display: "block", marginBottom: "6px", letterSpacing: "0.04em" }}>
             Company
@@ -328,17 +351,25 @@ function ContactForm() {
       <button
         type="submit"
         className="btn-glow"
+        disabled={isSubmitting}
         style={{
           padding: "15px 32px",
           fontSize: "0.95rem",
-          cursor: "pointer",
+          cursor: isSubmitting ? "not-allowed" : "pointer",
           border: "none",
           width: "100%",
           marginTop: "4px",
+          opacity: isSubmitting ? 0.75 : 1,
         }}
       >
         Send Message →
       </button>
+
+      {error && (
+        <p role="alert" style={{ fontSize: "0.78rem", color: "#ff8a8a", textAlign: "center", lineHeight: 1.5 }}>
+          {error}
+        </p>
+      )}
 
       <p style={{ fontSize: "0.72rem", color: "rgba(240,240,248,0.3)", textAlign: "center" }}>
         No spam. No sales pressure. Just an honest conversation about your growth.
@@ -495,7 +526,7 @@ export default function ContactPageClient() {
 
       {/* ── Form + FAQ Grid ── */}
       <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px 100px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "40px", alignItems: "start" }}>
+        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "40px", alignItems: "start" }}>
 
           {/* Left: Form */}
           <FadeUp delay={0}>
@@ -555,9 +586,10 @@ export default function ContactPageClient() {
                 </h3>
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   {[
-                    { label: "LinkedIn", href: "https://linkedin.com/company/ablyart" },
-                    { label: "Twitter / X", href: "https://twitter.com/ablyart" },
-                    { label: "Instagram", href: "https://instagram.com/ablyart" },
+                    { label: "X", href: OFFICIAL_LINKS.x },
+                    { label: "Facebook", href: OFFICIAL_LINKS.facebook },
+                    { label: "Instagram", href: OFFICIAL_LINKS.instagram },
+                    { label: "YouTube", href: OFFICIAL_LINKS.youtube },
                   ].map((s) => (
                     <a
                       key={s.label}
@@ -609,9 +641,13 @@ export default function ContactPageClient() {
         @media (max-width: 900px) {
           .contact-methods { grid-template-columns: 1fr !important; }
           .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-form-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 600px) {
           .contact-methods { grid-template-columns: 1fr !important; }
+          .contact-grid { gap: 24px !important; }
+          .contact-grid .glass-card { padding: 28px 20px !important; }
+          .contact-form-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </main>

@@ -17,7 +17,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
-    setIsVisible(true);
+    const revealFrame = window.requestAnimationFrame(() => setIsVisible(true));
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -45,6 +45,7 @@ export default function CustomCursor() {
     document.body.style.cursor = "none";
 
     return () => {
+      window.cancelAnimationFrame(revealFrame);
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
       document.body.style.cursor = "auto";

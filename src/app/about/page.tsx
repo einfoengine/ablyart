@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import AboutPageClient from "@/components/AboutPageClient";
 
 export const metadata: Metadata = {
-  title: "About Us — ablyart",
+  title: "About AblyArt | Growth Services Team",
   description:
-    "Learn about ablyart — a 360° digital marketing agency built for scalable brands. Meet the team, discover our values, and see the journey behind $18M+ in client revenue.",
+    "Learn about AblyArt, a startup focused on SEO, GEO & AEO, social media management, media buying, and lead generation.",
 };
 
 export default function AboutPage() {

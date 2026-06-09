@@ -86,7 +86,7 @@ export default function NotFound() {
             lineHeight: 1.75,
           }}
         >
-          Looks like you wandered into empty space. The page you are looking for doesn't exist or has been moved.
+          Looks like you wandered into empty space. The page you are looking for doesn&apos;t exist or has been moved.
         </motion.p>
         
         <motion.div

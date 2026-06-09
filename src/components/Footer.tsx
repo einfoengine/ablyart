@@ -1,13 +1,19 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import NextLink from "next/link";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { OFFICIAL_LINKS } from "@/constants/links";
+import { submitWebsiteForm } from "@/utils/submitWebsiteForm";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [time, setTime] = useState<string>("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [newsletterError, setNewsletterError] = useState("");
 
   useEffect(() => {
     const updateClock = () => {
@@ -23,26 +29,46 @@ export default function Footer() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleNewsletterSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setNewsletterError("");
+    setNewsletterStatus("loading");
+
+    try {
+      await submitWebsiteForm({
+        formType: "Footer newsletter",
+        source: "Footer",
+        email: newsletterEmail,
+        fields: {
+          email: newsletterEmail,
+        },
+      });
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+    } catch (err) {
+      setNewsletterStatus("error");
+      setNewsletterError(err instanceof Error ? err.message : "Unable to subscribe right now. Please try again.");
+    }
+  };
+
   const links = {
     Services: [
       { name: "Lead Generation", href: "/services/lead-generation" },
-      { name: "SEO & Content", href: "#" },
-      { name: "Paid Ads", href: "#" },
-      { name: "Social Media", href: "#" },
-      { name: "Web Design", href: "#" },
-      { name: "Email Marketing", href: "#" }
+      { name: "SEO & Content", href: "/services/seo-geo-aeo" },
+      { name: "Paid Ads", href: "/services/media-buying" },
+      { name: "Social Media", href: "/services/social-media-management" }
     ],
     Company: [
-      { name: "About Us", href: "#" },
-      { name: "Case Studies", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Press", href: "#" }
+      { name: "About Us", href: "/about" },
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Careers", href: "/contact" },
+      { name: "Blog", href: "/blog" },
+      { name: "Press", href: "/contact" }
     ],
     Legal: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" }
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms of Service", href: "/terms-of-service" },
+      { name: "Cookie Policy", href: "/cookie-policy" }
     ],
   };
 
@@ -89,7 +115,7 @@ export default function Footer() {
               Ready to <span className="gradient-text drop-shadow-[0_0_20px_rgba(155,255,110,0.2)]">grow?</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-400 font-medium tracking-tight max-w-xl">
-              Stop losing traffic to competitors. Let's build a predictable revenue engine for your brand.
+              Stop losing traffic to competitors. Let&apos;s build a predictable revenue engine for your brand.
             </p>
           </motion.div>
 
@@ -107,19 +133,28 @@ export default function Footer() {
               <h3 className="text-white font-extrabold mb-1 tracking-tight text-lg relative z-10">Weekly Growth Insights</h3>
               <p className="text-[0.95rem] text-gray-400 mb-6 font-medium relative z-10">No fluff. Just proven scaling tactics delivered straight to your inbox.</p>
               
-              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 relative z-10">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 relative z-10">
                 <input 
                   type="email" 
+                  required
+                  value={newsletterEmail}
+                  onChange={(event) => setNewsletterEmail(event.target.value)}
                   placeholder="name@company.com" 
                   className="w-full bg-[#060608]/80 border border-white/10 rounded-xl px-4 py-4 text-[0.95rem] outline-none focus:border-[var(--accent)] transition-colors font-semibold text-white placeholder:text-gray-600 shadow-inner"
                 />
-                <button type="submit" className="bg-white hover:bg-[var(--accent)] text-black px-8 py-4 rounded-xl text-[0.95rem] font-bold shadow-lg transition-all whitespace-nowrap hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50">
-                  <span>Join</span>
+                <button type="submit" disabled={newsletterStatus === "loading"} className="bg-white hover:bg-[var(--accent)] text-black px-8 py-4 rounded-xl text-[0.95rem] font-bold shadow-lg transition-all whitespace-nowrap hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50">
+                  <span>{newsletterStatus === "loading" ? "Joining..." : "Join"}</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
               </form>
+              {newsletterStatus === "success" && (
+                <p className="relative z-10 mt-3 text-sm font-semibold text-[var(--accent)]">You&apos;re in. Check your inbox.</p>
+              )}
+              {newsletterStatus === "error" && (
+                <p role="alert" className="relative z-10 mt-3 text-sm font-semibold text-[#ff8a8a]">{newsletterError}</p>
+              )}
             </div>
           </motion.div>
         </div>
@@ -177,7 +212,7 @@ export default function Footer() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full flex justify-center items-center py-10 md:py-16 relative z-10"
         >
-          <a href="#" className="flex items-center gap-4 md:gap-6 no-underline group/logo">
+          <NextLink href="/" className="flex items-center gap-4 md:gap-6 no-underline group/logo">
             <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 flex items-center justify-center transition-all duration-500 group-hover/logo:scale-105">
               <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="49.5" cy="60" r="28" stroke="#2FD27A" strokeWidth="14" fill="none" />
@@ -187,7 +222,7 @@ export default function Footer() {
             <span className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white leading-none transition-colors duration-500">
               Ably<em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.5)" }}>Art</em>
             </span>
-          </a>
+          </NextLink>
         </motion.div>
 
         <motion.div 
@@ -203,14 +238,17 @@ export default function Footer() {
           
           {/* Socials */}
           <div className="flex items-center gap-4 order-2">
-            {[ 
-              { name: "X (Twitter)", icon: <FaXTwitter size={18} />, bg: "hover:bg-white hover:text-black" },
-              { name: "LinkedIn", icon: <FaLinkedin size={18} />, bg: "hover:bg-[#0A66C2] hover:text-[#fff] hover:border-[#0A66C2]" },
-              { name: "Instagram", icon: <FaInstagram size={18} />, bg: "hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white hover:border-transparent" },
+            {[
+              { name: "X (Twitter)", href: OFFICIAL_LINKS.x, icon: <FaXTwitter size={18} />, bg: "hover:bg-white hover:text-black" },
+              { name: "Facebook", href: OFFICIAL_LINKS.facebook, icon: <FaFacebook size={18} />, bg: "hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2]" },
+              { name: "Instagram", href: OFFICIAL_LINKS.instagram, icon: <FaInstagram size={18} />, bg: "hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white hover:border-transparent" },
+              { name: "YouTube", href: OFFICIAL_LINKS.youtube, icon: <FaYoutube size={18} />, bg: "hover:bg-[#ff0000] hover:text-white hover:border-[#ff0000]" },
             ].map((social, i) => (
               <a 
                 key={i} 
-                href="#" 
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.name}
                 className={`w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-white border border-white/10 transition-all duration-300 ${social.bg} hover:-translate-y-1.5 shadow-lg relative group/btn overflow-hidden`}
               >

@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 // ─── Animation helpers ─────────────────────────────────────────────────────────
 
@@ -21,7 +23,7 @@ function FadeUp({
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -32,10 +34,10 @@ function FadeUp({
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
 const stats = [
-  { value: "250+", label: "Brands Scaled" },
-  { value: "$18M+", label: "Client Revenue Generated" },
-  { value: "4.9★", label: "Average Client Rating" },
-  { value: "6.2×", label: "Average ROAS Delivered" },
+  { value: "Search", label: "SEO, GEO & AEO visibility planning" },
+  { value: "Social", label: "Consistent content and trust building" },
+  { value: "Media", label: "Paid campaign direction and traffic quality" },
+  { value: "Leads", label: "Prospecting systems and call generation" },
 ];
 
 const values = [
@@ -101,64 +103,59 @@ const values = [
 const team = [
   {
     name: "Shane Wazal Maruf",
-    role: "Founder & Chief Growth Strategist",
-    bio: "Serial builder with a decade in digital marketing. Obsessed with reverse-engineering what makes brands scale.",
+    role: "Chairman & Chief Growth Strategist",
     initials: "SW",
     accent: "#9bff6e",
+    slug: "shane-wazal-maruf",
   },
   {
-    name: "Creative Lead",
-    role: "Head of Content & Brand",
-    bio: "Storyteller turned strategist. Makes brands impossible to ignore across every platform they touch.",
-    initials: "CL",
+    name: "Sheikh Abir Ali",
+    role: "SEO Strategist",
+    initials: "SA",
     accent: "#6ee7ff",
+    slug: "sheikh-abir-ali",
   },
   {
-    name: "Performance Lead",
-    role: "Head of Paid Acquisition",
-    bio: "Data-first media buyer who turns ad spend into predictable pipeline. Specialists in Meta, Google, and TikTok.",
-    initials: "PL",
+    name: "Sharar Tazbi",
+    role: "Lead Generation Expert",
+    initials: "ST",
     accent: "#ffb347",
+    slug: "sharar-tazbi",
   },
   {
-    name: "SEO & Funnel Lead",
-    role: "Head of Organic Growth",
-    bio: "Builds organic machines that compound over time — content, links, and technical SEO working in harmony.",
-    initials: "SF",
+    name: "Mridul Ishat Dip",
+    role: "Animation Specialist",
+    initials: "MD",
     accent: "#ff6eb4",
-  },
-];
-
-const timeline = [
-  {
-    year: "2020",
-    title: "The Beginning",
-    description: "Founded with a single client and a bold belief: that small and mid-sized businesses deserve enterprise-grade marketing.",
+    slug: "mridul-ishat-dip",
   },
   {
-    year: "2021",
-    title: "First $1M Generated",
-    description: "Hit our first major milestone — $1M in tracked client revenue. Proof that the system worked.",
+    name: "Fahim Bin Reza",
+    role: "Production Manager",
+    initials: "FR",
+    accent: "#9bff6e",
+    slug: "fahim-bin-reza",
   },
   {
-    year: "2022",
-    title: "Team Expands",
-    description: "Grew from a solo operation to a full team of specialists across content, paid media, SEO, and strategy.",
+    name: "Thouhid Azim",
+    role: "Content Writer",
+    initials: "TA",
+    accent: "#6ee7ff",
+    slug: "thouhid-azim",
   },
   {
-    year: "2023",
-    title: "100+ Brands",
-    description: "Crossed 100 active and past clients. Refined our 4-pillar growth framework based on accumulated data.",
+    name: "Affan Ahmed",
+    role: "Digital Marketing Strategist",
+    initials: "AA",
+    accent: "#ffb347",
+    slug: "affan-ahmed",
   },
   {
-    year: "2024",
-    title: "$18M+ Revenue",
-    description: "Crossed $18M in client revenue generated. Average client ROAS hit an all-time high of 6.2×.",
-  },
-  {
-    year: "2025→",
-    title: "The Next Chapter",
-    description: "Expanding into new verticals, new markets, and new partnerships. The goal: 10× everything.",
+    name: "Atikur Rahman",
+    role: "UI/UX Specialist",
+    initials: "AR",
+    accent: "#9bff6e",
+    slug: "atikur-rahman-ui-ux",
   },
 ];
 
@@ -273,7 +270,9 @@ function HeroSection() {
           }}
         >
           <a
-            href="#contact"
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow"
             style={{
               padding: "14px 32px",
@@ -285,7 +284,7 @@ function HeroSection() {
             Work With Us →
           </a>
           {/* <a
-            href="/work"
+            href="/case-studies"
             className="btn-outline"
             style={{
               padding: "14px 32px",
@@ -403,7 +402,7 @@ function MissionSection() {
                 marginBottom: "24px",
               }}
             >
-              Too many great businesses are invisible because they can't afford to play the traditional
+              Too many great businesses are invisible because they can&apos;t afford to play the traditional
               marketing game. We built ablyart to change that — giving ambitious brands access to
               full-stack growth systems that compound over time.
             </p>
@@ -476,7 +475,7 @@ function MissionSection() {
                 marginBottom: "24px",
               }}
             >
-              "To be the growth partner that 10,000 ambitious brands trust to build their digital empire."
+              &quot;To be the growth partner that 10,000 ambitious brands trust to build their digital empire.&quot;
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -516,6 +515,8 @@ function MissionSection() {
       <style>{`
         @media (max-width: 640px) {
           .about-mission-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .about-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .about-values-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
@@ -546,7 +547,7 @@ function ValuesSection() {
               <span className="gradient-text"> Every Decision</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1rem", maxWidth: "540px", margin: "0 auto", lineHeight: 1.7 }}>
-              These aren't wall-art mantras. They're the operating principles that shape how we work, who we hire, and what we build.
+              These aren&apos;t wall-art mantras. They&apos;re the operating principles that shape how we work, who we hire, and what we build.
             </p>
           </div>
         </FadeUp>
@@ -687,7 +688,7 @@ function TeamSection() {
           }}
         >
           {team.map((member, i) => (
-            <FadeUp key={member.name} delay={i * 0.1}>
+            <FadeUp key={member.slug} delay={i * 0.1}>
               <div
                 className="glass-card service-card"
                 style={{ padding: "28px 24px", textAlign: "center", height: "100%" }}
@@ -736,9 +737,6 @@ function TeamSection() {
                 >
                   {member.role}
                 </p>
-                <p style={{ fontSize: "0.82rem", color: "rgba(240,240,248,0.5)", lineHeight: 1.65 }}>
-                  {member.bio}
-                </p>
               </div>
             </FadeUp>
           ))}
@@ -783,20 +781,36 @@ function TeamSection() {
           </div>
         </FadeUp>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .about-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        }
+        @media (max-width: 640px) {
+          .about-team-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }
 
 function TimelineSection() {
+  const services = [
+    "SEO, GEO & AEO",
+    "Social Media Management",
+    "Media Buying",
+    "Lead Generation",
+  ];
+
   return (
     <section style={{ padding: "80px 24px 100px", background: "rgba(255,255,255,0.01)" }}>
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: "72px" }}>
+          <div className="glass-card" style={{ padding: "clamp(32px, 6vw, 56px)", textAlign: "center", overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
               <span className="tag-pill">
                 <span className="glow-dot" />
-                Our Journey
+                Current Focus
               </span>
             </div>
             <h2
@@ -804,87 +818,35 @@ function TimelineSection() {
                 fontSize: "clamp(2rem, 4.5vw, 3rem)",
                 fontWeight: 900,
                 letterSpacing: "-0.03em",
-                marginBottom: "16px",
+                marginBottom: "18px",
               }}
             >
-              From Idea to
-              <span className="gradient-text"> $18M+ Generated</span>
+              Built Around
+              <span className="gradient-text"> Four Growth Services</span>
             </h2>
+            <p style={{ color: "rgba(240,240,248,0.55)", fontSize: "1rem", maxWidth: "680px", margin: "0 auto 28px", lineHeight: 1.8 }}>
+              AblyArt is a startup focused on helping businesses improve visibility, trust, lead flow, and campaign performance through four core services: SEO, GEO & AEO, Social Media Management, Media Buying, and Lead Generation.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px" }}>
+              {services.map((service) => (
+                <span
+                  key={service}
+                  style={{
+                    padding: "10px 16px",
+                    borderRadius: "9999px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "rgba(240,240,248,0.72)",
+                    fontSize: "0.85rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
           </div>
         </FadeUp>
-
-        <div style={{ position: "relative" }}>
-          {/* Vertical line */}
-          <div
-            style={{
-              position: "absolute",
-              left: "80px",
-              top: "8px",
-              bottom: "8px",
-              width: "1px",
-              background: "linear-gradient(to bottom, transparent, rgba(155,255,110,0.3) 10%, rgba(155,255,110,0.3) 90%, transparent)",
-            }}
-          />
-
-          {timeline.map((item, i) => (
-            <FadeUp key={item.year} delay={i * 0.08}>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "32px",
-                  marginBottom: "44px",
-                  alignItems: "flex-start",
-                }}
-              >
-                {/* Year */}
-                <div style={{ width: "80px", flexShrink: 0, textAlign: "right", paddingRight: "4px" }}>
-                  <span
-                    style={{
-                      fontSize: "0.8rem",
-                      fontWeight: 800,
-                      color: i === timeline.length - 1 ? "var(--accent)" : "rgba(240,240,248,0.35)",
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {item.year}
-                  </span>
-                </div>
-
-                {/* Dot */}
-                <div style={{ flexShrink: 0, paddingTop: "3px" }}>
-                  <div
-                    style={{
-                      width: "10px",
-                      height: "10px",
-                      borderRadius: "50%",
-                      background: i === timeline.length - 1 ? "var(--accent)" : "rgba(155,255,110,0.4)",
-                      boxShadow: i === timeline.length - 1 ? "0 0 12px var(--accent)" : "none",
-                      marginLeft: "-4.5px",
-                    }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div style={{ flex: 1, paddingBottom: "4px" }}>
-                  <h3
-                    style={{
-                      fontSize: "1rem",
-                      fontWeight: 800,
-                      color: "#f0f0f8",
-                      marginBottom: "6px",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p style={{ fontSize: "0.85rem", color: "rgba(240,240,248,0.5)", lineHeight: 1.7 }}>
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -971,7 +933,9 @@ function CtaSection() {
 
             <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
               <a
-                href="#contact"
+                href={OFFICIAL_LINKS.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glow"
                 style={{
                   padding: "16px 40px",
@@ -982,8 +946,8 @@ function CtaSection() {
               >
                 Get a Free Audit →
               </a>
-              <a
-                href="/work"
+              <Link
+                href="/case-studies"
                 className="btn-outline"
                 style={{
                   padding: "16px 32px",
@@ -994,7 +958,7 @@ function CtaSection() {
                 }}
               >
                 See Our Results
-              </a>
+              </Link>
             </div>
           </div>
         </div>

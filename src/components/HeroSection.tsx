@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import { OFFICIAL_LINKS } from "@/constants/links";
 
 /* Canvas-based upward trending scrolling wave */
 function TrendingWave() {
@@ -64,7 +65,11 @@ function TrendingWave() {
       for (let i = 0; i <= steps; i++) {
         const x = (i / steps) * W;
         const y = getY(x, W, H, t);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
       ctx.shadowColor = "#9bff6e";
       ctx.shadowBlur = 20;
@@ -78,7 +83,11 @@ function TrendingWave() {
       for (let i = 0; i <= steps; i++) {
         const x = (i / steps) * W;
         const y = getY(x, W, H, t);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
       ctx.shadowColor = "#9bff6e";
       ctx.shadowBlur = 10;
@@ -124,7 +133,7 @@ function TrendingWave() {
   );
 }
 /* Floating metric card */
-function MetricCard({
+export function MetricCard({
   label,
   value,
   change,
@@ -315,14 +324,16 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
           }}
         >
           <Button
-            onClick={() => window.dispatchEvent(new Event("openAuditPotentialModal"))}
+            href={OFFICIAL_LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="primary"
             size="lg"
           >
             Check your scalability →
           </Button>
           {/* <a
-            href="/work"
+            href="/case-studies"
             className="btn-outline"
             style={{
               padding: "16px 36px",
@@ -336,39 +347,6 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
           </a> */}
         </div>
 
-        {/* Trust line */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
-            marginTop: "56px",
-            flexWrap: "wrap",
-          }}
-        >
-          {[
-            { value: "250+", label: "Clients Served" },
-            { value: "4.9★", label: "Avg. Rating" },
-            { value: "$18M+", label: "Revenue Generated" },
-          ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontSize: "1.5rem",
-                  fontWeight: 800,
-                  color: "#9bff6e",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {stat.value}
-              </div>
-              <div style={{ fontSize: "0.78rem", color: "rgba(240,240,248,0.5)", fontWeight: 500 }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Floating Industry Tags */}

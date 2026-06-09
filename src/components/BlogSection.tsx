@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
@@ -10,6 +11,7 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   imageGrad: string;
+  slug?: string;
 };
 
 const defaultBlogPosts: BlogPost[] = [
@@ -19,6 +21,7 @@ const defaultBlogPosts: BlogPost[] = [
     title: "How to Build a High-Converting Marketing Funnel in 2024",
     excerpt: "Discover the critical components of a modern, data-driven marketing funnel that consistently generates qualified leads.",
     imageGrad: "linear-gradient(135deg, rgba(155,255,110,0.15) 0%, rgba(155,255,110,0.02) 100%)",
+    slug: "high-converting-marketing-funnel-2025",
   },
   {
     category: "Paid Media",
@@ -26,13 +29,15 @@ const defaultBlogPosts: BlogPost[] = [
     title: "The Death of Traditional ROAS: Scaling Ad Spend Today",
     excerpt: "Why relying solely on platform ROAS is killing your scale, and the blended metrics you should be tracking instead.",
     imageGrad: "linear-gradient(135deg, rgba(110,231,255,0.15) 0%, rgba(110,231,255,0.02) 100%)",
+    slug: "blended-roas-scaling-ad-spend",
   },
   {
-    category: "Web Design",
+    category: "Conversion Strategy",
     date: "Jul 30, 2024",
     title: "Anatomy of a High-Converting Landing Page",
     excerpt: "Breaking down the UI, copy, and offer structures that actually keep visitors engaged and drive action on your website.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
+    slug: "high-converting-landing-page",
   }
 ];
 
@@ -70,14 +75,18 @@ export default function BlogSection({
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {customPosts.map((post, index) => (
-            <motion.div
+            <NextLink
               key={index}
+              href={post.slug ? `/blog/${post.slug}` : "/blog"}
+              className="no-underline block h-full"
+            >
+              <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-[#0b0b0e] rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-[1.02] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.15)] shadow-lg flex flex-col cursor-pointer"
-            >
+              className="bg-[#0b0b0e] rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-[1.02] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.15)] shadow-lg flex flex-col cursor-pointer h-full"
+              >
               {/* Image Placeholder */}
               <div 
                 className="w-full h-48 sm:h-56 relative overflow-hidden"
@@ -117,14 +126,15 @@ export default function BlogSection({
                   </span>
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </NextLink>
           ))}
         </div>
 
         {/* View All Button */}
         <div className="mt-16 text-center">
-          <a
-            href="#blog"
+          <NextLink
+            href="/blog"
             className="btn-outline inline-flex items-center justify-center font-bold"
             style={{
               padding: "16px 36px",
@@ -133,7 +143,7 @@ export default function BlogSection({
             }}
           >
             View All Posts
-          </a>
+          </NextLink>
         </div>
       </div>
     </section>
