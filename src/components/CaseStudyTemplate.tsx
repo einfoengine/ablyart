@@ -67,12 +67,13 @@ export type CaseStudyTemplateData = {
   beforeAfter: ComparisonRow[];
   results: ResultItem[];
   proofAssets: string[];
-  clientQuote: {
-    quote: string;
+  founderSummary: {
+    summary: string;
     name: string;
     role: string;
   };
   whyItWorked: string[];
+  serviceLinks: RelatedCaseStudy[];
   relatedCaseStudies: RelatedCaseStudy[];
 };
 
@@ -204,7 +205,7 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
           badge="Client Snapshot"
           titleBase="The Starting"
           titleHighlight="Point"
-          subtitle="This demo template keeps the business context clear before explaining any tactics."
+          subtitle="The context below keeps the claim basis clear before explaining the work."
         />
         <FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -334,9 +335,9 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
       <SectionBand>
         <SectionHeader
           badge="Results"
-          titleBase="Demo Placeholder"
+          titleBase="Founder-Reported"
           titleHighlight="Outcomes"
-          subtitle="These metrics are sample placeholders and must be replaced with verified client data before publishing a real case study."
+          subtitle="These results are limited to the founder-backed proof points provided for this case study."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {data.results.map((item, index) => (
@@ -355,7 +356,7 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
           <FadeUp>
             <SmallLabel>Proof Assets</SmallLabel>
             <h2 className="mt-6 text-3xl md:text-5xl font-black tracking-tighter text-white leading-tight">
-              Add proof before this becomes a live client claim.
+              Recommended proof assets to add.
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -373,12 +374,12 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
       <SectionBand>
         <FadeUp>
           <div className="glass-card p-8 md:p-12 text-center max-w-4xl mx-auto">
-            <div className="text-[var(--accent)] font-black uppercase tracking-[0.16em] text-xs mb-6">Demo Placeholder Client Quote</div>
-            <blockquote className="text-2xl md:text-4xl text-white font-black tracking-tight leading-tight mb-8">
-              &quot;{data.clientQuote.quote}&quot;
-            </blockquote>
-            <div className="text-gray-400 font-semibold">{data.clientQuote.name}</div>
-            <div className="text-gray-600 text-sm mt-1">{data.clientQuote.role}</div>
+            <div className="text-[var(--accent)] font-black uppercase tracking-[0.16em] text-xs mb-6">Founder-Backed Summary</div>
+            <p className="text-2xl md:text-4xl text-white font-black tracking-tight leading-tight mb-8">
+              {data.founderSummary.summary}
+            </p>
+            <div className="text-gray-400 font-semibold">{data.founderSummary.name}</div>
+            <div className="text-gray-600 text-sm mt-1">{data.founderSummary.role}</div>
           </div>
         </FadeUp>
       </SectionBand>
@@ -423,6 +424,23 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
       </SectionBand>
 
       <SectionBand className="bg-white/[0.01]">
+        <SectionHeader
+          badge="Internal Links"
+          titleBase="Related"
+          titleHighlight="Services"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+          {data.serviceLinks.map((service, index) => (
+            <FadeUp key={service.href} delay={index * 0.05}>
+              <Link href={service.href} className="glass-card p-7 h-full block no-underline group">
+                <h3 className="text-xl font-black text-white mb-3 group-hover:text-[var(--accent)] transition-colors">{service.title}</h3>
+                <p className="text-gray-400 leading-relaxed mb-6">{service.description}</p>
+                <span className="text-[var(--accent)] text-sm font-black uppercase tracking-wider">View Service</span>
+              </Link>
+            </FadeUp>
+          ))}
+        </div>
+
         <SectionHeader
           badge="Related Case Studies"
           titleBase="Explore More"

@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import PricingSection from "@/components/PricingSection";
 import BlogSection from "@/components/BlogSection";
 import AgitationSection from "@/components/AgitationSection";
@@ -85,8 +84,8 @@ const socialArticles = [
   {
     category: "Media Buying",
     date: "Aug 29, 2024",
-    title: "Scaling Meta Ads: How We Hit 4.5x ROAS in 30 Days",
-    excerpt: "Stop boosting posts. Here is the exact creative testing architecture we use to scale paid campaigns highly profitably.",
+    title: "Scaling Meta Ads With Offer, Creative, and Lead Path Alignment",
+    excerpt: "Stop boosting posts. A stronger paid campaign connects the offer, audience, creative testing, and lead capture path.",
     imageGrad: "linear-gradient(135deg, rgba(176,158,255,0.15) 0%, rgba(176,158,255,0.02) 100%)",
   },
   {
@@ -99,12 +98,8 @@ const socialArticles = [
 ];
 
 function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <section
-      ref={ref}
       style={{
         position: "relative",
         paddingTop: "140px",
@@ -170,7 +165,7 @@ function HeroSection() {
             lineHeight: 1.75,
           }}
         >
-          Stop posting into the void. From aggressive performance media buying to creating highly engaging viral organic content, we build your brand's digital megaphone.
+          Stop posting into the void. From aggressive performance media buying to creating highly engaging viral organic content, we build your brand&apos;s digital megaphone.
         </motion.p>
         
         <motion.div

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { OFFICIAL_LINKS } from "@/constants/links";
 
@@ -22,7 +23,7 @@ function FadeUp({
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -33,10 +34,10 @@ function FadeUp({
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
 const stats = [
-  { value: "250+", label: "Brands Scaled" },
-  { value: "$18M+", label: "Client Revenue Generated" },
-  { value: "4.9★", label: "Average Client Rating" },
-  { value: "6.2×", label: "Average ROAS Delivered" },
+  { value: "20+", label: "Brands transformed since 2022" },
+  { value: "50+", label: "Brands scaled across founder experience" },
+  { value: "14+", label: "Years across design, marketing, and growth" },
+  { value: "250+", label: "Video campaigns and animations delivered" },
 ];
 
 const values = [
@@ -138,8 +139,8 @@ const timeline = [
   },
   {
     year: "2021",
-    title: "First $1M Generated",
-    description: "Hit our first major milestone — $1M in tracked client revenue. Proof that the system worked.",
+    title: "Broader Growth Experience",
+    description: "Built hands-on experience across design, content, marketing, development, and growth systems.",
   },
   {
     year: "2022",
@@ -148,12 +149,12 @@ const timeline = [
   },
   {
     year: "2023",
-    title: "100+ Brands",
-    description: "Crossed 100 active and past clients. Refined our 4-pillar growth framework based on accumulated data.",
+    title: "50+ Brands Scaled",
+    description: "Reached founder-reported experience across 50+ brands through broader marketing and growth work.",
   },
   {
     year: "2024",
-    title: "$18M+ Revenue",
+    title: "Production Systems Mature",
     description: "Crossed $18M in client revenue generated. Average client ROAS hit an all-time high of 6.2×.",
   },
   {
@@ -288,7 +289,7 @@ function HeroSection() {
             Work With Us →
           </a>
           {/* <a
-            href="/work"
+            href="/case-studies"
             className="btn-outline"
             style={{
               padding: "14px 32px",
@@ -406,7 +407,7 @@ function MissionSection() {
                 marginBottom: "24px",
               }}
             >
-              Too many great businesses are invisible because they can't afford to play the traditional
+              Too many great businesses are invisible because they can&apos;t afford to play the traditional
               marketing game. We built ablyart to change that — giving ambitious brands access to
               full-stack growth systems that compound over time.
             </p>
@@ -479,7 +480,7 @@ function MissionSection() {
                 marginBottom: "24px",
               }}
             >
-              "To be the growth partner that 10,000 ambitious brands trust to build their digital empire."
+              &quot;To be the growth partner that 10,000 ambitious brands trust to build their digital empire.&quot;
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -549,7 +550,7 @@ function ValuesSection() {
               <span className="gradient-text"> Every Decision</span>
             </h2>
             <p style={{ color: "rgba(240,240,248,0.5)", fontSize: "1rem", maxWidth: "540px", margin: "0 auto", lineHeight: 1.7 }}>
-              These aren't wall-art mantras. They're the operating principles that shape how we work, who we hire, and what we build.
+              These aren&apos;t wall-art mantras. They&apos;re the operating principles that shape how we work, who we hire, and what we build.
             </p>
           </div>
         </FadeUp>
@@ -987,8 +988,8 @@ function CtaSection() {
               >
                 Get a Free Audit →
               </a>
-              <a
-                href="/work"
+              <Link
+                href="/case-studies"
                 className="btn-outline"
                 style={{
                   padding: "16px 32px",
@@ -999,7 +1000,7 @@ function CtaSection() {
                 }}
               >
                 See Our Results
-              </a>
+              </Link>
             </div>
           </div>
         </div>

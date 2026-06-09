@@ -333,7 +333,7 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
             Check your scalability →
           </Button>
           {/* <a
-            href="/work"
+            href="/case-studies"
             className="btn-outline"
             style={{
               padding: "16px 36px",

@@ -22,7 +22,7 @@ export default function Navbar() {
   // Nav items → all dedicated pages
   const navItems = [
     { label: "Home",    href: "/" },
-    { label: "Work",    href: "/work" },
+    { label: "Work",    href: "/case-studies" },
     { label: "About",   href: "/about" },
     { label: "Blog",    href: "/blog" },
     { label: "Contact", href: "/contact" },

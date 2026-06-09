@@ -62,7 +62,7 @@ export default function Footer() {
     ],
     Company: [
       { name: "About Us", href: "/about" },
-      { name: "Case Studies", href: "/work" },
+      { name: "Case Studies", href: "/case-studies" },
       { name: "Careers", href: "/contact" },
       { name: "Blog", href: "/blog" },
       { name: "Press", href: "/contact" }

@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Explore founder-backed AblyArt case studies across media buying, lead generation, SEO, social media, and conversion-focused websites.",
 };
 
-export default function WorkPage() {
+export default function CaseStudiesPage() {
   return <WorkPageClient />;
 }

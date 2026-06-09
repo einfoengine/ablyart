@@ -1,12 +1,12 @@
 import type { CaseStudyTemplateData } from "@/components/CaseStudyTemplate";
 
-export type Category = "All" | "Social Media" | "Lead Generation" | "Funnel" | "SEO";
+export type Category = "All" | "Media Buying" | "Lead Generation" | "SEO, GEO & AEO" | "Social Media Management";
 
 export interface CaseStudy {
   id: string;
   client: string;
   industry: string;
-  category: Category;
+  category: Exclude<Category, "All">;
   tagline: string;
   description: string;
   services: string[];
@@ -15,297 +15,554 @@ export interface CaseStudy {
   rgb: string;
   duration: string;
   featured?: boolean;
+  metaTitle: string;
+  metaDescription: string;
 }
+
+type CaseStudyDetails = {
+  businessProblem: string[];
+  diagnosis: CaseStudyTemplateData["diagnosis"];
+  strategy: CaseStudyTemplateData["strategy"];
+  timeline: CaseStudyTemplateData["timeline"];
+  beforeAfter: CaseStudyTemplateData["beforeAfter"];
+  proofAssets: string[];
+  founderSummary: string;
+  whyItWorked: string[];
+  relatedIds: string[];
+  serviceLinks: CaseStudyTemplateData["serviceLinks"];
+};
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "nova-ecom",
-    client: "HBK",
-    industry: "E-Commerce / Fashion",
-    category: "Funnel",
-    tagline: "From 1.2% to 4.8% conversion rate in 90 days.",
+    id: "meta-ads-800-leads-14-days",
+    client: "800+ Leads in 14 Days",
+    industry: "Founder-reported paid media campaign",
+    category: "Media Buying",
+    tagline: "800+ leads and $2,000+ revenue generated in a 14-day campaign window.",
     description:
-      "HBK was burning budget on ads but losing customers at checkout. We rebuilt their entire funnel, landing pages, checkout flow, email sequences, and deployed A/B tests weekly until the numbers moved.",
-    services: ["Funnel Redesign", "CRO", "Email Automation", "Paid Ads"],
+      "A founder-reported previous campaign focused on fast lead flow and revenue through offer clarity, ad structure, audience targeting, creative testing, and lead capture.",
+    services: ["Media Buying", "Lead Generation"],
     results: [
-      { label: "Conversion Rate", value: "4.8%", delta: "+300%" },
-      { label: "Revenue MoM", value: "$240K", delta: "+188%" },
-      { label: "Cart Abandonment", value: "31%", delta: "-44%" },
-      { label: "ROAS", value: "6.2x", delta: "+210%" },
-    ],
-    color: "#9bff6e",
-    rgb: "155,255,110",
-    duration: "90 days",
-    featured: true,
-  },
-  {
-    id: "apex-saas",
-    client: "An Naada",
-    industry: "B2B / Software",
-    category: "Lead Generation",
-    tagline: "482 qualified demos booked in a single quarter.",
-    description:
-      "An Naada had a great product but zero inbound engine. We built a LinkedIn outbound system paired with SEO-driven content and a high-converting demo booking funnel that flooded their pipeline with decision-makers.",
-    services: ["LinkedIn Outbound", "Content Marketing", "SEO", "Demo Funnels"],
-    results: [
-      { label: "Demos Booked", value: "482", delta: "+0 to 482" },
-      { label: "Cost per Demo", value: "$38", delta: "-62% vs target" },
-      { label: "MQL to SQL", value: "68%", delta: "+45 pts" },
-      { label: "ARR Added", value: "$1.2M", delta: "Q1 impact" },
+      { label: "Leads generated", value: "800+" },
+      { label: "Revenue generated", value: "$2,000+" },
+      { label: "Campaign window", value: "14 days" },
     ],
     color: "#6ee7ff",
     rgb: "110,231,255",
-    duration: "1 quarter",
+    duration: "14 days",
     featured: true,
+    metaTitle: "800+ Leads Meta Ads Case Study | AblyArt",
+    metaDescription:
+      "Founder-backed Meta Ads case study showing 800+ leads and $2,000+ revenue generated in a 14-day campaign window.",
   },
   {
-    id: "bright-clinic",
-    client: "Hayawear",
-    industry: "Healthcare / Aesthetics",
-    category: "Social Media",
-    tagline: "0 to 84K followers and fully booked 6 weeks out.",
+    id: "email-marketing-10k-sales",
+    client: "$10K Sales From Email",
+    industry: "Founder-reported email marketing result",
+    category: "Lead Generation",
+    tagline: "$10K in sales generated from email marketing for one client.",
     description:
-      "Hayawear had no social presence. We developed a content strategy, built a production system, and ran targeted awareness campaigns that built a loyal community and filled their appointment calendar.",
-    services: ["Social Media Management", "Custom Web Design", "Paid Social", "Community"],
+      "A founder-reported previous email conversion project where the work focused on email strategy, offer positioning, copywriting, follow-up structure, and conversion-focused messaging.",
+    services: ["Lead Generation", "Email Marketing"],
     results: [
-      { label: "Followers Gained", value: "84K", delta: "from 0" },
-      { label: "Avg. Reel Reach", value: "220K", delta: "/month" },
-      { label: "Bookings Increase", value: "3.4x", delta: "MoM" },
-      { label: "Waitlist", value: "6 wks", delta: "fully booked" },
+      { label: "Sales generated", value: "$10K" },
+      { label: "Revenue channel", value: "Email" },
+      { label: "Claim basis", value: "Founder-reported result" },
     ],
-    color: "#ff6eb4",
-    rgb: "255,110,180",
-    duration: "5 months",
+    color: "#9bff6e",
+    rgb: "155,255,110",
+    duration: "Founder-reported client result",
+    featured: true,
+    metaTitle: "$10K Email Marketing Sales Case Study | AblyArt",
+    metaDescription:
+      "Founder-backed email marketing case study showing $10K in sales generated for one client through email conversion work.",
   },
   {
-    id: "zenith-legal",
-    client: "Jadroo",
-    industry: "Legal Services",
-    category: "SEO",
-    tagline: "Page 1 for 38 high-intent keywords in 4 months.",
+    id: "strategic-seo-40k-organic-visitors",
+    client: "40K+ Organic Visitors",
+    industry: "Founder-reported average from previous SEO work",
+    category: "SEO, GEO & AEO",
+    tagline: "Average 40K+ organic visitors generated through strategic SEO.",
     description:
-      "Jadroo was invisible on Google. We performed a full technical SEO audit, rebuilt their content architecture, and launched a targeted link-building campaign that pushed them to the top for their most competitive terms.",
-    services: ["Technical SEO", "Content Strategy", "Link Building", "Local SEO"],
+      "A founder-reported average from previous SEO work focused on technical SEO, content structure, search intent, keyword mapping, internal linking, and conversion-focused landing pages.",
+    services: ["SEO, GEO & AEO"],
     results: [
-      { label: "Pg-1 Keywords", value: "38", delta: "from 3" },
-      { label: "Organic Traffic", value: "+312%", delta: "in 4 months" },
-      { label: "Avg. Position", value: "3.1", delta: "from 24.7" },
-      { label: "Leads from SEO", value: "+190%", delta: "YoY" },
+      { label: "Organic visitors", value: "40K+", delta: "Founder-reported average" },
+      { label: "Growth channel", value: "SEO" },
+      { label: "Focus", value: "Search visibility" },
     ],
     color: "#ffb347",
     rgb: "255,179,71",
-    duration: "4 months",
+    duration: "Previous SEO work",
+    metaTitle: "40K+ Organic Visitors SEO Case Study | AblyArt",
+    metaDescription:
+      "Founder-backed SEO case study based on a reported average of 40K+ organic visitors generated through strategic SEO work.",
   },
   {
-    id: "pulse-fitness",
-    client: "Khas Food",
-    industry: "Health & Wellness",
-    category: "Social Media",
-    tagline: "Viral campaign generated 2.1M organic impressions.",
+    id: "social-media-engagement-growth",
+    client: "400% Social Engagement Growth",
+    industry: "Founder-reported average from previous social work",
+    category: "Social Media Management",
+    tagline: "Average 400% social media engagement growth through content systems.",
     description:
-      "Khas Food wanted a brand moment. We designed and executed a 30-day challenge campaign that went viral on TikTok and Instagram, dramatically growing their email list and driving a surge in memberships.",
-    services: ["Campaign Strategy", "UGC Production", "Influencer Outreach", "Email List Growth"],
+      "A founder-reported average from previous social media work supported by content planning, creative direction, campaign production, publishing systems, and message consistency.",
+    services: ["Social Media Management", "Content Systems"],
     results: [
-      { label: "Organic Impressions", value: "2.1M", delta: "in 30 days" },
-      { label: "Email Signups", value: "14,200", delta: "from campaign" },
-      { label: "New Members", value: "+840", delta: "membership surge" },
-      { label: "Media Coverage", value: "12", delta: "press mentions" },
+      { label: "Engagement growth", value: "400%", delta: "Founder-reported average" },
+      { label: "Video campaigns", value: "250+" },
+      { label: "Static designs/posts", value: "100K+" },
     ],
-    color: "#c4b5fd",
-    rgb: "196,181,253",
-    duration: "30 days",
+    color: "#ff6eb4",
+    rgb: "255,110,180",
+    duration: "Previous content work",
+    metaTitle: "400% Social Engagement Growth Case Study | AblyArt",
+    metaDescription:
+      "Founder-backed social media case study based on 400% average engagement growth, 250+ video campaigns, and 100K+ static designs/posts delivered.",
   },
   {
-    id: "vela-agency",
-    client: "OS PPharma",
-    industry: "Creative / B2B",
-    category: "Lead Generation",
-    tagline: "Cold email system bringing in 30+ discovery calls/month.",
+    id: "high-converting-websites-search-conversion",
+    client: "20+ High-Converting Websites",
+    industry: "Founder-backed website, SEO, and funnel experience",
+    category: "SEO, GEO & AEO",
+    tagline: "20+ international-level websites built for search visibility and conversion.",
     description:
-      "OS PPharma struggled to grow beyond referrals. We built a data-enriched cold email infrastructure, wrote high-converting sequences, and set up a simple CRM workflow that now runs almost entirely on autopilot.",
-    services: ["Cold Email Infrastructure", "Copywriting", "CRM Setup", "Automation"],
+      "Founder-backed website and funnel experience shaped by a CSE/software engineering background, technical architecture, buyer psychology, ranking, and conversion path planning.",
+    services: ["SEO, GEO & AEO", "Lead Generation"],
     results: [
-      { label: "Discovery Calls/Mo", value: "30+", delta: "from 4" },
-      { label: "Open Rate", value: "54%", delta: "industry avg: 24%" },
-      { label: "Reply Rate", value: "11%", delta: "industry avg: 3%" },
-      { label: "Pipeline Growth", value: "8x", delta: "in 60 days" },
+      { label: "Websites built", value: "20+" },
+      { label: "Build focus", value: "Search + conversion" },
+      { label: "Background", value: "CSE/software engineering" },
     ],
-    color: "#a3e635",
-    rgb: "163,230,53",
-    duration: "60 days",
+    color: "#b09eff",
+    rgb: "176,158,255",
+    duration: "Founder-backed previous work",
+    metaTitle: "High-Converting Website Case Study | AblyArt",
+    metaDescription:
+      "Founder-backed website and technical SEO case study based on 20+ international-level websites built for search and conversion.",
   },
 ];
 
-export const CATEGORIES: Category[] = ["All", "Social Media", "Lead Generation", "Funnel", "SEO"];
+export const CATEGORIES: Category[] = ["All", "Media Buying", "Lead Generation", "SEO, GEO & AEO", "Social Media Management"];
 
 export function getCaseStudyById(id: string) {
   return caseStudies.find((study) => study.id === id);
 }
 
-function serviceHeadline(study: CaseStudy) {
-  if (study.category === "SEO") {
-    return `How AblyArt Helped ${study.client} Turn Poor Search Visibility Into Qualified Leads`;
-  }
-  if (study.category === "Lead Generation") {
-    return `How AblyArt Helped ${study.client} Turn Weak Pipeline Into More Qualified Calls`;
-  }
-  if (study.category === "Social Media") {
-    return `How AblyArt Helped ${study.client} Turn Low Trust Into Stronger Demand`;
-  }
-  return `How AblyArt Helped ${study.client} Turn Leaky Traffic Into More Revenue`;
+const caseStudyDetails: Record<string, CaseStudyDetails> = {
+  "meta-ads-800-leads-14-days": {
+    businessProblem: [
+      "The client needed fast lead flow and revenue from a focused campaign, without a long ramp-up period.",
+      "The work centered on connecting the offer, paid campaign structure, audience targeting, creative testing, and lead capture into one focused path.",
+      "This result is presented as a founder-reported campaign result. No CPL, ROAS, ad spend, conversion rate, or client name is claimed.",
+    ],
+    diagnosis: [
+      {
+        title: "Offer clarity",
+        wrong: "The campaign needed a clearer reason for prospects to respond quickly.",
+        impact: "Weak offer clarity can create clicks without enough useful lead intent.",
+        change: "The offer needed to make the next step simple, specific, and easy to understand.",
+      },
+      {
+        title: "Audience and creative match",
+        wrong: "The campaign needed tighter alignment between target audience, ad angle, and creative message.",
+        impact: "When targeting and creative do not match, paid traffic can become expensive noise.",
+        change: "The campaign needed audience targeting and creative tests built around the same growth goal.",
+      },
+      {
+        title: "Lead capture path",
+        wrong: "The lead path needed to reduce friction between ad interest and form submission.",
+        impact: "Even strong ads lose value when the capture path is unclear or slow.",
+        change: "The lead path needed a direct flow from attention to action.",
+      },
+    ],
+    strategy: [
+      {
+        title: "Clarified the offer",
+        done: "The campaign message was shaped around a simple, direct reason to take action.",
+        mattered: "A clear offer gives paid traffic a stronger reason to become a lead.",
+        helped: "The campaign could focus attention on one conversion path instead of scattered actions.",
+      },
+      {
+        title: "Structured paid media around lead flow",
+        done: "Audience targeting, ad setup, and creative testing were organized around generating qualified lead volume.",
+        mattered: "Media buying works best when campaign structure supports the business objective.",
+        helped: "The work kept traffic, creative, and lead capture pointed at the same goal.",
+      },
+      {
+        title: "Improved the lead capture path",
+        done: "The lead path was kept focused so prospects could move from ad interest to submission quickly.",
+        mattered: "Reducing friction protects campaign momentum during a short campaign window.",
+        helped: "The 14-day campaign window could be used more efficiently.",
+      },
+    ],
+    timeline: [
+      { phase: "Phase 1", title: "Offer and audience review", description: "Clarified the campaign offer, audience assumptions, and lead capture goal." },
+      { phase: "Phase 2", title: "Campaign setup", description: "Structured the Meta Ads campaign around fast lead flow and focused creative angles." },
+      { phase: "Phase 3", title: "Creative testing", description: "Tested ad angles and message variations while keeping the conversion path consistent." },
+      { phase: "Phase 4", title: "14-day performance review", description: "Reviewed the founder-reported outcome: 800+ leads and $2,000+ revenue generated." },
+    ],
+    beforeAfter: [
+      { area: "Lead flow", before: "The client needed faster lead volume.", after: "Founder-reported result: 800+ leads generated." },
+      { area: "Revenue signal", before: "The campaign needed to create measurable sales activity.", after: "Founder-reported result: $2,000+ revenue generated." },
+      { area: "Timeline", before: "The campaign needed short-window traction.", after: "The reported campaign window was 14 days." },
+      { area: "Campaign focus", before: "Offer, audience, creative, and lead path needed to work together.", after: "The campaign was organized around one lead generation path." },
+    ],
+    proofAssets: [
+      "Recommended proof asset to add: Campaign dashboard screenshot.",
+      "Recommended proof asset to add: Lead tracking screenshot.",
+      "Recommended proof asset to add: Revenue or order tracking screenshot.",
+    ],
+    founderSummary:
+      "This project showed that a short paid campaign can work when the offer, targeting, creative angle, and lead path are connected under one growth system.",
+    whyItWorked: [
+      "The campaign focused on one clear business goal: lead generation.",
+      "The offer and lead capture path were aligned before scaling the message.",
+      "Creative testing supported the targeting instead of operating as a separate task.",
+      "The result is limited to the founder-reported numbers provided: 800+ leads, $2,000+ revenue, and 14 days.",
+    ],
+    relatedIds: ["email-marketing-10k-sales", "social-media-engagement-growth"],
+    serviceLinks: [
+      { title: "Media Buying", description: "Run paid campaigns that bring qualified traffic.", href: "/services/media-buying" },
+      { title: "Lead Generation", description: "Turn interest into calls and pipeline.", href: "/services/lead-generation" },
+    ],
+  },
+  "email-marketing-10k-sales": {
+    businessProblem: [
+      "The client had an audience or lead list, but email was not producing enough sales.",
+      "The work focused on email strategy, offer positioning, copywriting, follow-up structure, and conversion-focused messaging.",
+      "This is a founder-reported result for one client. No open rate, click rate, list size, email count, conversion rate, or revenue period is claimed.",
+    ],
+    diagnosis: [
+      {
+        title: "Email conversion path",
+        wrong: "The list was not being guided toward a clear purchase decision.",
+        impact: "An audience can exist without producing revenue if the follow-up path is weak.",
+        change: "The email flow needed a clearer offer, stronger copy, and a better reason to act.",
+      },
+      {
+        title: "Offer positioning",
+        wrong: "The sales message needed to connect the offer to the audience's buying motivation.",
+        impact: "Weak positioning can make even interested subscribers delay or ignore action.",
+        change: "The message needed to make value, urgency, and next step easier to understand.",
+      },
+      {
+        title: "Follow-up structure",
+        wrong: "The sequence needed a more deliberate progression from interest to purchase.",
+        impact: "Without structured follow-up, email revenue becomes inconsistent.",
+        change: "The email path needed to build confidence before asking for the sale.",
+      },
+    ],
+    strategy: [
+      {
+        title: "Reframed the offer",
+        done: "The offer was positioned around the buyer's reason to act.",
+        mattered: "Clear positioning helps email readers understand why the offer is relevant now.",
+        helped: "The campaign could connect attention with purchase intent.",
+      },
+      {
+        title: "Built conversion-focused messaging",
+        done: "Email copy and follow-up were shaped around trust, clarity, and action.",
+        mattered: "Email revenue depends on making the next step feel useful and low-friction.",
+        helped: "The reported result was $10K in sales from email marketing for one client.",
+      },
+      {
+        title: "Strengthened the follow-up path",
+        done: "The sequence created a more intentional path from audience interest to sales action.",
+        mattered: "Follow-up turns a passive list into an active revenue channel.",
+        helped: "Email became a clearer conversion channel in the founder-reported project.",
+      },
+    ],
+    timeline: [
+      { phase: "Phase 1", title: "Audience and offer review", description: "Reviewed the audience context and the offer being sent to the list." },
+      { phase: "Phase 2", title: "Message strategy", description: "Clarified the email angle, purchase motivation, and follow-up sequence." },
+      { phase: "Phase 3", title: "Email copy and launch", description: "Created conversion-focused messaging and supported the sales path through email." },
+      { phase: "Phase 4", title: "Result review", description: "Recorded the founder-reported result: $10K in sales generated from email marketing for one client." },
+    ],
+    beforeAfter: [
+      { area: "Email revenue", before: "Email was not producing enough sales.", after: "Founder-reported result: $10K sales generated." },
+      { area: "Offer clarity", before: "The purchase reason needed clearer positioning.", after: "The email message connected the offer to buyer motivation." },
+      { area: "Follow-up", before: "The list needed a stronger conversion path.", after: "Follow-up was structured around trust and action." },
+      { area: "Claim scope", before: "No verified public metrics were available.", after: "The page only states the founder-reported result provided." },
+    ],
+    proofAssets: [
+      "Recommended proof asset to add: Email sales screenshot.",
+      "Recommended proof asset to add: Email platform campaign screenshot.",
+      "Recommended proof asset to add: Revenue attribution screenshot.",
+    ],
+    founderSummary:
+      "This project showed that email can become a meaningful revenue channel when the offer, copy, and follow-up sequence are built around the buyer's decision path.",
+    whyItWorked: [
+      "The work focused on sales conversion, not just sending more emails.",
+      "The offer was clarified before the email copy was written.",
+      "Follow-up supported the buyer journey instead of relying on one message.",
+      "The claim is limited to the founder-reported result: $10K in sales for one client.",
+    ],
+    relatedIds: ["meta-ads-800-leads-14-days", "strategic-seo-40k-organic-visitors"],
+    serviceLinks: [
+      { title: "Lead Generation", description: "Build follow-up paths that turn interest into conversations and sales.", href: "/services/lead-generation" },
+    ],
+  },
+  "strategic-seo-40k-organic-visitors": {
+    businessProblem: [
+      "The client needed more qualified visibility from search and a clearer path from search traffic to business action.",
+      "The work focused on technical SEO, content structure, search intent, keyword mapping, internal linking, and conversion-focused landing pages.",
+      "The 40K+ organic visitors figure is a founder-reported average from previous SEO work, not an independently audited claim for a named client.",
+    ],
+    diagnosis: [
+      {
+        title: "Technical SEO foundation",
+        wrong: "The site needed stronger technical structure to support discoverability.",
+        impact: "Weak technical foundations can limit how much search visibility content can earn.",
+        change: "The site needed cleaner architecture, technical fixes, and clearer page hierarchy.",
+      },
+      {
+        title: "Search intent mapping",
+        wrong: "Content needed to match what qualified buyers were actually searching for.",
+        impact: "Traffic can grow without business value when pages miss search intent.",
+        change: "Keyword mapping and content structure needed to support buyer questions.",
+      },
+      {
+        title: "Conversion-focused pages",
+        wrong: "Search pages needed a stronger next step after the visitor arrived.",
+        impact: "Visibility alone does not create growth without a path to action.",
+        change: "Landing pages needed internal links, trust signals, and clearer CTAs.",
+      },
+    ],
+    strategy: [
+      {
+        title: "Built around search intent",
+        done: "Mapped content and pages around the questions and intent behind qualified searches.",
+        mattered: "SEO brings better value when visibility is tied to buyer relevance.",
+        helped: "The work supported the founder-reported average of 40K+ organic visitors through strategic SEO.",
+      },
+      {
+        title: "Strengthened technical structure",
+        done: "Focused on architecture, internal linking, and crawl-friendly page organization.",
+        mattered: "Technical clarity helps content and service pages perform more consistently.",
+        helped: "The site path became easier for users and search systems to understand.",
+      },
+      {
+        title: "Connected SEO to conversion",
+        done: "Landing pages were shaped to guide visitors toward service understanding and lead action.",
+        mattered: "Organic growth matters more when visitors know what to do next.",
+        helped: "Visibility work became more connected to lead generation.",
+      },
+    ],
+    timeline: [
+      { phase: "Phase 1", title: "SEO diagnosis", description: "Reviewed technical structure, content gaps, search intent, and internal linking." },
+      { phase: "Phase 2", title: "Keyword and content mapping", description: "Mapped pages around search intent and buyer-stage questions." },
+      { phase: "Phase 3", title: "Page and structure improvements", description: "Improved page hierarchy, internal links, and conversion-focused landing paths." },
+      { phase: "Phase 4", title: "Visibility review", description: "Recorded the founder-reported average from previous SEO work: 40K+ organic visitors." },
+    ],
+    beforeAfter: [
+      { area: "Organic visibility", before: "The client needed stronger search discovery.", after: "Founder-reported average: 40K+ organic visitors generated through strategic SEO." },
+      { area: "Technical structure", before: "The site needed stronger architecture.", after: "Technical SEO and page hierarchy supported discovery." },
+      { area: "Content intent", before: "Pages were not fully mapped to buyer questions.", after: "Content structure better matched search intent." },
+      { area: "Conversion path", before: "Visitors needed a clearer next step.", after: "Landing pages were shaped around trust and action." },
+    ],
+    proofAssets: [
+      "Recommended proof asset to add: Google Search Console screenshot.",
+      "Recommended proof asset to add: Organic traffic analytics screenshot.",
+      "Recommended proof asset to add: Keyword mapping or content structure screenshot.",
+    ],
+    founderSummary:
+      "This SEO work showed that organic visibility improves when technical structure, search intent, internal linking, and conversion-focused pages are planned together.",
+    whyItWorked: [
+      "SEO was treated as a full visibility system, not isolated blog publishing.",
+      "Technical structure supported content discovery.",
+      "Content mapping focused on buyer questions and intent.",
+      "The claim is clearly scoped as a founder-reported average from previous SEO work.",
+    ],
+    relatedIds: ["high-converting-websites-search-conversion", "social-media-engagement-growth"],
+    serviceLinks: [
+      { title: "SEO, GEO & AEO", description: "Get found on Google, AI search, and answer engines.", href: "/services/seo-geo-aeo" },
+    ],
+  },
+  "social-media-engagement-growth": {
+    businessProblem: [
+      "The client needed stronger social trust, content consistency, and engagement.",
+      "The work focused on content planning, creative direction, campaign production, publishing systems, and message consistency.",
+      "The engagement growth and production numbers are founder-reported proof points from previous client work and broader execution experience.",
+    ],
+    diagnosis: [
+      {
+        title: "Content consistency",
+        wrong: "The brand needed a more reliable publishing and campaign system.",
+        impact: "Inconsistent content makes trust harder to build and engagement harder to repeat.",
+        change: "The brand needed a planned content system with repeatable production.",
+      },
+      {
+        title: "Creative direction",
+        wrong: "Content needed clearer themes, stronger hooks, and more consistent message quality.",
+        impact: "Engagement can stay weak when creative output is disconnected from audience interest.",
+        change: "Creative needed to be planned around audience trust, not random posting.",
+      },
+      {
+        title: "Operational scale",
+        wrong: "The content operation needed enough production capacity to support consistent growth.",
+        impact: "Teams often stall because they cannot produce enough usable creative.",
+        change: "Campaign production and publishing systems needed to support repeated execution.",
+      },
+    ],
+    strategy: [
+      {
+        title: "Built a content system",
+        done: "Created a more structured approach to planning, production, and publishing.",
+        mattered: "Social trust compounds when content is consistent and strategically connected.",
+        helped: "The work supported the founder-reported average of 400% engagement growth.",
+      },
+      {
+        title: "Directed campaign creative",
+        done: "Creative direction focused on hooks, message clarity, and audience relevance.",
+        mattered: "Content needs a reason to earn attention before it can build trust.",
+        helped: "The broader experience includes 250+ video campaigns and animations delivered.",
+      },
+      {
+        title: "Scaled static and motion output",
+        done: "Production systems supported a high volume of static designs, posts, videos, and animations.",
+        mattered: "Consistent output depends on repeatable production capacity.",
+        helped: "The founder-reported proof points include 100K+ static designs and posts delivered.",
+      },
+    ],
+    timeline: [
+      { phase: "Phase 1", title: "Content audit", description: "Reviewed message consistency, audience fit, creative quality, and publishing gaps." },
+      { phase: "Phase 2", title: "Content planning", description: "Built a content structure around trust, engagement, and repeatable topics." },
+      { phase: "Phase 3", title: "Campaign production", description: "Produced static, motion, and campaign creative through a repeatable system." },
+      { phase: "Phase 4", title: "Engagement review", description: "Recorded founder-reported averages and production proof points from previous work." },
+    ],
+    beforeAfter: [
+      { area: "Engagement", before: "The brand needed stronger audience response.", after: "Founder-reported average: 400% social engagement growth." },
+      { area: "Video campaigns", before: "Campaign production needed structure.", after: "Founder-reported proof point: 250+ video campaigns and animations delivered." },
+      { area: "Static content", before: "Publishing needed consistent creative output.", after: "Founder-reported proof point: 100K+ static designs and posts delivered." },
+      { area: "Message consistency", before: "Content themes were not always connected.", after: "Creative direction and planning created a clearer content system." },
+    ],
+    proofAssets: [
+      "Recommended proof asset to add: Social analytics screenshot.",
+      "Recommended proof asset to add: Content calendar screenshot.",
+      "Recommended proof asset to add: Campaign production sample screenshot.",
+    ],
+    founderSummary:
+      "This work showed that social engagement improves when content planning, creative direction, production capacity, and publishing consistency operate as one system.",
+    whyItWorked: [
+      "The content system gave the brand a repeatable way to show up.",
+      "Creative direction focused on audience relevance and message consistency.",
+      "Production capacity supported consistent execution across static and video formats.",
+      "The claims are limited to founder-reported averages and production proof points.",
+    ],
+    relatedIds: ["meta-ads-800-leads-14-days", "strategic-seo-40k-organic-visitors"],
+    serviceLinks: [
+      { title: "Social Media Management", description: "Build trust with planned, consistent social content.", href: "/services/social-media-management" },
+    ],
+  },
+  "high-converting-websites-search-conversion": {
+    businessProblem: [
+      "The client needed a website that did more than look good. It needed search structure, technical clarity, trust-building sections, and a conversion path.",
+      "The work focused on technical structure, page hierarchy, SEO setup, CTA flow, buyer psychology, and conversion-focused pages.",
+      "The 20+ websites figure is a founder-backed proof point tied to previous international-level website work and a CSE/software engineering background.",
+    ],
+    diagnosis: [
+      {
+        title: "Technical architecture",
+        wrong: "The website needed stronger structure for both users and search systems.",
+        impact: "A weak structure can make even good design harder to rank, understand, or convert from.",
+        change: "The site needed technical architecture built around clarity and intent.",
+      },
+      {
+        title: "Buyer psychology",
+        wrong: "The page flow needed to answer buyer questions in the right order.",
+        impact: "Visitors leave when a website looks polished but does not reduce uncertainty.",
+        change: "Sections needed to build trust, explain the offer, and guide action.",
+      },
+      {
+        title: "Conversion path",
+        wrong: "CTAs and trust sections needed a more deliberate relationship.",
+        impact: "Without a clear path, traffic can fail to become leads.",
+        change: "The site needed CTA flow and service messaging tied to lead generation.",
+      },
+    ],
+    strategy: [
+      {
+        title: "Planned the technical structure",
+        done: "The website structure was shaped around page hierarchy, SEO setup, and technical clarity.",
+        mattered: "Good architecture helps both visibility and user understanding.",
+        helped: "The approach reflects founder-backed experience building 20+ international-level websites.",
+      },
+      {
+        title: "Built around buyer psychology",
+        done: "Page sections were organized to answer objections, build trust, and make the next step clear.",
+        mattered: "A website converts better when it reduces uncertainty before asking for action.",
+        helped: "The site became more than a visual asset; it became part of the growth path.",
+      },
+      {
+        title: "Connected SEO and lead generation",
+        done: "SEO setup, page hierarchy, CTA flow, and trust sections were planned together.",
+        mattered: "Search visibility needs a conversion path to create business value.",
+        helped: "The website supported both discovery and lead generation goals.",
+      },
+    ],
+    timeline: [
+      { phase: "Phase 1", title: "Technical and conversion audit", description: "Reviewed structure, page hierarchy, SEO setup, CTA flow, and trust gaps." },
+      { phase: "Phase 2", title: "Architecture planning", description: "Planned the site around ranking, technical clarity, buyer psychology, and conversion." },
+      { phase: "Phase 3", title: "Website build direction", description: "Built pages and sections around service understanding, trust, and action." },
+      { phase: "Phase 4", title: "Founder experience review", description: "Grounded the case study in the founder-backed proof point: 20+ international-level websites built." },
+    ],
+    beforeAfter: [
+      { area: "Website role", before: "The website needed to do more than look good.", after: "The site was treated as a search and conversion asset." },
+      { area: "Technical foundation", before: "Page structure and technical clarity needed improvement.", after: "Architecture supported ranking and user understanding." },
+      { area: "Buyer path", before: "The page flow did not fully reduce uncertainty.", after: "Sections were planned around trust, proof, and action." },
+      { area: "Founder proof point", before: "No fake conversion or revenue metric is claimed.", after: "Only the provided proof point is used: 20+ international-level websites built." },
+    ],
+    proofAssets: [
+      "Recommended proof asset to add: Website architecture screenshot.",
+      "Recommended proof asset to add: Landing page before/after screenshot.",
+      "Recommended proof asset to add: SEO setup or technical audit screenshot.",
+    ],
+    founderSummary:
+      "This website work showed that high-performing pages need technical structure, buyer psychology, search readiness, and CTA flow working together.",
+    whyItWorked: [
+      "The website was planned as a growth system, not just a design surface.",
+      "Technical architecture supported search visibility.",
+      "Buyer psychology shaped the page hierarchy and trust sections.",
+      "The claim is limited to the founder-backed proof point: 20+ international-level websites built.",
+    ],
+    relatedIds: ["strategic-seo-40k-organic-visitors", "meta-ads-800-leads-14-days"],
+    serviceLinks: [
+      { title: "SEO, GEO & AEO", description: "Build visibility across search and answer engines.", href: "/services/seo-geo-aeo" },
+      { title: "Lead Generation", description: "Turn website interest into qualified calls.", href: "/services/lead-generation" },
+    ],
+  },
+};
+
+function getCaseStudyDetails(id: string) {
+  return caseStudyDetails[id];
 }
 
 function trustPoints(study: CaseStudy) {
-  const base = ["Strategy first, tasks second", "Reporting tied to business outcomes"];
-  if (study.category === "SEO") {
-    return ["Search visibility built around buyer intent", "Technical SEO and content under one plan", ...base];
-  }
-  if (study.category === "Lead Generation") {
-    return ["Built for qualified sales conversations", "Outbound, offers, CRM, and follow-up under one plan", ...base];
-  }
-  if (study.category === "Social Media") {
-    return ["Built for trust and demand creation", "Content, community, and paid awareness under one plan", ...base];
-  }
-  return ["Built for conversion and revenue clarity", "Funnel, ads, email, and testing under one plan", ...base];
-}
-
-function diagnosis(study: CaseStudy): CaseStudyTemplateData["diagnosis"] {
-  if (study.category === "SEO") {
-    return [
-      {
-        title: "Search visibility",
-        wrong: "The brand was not visible enough for high-intent searches tied to its core services.",
-        impact: "Buyers who were already searching for help were finding competitors first.",
-        change: "The site needed stronger technical signals, clearer content structure, and pages mapped to buyer intent.",
-      },
-      {
-        title: "Local map visibility",
-        wrong: "Local trust signals and service-area relevance were not strong enough.",
-        impact: "The business missed nearby prospects who were ready to compare options.",
-        change: "Local signals, content, and credibility markers needed to support discovery.",
-      },
-      {
-        title: "Content and messaging",
-        wrong: "The content did not answer the practical questions buyers had before reaching out.",
-        impact: "Visitors had less reason to trust the offer or take the next step.",
-        change: "The message needed to connect expertise with the business outcome buyers wanted.",
-      },
-    ];
-  }
-  if (study.category === "Lead Generation") {
-    return [
-      {
-        title: "Lead generation",
-        wrong: "The pipeline relied too heavily on inconsistent sources and weak outbound structure.",
-        impact: "Growth depended on luck instead of a repeatable path to qualified conversations.",
-        change: "The business needed a targeted offer, clean data, better sequences, and a clear booking path.",
-      },
-      {
-        title: "Content and messaging",
-        wrong: "The outreach message did not make the business problem clear fast enough.",
-        impact: "Good prospects had too little reason to reply or book a call.",
-        change: "The message needed to lead with pain, relevance, and a simple next step.",
-      },
-      {
-        title: "Tracking and reporting",
-        wrong: "The team could not clearly see which sources and messages created useful conversations.",
-        impact: "It was harder to improve lead quality or scale what worked.",
-        change: "Reporting needed to connect source, reply quality, booked calls, and pipeline.",
-      },
-    ];
-  }
-  if (study.category === "Social Media") {
-    return [
-      {
-        title: "Social media",
-        wrong: "The brand did not have a consistent content system that built trust over time.",
-        impact: "Potential buyers saw activity gaps and had less confidence before taking action.",
-        change: "The brand needed a repeatable content plan built around buyer questions and proof.",
-      },
-      {
-        title: "Content and messaging",
-        wrong: "Content was not tied clearly enough to the offer or next step.",
-        impact: "Attention did not reliably become inquiries, bookings, or owned audience growth.",
-        change: "Content needed to create trust, explain the value, and point people toward action.",
-      },
-      {
-        title: "Paid ads",
-        wrong: "Awareness and retargeting were not organized around lead quality.",
-        impact: "Reach could grow without creating enough sales-ready interest.",
-        change: "Paid promotion needed to support the organic message and reinforce the buyer journey.",
-      },
-    ];
-  }
   return [
-    {
-      title: "Funnel and conversion",
-      wrong: "Traffic was reaching the brand, but too many visitors dropped before buying or inquiring.",
-      impact: "Ad spend and traffic were not turning into enough measurable revenue.",
-      change: "The offer, page flow, and conversion path needed to be simplified and tested.",
-    },
-    {
-      title: "Paid ads",
-      wrong: "Campaign traffic was not aligned tightly enough with the conversion path.",
-      impact: "Budget was spent on visitors who were not ready or were not guided clearly.",
-      change: "Ad targeting, landing message, and follow-up needed to work as one system.",
-    },
-    {
-      title: "Tracking and reporting",
-      wrong: "The business could not see enough detail about where the funnel leaked.",
-      impact: "Decisions were slower because the team did not know which friction points mattered most.",
-      change: "Reporting needed to focus on conversion quality, not just traffic activity.",
-    },
+    "Founder-backed previous work",
+    "Claims limited to provided proof points",
+    `${study.services.join(" + ")} execution experience`,
+    "No invented client names or screenshots",
   ];
 }
 
-function proofAssets(study: CaseStudy) {
-  if (study.category === "SEO") {
-    return [
-      "Proof asset placeholder: Add Google Search Console screenshot here.",
-      "Proof asset placeholder: Add ranking screenshot here.",
-      "Proof asset placeholder: Add Google Analytics screenshot here.",
-      "Proof asset placeholder: Add lead tracking screenshot here.",
-    ];
-  }
-  if (study.category === "Lead Generation") {
-    return [
-      "Proof asset placeholder: Add CRM screenshot here.",
-      "Proof asset placeholder: Add call booking screenshot here.",
-      "Proof asset placeholder: Add lead tracking screenshot here.",
-      "Proof asset placeholder: Add outbound campaign dashboard screenshot here.",
-    ];
-  }
-  if (study.category === "Social Media") {
-    return [
-      "Proof asset placeholder: Add social growth screenshot here.",
-      "Proof asset placeholder: Add content reach screenshot here.",
-      "Proof asset placeholder: Add lead tracking screenshot here.",
-      "Proof asset placeholder: Add client testimonial here.",
-    ];
-  }
-  return [
-    "Proof asset placeholder: Add Google Analytics screenshot here.",
-    "Proof asset placeholder: Add conversion tracking screenshot here.",
-    "Proof asset placeholder: Add ad dashboard screenshot here.",
-    "Proof asset placeholder: Add revenue or booking screenshot here.",
-  ];
-}
-
-function relatedStudies(study: CaseStudy): CaseStudyTemplateData["relatedCaseStudies"] {
-  return caseStudies
-    .filter((item) => item.id !== study.id)
-    .slice(0, 3)
+function relatedStudies(study: CaseStudy, details: CaseStudyDetails): CaseStudyTemplateData["relatedCaseStudies"] {
+  return details.relatedIds
+    .map((id) => getCaseStudyById(id))
+    .filter((item): item is CaseStudy => Boolean(item))
     .map((item) => ({
-      title: `${item.client} Case Study`,
+      title: item.client,
       description: item.tagline,
       href: `/case-studies/${item.id}`,
     }));
 }
 
 export function buildCaseStudyTemplateData(study: CaseStudy): CaseStudyTemplateData {
+  const details = getCaseStudyDetails(study.id);
+
   return {
-    label: "Case Study",
-    headline: serviceHeadline(study),
+    label: "Founder-Backed Case Study",
+    headline: study.client,
     subheadline: study.description,
     metrics: study.results.slice(0, 3).map((result) => ({
       value: `${result.value}${result.delta ? ` (${result.delta})` : ""}`,
@@ -313,92 +570,30 @@ export function buildCaseStudyTemplateData(study: CaseStudy): CaseStudyTemplateD
     })),
     trustPoints: trustPoints(study),
     snapshot: [
-      { label: "Client Type", value: study.client },
-      { label: "Market", value: study.industry },
-      { label: "Main Problem", value: study.tagline },
+      { label: "Case Study Type", value: study.industry },
+      { label: "Primary Service", value: study.category },
       { label: "Services Used", value: study.services.join(", ") },
+      { label: "Claim Basis", value: "Founder-reported previous work" },
       { label: "Timeline", value: study.duration },
-      { label: "Goal", value: "Turn marketing activity into clearer, more qualified growth opportunities." },
+      { label: "Public Client Name", value: "Not disclosed" },
     ],
-    businessProblem: [
-      study.description,
-      "The deeper issue was not one isolated marketing task. The business needed a clearer path from visibility to trust, then from trust to action.",
-      "AblyArt focused the work on business outcomes: better lead quality, clearer buyer intent, cleaner tracking, and a stronger reason to book a call or take the next step.",
-    ],
-    diagnosis: diagnosis(study),
-    strategy: [
-      {
-        title: "Clarified the growth bottleneck",
-        done: "We identified which part of the customer journey was blocking progress.",
-        mattered: "A business cannot scale confidently when the team is guessing where leads are being lost.",
-        helped: "The work focused on the points most likely to improve qualified conversations and revenue.",
-      },
-      {
-        title: "Rebuilt the message around buyer intent",
-        done: "We tightened the offer, proof points, and next-step language around what buyers needed to understand.",
-        mattered: "Clearer messaging reduces friction and helps the right prospects self-identify faster.",
-        helped: "The brand became easier to trust and easier to act on.",
-      },
-      {
-        title: "Connected channels into one path",
-        done: `We aligned ${study.services.join(", ")} so each activity supported the same business goal.`,
-        mattered: "Disconnected marketing creates activity without momentum.",
-        helped: "Search, content, outreach, ads, and conversion points worked together instead of competing for attention.",
-      },
-      {
-        title: "Measured what mattered",
-        done: "We tied reporting back to lead quality, booked calls, and the business outcome behind the campaign.",
-        mattered: "Owners need to know what is creating real opportunities, not just what is getting clicks.",
-        helped: "The team could make clearer decisions about where to invest next.",
-      },
-    ],
-    timeline: [
-      {
-        phase: "Phase 1",
-        title: "Audit and diagnosis",
-        description: "We reviewed the current visibility, message, traffic sources, conversion path, and tracking gaps.",
-      },
-      {
-        phase: "Phase 2",
-        title: "Message and path correction",
-        description: "We clarified the offer and improved the path from interest to action.",
-      },
-      {
-        phase: "Phase 3",
-        title: "Channel execution",
-        description: `We executed the core service mix: ${study.services.join(", ")}.`,
-      },
-      {
-        phase: "Phase 4",
-        title: "Reporting and quality review",
-        description: "We reviewed performance through the lens of lead quality, calls, and business value.",
-      },
-    ],
-    beforeAfter: [
-      { area: "Visibility", before: "The brand had gaps in the places buyers were looking.", after: "Visibility became more connected to buyer intent and service relevance." },
-      { area: "Lead quality", before: "The business had too much uncertainty around which inquiries were valuable.", after: "The growth path focused more directly on qualified prospects." },
-      { area: "Website message", before: "The offer was not always clear enough for quick decisions.", after: "The message tied services to the buyer's business problem." },
-      { area: "Tracking", before: "Reporting did not fully explain what created real opportunities.", after: "Performance was reviewed around outcomes, not vanity metrics." },
-      { area: "Discovery calls", before: "The next step was not always supported by the full journey.", after: "The path to a useful sales conversation became clearer." },
-    ],
+    businessProblem: details.businessProblem,
+    diagnosis: details.diagnosis,
+    strategy: details.strategy,
+    timeline: details.timeline,
+    beforeAfter: details.beforeAfter,
     results: study.results.slice(0, 3).map((result) => ({
       result: `${result.label}: ${result.value}${result.delta ? ` (${result.delta})` : ""}`,
-      businessValue: `Business value: ${study.client} had a clearer path to judge growth by business outcomes, not disconnected activity.`,
+      businessValue: `Claim basis: ${study.industry}. No additional revenue, traffic, CPL, ROAS, ranking, or client-name claims are made beyond the provided proof point.`,
     })),
-    proofAssets: proofAssets(study),
-    clientQuote: {
-      quote:
-        "Demo placeholder testimonial: AblyArt helped us see where growth was getting stuck and gave us a clearer path from activity to qualified conversations.",
-      name: "Demo placeholder client",
-      role: `${study.client}, ${study.industry}`,
+    proofAssets: details.proofAssets,
+    founderSummary: {
+      summary: details.founderSummary,
+      name: "Founder-backed summary",
+      role: "Previous execution experience behind AblyArt",
     },
-    whyItWorked: [
-      "The offer became clearer, so buyers understood the value faster.",
-      "Traffic and outreach were aligned with buyer intent.",
-      "CTAs became easier to act on because the message was more direct.",
-      "Reporting focused on leads, conversations, and revenue signals instead of vanity metrics.",
-      "The strategy connected visibility with conversion instead of treating channels as separate tasks.",
-    ],
-    relatedCaseStudies: relatedStudies(study),
+    whyItWorked: details.whyItWorked,
+    serviceLinks: details.serviceLinks,
+    relatedCaseStudies: relatedStudies(study, details),
   };
 }
