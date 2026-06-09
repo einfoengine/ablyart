@@ -261,7 +261,7 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       {/* Name + Email */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+      <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
           <label style={{ fontSize: "0.75rem", fontWeight: 700, color: "rgba(240,240,248,0.5)", display: "block", marginBottom: "6px", letterSpacing: "0.04em" }}>
             Full Name *
@@ -295,7 +295,7 @@ function ContactForm() {
       </div>
 
       {/* Company + Budget */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+      <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
           <label style={{ fontSize: "0.75rem", fontWeight: 700, color: "rgba(240,240,248,0.5)", display: "block", marginBottom: "6px", letterSpacing: "0.04em" }}>
             Company
@@ -526,7 +526,7 @@ export default function ContactPageClient() {
 
       {/* ── Form + FAQ Grid ── */}
       <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px 100px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "40px", alignItems: "start" }}>
+        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "40px", alignItems: "start" }}>
 
           {/* Left: Form */}
           <FadeUp delay={0}>
@@ -641,9 +641,13 @@ export default function ContactPageClient() {
         @media (max-width: 900px) {
           .contact-methods { grid-template-columns: 1fr !important; }
           .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-form-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 600px) {
           .contact-methods { grid-template-columns: 1fr !important; }
+          .contact-grid { gap: 24px !important; }
+          .contact-grid .glass-card { padding: 28px 20px !important; }
+          .contact-form-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </main>

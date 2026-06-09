@@ -32,7 +32,7 @@ const defaultBlogPosts: BlogPost[] = [
     slug: "blended-roas-scaling-ad-spend",
   },
   {
-    category: "Web Design",
+    category: "Conversion Strategy",
     date: "Jul 30, 2024",
     title: "Anatomy of a High-Converting Landing Page",
     excerpt: "Breaking down the UI, copy, and offer structures that actually keep visitors engaged and drive action on your website.",

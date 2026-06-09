@@ -24,6 +24,7 @@ const servicesData = [
       "Referral: Turning users into brand advocates.",
       "Revenue: Increasing the lifetime value (LTV) of each customer."
     ],
+    href: "/services/lead-generation",
     color: "#9bff6e",
     rgb: "155, 255, 110",
   },
@@ -37,6 +38,7 @@ const servicesData = [
       "Multivariate Testing: Testing multiple variables simultaneously to see which combination performs best.",
       "Channel Testing: Identifying which platforms (LinkedIn, Meta, Google, etc.) yield the highest ROI."
     ],
+    href: "/services/media-buying",
     color: "#ffec8fff",
     rgb: "255, 236, 143",
   },
@@ -51,6 +53,7 @@ const servicesData = [
       "Perform Attribution Modeling to understand which touchpoints actually led to a conversion.",
       "Monitor key KPIs like Customer Acquisition Cost (CAC) and Churn Rate."
     ],
+    href: "/services/media-buying",
     color: "#5d98f7ff",
     rgb: "93, 152, 247",
   },
@@ -64,6 +67,7 @@ const servicesData = [
       "AEO & GEO: Optimizing content for AI-driven answers and generative search engines.",
       "Content Strategy: Creating high-quality assets that answer specific user intent."
     ],
+    href: "/services/seo-geo-aeo",
     color: "#6ee7ff",
     rgb: "110, 231, 255",
   },
@@ -75,8 +79,9 @@ const servicesData = [
     bullets: [
       "UX Audits: Identifying confusing navigation or slow-loading elements.",
       "Copywriting: Refining messaging to build trust and urgency.",
-      "Landing Page Design: Building layouts that guide users toward a specific action."
+      "Conversion Path Planning: Structuring page flow and messaging so users know the next action."
     ],
+    href: "/services/lead-generation",
     color: "#b09eff",
     rgb: "176, 158, 255",
   },
@@ -91,6 +96,7 @@ const servicesData = [
       "Omnichannel Capture: Intercepting intent across Search, Meta, LinkedIn, and cold email.",
       "CRM Integration: Seamlessly passing enriched data into HubSpot or Salesforce."
     ],
+    href: "/services/lead-generation",
     color: "#ff5078",
     rgb: "255, 80, 120",
   },
@@ -104,6 +110,7 @@ const servicesData = [
       "Loyalty Programs: Encouraging repeat purchases.",
       "Onboarding: Helping new users understand the product's value quickly."
     ],
+    href: "/services/social-media-management",
     color: "#73d39bff",
     rgb: "115, 211, 155",
   }
@@ -178,7 +185,7 @@ export default function ServicesSection({ id }: { id?: string }) {
         alignment="center"
       />
 
-      <div ref={outerRef} style={{ height: "400vh", position: "relative" }}>
+      <div ref={outerRef} className="hidden lg:block" style={{ height: "400vh", position: "relative" }}>
         <div style={{ position: "sticky", top: "120px", paddingBottom: "120px" }}>
           {/* Tabs Layout */}
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 items-start">
@@ -326,7 +333,7 @@ export default function ServicesSection({ id }: { id?: string }) {
               {/* Dynamic CTA */}
               <div style={{ marginTop: "48px" }}>
                 <a
-                  href={`/services/${servicesData[activeIdx].id}`}
+                  href={servicesData[activeIdx].href}
                   style={{ 
                     display: "inline-flex", 
                     alignItems: "center", 

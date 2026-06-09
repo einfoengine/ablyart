@@ -604,6 +604,7 @@ function Newsletter() {
             ) : (
               <motion.form
                 key="form"
+                className="blog-newsletter-form"
                 onSubmit={handleSubmit}
                 style={{
                   display: "flex",
@@ -664,7 +665,7 @@ function Newsletter() {
               marginTop: "14px",
             }}
           >
-            Join 2,400+ marketers. Unsubscribe anytime.
+            Join marketers who want practical growth insights. Unsubscribe anytime.
           </p>
         </div>
       </div>
@@ -857,6 +858,20 @@ export default function BlogPageClient() {
         <Newsletter />
       </section>
 
+      <style>{`
+        @media (max-width: 1100px) {
+          .blog-posts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        }
+        @media (max-width: 900px) {
+          .blog-featured { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .blog-posts-grid { grid-template-columns: 1fr !important; }
+          .blog-newsletter-form { flex-direction: column !important; }
+          .blog-newsletter-form input,
+          .blog-newsletter-form button { width: 100% !important; }
+        }
+      `}</style>
 
     </main>
   );

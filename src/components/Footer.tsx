@@ -56,9 +56,7 @@ export default function Footer() {
       { name: "Lead Generation", href: "/services/lead-generation" },
       { name: "SEO & Content", href: "/services/seo-geo-aeo" },
       { name: "Paid Ads", href: "/services/media-buying" },
-      { name: "Social Media", href: "/services/social-media-management" },
-      { name: "Web Design", href: "/services/holistic-marketing" },
-      { name: "Email Marketing", href: "/services/retention-maximization" }
+      { name: "Social Media", href: "/services/social-media-management" }
     ],
     Company: [
       { name: "About Us", href: "/about" },

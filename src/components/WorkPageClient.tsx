@@ -114,10 +114,10 @@ export default function WorkPageClient() {
   const regularStudies = visibleStudies.filter((study) => !study.featured);
 
   const stats = [
-    { value: "20+", label: "Brands transformed since 2022" },
-    { value: "50+", label: "Brands scaled across experience" },
-    { value: "14+", label: "Years of founder experience" },
-    { value: "250+", label: "Video campaigns delivered" },
+    { value: "Search", label: "SEO, GEO & AEO proof work" },
+    { value: "Social", label: "Content and trust-building examples" },
+    { value: "Media", label: "Paid traffic and campaign planning" },
+    { value: "Leads", label: "Lead path and prospecting systems" },
   ];
 
   return (

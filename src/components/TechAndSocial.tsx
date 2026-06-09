@@ -2,10 +2,10 @@
 
 import React from "react";
 import { 
-  FaReact, FaNodeJs, FaFigma, FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaYoutube, FaMailchimp, FaHubspot, FaSalesforce
+  FaReact, FaNodeJs, FaFigma, FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaHubspot, FaSalesforce
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiNextdotjs, SiTailwindcss, SiVercel, SiTypescript, SiFramer, SiGoogleads, SiZapier } from "react-icons/si";
+import { SiNextdotjs, SiTailwindcss, SiTypescript, SiGoogleads, SiZapier } from "react-icons/si";
 
 const ecosystemItems = [
   { name: "React", icon: <FaReact size={32} /> },

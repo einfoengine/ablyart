@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const filepath = 'src/components/ServicesMegaMenu.tsx';
 let content = fs.readFileSync(filepath, 'utf-8');

@@ -315,7 +315,8 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
           titleHighlight="For The Business"
         />
         <FadeUp>
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0e]/80">
+          <div className="overflow-x-auto rounded-3xl border border-white/10 bg-[#0b0b0e]/80">
+            <div className="min-w-[680px]">
             <div className="grid grid-cols-[0.7fr_1fr_1fr] bg-white/[0.04] text-xs md:text-sm font-black uppercase tracking-wider text-gray-400">
               <div className="p-4 md:p-5">Area</div>
               <div className="p-4 md:p-5 border-l border-white/10">Before</div>
@@ -328,6 +329,7 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyTemplateDat
                 <div className="p-4 md:p-5 border-l border-white/10 text-gray-300 leading-relaxed">{row.after}</div>
               </div>
             ))}
+            </div>
           </div>
         </FadeUp>
       </SectionBand>

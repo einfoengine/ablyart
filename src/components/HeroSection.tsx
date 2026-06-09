@@ -348,36 +348,18 @@ export default function HeroSection({ id = "hero" }: { id?: string }) {
         </div>
 
         {/* Trust line */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
-            marginTop: "56px",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="mt-12 md:mt-14 flex flex-wrap items-center justify-center gap-3 px-2">
           {[
-            { value: "250+", label: "Clients Served" },
-            { value: "4.9★", label: "Avg. Rating" },
-            { value: "$18M+", label: "Revenue Generated" },
-          ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontSize: "1.5rem",
-                  fontWeight: 800,
-                  color: "#9bff6e",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {stat.value}
-              </div>
-              <div style={{ fontSize: "0.78rem", color: "rgba(240,240,248,0.5)", fontWeight: 500 }}>
-                {stat.label}
-              </div>
-            </div>
+            "Focused on four core growth services",
+            "Built for search, social, paid media, and lead generation",
+            "Strategy-first execution for growing businesses",
+          ].map((item) => (
+            <span
+              key={item}
+              className="max-w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.08em] text-[rgba(240,240,248,0.55)]"
+            >
+              {item}
+            </span>
           ))}
         </div>
       </div>

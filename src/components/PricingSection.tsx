@@ -57,7 +57,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
       { text: "Technical SEO fixes", included: true },
       { text: "Landing page build", included: false },
       { text: <>Paid ads up to <span className="text-[#eab308] font-bold">$2,000</span> spend — Meta, TikTok & Google</>, included: true },
-      { text: "Custom web development support", included: false },
+      { text: "Custom product development support", included: false },
       { text: "Monthly performance report", included: true },
     ],
     detailedDeliverables: [],
@@ -352,7 +352,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
     ]
   },
   "seo": {
-    label: "SEO & PPC",
+    label: "Organic Marketing",
     packages: [
       {
         name: "Local Authority",
@@ -364,7 +364,7 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         features: [
           "Google Business Profile Optimization",
           "Local Citation Building",
-          "Basic Google Search Ads Setup",
+          "Organic Visibility Setup",
           "Basic Technical SEO Audit",
           "Keyword Tracking (Up to 50)"
         ],
@@ -376,10 +376,10 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             time: "Spread out over first 3 months"
           },
           {
-            title: "Paid Search (PPC)",
-            quantity: "Google Search Ads Launch",
-            quality: "High-intent local keywords targeting, strict budget control",
-            time: "Daily ad monitoring"
+            title: "Organic Search Setup",
+            quantity: "Local service page optimization",
+            quality: "High-intent local keyword targeting and page clarity",
+            time: "Weekly monitoring"
           },
           {
             title: "Content Optimization",
@@ -396,21 +396,21 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         originalPrice: "$3,500",
         discountPercentage: 40,
         period: "/mo",
-        description: "Aggressive organic & paid growth targeting highly competitive national keywords.",
+        description: "Aggressive organic growth targeting highly competitive national keywords.",
         features: [
           "Comprehensive Technical SEO",
-          "Advanced PPC Management ($10k Spend)",
+          "Advanced Content Optimization",
           "High-Quality Backlink Building",
-          "Paid Retargeting Interception",
+          "Search Intent Mapping",
           "Advanced Schema Markup",
           "Monthly Strategy Deep-Dive"
         ],
         detailedDeliverables: [
           {
-            title: "PPC Engine & Retargeting",
-            quantity: "Google Ads + Performance Max",
-            quality: "Split-tested ad copy, deep conversion API tracking",
-            time: "Daily optimization & Hourly checks"
+            title: "Organic Growth Engine",
+            quantity: "Content + search intent system",
+            quality: "Topic mapping, page improvements, and internal linking",
+            time: "Weekly optimization"
           },
           {
             title: "Technical Foundation",
@@ -433,21 +433,21 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
         originalPrice: "$7,000+",
         discountPercentage: 60,
         period: "/mo",
-        description: "Massive scale SEO & aggressive ad buys for massive websites.",
+        description: "Massive scale organic visibility planning for large websites.",
         features: [
           "Programmatic SEO Strategy",
-          "Enterprise PPC Scale ($50k+ Spend)",
-          "Google Shopping / PMax Ads",
+          "Enterprise Content Architecture",
+          "AEO & GEO Content Planning",
           "Digital PR & Link Acquisition",
           "Log File & Crawl Analysis",
           "Custom ROI Reporting"
         ],
         detailedDeliverables: [
           {
-            title: "Mass Scale Ads (PPC)",
-            quantity: "Unlimited Campaigns & Spend Mgmt",
-            quality: "Automated bidding rules, rigorous negative keywords",
-            time: "Always-on dedicated monitoring"
+            title: "Mass Organic Scale",
+            quantity: "Large content and page system planning",
+            quality: "Structured topic clusters and answer-ready content",
+            time: "Always-on visibility monitoring"
           },
           {
             title: "Programmatic Scale",
@@ -460,119 +460,6 @@ const pricingData: Record<string, { label: string; packages: PricingPackage[] }>
             quantity: "Deep Gap Analysis & Ad Bidding",
             quality: "Stealing traffic directly from competitor branded terms",
             time: "Monthly sprint planning"
-          }
-        ],
-        isPopular: false,
-      }
-    ]
-  },
-  "web-design": {
-    label: "Web Design & Development",
-    packages: [
-      {
-        name: "Landing Page Core",
-        price: "$1,500",
-        originalPrice: "$2,500",
-        discountPercentage: 40,
-        period: "/project",
-        description: "High-converting landing pages designed to turn traffic into qualified leads.",
-        features: [
-          "1 Custom Landing Page",
-          "Conversion-Optimized Copywriting",
-          "Mobile Responsive Design",
-          "Basic SEO Setup",
-          "Fast Turnaround"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Custom Design",
-            quantity: "1 Landing Page",
-            quality: "Modern UI/UX with smooth animations",
-            time: "1-2 Weeks"
-          },
-          {
-            title: "Copywriting",
-            quantity: "Full Page Copy",
-            quality: "Psychologically driven hooks that guarantee conversions",
-            time: "Included in timeline"
-          },
-          {
-            title: "Development",
-            quantity: "Next.js / React Build",
-            quality: "Lightning fast loading speeds",
-            time: "Included in timeline"
-          }
-        ],
-        isPopular: false,
-      },
-      {
-        name: "Corporate Website",
-        price: "$3,500",
-        originalPrice: "$6,000",
-        discountPercentage: 40,
-        period: "/project",
-        description: "A complete professional website to establish authority and trust in your industry.",
-        features: [
-          "Up to 5 Pages (Home, About, Services, etc.)",
-          "Custom UI/UX Design",
-          "CMS Integration",
-          "Advanced SEO & Analytics Setup",
-          "Premium Animations & Interactions"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Full Website Build",
-            quantity: "5 Core Pages",
-            quality: "Pixel-perfect development tailored to your brand",
-            time: "3-4 Weeks"
-          },
-          {
-            title: "Content Management",
-            quantity: "CMS Integration",
-            quality: "Easily edit and add content without coding",
-            time: "Included in timeline"
-          },
-          {
-            title: "Performance & SEO",
-            quantity: "Technical Foundation",
-            quality: "Core Web Vitals optimized, semantic HTML",
-            time: "Post-launch setup"
-          }
-        ],
-        isPopular: true,
-      },
-      {
-        name: "Custom Web Application",
-        price: "$8,000+",
-        originalPrice: "$12,000+",
-        discountPercentage: 30,
-        period: "/project",
-        description: "Complex scalable applications, E-commerce platforms, and custom SaaS MVPs.",
-        features: [
-          "Unlimited Pages / Custom Features",
-          "Full Stack Development",
-          "Database Architecture & API Integrations",
-          "User Authentication & Roles",
-          "E-commerce / Payment Gateway Setup"
-        ],
-        detailedDeliverables: [
-          {
-            title: "Architecture & Design",
-            quantity: "Complete System Design",
-            quality: "Scalable databases, highly secure infrastructure",
-            time: "2-4 Weeks (Phase 1)"
-          },
-          {
-            title: "Full Stack Development",
-            quantity: "Custom Features",
-            quality: "React, Node.js, Next.js, specialized tools",
-            time: "8-12 Weeks"
-          },
-          {
-            title: "Testing & Launch",
-            quantity: "QA & Deployment",
-            quality: "Rigorous testing across devices, CI/CD pipeline",
-            time: "Final 2 Weeks"
           }
         ],
         isPopular: false,

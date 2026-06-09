@@ -14,7 +14,7 @@ export type AgitationCardProps = {
 
 const defaultAgitations: AgitationCardProps[] = [
   {
-    service: "Web & Social Media Management",
+    service: "Social Media Management",
     title: "Bleeding Credibility",
     pain: "Every day your website looks outdated and your social feeds remain completely silent, you are instantly losing trust. Modern buyers audit your digital footprint before they ever reach out. If you look dead online, they assume your business is too.",
     accent: "rgba(255, 80, 80, 0.2)",
@@ -28,9 +28,9 @@ const defaultAgitations: AgitationCardProps[] = [
     textAccent: "#ff7850"
   },
   {
-    service: "Web Design & Development",
-    title: "Drowning in Poor UX",
-    pain: "A generic template simply doesn't convert anymore. While your competitors are capturing leads with custom, highly optimized web experiences, your visitors are bouncing in milliseconds due to poor UX and slow load times. Trust is currency — and right now, you're losing it.",
+    service: "Media Buying",
+    title: "Paying for the Wrong Attention",
+    pain: "A campaign without clear targeting, offer direction, and lead tracking turns budget into noise. While competitors refine their audiences and creative angles, every unqualified click makes growth harder to understand.",
     accent: "rgba(255, 179, 71, 0.2)",
     textAccent: "#ffb347"
   },
